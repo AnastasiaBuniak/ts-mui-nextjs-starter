@@ -47,6 +47,14 @@ export type CardsSection = {
     items?: Card[];
 };
 
+export type CalculationSection = {
+    type: 'CalculationSection';
+    title?: string;
+    enterTitle?: string;
+    exitTitle?: string;
+    addButtonText?: string
+};
+
 export type Footer = {
     type: 'Footer';
     copyrightText?: string;

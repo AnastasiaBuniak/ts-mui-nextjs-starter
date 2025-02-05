@@ -13,6 +13,7 @@ import MuiContainer from '@mui/material/Container';
 export type Props = { page: types.Page; siteConfig: types.Config };
 
 const Page: React.FC<Props> = ({ page, siteConfig }) => {
+    console.log(page.sections)
     return (
         <MuiBox sx={{ px: 3 }} data-sb-object-id={page.__id}>
             <MuiContainer maxWidth="lg" disableGutters={true}>
