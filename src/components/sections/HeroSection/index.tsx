@@ -20,7 +20,7 @@ export const HeroSection: React.FC<Props> = (props) => {
                 {hasTextContent && (
                     <MuiGrid item xs={12} md={image?.url ? 6 : 12}>
                         {title && (
-                            <MuiTypography component="h1" variant="h2" color="text.primary" data-sb-field-path=".title">
+                            <MuiTypography component="h1" variant="h2" color="primary" data-sb-field-path=".title">
                                 {title}
                             </MuiTypography>
                         )}

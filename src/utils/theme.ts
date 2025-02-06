@@ -13,7 +13,7 @@ let theme = createTheme({
         text: {
             primary: themeStyle.mode === 'dark' ? '#fff' : '#02001d',
             secondary: themeStyle.mode === 'dark' ? '#979797' : '#374151'
-        }
+        },
     },
     typography: {
         h1: {
@@ -25,7 +25,17 @@ let theme = createTheme({
         h3: {
             fontWeight: 500
         }
-    }
+    },
+    components: {
+        MuiTableCell: {
+            styleOverrides: {
+                root: {
+                    fontWeight: 'inherit',
+                },
+            },
+        },
+        
+    },
 });
 
 theme = responsiveFontSizes(theme);
