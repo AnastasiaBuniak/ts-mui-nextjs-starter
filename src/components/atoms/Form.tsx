@@ -8,7 +8,13 @@ interface FormProps {
   enterTitle?: string;
   exitTitle?: string;
   addButtonText?: string;
-  handleSubmit: ({ enter, exit }: { enter: Dayjs | null, exit: Dayjs | null }) => void;
+  handleSubmit: ({
+    enter,
+    exit
+  }: {
+    enter: Dayjs | null;
+    exit: Dayjs | null;
+  }) => void;
 }
 
 const Form: React.FC<FormProps> = (props) => {
@@ -25,11 +31,27 @@ const Form: React.FC<FormProps> = (props) => {
   };
 
   return (
-    <Box mb={4} component="form" onSubmit={onSubmit} sx={{ display: 'flex', flexDirection: 'column', gap: 2, justifyContent: 'center' }}>
+    <Box
+      mb={4}
+      component="form"
+      onSubmit={onSubmit}
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 2,
+        justifyContent: 'center'
+      }}
+    >
       {isMobile ? (
         <>
-          <CalendarButton label={props.enterTitle as string} onChange={(val) => setEnter(val)} />
-          <CalendarButton label={props.exitTitle as string} onChange={(val) => setExit(val)} />
+          <CalendarButton
+            label={props.enterTitle as string}
+            onChange={(val) => setEnter(val)}
+          />
+          <CalendarButton
+            label={props.exitTitle as string}
+            onChange={(val) => setExit(val)}
+          />
         </>
       ) : (
         <>
@@ -45,7 +67,18 @@ const Form: React.FC<FormProps> = (props) => {
           />
         </>
       )}
-      <Button type="submit" size="large" variant="contained" color="secondary" sx={{ textTransform: 'initial', alignSelf: 'center', minWidth: '230px', minHeight: '56px' }}>
+      <Button
+        type="submit"
+        size="large"
+        variant="contained"
+        color="secondary"
+        sx={{
+          textTransform: 'initial',
+          alignSelf: 'center',
+          minWidth: '230px',
+          minHeight: '56px'
+        }}
+      >
         {props.addButtonText}
       </Button>
     </Box>
@@ -53,4 +86,3 @@ const Form: React.FC<FormProps> = (props) => {
 };
 
 export default Form;
-

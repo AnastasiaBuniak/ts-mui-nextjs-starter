@@ -34,9 +34,16 @@ const CalendarButton: React.FC<CalendarButtonProps> = ({ label, onChange }) => {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: 2
+        }}
+      >
         {selectedDate ? (
-          <Typography >
+          <Typography>
             Selected date: {selectedDate.format('DD/MM/YYYY')}
           </Typography>
         ) : (
@@ -54,13 +61,10 @@ const CalendarButton: React.FC<CalendarButtonProps> = ({ label, onChange }) => {
           onClose={handleClose}
           anchorOrigin={{
             vertical: 'bottom',
-            horizontal: 'center',
+            horizontal: 'center'
           }}
         >
-          <DateCalendar
-            value={selectedDate}
-            onChange={handleDateChange}
-          />
+          <DateCalendar value={selectedDate} onChange={handleDateChange} />
         </Popover>
       </Box>
     </LocalizationProvider>

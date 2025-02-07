@@ -1,7 +1,16 @@
 import React from 'react';
 import { Dayjs } from 'dayjs';
 import dayjs from 'dayjs';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, IconButton } from '@mui/material';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  IconButton
+} from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 interface TableProps {
@@ -11,13 +20,13 @@ interface TableProps {
 
 const CustomTable: React.FC<TableProps> = ({ data, onDelete }) => {
   return (
-    <TableContainer component={Paper} sx={{  borderRadius: '4px' }}>
+    <TableContainer component={Paper} sx={{ borderRadius: '4px' }}>
       <Table>
         <TableHead>
-          <TableRow sx={{ fontWeight: 'bold'}}>
+          <TableRow sx={{ fontWeight: 'bold' }}>
             <TableCell>Enter</TableCell>
-            <TableCell >Exit</TableCell>
-            <TableCell >Days</TableCell>
+            <TableCell>Exit</TableCell>
+            <TableCell>Days</TableCell>
             <TableCell>Action</TableCell>
           </TableRow>
         </TableHead>
@@ -29,7 +38,7 @@ const CustomTable: React.FC<TableProps> = ({ data, onDelete }) => {
               <TableCell>{row.days}</TableCell>
               <TableCell>
                 <IconButton onClick={() => onDelete(index)} aria-label="delete">
-                  <DeleteIcon color='primary' />
+                  <DeleteIcon color="primary" />
                 </IconButton>
               </TableCell>
             </TableRow>
