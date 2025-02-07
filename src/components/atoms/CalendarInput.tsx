@@ -1,9 +1,9 @@
 import React from 'react';
-import {Dayjs} from 'dayjs';
+import { Dayjs } from 'dayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-
+import { DATE_FORMAT } from 'src/utils/constants';
 
 interface InputProps {
   label: string;
@@ -18,8 +18,8 @@ const Input: React.FC<InputProps> = ({ label, value, onChange }) => {
         label={label}
         value={value}
         onChange={onChange}
-        format="DD/MM/YYYY"
-        sx={{alignSelf: 'center', minWidth: '230px'}}
+        format={DATE_FORMAT}
+        sx={{ alignSelf: 'center', minWidth: '230px' }}
       />
     </LocalizationProvider>
   );

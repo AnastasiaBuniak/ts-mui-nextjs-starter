@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Dayjs} from 'dayjs';
+import { Dayjs } from 'dayjs';
 import { IconButton, Box, Typography, Popover } from '@mui/material';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
@@ -10,7 +10,8 @@ interface CalendarButtonProps {
   label: string;
   onChange: (date: Dayjs | null) => void;
 }
-const CalendarButton: React.FC<CalendarButtonProps> = ({label, onChange} ) => {
+
+const CalendarButton: React.FC<CalendarButtonProps> = ({ label, onChange }) => {
   const [selectedDate, setSelectedDate] = useState<Dayjs | null>(null);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
@@ -40,12 +41,12 @@ const CalendarButton: React.FC<CalendarButtonProps> = ({label, onChange} ) => {
           </Typography>
         ) : (
           <>
-          <Typography>{label}:</Typography>
+            <Typography>{label}:</Typography>
           </>
         )}
-         <IconButton color="primary" onClick={handleClick}>
-              <CalendarTodayIcon />
-            </IconButton>
+        <IconButton color="primary" onClick={handleClick}>
+          <CalendarTodayIcon />
+        </IconButton>
         <Popover
           id={id}
           open={open}
@@ -61,7 +62,6 @@ const CalendarButton: React.FC<CalendarButtonProps> = ({label, onChange} ) => {
             onChange={handleDateChange}
           />
         </Popover>
-        
       </Box>
     </LocalizationProvider>
   );

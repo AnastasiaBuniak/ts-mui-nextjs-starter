@@ -37,7 +37,8 @@
         "eslint": "^8.57.0",
         "eslint-config-next": "^15.1.0",
         "eslint-config-prettier": "^9.1.0",
-        "prettier": "^3.3.2",
+        "eslint-plugin-prettier": "^5.2.3",
+        "prettier": "^3.4.2",
         "typescript": "^5.4.5"
     },
     "description": "A Nextjs page builder, component library and data source mapper all in one.",

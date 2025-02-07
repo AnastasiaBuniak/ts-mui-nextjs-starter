@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Box, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Button, Box, useMediaQuery, useTheme } from '@mui/material';
 import CalendarInput from './CalendarInput';
 import CalendarButton from './CalendarButton';
 import { Dayjs } from 'dayjs';
@@ -28,8 +28,8 @@ const Form: React.FC<FormProps> = (props) => {
     <Box mb={4} component="form" onSubmit={onSubmit} sx={{ display: 'flex', flexDirection: 'column', gap: 2, justifyContent: 'center' }}>
       {isMobile ? (
         <>
-            <CalendarButton label={props.enterTitle as string}  onChange={(val) => setEnter(val)}/>
-            <CalendarButton label={props.exitTitle as string} onChange={(val) => setExit(val)}/>
+          <CalendarButton label={props.enterTitle as string} onChange={(val) => setEnter(val)} />
+          <CalendarButton label={props.exitTitle as string} onChange={(val) => setExit(val)} />
         </>
       ) : (
         <>

@@ -10,6 +10,7 @@ export const Button: React.FC<Props> = (props) => {
     const { className, label, url, size = 'medium', variant = 'text', color = 'primary', sx, 'data-sb-field-path': fieldPath } = props;
     const annotations = fieldPath ? [fieldPath, `${fieldPath}.url#@href`].join(' ').trim() : null;
 
+
     return (
         <MuiButton component={NextLink} href={url} className={className} variant={variant} size={size} color={color} sx={{ borderRadius: '2px', ...sx }} data-sb-field-path={annotations}>
             <span data-sb-field-path=".label">{label}</span>
