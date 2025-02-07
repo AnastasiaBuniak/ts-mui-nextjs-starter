@@ -1,4 +1,4 @@
-import dayjs, {Dayjs} from "dayjs";
+import dayjs, { Dayjs } from 'dayjs';
 
 /**
  * Calculates the remaining Schengen visa days based on the 90/180 rule.
@@ -7,19 +7,23 @@ import dayjs, {Dayjs} from "dayjs";
  * @param {number} windowDays - Rolling window duration (defaults to 180 days)
  * @returns {number} Remaining days in the Schengen area
  */
-export const  getRemainingVisaDays = (stays: any[], referenceDate: Dayjs = dayjs(), windowDays: number = 180) => {
+export const getRemainingVisaDays = (
+  stays: any[],
+  referenceDate: Dayjs = dayjs(),
+  windowDays: number = 180
+) => {
   const visaLimit = 90;
-  const windowStart = referenceDate.subtract(windowDays, "day");
+  const windowStart = referenceDate.subtract(windowDays, 'day');
 
   // Calculate days spent within the rolling window
-  let usedDays = 0;
-  
+  let usedDays = 1;
+
   stays.forEach(({ enter, exit }) => {
     // If stay overlaps with the rolling window
     if (exit.isAfter(windowStart) && enter.isBefore(referenceDate)) {
       const validEnter = enter.isBefore(windowStart) ? windowStart : enter;
       const validExit = exit.isAfter(referenceDate) ? referenceDate : exit;
-      usedDays += validExit.diff(validEnter, "day");
+      usedDays += validExit.diff(validEnter, 'day');
     }
   });
 
@@ -28,8 +32,8 @@ export const  getRemainingVisaDays = (stays: any[], referenceDate: Dayjs = dayjs
     usedDays: usedDays,
     referenceDate,
     windowStart
-  }
-}
+  };
+};
 
 // // Example usage
 // const stays = [

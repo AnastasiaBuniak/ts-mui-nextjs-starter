@@ -4,28 +4,28 @@ type: Page
 sections:
   - type: HeroSection
     title: Visa Calculator 
-    subtitle: 'Check your visa days remaining for Schengen, UK, and other regions for free in seconds'
+    subtitle: 'Check your visa days remaining for Schengen, UK, and other regions. For free. In seconds.'
     text: >
-      Easily calculate the days you've spent or can stay in a country based on visa rules. Whether for Schengen Area, UK, or others, our tool simplifies your travel planning. Use our free visa calculator to manage your travel days effectively. Whether you're navigating the 90/180 rule, checking visitor limits, or tracking multiple countries' visas, we’ve got you covered!
+      Easily calculate the days you've spent or can stay in a country based on the visa rules. Whether for Schengen Area, UK, or others, our tool simplifies your travel planning. Use our free visa calculator to manage your travel days effectively. Whether you're navigating the 90/180 rule, checking visitor limits, or tracking multiple countries' visas, we’ve got you covered!
     actions:
       - type: Button
-        label: Start Calculating
-        url: 'https://docs.netlify.com/visual-editor/get-started/'
+        label: Start Calculation
+        url: 'calculation_section'
         size: large
         variant: contained
         color: primary
       - type: Button
         label: Learn How It Works
-        url: 'https://docs.netlify.com/visual-editor/overview/'
+        url: 'information_section'
         size: large
         variant: outlined
         color: primary
     image:
       type: Image
-      url: /images/hero.svg
+      url: /images/calculator_visa_edited_3.png
       altText: Hero section image
   - type: InformationSection
-    title: General Logic for Visa 90/180 Days Counting
+    title: General Calculation Logic for Visa 90/180 Days Counting
     description: >
       The 90/180-day rule is a common visa regulation used in the Schengen Area and some other countries. The rule states that:
     keyPoints: 
