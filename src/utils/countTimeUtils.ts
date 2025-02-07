@@ -12,7 +12,7 @@ export const  getRemainingVisaDays = (stays: any[], referenceDate: Dayjs = dayjs
   const windowStart = referenceDate.subtract(windowDays, "day");
 
   // Calculate days spent within the rolling window
-  let usedDays = 0;
+  let usedDays = 1;
   
   stays.forEach(({ enter, exit }) => {
     // If stay overlaps with the rolling window

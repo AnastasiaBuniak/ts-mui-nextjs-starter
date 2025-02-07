@@ -43,12 +43,11 @@ export const CalculationSection: React.FC<Props> = (props) => {
         <Form {...props} handleSubmit={handleSubmit} />
       </Box>
       <Box mb={4} sx={{ display: 'flex', flexDirection: 'row', gap: 2, justifyContent: 'center', marginBottom: 0 }}>
-        <Button variant="contained" size="large" color="primary" onClick={startCalculation} disabled={!datesData.length}>
+        <Button variant="contained" size="large" color="primary" onClick={startCalculation} disabled={!datesData.length} sx={{ minWidth: '230px'}}>
           Calculate
         </Button>
       </Box>
-    </Box>
-    {showResult && (
+      {showResult && (
       <Box mb={4} sx={{  padding: 2, textAlign: 'center' }}>
        <Alert icon={<div/>} sx={{display: 'flex', flexDirection: 'row', gap: 2, justifyContent: 'center', marginBottom: 0 }}>
        <AlertTitle sx={{fontWeight: 'bold'}}>Days remain to stay: {remainingDaysToStay}.</AlertTitle>
@@ -56,6 +55,8 @@ export const CalculationSection: React.FC<Props> = (props) => {
        </Alert>
       </Box>
     )}
+    </Box>
+    
     </>
   );
 };
