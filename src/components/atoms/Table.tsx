@@ -12,6 +12,7 @@ import {
   IconButton
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { DATE_FORMAT } from 'src/utils/constants';
 
 interface TableProps {
   data: { enter: Dayjs | null; exit: Dayjs | null; days: number }[];
@@ -33,8 +34,8 @@ const CustomTable: React.FC<TableProps> = ({ data, onDelete }) => {
         <TableBody>
           {data.map((row, index) => (
             <TableRow key={index}>
-              <TableCell>{dayjs(row.enter).format('DD/MM/YYYY')}</TableCell>
-              <TableCell>{dayjs(row.exit).format('DD/MM/YYYY')}</TableCell>
+              <TableCell>{dayjs(row.enter).format(DATE_FORMAT)}</TableCell>
+              <TableCell>{dayjs(row.exit).format(DATE_FORMAT)}</TableCell>
               <TableCell>{row.days}</TableCell>
               <TableCell>
                 <IconButton onClick={() => onDelete(index)} aria-label="delete">

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Box, Typography, Button } from '@mui/material';
-import Form from '../../atoms/Form';
-import Table from '../../atoms/Table';
 import type * as types from 'types';
 import dayjs, { Dayjs } from 'dayjs';
-import { getRemainingVisaDays } from '../../../utils/countTimeUtils';
+import { Box, Typography, Button } from '@mui/material';
+import Form from 'src/components/atoms/Form';
+import Table from 'src/components/atoms/Table';
+import { getRemainingVisaDays } from 'src/utils/countTimeUtils';
 import { CALCULATION_SECTION_ID } from 'src/utils/constants';
 import Result from 'src/components/atoms/Result';
 

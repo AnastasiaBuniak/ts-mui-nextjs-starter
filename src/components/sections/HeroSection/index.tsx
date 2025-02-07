@@ -1,6 +1,5 @@
 import * as React from 'react';
 import type * as types from 'types';
-// import { Button } from '../../atoms/Button';
 import { Markdown } from '../../atoms/Markdown';
 
 import Button from '@mui/material/Button';

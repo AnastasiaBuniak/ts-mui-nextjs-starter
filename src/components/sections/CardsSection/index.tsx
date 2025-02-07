@@ -1,8 +1,5 @@
 import * as React from 'react';
 import type * as types from 'types';
-import { Button } from '../../atoms/Button';
-import { Markdown } from '../../atoms/Markdown';
-
 import MuiBox from '@mui/material/Box';
 import MuiCard from '@mui/material/Card';
 import MuiCardActions from '@mui/material/CardActions';
@@ -10,6 +7,8 @@ import MuiCardContent from '@mui/material/CardContent';
 import MuiCardMedia from '@mui/material/CardMedia';
 import MuiGrid from '@mui/material/Grid';
 import MuiTypography from '@mui/material/Typography';
+import { Button } from 'src/components/atoms/Button';
+import { Markdown } from 'src/components/atoms/Markdown';
 
 export type Props = types.CardsSection & types.StackbitFieldPath;
 

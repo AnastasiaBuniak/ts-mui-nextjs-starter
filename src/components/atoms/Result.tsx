@@ -3,7 +3,7 @@ import { Alert, AlertTitle, Box } from '@mui/material';
 
 interface ResultProps {
   remainingDaysToStay: number;
-  usedDays: number;
+  usedDays: number | null;
 }
 
 const Result: React.FC<ResultProps> = ({ remainingDaysToStay, usedDays }) => {

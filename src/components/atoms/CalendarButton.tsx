@@ -5,6 +5,7 @@ import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DATE_FORMAT } from 'src/utils/constants';
 
 interface CalendarButtonProps {
   label: string;
@@ -44,7 +45,7 @@ const CalendarButton: React.FC<CalendarButtonProps> = ({ label, onChange }) => {
       >
         {selectedDate ? (
           <Typography>
-            Selected date: {selectedDate.format('DD/MM/YYYY')}
+            Selected date: {selectedDate.format(DATE_FORMAT)}
           </Typography>
         ) : (
           <>

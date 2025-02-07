@@ -27,7 +27,7 @@ export type Button = {
   type: 'Button';
   label: string;
   url: string;
-  href?: string;
+  href: string;
   size?: 'small' | 'medium' | 'large';
   variant?: 'contained' | 'outlined' | 'text';
   color?: 'inherit' | 'primary' | 'secondary';
