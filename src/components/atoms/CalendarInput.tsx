@@ -19,6 +19,7 @@ const Input: React.FC<InputProps> = ({ label, value, onChange }) => {
         value={value}
         onChange={onChange}
         format="DD/MM/YYYY"
+        sx={{alignSelf: 'center', minWidth: '230px'}}
       />
     </LocalizationProvider>
   );

@@ -11,7 +11,7 @@ interface TableProps {
 
 const CustomTable: React.FC<TableProps> = ({ data, onDelete }) => {
   return (
-    <TableContainer component={Paper} sx={{  borderRadius: '6px' }}>
+    <TableContainer component={Paper} sx={{  borderRadius: '4px' }}>
       <Table>
         <TableHead>
           <TableRow sx={{ fontWeight: 'bold'}}>

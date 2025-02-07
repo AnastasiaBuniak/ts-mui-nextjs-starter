@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Typography, List, ListItem, ListItemText, ListItemIcon } from '@mui/material';
 import CircleIcon from '@mui/icons-material/Circle';
+import { INFORMATION_SECTION_ID } from 'src/utils/constants';
 
 export type Props = {
   type: 'InformationSection',
@@ -11,7 +12,7 @@ export type Props = {
 
 export const InformationSection: React.FC<Props> = ({ title, description, keyPoints }) => {
   return (
-    <Box sx={{ padding: 4, backgroundColor: '#f9f9f9', borderRadius: '8px', marginBottom: '16px' }}>
+    <Box id={INFORMATION_SECTION_ID} sx={{ padding: 4, backgroundColor: '#f9f9f9', borderRadius: '8px', marginBottom: '16px' }}>
       <Typography variant="h5" gutterBottom>
         {title}
       </Typography>

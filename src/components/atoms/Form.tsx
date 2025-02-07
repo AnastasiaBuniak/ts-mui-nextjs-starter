@@ -20,10 +20,12 @@ const Form: React.FC<FormProps> = (props) => {
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     props.handleSubmit({ enter, exit });
+    setEnter(null);
+    setExit(null);
   };
 
   return (
-    <Box component="form" onSubmit={onSubmit} sx={{ display: 'flex', flexDirection: 'column', gap: 2, justifyContent: 'center' }}>
+    <Box mb={4} component="form" onSubmit={onSubmit} sx={{ display: 'flex', flexDirection: 'column', gap: 2, justifyContent: 'center' }}>
       {isMobile ? (
         <>
             <CalendarButton label={props.enterTitle as string}  onChange={(val) => setEnter(val)}/>
@@ -35,13 +37,11 @@ const Form: React.FC<FormProps> = (props) => {
             label={props.enterTitle as string}
             value={enter}
             onChange={(val) => setEnter(val)}
-            sx={{alignSelf: 'center'}}
           />
           <CalendarInput
             label={props.exitTitle as string}
             value={exit}
             onChange={(val) => setExit(val)}
-            sx={{alignSelf: 'center'}}
           />
         </>
       )}

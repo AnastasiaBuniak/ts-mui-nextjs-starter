@@ -10,7 +10,7 @@ interface CalendarButtonProps {
   label: string;
   onChange: (date: Dayjs | null) => void;
 }
-const CalendarButton: React.FC = ({label, onChange} : CalendarButtonProps) => {
+const CalendarButton: React.FC<CalendarButtonProps> = ({label, onChange} ) => {
   const [selectedDate, setSelectedDate] = useState<Dayjs | null>(null);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 

@@ -1,8 +1,9 @@
 import * as React from 'react';
 import type * as types from 'types';
-import { Button } from '../../atoms/Button';
+// import { Button } from '../../atoms/Button';
 import { Markdown } from '../../atoms/Markdown';
 
+import Button from '@mui/material/Button';
 import MuiBox from '@mui/material/Box';
 import MuiGrid from '@mui/material/Grid';
 import MuiStack from '@mui/material/Stack';
@@ -13,6 +14,13 @@ export type Props = types.HeroSection & types.StackbitFieldPath;
 export const HeroSection: React.FC<Props> = (props) => {
     const { title, subtitle, text, image, actions = [], 'data-sb-field-path': fieldPath } = props;
     const hasTextContent = !!title || !!subtitle || !!text || actions.length > 0;
+console.log(props)
+    const handleScrollToSection = (id: string) => () => {
+        const section = document.getElementById(id);
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
 
     return (
         <MuiBox sx={{ py: { xs: 6, sm: 10 } }} data-sb-field-path={fieldPath}>
@@ -49,15 +57,18 @@ export const HeroSection: React.FC<Props> = (props) => {
                                         {...action}
                                         sx={{
                                             mr: 2,
-                                            mb: 2
+                                            mb: 2,
+                                            minWidth: '220px',
                                         }}
+                                        onClick={handleScrollToSection(action.url)}
                                         data-sb-field-path={`.${index}`}
-                                    />
+                                    >{action.label}</Button>
                                 ))}
                             </MuiStack>
                         )}
                     </MuiGrid>
                 )}
+                
                 {image?.url && (
                     <MuiGrid item xs={12} md={hasTextContent ? 6 : 12}>
                         <MuiBox
@@ -65,7 +76,8 @@ export const HeroSection: React.FC<Props> = (props) => {
                             sx={{
                                 height: 'auto',
                                 maxWidth: '100%',
-                                width: '100%'
+                                width: '100%',
+                                borderRadius: '4px',
                             }}
                             alt={image?.altText}
                             src={image?.url}
