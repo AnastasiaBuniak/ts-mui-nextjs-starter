@@ -33,7 +33,7 @@ sections:
       - The 180-day period is not fixed; it’s a moving window, meaning each new day moves the counting period forward.
       - The rule applies to all short-term visa-free travelers (e.g., UK, US, Canadian, and Australian passport holders visiting Schengen).
   - type: InformationSection
-    title: Key Points for Calculating Days
+    title: Key Points for Calculating Days. How do we calculate?
     description: 
     keyPoints: 
       - Every new entry counts towards the rolling 180-day window

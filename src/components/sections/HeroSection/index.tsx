@@ -31,7 +31,7 @@ export const HeroSection: React.FC<Props> = (props) => {
               <MuiTypography
                 component="h1"
                 variant="h2"
-                color="primary"
+                color="text.primary"
                 data-sb-field-path=".title"
               >
                 {title}
@@ -41,7 +41,7 @@ export const HeroSection: React.FC<Props> = (props) => {
               <MuiTypography
                 component="h2"
                 variant="h5"
-                color="text.primary"
+                color="primary"
                 sx={{ ...(!!title && { mt: 1 }) }}
                 data-sb-field-path=".subtitle"
               >

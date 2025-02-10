@@ -29,7 +29,7 @@ export const CardsSection: React.FC<Props> = (props) => {
       {title && (
         <MuiTypography
           component="h2"
-          variant="h2"
+          variant="h3"
           align="center"
           color="text.primary"
           data-sb-field-path=".title"
