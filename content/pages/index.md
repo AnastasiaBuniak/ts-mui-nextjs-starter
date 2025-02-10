@@ -22,7 +22,8 @@ sections:
         color: primary
     image:
       type: Image
-      url: /images/calculator_visa_online.png
+      url: /images/calculator_visa_online_desktop.webp
+      mobileUrl: /images/calculator_visa_online_mobile.webp
       altText: Online Visa Calculator image
   - type: InformationSection
     title: General Calculation Logic for Visa 90/180 Days Counting

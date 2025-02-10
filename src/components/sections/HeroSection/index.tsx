@@ -1,5 +1,7 @@
 import * as React from 'react';
 import type * as types from 'types';
+import Image from 'next/image';
+
 import { Markdown } from '../../atoms/Markdown';
 
 import Button from '@mui/material/Button';
@@ -88,7 +90,7 @@ export const HeroSection: React.FC<Props> = (props) => {
 
         {image?.url && (
           <MuiGrid item xs={12} md={hasTextContent ? 6 : 12}>
-            <MuiBox
+            {/* <MuiBox
               component="img"
               sx={{
                 height: 'auto',
@@ -99,6 +101,22 @@ export const HeroSection: React.FC<Props> = (props) => {
               alt={image?.altText}
               src={image?.url}
               data-sb-field-path=".image .image.url#@src .image.altText#@alt"
+            /> */}
+            <Image
+              src={image?.url}
+              alt={image?.altText as string}
+              width={584}
+              height={360}
+              sizes={
+                '(max-width: 899px) 100vw, (max-width: 1200px) 50vw, 584px'
+              }
+              priority
+              style={{
+                width: '100%',
+                height: 'auto',
+                borderRadius: '4px',
+                maxWidth: '100%'
+              }}
             />
           </MuiGrid>
         )}
