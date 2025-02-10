@@ -38,8 +38,26 @@
         "eslint-config-next": "^15.1.0",
         "eslint-config-prettier": "^9.1.0",
         "eslint-plugin-prettier": "^5.2.3",
+        "husky": "^9.1.7",
+        "lint-staged": "^15.4.3",
         "prettier": "^3.4.2",
         "typescript": "^5.4.5"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "**/*.{js,jsx,ts,tsx}": [
+            "eslint --fix",
+            "prettier --write",
+            "git add"
+        ],
+        "**/*.{css,scss,md,json}": [
+            "prettier --write",
+            "git add"
+        ]
     },
     "description": "A Nextjs page builder, component library and data source mapper all in one.",
     "main": "next.config.js",

@@ -51,11 +51,11 @@ export const CalculationSection: React.FC<Props> = (props) => {
   return (
     <Card
       id={CALCULATION_SECTION_ID}
-      sx={{ backgroundColor: '#f0f4f8', mt: 3 }}
+      sx={{ backgroundColor: '#EFF5FB', mt: 3 }}
     >
       <CardHeader
         mb={4}
-        title={props.title}
+        title={`${props.title}:`}
         sx={{ backgroundColor: '#4C57C5', color: 'white' }}
       />
       <Box mb={4} sx={{ width: '100%' }}>
