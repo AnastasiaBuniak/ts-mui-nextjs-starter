@@ -3,15 +3,11 @@ title: About
 type: Page
 sections:
   - type: HeroSection
-    title: Example for H2 headline
-    subtitle: This is the subtitle
+    title: Disclaimer
+    subtitle: 
     text: >
-      This is **Markdown** *text*.
+      The information provided on this website is intended solely for general informational purposes. While we strive to ensure accuracy, we do not guarantee the completeness, reliability, or applicability of the visa days calculation. This tool is not intended to provide legal or official consultation. Users are fully responsible for verifying the accuracy of their stay and adhering to any relevant immigration regulations. We do not assume any liability for any consequences that may arise from the use of this tool.
 
+      **By using this website, you acknowledge and agree to these terms.**
 
-
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat.
 ---
