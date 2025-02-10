@@ -22,8 +22,8 @@ sections:
         color: primary
     image:
       type: Image
-      url: /images/calculator_visa_edited_3.png
-      altText: Hero section image
+      url: /images/calculator_visa_online.png
+      altText: Online Visa Calculator image
   - type: InformationSection
     title: General Calculation Logic for Visa 90/180 Days Counting
     description: >
@@ -53,8 +53,8 @@ sections:
         title: Schengen Visa Info - Official Rules & Guidelines
         image:
           type: Image
-          url: /images/nextjs.svg
-          altText: First item image
+          url: /images/border-guard.svg
+          altText: Border guard image
         text: >
           Stay informed with the latest Schengen visa regulations, entry requirements, and stay limits directly from trusted sources.
         actions:
@@ -65,8 +65,8 @@ sections:
         title: EU Migration and Home Affairs - Visa Policy
         image:
           type: Image
-          url: /images/mui-5.svg
-          altText: Second item image
+          url: /images/visa-stamp.svg
+          altText: Visa stamp image
         text: >
           Explore detailed information about the EU’s visa policy, including the 90/180-day rule and country-specific agreements.
         actions:
@@ -77,8 +77,8 @@ sections:
         title: European Travel Information and Authorisation System (ETIAS)
         image:
           type: Image
-          url: /images/ts.svg
-          altText: Third item image
+          url: /images/international-passport.svg
+          altText: International passport image
         text: >
           Learn about ETIAS requirements, designed for visa-exempt travelers to the Schengen Area, and stay updated on upcoming changes
         actions:
