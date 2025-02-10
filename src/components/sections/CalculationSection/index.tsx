@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import type * as types from 'types';
 import dayjs, { Dayjs } from 'dayjs';
-import { Box, Typography, Button } from '@mui/material';
+import { Box, Card, CardHeader, Typography, Button } from '@mui/material';
 import Form from 'src/components/atoms/Form';
 import Table from 'src/components/atoms/Table';
 import { getRemainingVisaDays } from 'src/utils/countTimeUtils';
@@ -49,56 +49,47 @@ export const CalculationSection: React.FC<Props> = (props) => {
   };
 
   return (
-    <>
-      <Box
-        id={CALCULATION_SECTION_ID}
-        sx={{ padding: 4, backgroundColor: '#f0f4f8', borderRadius: '4px' }}
-      >
-        <Box mb={4}>
-          <Typography
-            variant="h4"
-            align="center"
-            color="primary"
-            sx={{ marginTop: '8px' }}
-          >
-            {props.title || ''}&#58;
-          </Typography>
-        </Box>
-        <Box mb={4} sx={{ width: '100%' }}>
-          {!!datesData.length && (
-            <Table data={datesData} onDelete={deleteItem} />
-          )}
-        </Box>
-        <Form {...props} handleSubmit={handleSubmit} />
-        <Box
-          mb={4}
-          sx={{
-            display: 'flex',
-            flexDirection: 'row',
-            gap: 2,
-            justifyContent: 'center'
-          }}
-        >
-          <Button
-            variant="contained"
-            type="button"
-            size="large"
-            color="primary"
-            onClick={startCalculation}
-            disabled={!datesData.length}
-            sx={{ minWidth: '230px' }}
-          >
-            Calculate
-          </Button>
-        </Box>
-        {showResult && (
-          <Result
-            remainingDaysToStay={remainingDaysToStay as number}
-            usedDays={usedDays}
-          />
-        )}
+    <Card
+      id={CALCULATION_SECTION_ID}
+      sx={{ backgroundColor: '#EFF5FB', mt: 3 }}
+    >
+      <CardHeader
+        mb={4}
+        title={`${props.title}:`}
+        sx={{ backgroundColor: '#4C57C5', color: 'white' }}
+      />
+      <Box mb={4} sx={{ width: '100%' }}>
+        {!!datesData.length && <Table data={datesData} onDelete={deleteItem} />}
       </Box>
-    </>
+      <Form {...props} handleSubmit={handleSubmit} />
+      <Box
+        mb={4}
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          gap: 2,
+          justifyContent: 'center'
+        }}
+      >
+        <Button
+          variant="contained"
+          type="button"
+          size="large"
+          color="primary"
+          onClick={startCalculation}
+          disabled={!datesData.length}
+          sx={{ minWidth: '230px' }}
+        >
+          Calculate
+        </Button>
+      </Box>
+      {showResult && (
+        <Result
+          remainingDaysToStay={remainingDaysToStay as number}
+          usedDays={usedDays}
+        />
+      )}
+    </Card>
   );
 };
 

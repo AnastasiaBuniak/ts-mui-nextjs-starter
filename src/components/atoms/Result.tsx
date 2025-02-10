@@ -18,7 +18,7 @@ const Result: React.FC<ResultProps> = ({ remainingDaysToStay, usedDays }) => {
           flexDirection: 'row',
           gap: 2,
           justifyContent: 'center',
-          marginBottom: 0,
+          mb: 0,
           border: '1px solid #4caf50'
         }}
       >

@@ -19,15 +19,14 @@
             {
                 "type": "Link",
                 "label": "Documentation",
-                "url": "https://docs.netlify.com/visual-editor/overview/",
+                "isAnchor": true,
+                "url": "documentation_section",
                 "underline": "hover"
             }
         ]
     },
     "footer": {
         "copyrightText": "",
-        "navLinks": [
-            
-        ]
+        "navLinks": []
     }
 }

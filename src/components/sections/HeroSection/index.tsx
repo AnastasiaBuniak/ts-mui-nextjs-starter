@@ -7,6 +7,7 @@ import MuiBox from '@mui/material/Box';
 import MuiGrid from '@mui/material/Grid';
 import MuiStack from '@mui/material/Stack';
 import MuiTypography from '@mui/material/Typography';
+import { handleScrollToSection } from 'src/utils/scroll';
 
 export type Props = types.HeroSection & types.StackbitFieldPath;
 
@@ -20,16 +21,9 @@ export const HeroSection: React.FC<Props> = (props) => {
     'data-sb-field-path': fieldPath
   } = props;
   const hasTextContent = !!title || !!subtitle || !!text || actions.length > 0;
-  console.log(props);
-  const handleScrollToSection = (id: string) => () => {
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
-    <MuiBox sx={{ py: { xs: 6, sm: 10 } }} data-sb-field-path={fieldPath}>
+    <MuiBox sx={{ py: 6 }} data-sb-field-path={fieldPath}>
       <MuiGrid container spacing={4}>
         {hasTextContent && (
           <MuiGrid item xs={12} md={image?.url ? 6 : 12}>
@@ -45,7 +39,7 @@ export const HeroSection: React.FC<Props> = (props) => {
             )}
             {subtitle && (
               <MuiTypography
-                component="p"
+                component="h2"
                 variant="h5"
                 color="text.primary"
                 sx={{ ...(!!title && { mt: 1 }) }}

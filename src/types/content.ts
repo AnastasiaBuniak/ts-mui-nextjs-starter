@@ -89,4 +89,5 @@ export type Link = {
   url: string;
   underline?: 'always' | 'hover' | 'none';
   color?: 'inherit' | 'primary' | 'secondary';
+  isAnchor?: boolean;
 };

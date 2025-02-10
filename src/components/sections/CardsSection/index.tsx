@@ -9,6 +9,7 @@ import MuiGrid from '@mui/material/Grid';
 import MuiTypography from '@mui/material/Typography';
 import { Button } from 'src/components/atoms/Button';
 import { Markdown } from 'src/components/atoms/Markdown';
+import { CARDS_SECTION_ID } from 'src/utils/constants';
 
 export type Props = types.CardsSection & types.StackbitFieldPath;
 
@@ -20,7 +21,11 @@ export const CardsSection: React.FC<Props> = (props) => {
     'data-sb-field-path': fieldPath
   } = props;
   return (
-    <MuiBox sx={{ py: { xs: 6, sm: 10 } }} data-sb-field-path={fieldPath}>
+    <MuiBox
+      id={CARDS_SECTION_ID}
+      sx={{ py: { xs: 6, sm: 10 } }}
+      data-sb-field-path={fieldPath}
+    >
       {title && (
         <MuiTypography
           component="h2"

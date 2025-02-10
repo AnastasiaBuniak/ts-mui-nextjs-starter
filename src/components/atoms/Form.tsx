@@ -37,7 +37,7 @@ const Form: React.FC<FormProps> = (props) => {
       onSubmit={onSubmit}
       sx={{
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: isMobile ? 'column' : 'row',
         gap: 2,
         justifyContent: 'center'
       }}
@@ -72,6 +72,7 @@ const Form: React.FC<FormProps> = (props) => {
         size="large"
         variant="contained"
         color="secondary"
+        disabled={!enter || !exit}
         sx={{
           textTransform: 'initial',
           alignSelf: 'center',
