@@ -5,15 +5,5 @@
     ],
     "plugins": [
         "prettier"
-    ],
-    "rules": {
-        "prettier/prettier": [
-            "error",
-            {
-                "printWidth": 80, // Equivalent to max-len
-                "tabWidth": 2,
-                "singleQuote": true
-            }
-        ]
-    }
+    ]
 }
