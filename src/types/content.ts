@@ -80,6 +80,7 @@ export type HeroSection = {
 export type Image = {
   type: 'Image';
   url?: string;
+  mobileUrl?: string;
   altText?: string;
 };
 
