@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import type * as types from 'types';
 import dayjs, { Dayjs } from 'dayjs';
-import { Box, Card, CardHeader, Typography, Button } from '@mui/material';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
 import Form from 'src/components/atoms/Form';
 import Table from 'src/components/atoms/Table';
 import { getRemainingVisaDays } from 'src/utils/countTimeUtils';

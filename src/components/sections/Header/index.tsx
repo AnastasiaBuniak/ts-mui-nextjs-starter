@@ -2,7 +2,7 @@ import * as React from 'react';
 import type * as types from 'types';
 import { Link } from '../../atoms/Link';
 
-import { Button } from '@mui/material';
+import Button from '@mui/material/Button';
 import MuiAppBar from '@mui/material/AppBar';
 import MuiBox from '@mui/material/Box';
 import MuiToolbar from '@mui/material/Toolbar';

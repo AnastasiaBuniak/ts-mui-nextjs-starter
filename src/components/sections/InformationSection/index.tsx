@@ -1,13 +1,12 @@
 import React from 'react';
-import {
-  Box,
-  Typography,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemIcon,
-  Container
-} from '@mui/material';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import Container from '@mui/material/Container';
+
 import CircleIcon from '@mui/icons-material/Circle';
 import { INFORMATION_SECTION_ID } from 'src/utils/constants';
 
