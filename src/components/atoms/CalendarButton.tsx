@@ -52,7 +52,12 @@ const CalendarButton: React.FC<CalendarButtonProps> = ({ label, onChange }) => {
             <Typography>{label}:</Typography>
           </>
         )}
-        <IconButton color="primary" onClick={handleClick}>
+        <IconButton
+          aria-label={label}
+          title={label}
+          color="primary"
+          onClick={handleClick}
+        >
           <CalendarTodayIcon />
         </IconButton>
         <Popover
