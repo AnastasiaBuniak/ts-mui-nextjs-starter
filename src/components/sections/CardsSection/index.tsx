@@ -86,7 +86,7 @@ const CardsSectionItem: React.FC<
         {image?.url && (
           <Image
             src={image.url}
-            alt={image.altText}
+            alt={image.altText as string}
             width={242}
             height={144}
             style={{
