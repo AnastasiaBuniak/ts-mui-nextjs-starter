@@ -41,7 +41,7 @@ export const HeroSection: React.FC<Props> = (props) => {
             )}
             {subtitle && (
               <MuiTypography
-                component="h2"
+                component="p"
                 variant="h5"
                 color="primary"
                 sx={{ ...(!!title && { mt: 1 }) }}

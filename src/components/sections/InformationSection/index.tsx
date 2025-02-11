@@ -34,7 +34,7 @@ export const InformationSection: React.FC<Props> = ({
       }}
     >
       <Container maxWidth="lg" disableGutters={true}>
-        <Typography variant="h5" gutterBottom>
+        <Typography component="h2" variant="h5" gutterBottom>
           {title}
         </Typography>
         <Typography

@@ -55,6 +55,7 @@ export const CalculationSection: React.FC<Props> = (props) => {
     >
       <CardHeader
         mb={4}
+        component="h2"
         title={`${props.title}:`}
         sx={{ backgroundColor: '#4C57C5', color: 'white' }}
       />

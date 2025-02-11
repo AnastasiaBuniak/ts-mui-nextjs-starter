@@ -26,7 +26,7 @@ sections:
       mobileUrl: /images/calculator_visa_online_mobile.webp
       altText: Online Visa Calculator image
   - type: InformationSection
-    title: General Calculation Logic for Visa 90/180 Days Counting
+    title: Logic for 90/180 visa rule calculation
     description: >
       The 90/180-day rule is a common visa regulation used in the Schengen Area and some other countries. The rule states that:
     keyPoints: 
@@ -34,7 +34,7 @@ sections:
       - The 180-day period is not fixed; it’s a moving window, meaning each new day moves the counting period forward.
       - The rule applies to all short-term visa-free travelers (e.g., UK, US, Canadian, and Australian passport holders visiting Schengen).
   - type: InformationSection
-    title: Key Points for Calculating Days. How do we calculate?
+    title: Key rules for calculating visa days. How to calculate?
     description: 
     keyPoints: 
       - Every new entry counts towards the rolling 180-day window
@@ -42,7 +42,7 @@ sections:
       - Multiple stays are combined; if a person leaves and re-enters, previous days are still counted
       - If a traveler has already stayed 90 days in the past 180 days, they must leave and wait until days “drop off” before re-entering
   - type: CalculationSection
-    title: Add entry and exit dates to calculate
+    title: Calculate visa days
     enterTitle: Date of entry
     exitTitle: Date of exit
     addButtonText: Add dates

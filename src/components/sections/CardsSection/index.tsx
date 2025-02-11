@@ -28,7 +28,7 @@ export const CardsSection: React.FC<Props> = (props) => {
     >
       {title && (
         <MuiTypography
-          component="h2"
+          component="h3"
           variant="h3"
           align="center"
           color="text.primary"
@@ -60,7 +60,6 @@ export const CardsSection: React.FC<Props> = (props) => {
             <CardsSectionItem
               key={index}
               {...item}
-              titleTag={title ? 'h3' : 'h2'}
               data-sb-field-path={`.${index}`}
             />
           ))}
@@ -78,7 +77,7 @@ const CardsSectionItem: React.FC<
     text,
     image,
     actions = [],
-    titleTag = 'h3',
+    titleTag = 'h4',
     'data-sb-field-path': fieldPath
   } = props;
   return (
