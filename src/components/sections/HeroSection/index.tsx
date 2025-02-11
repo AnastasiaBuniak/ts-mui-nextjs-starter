@@ -89,18 +89,6 @@ export const HeroSection: React.FC<Props> = (props) => {
         )}
 
         <MuiGrid item xs={12} md={hasTextContent ? 6 : 12}>
-          {/* <MuiBox
-              component="img"
-              sx={{
-                height: 'auto',
-                maxWidth: '100%',
-                width: '100%',
-                borderRadius: '4px'
-              }}
-              alt={image?.altText}
-              src={image?.url}
-              data-sb-field-path=".image .image.url#@src .image.altText#@alt"
-            /> */}
           {image?.url && (
             <Image
               src={image?.url}
