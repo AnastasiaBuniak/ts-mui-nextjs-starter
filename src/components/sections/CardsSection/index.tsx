@@ -1,10 +1,10 @@
 import * as React from 'react';
 import type * as types from 'types';
+import Image from 'next/image';
 import MuiBox from '@mui/material/Box';
 import MuiCard from '@mui/material/Card';
 import MuiCardActions from '@mui/material/CardActions';
 import MuiCardContent from '@mui/material/CardContent';
-import MuiCardMedia from '@mui/material/CardMedia';
 import MuiGrid from '@mui/material/Grid';
 import MuiTypography from '@mui/material/Typography';
 import { Button } from 'src/components/atoms/Button';
@@ -84,11 +84,16 @@ const CardsSectionItem: React.FC<
     <MuiGrid item xs={12} sm={6} md={4}>
       <MuiCard sx={{ height: '100%' }} data-sb-field-path={fieldPath}>
         {image?.url && (
-          <MuiCardMedia
-            component="img"
-            image={image.url}
+          <Image
+            src={image.url}
             alt={image.altText}
-            data-sb-field-path=".image .image.url#@src .image.altText#@alt"
+            width={242}
+            height={144}
+            style={{
+              width: '100%',
+              height: 'auto',
+              maxWidth: '100%'
+            }}
           />
         )}
         {(title || text) && (
