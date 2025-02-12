@@ -10,7 +10,7 @@ export default class MyDocument extends Document {
         <Head>
           <meta
             name="description"
-            content="Easily track your visa days with our online visa calculator. Calculate how many days you've stayed and how many you have left for hassle-free travel planning"
+            content="Track your visa days with our online visa calculator. Calculate how many days you've stayed and how many you have left for hassle-free travel planning"
           />
         </Head>
         <body>

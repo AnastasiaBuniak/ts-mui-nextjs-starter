@@ -9,6 +9,7 @@ import { pagesByType, siteConfig, urlToContent } from '../utils/content';
 
 import MuiBox from '@mui/material/Box';
 import MuiContainer from '@mui/material/Container';
+import CookieDrawer from '../components/atoms/CookieDrawer';
 
 export type Props = { page: types.Page; siteConfig: types.Config };
 
@@ -24,6 +25,7 @@ const Page: React.FC<Props> = ({ page, siteConfig }) => {
         {siteConfig.header && (
           <Header {...siteConfig.header} data-sb-object-id={siteConfig.__id} />
         )}
+        <CookieDrawer consentCopy={siteConfig.consentCopy} />
         {(page.sections ?? []).length > 0 && (
           <MuiBox component="main" data-sb-field-path="sections">
             {(page.sections ?? []).map((section, index) => (

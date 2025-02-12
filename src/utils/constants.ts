@@ -6,3 +6,5 @@ export const DATE_FORMAT = 'DD/MM/YYYY';
 
 export const VISA_DAYS = 90;
 export const VISA_WINDOW = 180;
+
+export const CONSENT_COOKIE_NAME = 'agreed_to_terms';

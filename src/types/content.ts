@@ -11,6 +11,7 @@ export type Config = {
   favicon?: string;
   header?: Header;
   footer?: Footer;
+  consentCopy: string;
 };
 
 export type Page = {
