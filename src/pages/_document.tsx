@@ -2,6 +2,7 @@ import * as React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import createEmotionServer from '@emotion/server/create-instance';
 import createEmotionCache from '../utils/createEmotionCache';
+import GoogleTag from '../components/atoms/GoogleTag';
 
 export default class MyDocument extends Document {
   render() {
@@ -16,6 +17,7 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
+          <GoogleTag />
         </body>
       </Html>
     );
