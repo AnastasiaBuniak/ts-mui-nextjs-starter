@@ -12,7 +12,7 @@
             },
             {
                 "type": "Link",
-                "label": "About",
+                "label": "Disclaimer",
                 "url": "/about",
                 "underline": "hover"
             },
@@ -28,5 +28,6 @@
     "footer": {
         "copyrightText": "",
         "navLinks": []
-    }
+    },
+    "consentCopy": "This website uses cookies to enhance your experience. The visa days calculator is provided for informational purposes only and does not constitute legal advice. Users are responsible for verifying their visa requirements with official sources. By continuing to use this site, you acknowledge and accept these terms."
 }

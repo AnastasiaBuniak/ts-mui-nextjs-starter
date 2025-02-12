@@ -60,7 +60,7 @@ export const CalculationSection: React.FC<Props> = (props) => {
         mb={4}
         component="h2"
         title={`${props.title}:`}
-        sx={{ backgroundColor: '#4C57C5', color: 'white' }}
+        sx={{ backgroundColor: '#4C57C5', color: 'white', mt: 0 }}
       />
       <Box mb={4} sx={{ width: '100%' }}>
         {!!datesData.length && <Table data={datesData} onDelete={deleteItem} />}

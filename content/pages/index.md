@@ -3,7 +3,7 @@ title: Home
 type: Page
 sections:
   - type: HeroSection
-    title: Visa Calculator 
+    title: Visa Days Calculator 
     subtitle: 'Check your visa days remaining for Schengen, UK, and other regions. For free. In seconds.'
     text: >
       Easily calculate the days you've spent or can stay in a country based on the visa rules. Whether for Schengen Area, UK, or others, our tool simplifies your travel planning. Use our free visa calculator to manage your travel days effectively. Whether you're navigating the 90/180 rule, checking visitor limits, or tracking multiple countries' visas, we’ve got you covered!
