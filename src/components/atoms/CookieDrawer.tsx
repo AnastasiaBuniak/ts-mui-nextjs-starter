@@ -26,7 +26,17 @@ export const CookieDrawer: React.FC<{ consentCopy: string }> = ({
   };
 
   return (
-    <Drawer anchor="bottom" open={isOpen}>
+    <Drawer
+      anchor="bottom"
+      open={isOpen}
+      ModalProps={{
+        keepMounted: true, // Better open performance on mobile.
+        disablePortal: true, // Prevents the drawer from being rendered in a portal.
+        disableEnforceFocus: true, // Prevents the drawer from taking focus.
+        disableAutoFocus: true, // Prevents the drawer from automatically focusing.
+        disableRestoreFocus: true // Prevents the drawer from restoring focus.
+      }}
+    >
       <Box
         component="section"
         sx={{ display: 'flex', justifyContent: 'flex-end' }}

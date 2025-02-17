@@ -15,13 +15,6 @@
                 "label": "Disclaimer",
                 "url": "/about",
                 "underline": "hover"
-            },
-            {
-                "type": "Link",
-                "label": "Documentation",
-                "isAnchor": true,
-                "url": "documentation_section",
-                "underline": "hover"
             }
         ]
     },
