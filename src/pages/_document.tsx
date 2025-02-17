@@ -13,11 +13,19 @@ export default class MyDocument extends Document {
             name="description"
             content="Track your visa days with our online visa calculator. Calculate how many days you've stayed and how many you have left for hassle-free travel planning"
           />
+          <GoogleTag />
         </Head>
         <body>
+          <noscript>
+            <iframe
+              src="https://www.googletagmanager.com/ns.html?id=GTM-TWF89SRB"
+              height="0"
+              width="0"
+              style={{ display: 'none', visibility: 'hidden' }}
+            ></iframe>
+          </noscript>
           <Main />
           <NextScript />
-          <GoogleTag />
         </body>
       </Html>
     );
