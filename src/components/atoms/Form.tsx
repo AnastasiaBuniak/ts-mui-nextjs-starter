@@ -23,6 +23,7 @@ interface FormProps {
 const Form: React.FC<FormProps> = (props) => {
   const [enter, setEnter] = useState<Dayjs | null>(null);
   const [exit, setExit] = useState<Dayjs | null>(null);
+  const [defaultExit, setDefaultExit] = useState<Dayjs | undefined>(undefined);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -61,12 +62,15 @@ const Form: React.FC<FormProps> = (props) => {
           <CalendarInput
             label={props.enterTitle as string}
             value={enter}
-            onChange={(val) => setEnter(val)}
+            onChange={(val) => {
+              setEnter(val), setDefaultExit(val as Dayjs);
+            }}
           />
           <CalendarInput
             label={props.exitTitle as string}
             value={exit}
             onChange={(val) => setExit(val)}
+            defaultValue={defaultExit}
           />
         </>
       )}

@@ -21,6 +21,7 @@ export const CalculationSection: React.FC<Props> = (props) => {
     null
   );
   const [usedDays, setUsedDays] = useState<number | null>(null);
+  const [lastDate, setLastDate] = useState<Dayjs | null>(null);
   const showResult = remainingDaysToStay !== null && !!datesData.length;
 
   const handleSubmit = ({
@@ -49,6 +50,7 @@ export const CalculationSection: React.FC<Props> = (props) => {
     const result = getRemainingVisaDays(datesData);
     setUsedDays(result.usedDays);
     setRemainingDaysToStay(result.remainingDaysToStay);
+    setLastDate(result.dateToStay);
   };
 
   return (
@@ -91,6 +93,7 @@ export const CalculationSection: React.FC<Props> = (props) => {
         <Result
           remainingDaysToStay={remainingDaysToStay as number}
           usedDays={usedDays}
+          lastDate={(lastDate as Dayjs).format('DD/MM/YYYY')}
         />
       )}
     </Card>
