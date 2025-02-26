@@ -15,6 +15,8 @@ export const getRemainingVisaDays = (
 ) => {
   const visaLimit = VISA_DAYS;
   const windowStart = referenceDate.subtract(windowDays, 'day');
+  let dateToStay = null;
+  let remainingDaysToStay = 0;
 
   // Calculate days spent within the rolling window
   let usedDays = 0;
@@ -27,11 +29,14 @@ export const getRemainingVisaDays = (
       usedDays += validExit.diff(validEnter, 'day') + 1;
     }
   });
+  remainingDaysToStay = Math.max(visaLimit - usedDays, 0);
+  dateToStay = referenceDate.add(remainingDaysToStay, 'day').subtract(1, 'day');
 
   return {
-    remainingDaysToStay: Math.max(visaLimit - usedDays, 0),
-    usedDays: usedDays,
+    remainingDaysToStay,
+    usedDays,
     referenceDate,
-    windowStart
+    windowStart,
+    dateToStay
   };
 };

@@ -8,10 +8,16 @@ import { DATE_FORMAT } from 'src/utils/constants';
 interface InputProps {
   label: string;
   value: Dayjs | null;
+  defaultValue?: Dayjs;
   onChange: (date: Dayjs | null) => void;
 }
 
-const Input: React.FC<InputProps> = ({ label, value, onChange }) => {
+const Input: React.FC<InputProps> = ({
+  label,
+  value,
+  defaultValue,
+  onChange
+}) => {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DatePicker
@@ -19,6 +25,7 @@ const Input: React.FC<InputProps> = ({ label, value, onChange }) => {
         value={value}
         onChange={onChange}
         format={DATE_FORMAT}
+        referenceDate={defaultValue}
         sx={{ alignSelf: 'center', minWidth: '230px' }}
       />
     </LocalizationProvider>

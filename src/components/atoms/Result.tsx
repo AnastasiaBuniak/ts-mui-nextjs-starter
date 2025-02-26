@@ -6,9 +6,14 @@ import Box from '@mui/material/Box';
 interface ResultProps {
   remainingDaysToStay: number;
   usedDays: number | null;
+  lastDate: string;
 }
 
-const Result: React.FC<ResultProps> = ({ remainingDaysToStay, usedDays }) => {
+const Result: React.FC<ResultProps> = ({
+  remainingDaysToStay,
+  usedDays,
+  lastDate
+}) => {
   return (
     <Box mb={4} sx={{ padding: 2, textAlign: 'center' }}>
       <Alert
@@ -27,7 +32,15 @@ const Result: React.FC<ResultProps> = ({ remainingDaysToStay, usedDays }) => {
         <AlertTitle sx={{ fontWeight: 'bold' }}>
           Days remain to stay: {remainingDaysToStay}
         </AlertTitle>
-        <div>You&apos;ve spent {usedDays} days in the 180 days window.</div>
+        <div>
+          You have used <b>{usedDays} days</b> of stay in the last 180 days
+          window.
+        </div>
+        <div>You are allowed 90 days in a 180-day period.</div>
+        <div>
+          You can stay for <b>{remainingDaysToStay} days </b> more, until{' '}
+          <b>{lastDate}</b>, if you use all days at once.
+        </div>
       </Alert>
     </Box>
   );
