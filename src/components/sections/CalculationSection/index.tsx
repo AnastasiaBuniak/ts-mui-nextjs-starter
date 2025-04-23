@@ -21,6 +21,7 @@ export const CalculationSection: React.FC<Props> = (props) => {
     null
   );
   const [usedDays, setUsedDays] = useState<number | null>(null);
+  const [overstayedDays, setOverstayedDays] = useState<number>(0);
   const [lastDate, setLastDate] = useState<Dayjs | null>(null);
   const showResult = remainingDaysToStay !== null && !!datesData.length;
 
@@ -44,6 +45,7 @@ export const CalculationSection: React.FC<Props> = (props) => {
       .slice(0, itemIndex)
       .concat(...datesData.slice(itemIndex + 1));
     setDatesData(updatedArray);
+    setRemainingDaysToStay(null);
   };
 
   const startCalculation = () => {
@@ -51,6 +53,7 @@ export const CalculationSection: React.FC<Props> = (props) => {
     setUsedDays(result.usedDays);
     setRemainingDaysToStay(result.remainingDaysToStay);
     setLastDate(result.dateToStay);
+    setOverstayedDays(result.overstayedDays);
   };
 
   return (
@@ -93,6 +96,7 @@ export const CalculationSection: React.FC<Props> = (props) => {
         <Result
           remainingDaysToStay={remainingDaysToStay as number}
           usedDays={usedDays}
+          overstayedDays={overstayedDays}
           lastDate={(lastDate as Dayjs).format('DD/MM/YYYY')}
         />
       )}
