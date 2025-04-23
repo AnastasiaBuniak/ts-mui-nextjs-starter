@@ -31,10 +31,12 @@ export const getRemainingVisaDays = (
   });
   remainingDaysToStay = Math.max(visaLimit - usedDays, 0);
   dateToStay = referenceDate.add(remainingDaysToStay, 'day').subtract(1, 'day');
+  const overstayedDays = usedDays - visaLimit > 0 ? usedDays - visaLimit : 0;
 
   return {
     remainingDaysToStay,
     usedDays,
+    overstayedDays,
     referenceDate,
     windowStart,
     dateToStay

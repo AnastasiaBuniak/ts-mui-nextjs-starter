@@ -7,17 +7,19 @@ interface ResultProps {
   remainingDaysToStay: number;
   usedDays: number | null;
   lastDate: string;
+  overstayedDays: number;
 }
 
 const Result: React.FC<ResultProps> = ({
   remainingDaysToStay,
   usedDays,
-  lastDate
+  lastDate,
+  overstayedDays
 }) => {
   return (
     <Box mb={4} sx={{ padding: 2, textAlign: 'center' }}>
       <Alert
-        severity="success"
+        severity={remainingDaysToStay > 0 ? 'success' : 'error'}
         icon={false}
         variant="standard"
         sx={{
@@ -26,21 +28,35 @@ const Result: React.FC<ResultProps> = ({
           gap: 2,
           justifyContent: 'center',
           mb: 0,
-          border: '1px solid #4caf50'
+          border:
+            remainingDaysToStay > 0 ? '1px solid #4caf50' : '1px solid #5f2120'
         }}
       >
         <AlertTitle sx={{ fontWeight: 'bold' }}>
           Days remain to stay: {remainingDaysToStay}
         </AlertTitle>
         <div>
-          You have used <b>{usedDays} days</b> of stay in the last 180 days
+          You have <b>used {usedDays} days</b> of stay in the last 180 days
           window.
+          {!!overstayedDays && (
+            <span>
+              You <b>overstayed by {overstayedDays} days</b>.
+            </span>
+          )}
         </div>
         <div>You are allowed 90 days in a 180-day period.</div>
-        <div>
-          You can stay for <b>{remainingDaysToStay} days </b> more, until{' '}
-          <b>{lastDate}</b>, if you use all days at once.
-        </div>
+        {overstayedDays > 0 ? (
+          <div>
+            As of today, you cannot stay any longer and have <b>0 days</b>{' '}
+            remaining. You could regain the right to stay only after enough
+            previous days drop out of your 180-day window.
+          </div>
+        ) : (
+          <div>
+            You can stay for <b>{remainingDaysToStay} days </b> more, until{' '}
+            <b>{lastDate}</b>, if you use all days at once.
+          </div>
+        )}
       </Alert>
     </Box>
   );
