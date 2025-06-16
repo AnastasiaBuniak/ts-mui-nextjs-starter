@@ -5,13 +5,15 @@ import type { Props as HeroSectionProps } from './sections/HeroSection';
 import type { Props as CalculationSectionProps } from './sections/CalculationSection';
 import type { Props as InformationSectionProps } from './sections/InformationSection';
 import type { Props as SignupProps } from './sections/Signup';
+import type { Props as DashboardProps } from './sections/DashboardSection';
 
 export type Props =
   | CardsSectionProps
   | HeroSectionProps
   | CalculationSectionProps
   | InformationSectionProps
-  | SignupProps;
+  | SignupProps
+  | DashboardProps;
 
 type ComponentsMap = {
   [P in Props as P['type']]: ComponentType<P>;
@@ -37,6 +39,9 @@ const componentsMap: ComponentsMap = {
       import('./sections/InformationSection'),
       'InformationSection'
     )
+  ),
+  DashboardSection: dynamic(() =>
+    namedComponent(import('./sections/DashboardSection'), 'DashboardSection')
   )
 };
 

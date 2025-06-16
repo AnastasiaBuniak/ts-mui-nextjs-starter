@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import type * as types from 'types';
 import { DynamicComponent } from '../components/DynamicComponent';
@@ -10,11 +11,17 @@ import { pagesByType, siteConfig, urlToContent } from '../utils/content';
 import MuiBox from '@mui/material/Box';
 import MuiContainer from '@mui/material/Container';
 import CookieDrawer from '../components/atoms/CookieDrawer';
+import ProtectedRoute from '../components/ProtectedRoute';
 
 export type Props = { page: types.Page; siteConfig: types.Config };
+const protectedRoutes = ['/dashboard'];
 
 const Page: React.FC<Props> = ({ page, siteConfig }) => {
-  return (
+  const router = useRouter();
+  const currentPath = '/' + (router.query.slug ?? []).join('/');
+  const header = { ...siteConfig.header, ...(page.header ?? {}) };
+
+  const pageContent = (
     <MuiBox sx={{ px: 3 }} data-sb-object-id={page.__id}>
       <MuiContainer maxWidth="lg" disableGutters={true}>
         <Head>
@@ -22,9 +29,7 @@ const Page: React.FC<Props> = ({ page, siteConfig }) => {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           {siteConfig.favicon && <link rel="icon" href={siteConfig.favicon} />}
         </Head>
-        {siteConfig.header && (
-          <Header {...siteConfig.header} data-sb-object-id={siteConfig.__id} />
-        )}
+        {header && <Header {...header} data-sb-object-id={siteConfig.__id} />}
         <CookieDrawer consentCopy={siteConfig.consentCopy} />
         {(page.sections ?? []).length > 0 && (
           <MuiBox component="main" data-sb-field-path="sections">
@@ -43,6 +48,13 @@ const Page: React.FC<Props> = ({ page, siteConfig }) => {
       </MuiContainer>
     </MuiBox>
   );
+
+  // Protect only certain paths
+  if (protectedRoutes.includes(currentPath)) {
+    return <ProtectedRoute>{pageContent}</ProtectedRoute>;
+  }
+
+  return pageContent;
 };
 
 export default Page;
