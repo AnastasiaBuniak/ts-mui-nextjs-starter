@@ -17,33 +17,19 @@ import {
   List,
   Container
 } from '@mui/material';
+import dayjs from 'dayjs';
+import { DATE_FORMAT } from '../../../utils/constants';
+
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useAuth } from '../../context/AuthContext';
+import { useGetUserRules } from './hooks';
 
 type Visit = {
   entry: string; // 'DD/MM/YYYY'
   exit: string; // 'DD/MM/YYYY'
   duration: number; // in days
 };
-
-type CountryData = {
-  name: string;
-  visits: Visit[];
-};
-
-const countriesData: CountryData[] = [
-  {
-    name: 'France',
-    visits: [
-      { entry: '01/01/2024', exit: '08/01/2024', duration: 7 },
-      { entry: '15/03/2024', exit: '20/03/2024', duration: 5 }
-    ]
-  },
-  {
-    name: 'Spain',
-    visits: [{ entry: '10/02/2024', exit: '17/02/2024', duration: 7 }]
-  }
-];
 
 const getTotalDays = (visits: Visit[]) =>
   visits.reduce((sum, v) => sum + v.duration, 0);
@@ -55,17 +41,20 @@ const getColor = (days: number) => {
 };
 
 export type Props = {
-  type: 'InformationSection';
+  type: 'DashboardSection';
 };
 
 export const DashboardSection: React.FC = () => {
+  const { user } = useAuth();
+  const { rules } = useGetUserRules(user.id);
+
   return (
     <Container maxWidth="md" sx={{ py: 4 }}>
       <Typography variant="h4" gutterBottom>
         Dashboard
       </Typography>
       <List>
-        {countriesData.map((country, idx) => {
+        {rules.map((country, idx) => {
           const totalDays = getTotalDays(country.visits);
           const bgColor = getColor(totalDays);
 
@@ -100,8 +89,12 @@ export const DashboardSection: React.FC = () => {
                     <TableBody>
                       {country.visits.map((visit, i) => (
                         <TableRow key={i}>
-                          <TableCell>{visit.entry}</TableCell>
-                          <TableCell>{visit.exit}</TableCell>
+                          <TableCell>
+                            {dayjs(visit.startDate).format(DATE_FORMAT)}
+                          </TableCell>
+                          <TableCell>
+                            {dayjs(visit.endDate).format(DATE_FORMAT)}
+                          </TableCell>
                           <TableCell>{visit.duration}d</TableCell>
                           <TableCell align="right">
                             <IconButton color="error" size="small">

@@ -22,14 +22,19 @@ const Page: React.FC<Props> = ({ page, siteConfig }) => {
   const header = { ...siteConfig.header, ...(page.header ?? {}) };
 
   const pageContent = (
-    <MuiBox sx={{ px: 3 }} data-sb-object-id={page.__id}>
-      <MuiContainer maxWidth="lg" disableGutters={true}>
+    <MuiBox sx={{ px: page.noHeader ? 0 : 3 }} data-sb-object-id={page.__id}>
+      <MuiContainer
+        maxWidth={page.noHeader ? false : 'lg'}
+        disableGutters={true}
+      >
         <Head>
           <title>{page.title}</title>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           {siteConfig.favicon && <link rel="icon" href={siteConfig.favicon} />}
         </Head>
-        {header && <Header {...header} data-sb-object-id={siteConfig.__id} />}
+        {page.noHeader || !header ? null : (
+          <Header {...header} data-sb-object-id={siteConfig.__id} />
+        )}
         <CookieDrawer consentCopy={siteConfig.consentCopy} />
         {(page.sections ?? []).length > 0 && (
           <MuiBox component="main" data-sb-field-path="sections">
