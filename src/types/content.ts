@@ -19,6 +19,8 @@ export type Page = {
   __url: string;
   type: 'Page';
   title: string;
+  header?: Header;
+  noHeader: boolean;
   sections?: Section[];
   body?: string;
 };

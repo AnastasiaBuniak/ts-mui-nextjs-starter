@@ -11,13 +11,7 @@ interface FormProps {
   enterTitle?: string;
   exitTitle?: string;
   addButtonText?: string;
-  handleSubmit: ({
-    enter,
-    exit
-  }: {
-    enter: Dayjs | null;
-    exit: Dayjs | null;
-  }) => void;
+  handleSubmit: ({ enter, exit }: { enter: Dayjs; exit: Dayjs }) => void;
 }
 
 const Form: React.FC<FormProps> = (props) => {
@@ -29,7 +23,9 @@ const Form: React.FC<FormProps> = (props) => {
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    props.handleSubmit({ enter, exit });
+    if (enter !== null && exit !== null) {
+      props.handleSubmit({ enter, exit });
+    }
     setEnter(null);
     setExit(null);
   };
