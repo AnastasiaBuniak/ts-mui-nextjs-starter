@@ -4,7 +4,6 @@ interface AddVisitInput {
   countryId: string;
 }
 export const addVisit = async ({ start, exit, countryId }: AddVisitInput) => {
-  console.log('Adding User visit:', start, exit, countryId);
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/visit`, {
       method: 'POST',
@@ -20,7 +19,6 @@ export const addVisit = async ({ start, exit, countryId }: AddVisitInput) => {
     });
     const result = await response.json();
     if (response.ok) {
-      console.log('Visit added successfully:', result);
       return result;
     } else {
       console.error('Failed to fetch visit:', result.message);
@@ -32,7 +30,6 @@ export const addVisit = async ({ start, exit, countryId }: AddVisitInput) => {
 };
 
 export const deleteVisit = async (id: string) => {
-  console.log('Deleting User visit:', id);
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/visit/${id}`,

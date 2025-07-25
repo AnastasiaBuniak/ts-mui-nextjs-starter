@@ -20,7 +20,6 @@ const Page: React.FC<Props> = ({ page, siteConfig }) => {
   const router = useRouter();
   const currentPath = '/' + (router.query.slug ?? []);
   const header = { ...siteConfig.header, ...(page.header ?? {}) };
-  console.log('Current Path:', typeof currentPath);
   const pageContent = (
     <PageContainer noHeader={page.noHeader} pageType={page.type} id={page.__id}>
       <Head>
