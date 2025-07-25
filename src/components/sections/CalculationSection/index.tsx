@@ -1,60 +1,31 @@
-import React, { useState } from 'react';
+import React from 'react';
 import type * as types from 'types';
-import dayjs, { Dayjs } from 'dayjs';
+import { Dayjs } from 'dayjs';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import Form from 'src/components/atoms/Form';
 import Table from 'src/components/atoms/Table';
-import { getRemainingVisaDays } from 'src/utils/countTimeUtils';
 import { CALCULATION_SECTION_ID } from 'src/utils/constants';
 import Result from 'src/components/atoms/Result';
+import { useVisaDaysCalculation } from './hooks';
+import { VisitItem } from 'src/types/data';
 
 export type Props = types.CalculationSection & types.StackbitFieldPath;
 
 export const CalculationSection: React.FC<Props> = (props) => {
-  const [datesData, setDatesData] = useState<
-    { enter: Dayjs | null; exit: Dayjs | null; days: number }[]
-  >([]);
-  const [remainingDaysToStay, setRemainingDaysToStay] = useState<number | null>(
-    null
-  );
-  const [usedDays, setUsedDays] = useState<number | null>(null);
-  const [overstayedDays, setOverstayedDays] = useState<number>(0);
-  const [lastDate, setLastDate] = useState<Dayjs | null>(null);
-  const showResult = remainingDaysToStay !== null && !!datesData.length;
-
-  const handleSubmit = ({
-    enter = null,
-    exit = null
-  }: {
-    enter: Dayjs | null;
-    exit: Dayjs | null;
-  }) => {
-    // ts-ignore-next-line
-    setDatesData(
-      datesData.concat(
-        ...[{ enter, exit, days: dayjs(exit).diff(enter, 'day') + 1 }]
-      )
-    );
-  };
-
-  const deleteItem = (itemIndex: number) => {
-    const updatedArray = datesData
-      .slice(0, itemIndex)
-      .concat(...datesData.slice(itemIndex + 1));
-    setDatesData(updatedArray);
-    setRemainingDaysToStay(null);
-  };
-
-  const startCalculation = () => {
-    const result = getRemainingVisaDays(datesData);
-    setUsedDays(result.usedDays);
-    setRemainingDaysToStay(result.remainingDaysToStay);
-    setLastDate(result.dateToStay);
-    setOverstayedDays(result.overstayedDays);
-  };
+  const {
+    datesData,
+    usedDays,
+    overstayedDays,
+    lastDate,
+    showResult,
+    remainingDaysToStay,
+    deleteDate,
+    addDate,
+    startCalculation
+  } = useVisaDaysCalculation();
 
   return (
     <Card
@@ -68,9 +39,17 @@ export const CalculationSection: React.FC<Props> = (props) => {
         sx={{ backgroundColor: '#4C57C5', color: 'white', mt: 0 }}
       />
       <Box mb={4} sx={{ width: '100%' }}>
-        {!!datesData.length && <Table data={datesData} onDelete={deleteItem} />}
+        {!!datesData.length && (
+          <Table
+            data={datesData}
+            onDelete={(item) => deleteDate(item as VisitItem)}
+            tableHeadStyles={{
+              fontWeight: 'bold'
+            }}
+          />
+        )}
       </Box>
-      <Form {...props} handleSubmit={handleSubmit} />
+      <Form {...props} handleSubmit={addDate} />
       <Box
         mb={4}
         sx={{

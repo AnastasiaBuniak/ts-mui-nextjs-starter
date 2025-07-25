@@ -1,10 +1,11 @@
 import React from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { useManageUserVisits } from './hooks';
-import { Table } from './Table';
 import Form from '../../atoms/Form';
-import { Typography, List, Container, Card, ExtendButton } from '@mui/material';
+import Table from '../../atoms/Table';
+import { Typography, List, Container, Card } from '@mui/material';
 import { ExtendedPolicy } from 'src/types/data';
+import { Visit } from 'src/types/data';
 
 export type Props = {
   type: 'DashboardSection';
@@ -61,10 +62,11 @@ export const DashboardSection: React.FC<Props> = ({ title, addButtonText }) => {
                   }}
                 >
                   <Table
-                    country={country}
-                    deleteVisit={deleteVisit}
+                    data={country.visits}
+                    onDelete={(item) => deleteVisit(item as Visit)}
                     tableHeadStyles={{
-                      borderRadius: 3
+                      borderRadius: 3,
+                      backgroundColor: '#f5f5f5'
                     }}
                   />
                   <Container

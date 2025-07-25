@@ -13,30 +13,44 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { DATE_FORMAT } from 'src/utils/constants';
 
 interface TableProps {
-  data: { enter: Dayjs | null; exit: Dayjs | null; days: number }[];
-  onDelete: (index: number) => void;
+  data: { entry: Dayjs | null | string; exit: Dayjs | null | string }[];
+  onDelete: (item: object) => void;
+  tableHeadStyles?: React.CSSProperties;
 }
 
-const CustomTable: React.FC<TableProps> = ({ data, onDelete }) => {
+const CustomTable: React.FC<TableProps> = ({
+  data,
+  onDelete,
+  tableHeadStyles
+}) => {
   return (
-    <TableContainer component={Paper} sx={{ borderRadius: '4px' }}>
+    <TableContainer
+      component={Paper}
+      elevation={0}
+      sx={{ borderRadius: '4px' }}
+    >
       <Table>
         <TableHead>
-          <TableRow sx={{ fontWeight: 'bold' }}>
-            <TableCell>Enter</TableCell>
+          <TableRow sx={{ ...tableHeadStyles }}>
+            <TableCell>Entry</TableCell>
             <TableCell>Exit</TableCell>
-            <TableCell>Days</TableCell>
-            <TableCell>Action</TableCell>
+            <TableCell>Duration (days)</TableCell>
+            <TableCell>Actions</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {data.map((row, index) => (
             <TableRow key={index}>
-              <TableCell>{dayjs(row.enter).format(DATE_FORMAT)}</TableCell>
+              <TableCell>{dayjs(row.entry).format(DATE_FORMAT)}</TableCell>
               <TableCell>{dayjs(row.exit).format(DATE_FORMAT)}</TableCell>
-              <TableCell>{row.days}</TableCell>
               <TableCell>
-                <IconButton onClick={() => onDelete(index)} aria-label="delete">
+                {dayjs(row.exit).diff(row.entry, 'day') + 1}
+              </TableCell>
+              <TableCell>
+                <IconButton
+                  onClick={() => onDelete({ ...row, index })}
+                  aria-label="delete"
+                >
                   <DeleteIcon color="primary" />
                 </IconButton>
               </TableCell>

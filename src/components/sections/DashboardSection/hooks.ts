@@ -56,9 +56,9 @@ export const useManageUserVisits = ({ user }: { user: User | null }) => {
 
   const addVisitToThePolicy =
     (policyId: string) =>
-    async ({ enter, exit }: { enter: Dayjs; exit: Dayjs }) => {
+    async ({ entry, exit }: { entry: Dayjs; exit: Dayjs }) => {
       const result = await addVisit({
-        start: dayjs(enter).valueOf(),
+        start: dayjs(entry).valueOf(),
         exit: dayjs(exit).valueOf(),
         countryId: policyId
       });
@@ -84,7 +84,8 @@ export const useManageUserVisits = ({ user }: { user: User | null }) => {
       setPolicies(policiesWithNewVisit);
     };
 
-  const deleteVisitFromThePolicy = (visitId: string) => async () => {
+  const deleteVisitFromThePolicy = async (visit: Visit) => {
+    const visitId = visit._id;
     await deleteVisit(visitId);
     const updatedPolicies = policies.map((policy: ExtendedPolicy) => {
       if (policy.visits) {

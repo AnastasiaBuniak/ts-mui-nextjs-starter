@@ -11,11 +11,11 @@ interface FormProps {
   enterTitle?: string;
   exitTitle?: string;
   addButtonText?: string;
-  handleSubmit: ({ enter, exit }: { enter: Dayjs; exit: Dayjs }) => void;
+  handleSubmit: ({ entry, exit }: { entry: Dayjs; exit: Dayjs }) => void;
 }
 
 const Form: React.FC<FormProps> = (props) => {
-  const [enter, setEnter] = useState<Dayjs | null>(null);
+  const [entry, setEnter] = useState<Dayjs | null>(null);
   const [exit, setExit] = useState<Dayjs | null>(null);
   const [defaultExit, setDefaultExit] = useState<Dayjs | undefined>(undefined);
   const theme = useTheme();
@@ -23,8 +23,8 @@ const Form: React.FC<FormProps> = (props) => {
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (enter !== null && exit !== null) {
-      props.handleSubmit({ enter, exit });
+    if (entry !== null && exit !== null) {
+      props.handleSubmit({ entry, exit });
     }
     setEnter(null);
     setExit(null);
@@ -57,7 +57,7 @@ const Form: React.FC<FormProps> = (props) => {
         <>
           <CalendarInput
             label={props.enterTitle as string}
-            value={enter}
+            value={entry}
             onChange={(val) => {
               setEnter(val), setDefaultExit(val as Dayjs);
             }}
@@ -75,7 +75,7 @@ const Form: React.FC<FormProps> = (props) => {
         size="large"
         variant="contained"
         color="secondary"
-        disabled={!enter || !exit}
+        disabled={!entry || !exit}
         sx={{
           textTransform: 'initial',
           alignSelf: 'center',

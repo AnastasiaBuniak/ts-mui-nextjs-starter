@@ -1,3 +1,5 @@
+import { Dayjs } from 'dayjs';
+
 export type User = {
   email: string;
   exp: number;
@@ -27,4 +29,11 @@ export type Policy = {
 
 export type ExtendedPolicy = Policy & {
   totalDays: number;
+};
+
+export type VisitItem = {
+  entry: Dayjs | null;
+  exit: Dayjs | null;
+  days: number;
+  index: number;
 };
