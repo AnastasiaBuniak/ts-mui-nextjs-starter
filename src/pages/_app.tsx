@@ -14,6 +14,7 @@ export default function App({
   pageProps,
   emotionCache = clientSideEmotionCache
 }: any) {
+  console.log('app', pageProps);
   return (
     <CacheProvider value={emotionCache}>
       <GoogleOAuthProvider

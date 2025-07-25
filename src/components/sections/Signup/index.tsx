@@ -14,38 +14,73 @@ import {
   FormControlLabel
 } from '@mui/material';
 
-import GoogleIcon from '@mui/icons-material/Google';
-
 export type Props = {
   type: 'Signup';
+  pageType: 'signup' | 'login';
   title: string;
   subtitle: string;
+  sideImageUrl: string;
   buttonText: string;
   errorText: string;
+  // login specific props
+  bottomText?: string;
+  bottomLinkText?: string;
+  bottomLink?: string;
+  // signup specific props
+  buttonErrorText?: string;
+  termsText: string;
+  termsLinkText: string;
+  termsLink: string;
 };
 
 export const Signup: React.FC<Props> = ({
+  pageType,
   title,
   subtitle,
+  sideImageUrl,
   buttonText,
-  errorText
+  errorText,
+  bottomText,
+  bottomLinkText,
+  bottomLink,
+  buttonErrorText,
+  termsText,
+  termsLinkText,
+  termsLink
 }) => {
   const [ignoreButtonHandler, setIgnoreButtonHandler] = useState(false);
-  const { startGoogleSso, isError } = useGoogleSso(setIgnoreButtonHandler);
-
+  const [showTermsError, setShowTermsError] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
+  const { startGoogleSso, isError } = useGoogleSso(setIgnoreButtonHandler);
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   const handleButtonClick = () => {
-    if (ignoreButtonHandler || !isChecked) return;
+    if (ignoreButtonHandler) return;
+    if (pageType === 'signup' && !isChecked) {
+      setShowTermsError(true);
+      return;
+    }
     setIgnoreButtonHandler(true);
     startGoogleSso();
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box
+      sx={{
+        flexGrow: 1,
+        ...(isMobile && {
+          minHeight: '100vh',
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${sideImageUrl})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        })
+      }}
+    >
       <Grid container sx={{ minHeight: '100vh' }}>
         {!isMobile && (
           <Grid
@@ -53,33 +88,48 @@ export const Signup: React.FC<Props> = ({
             md={6}
             sx={{
               minHeight: '100vh',
-              backgroundImage:
-                'url(https://images.unsplash.com/photo-1524850301259-7729d41d11d9?q=80&w=794&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)',
+              backgroundImage: `url(${sideImageUrl})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center'
             }}
           />
         )}
 
-        <Grid item xs={12} md={6}>
+        <Grid
+          item
+          xs={12}
+          md={6}
+          sx={{
+            ...(isMobile && {
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            })
+          }}
+        >
           <Box
             sx={{
-              height: '100vh',
+              height: isMobile ? 'auto' : '100vh',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              px: 2
+              px: 2,
+              ...(isMobile && {
+                backgroundColor: '#fff',
+                borderRadius: 2,
+                width: '90%',
+                py: 4
+              })
             }}
           >
-            <Container maxWidth="sm" sx={{ textAlign: 'center' }}>
+            <Container maxWidth="xs" sx={{ textAlign: 'center' }}>
               <Typography variant="h4" fontWeight={600} gutterBottom>
                 {title}
               </Typography>
               <Typography variant="body1" color="text.secondary" sx={{ mt: 1 }}>
                 {subtitle}
               </Typography>
-
-              <Box sx={{ py: 4 }}>
+              <Box sx={{ py: 2 }}>
                 <Button
                   variant="outlined"
                   color="primary"
@@ -95,24 +145,58 @@ export const Signup: React.FC<Props> = ({
                 >
                   {buttonText}
                 </Button>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={isChecked}
-                      onChange={(e) => setIsChecked(e.target.checked)}
-                      color="primary"
-                    />
-                  }
-                  label={
-                    <Typography variant="caption">
-                      By proceeding, I agree to the{' '}
-                      <a href="/terms" style={{ textDecoration: 'underline' }}>
-                        terms and conditions
-                      </a>
-                      .
-                    </Typography>
-                  }
-                />
+
+                {showTermsError && (
+                  <Typography
+                    variant="caption"
+                    component="p"
+                    color="error"
+                    sx={{ mb: 2, mt: 0.5 }}
+                  >
+                    {buttonErrorText}
+                  </Typography>
+                )}
+                {pageType === 'signup' && (
+                  <FormControlLabel
+                    sx={{ mt: 2 }}
+                    control={
+                      <Checkbox
+                        checked={isChecked}
+                        onChange={(e) => {
+                          setIsChecked(e.target.checked);
+                          setShowTermsError(false);
+                        }}
+                        color="primary"
+                        sx={{ p: isMobile ? 0 : '' }}
+                      />
+                    }
+                    label={
+                      <Typography
+                        variant="caption"
+                        sx={{ mt: isMobile ? 2 : 0 }}
+                      >
+                        {termsText}{' '}
+                        <a
+                          href={termsLink}
+                          style={{ textDecoration: 'underline' }}
+                        >
+                          {termsLinkText}
+                        </a>
+                      </Typography>
+                    }
+                  />
+                )}
+                {pageType === 'login' && (
+                  <Typography variant="caption" component="p" sx={{ mt: 2 }}>
+                    {bottomText}{' '}
+                    <a
+                      href={bottomLink}
+                      style={{ textDecoration: 'underline' }}
+                    >
+                      {bottomLinkText}
+                    </a>
+                  </Typography>
+                )}
               </Box>
 
               {isError && <Alert severity="error">{errorText}</Alert>}
