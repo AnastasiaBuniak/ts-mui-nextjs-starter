@@ -29,36 +29,40 @@ export const UserHeader: React.FC<Props> = (props) => {
       data-sb-field-path={fieldPath}
     >
       <MuiToolbar disableGutters={true} sx={{ flexWrap: 'wrap' }}>
-        <Avatar src={user?.picture} alt={user?.name} sx={{ mr: 2 }} />
+        <div style={{ display: 'flex', alignItems: 'center', flex: '1 1 33%' }}>
+          <Avatar src={user?.picture} alt={user?.name} sx={{ mr: 2 }} />
 
-        {user?.name && (
-          <MuiBox sx={{ mb: 1, mr: 2, flexGrow: 1 }}>
-            <MuiTypography
-              component="p"
-              variant="subtitle1"
-              color="text.secondary"
-              noWrap
-              data-sb-field-path=".user.name"
-            >
-              Welcome, {user?.name}!
-            </MuiTypography>
-          </MuiBox>
-        )}
+          {user?.name && (
+            <MuiBox sx={{ mr: 1, flexGrow: 1 }}>
+              <MuiTypography
+                component="p"
+                variant="subtitle1"
+                color="text.secondary"
+                noWrap
+                data-sb-field-path=".user.name"
+                sx={{ fontWeight: 'bold' }}
+              >
+                Welcome, {user?.name}!
+              </MuiTypography>
+            </MuiBox>
+          )}
+        </div>
         {title && (
-          <MuiBox sx={{ mb: 1, mr: 2, flexGrow: 1 }}>
+          <MuiBox sx={{ mb: 1, mr: 2, flexGrow: 1, flex: '1 1 33%' }}>
             <MuiTypography
               component="p"
-              variant="h6"
+              variant="h5"
               color="text.primary"
               noWrap
               data-sb-field-path=".title"
+              style={{ fontWeight: 'bold' }}
             >
               {title}
             </MuiTypography>
           </MuiBox>
         )}
 
-        <Button onClick={logout} variant="contained">
+        <Button onClick={logout} variant="contained" style={{ flexGrow: 0 }}>
           Logout
         </Button>
       </MuiToolbar>

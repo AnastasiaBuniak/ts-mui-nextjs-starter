@@ -5,11 +5,10 @@ export const useLogout = () => {
         method: 'POST',
         credentials: 'include'
       });
-
-      window.location.href = '/login';
     } catch (error) {
       console.error('Logout failed:', error);
     }
+    window.location.href = '/login';
   };
 
   return { logout };

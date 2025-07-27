@@ -22,6 +22,8 @@ export const getRemainingVisaDays = (
   let usedDays = 0;
 
   stays.forEach(({ entry, exit }) => {
+    entry = dayjs(entry);
+    exit = dayjs(exit);
     // If stay overlaps with the rolling window
     if (exit.isAfter(windowStart) && entry.isBefore(referenceDate)) {
       const validEnter = entry.isBefore(windowStart) ? windowStart : entry;

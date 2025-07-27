@@ -46,23 +46,27 @@ export const deleteVisit = async (id: string) => {
   }
 };
 
-export const getUserPoliciesByUserId = async (id: string) => {
+export const createPolicy = async ({ name, description }) => {
   try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/policy/${id}`,
-      {
-        method: 'GET',
-        credentials: 'include'
-      }
-    );
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/policy`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name,
+        description
+      })
+    });
     const result = await response.json();
     if (response.ok) {
-      return { policiesList: result.data.policies, loading: false };
+      return result;
     } else {
-      console.error('Failed to fetch user Policies:', result.message);
+      console.error('Failed to create policy:', result.message);
     }
+    return result;
   } catch (error) {
-    console.error('Failed to fetch user Policies:', error);
-    return { policiesList: [], loading: false };
+    console.error('Failed to create policy:', error);
   }
 };
