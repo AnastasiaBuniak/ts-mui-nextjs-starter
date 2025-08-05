@@ -70,3 +70,28 @@ export const createPolicy = async ({ name, description }) => {
     console.error('Failed to create policy:', error);
   }
 };
+
+export const deletePolicy = async ({ id }) => {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/policy/${id}`,
+      {
+        method: 'DELETE',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+    );
+    console.log(response);
+
+    if (response.ok) {
+      return { success: true, message: 'Policy deleted successfully' };
+    } else {
+      return { success: false };
+    }
+  } catch (error) {
+    console.error('Failed to delete policy:', error);
+    return { success: false };
+  }
+};

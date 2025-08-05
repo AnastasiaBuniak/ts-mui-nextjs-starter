@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react'; // Import useState
 import Form from '../../atoms/Form';
 import Table from '../../atoms/Table';
-import { Typography, Container, Card, IconButton } from '@mui/material'; // Import IconButton
+import {
+  Typography,
+  Container,
+  Card,
+  IconButton,
+  Dialog, // Import Dialog
+  DialogTitle, // Import DialogTitle
+  DialogContent, // Import DialogContent
+  DialogActions // Import DialogActions
+} from '@mui/material';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Result from '../../atoms/Result';
@@ -14,6 +23,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
 import { useCalculateResult } from './hooks';
+import { PolicyManagement } from './PolicyManagement';
 
 export type Props = {
   country: Policy;
@@ -32,8 +42,7 @@ export const PolicyCard: React.FC<Props> = ({
   addVisit,
   deleteVisit,
   addButtonText,
-  onDeletePolicy, // Destructure new props
-  onEditPolicy // Destructure new props
+  onDeletePolicy
 }) => {
   const {
     usedDays,
@@ -55,21 +64,18 @@ export const PolicyCard: React.FC<Props> = ({
         mb: 4,
         p: 4,
         textAlign: 'center',
-        position: 'relative' // Needed for absolute positioning of buttons
+        position: 'relative'
       }}
     >
-      {/* Container for title and buttons */}
       <Box
         sx={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          mb: 1 // Adjust margin as needed
+          mb: 1
         }}
       >
         <Box sx={{ flexGrow: 1, textAlign: 'center' }}>
-          {' '}
-          {/* Centers the text */}
           <Typography variant="h5" fontWeight={600} sx={{ mb: 1 }}>
             {country.name}
           </Typography>
@@ -77,24 +83,7 @@ export const PolicyCard: React.FC<Props> = ({
             {country.totalDays}/180 days
           </Typography>
         </Box>
-        <Box sx={{ display: 'flex', gap: 1 }}>
-          {' '}
-          {/* Buttons container */}
-          <IconButton
-            aria-label="edit policy"
-            onClick={() => onEditPolicy(country._id)}
-            sx={{ color: 'white' }}
-          >
-            <EditIcon />
-          </IconButton>
-          <IconButton
-            aria-label="delete policy"
-            onClick={() => onDeletePolicy(country._id)}
-            sx={{ color: 'white' }}
-          >
-            <DeleteIcon />
-          </IconButton>
-        </Box>
+        <PolicyManagement onDeletePolicy={onDeletePolicy} country={country} />
       </Box>
 
       <Container

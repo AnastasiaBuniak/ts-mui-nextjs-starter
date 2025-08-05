@@ -14,10 +14,16 @@ export type Props = {
 
 export const DashboardSection: React.FC<Props> = ({ title, addButtonText }) => {
   const { user } = useAuth();
-  const { policies, isLoading, addVisit, deleteVisit, addPolicy } =
-    useManageUserVisits({
-      user
-    });
+  const {
+    policies,
+    isLoading,
+    addVisit,
+    deleteVisit,
+    addPolicy,
+    deletePolicy
+  } = useManageUserVisits({
+    user
+  });
 
   if (isLoading) {
     return 'Loading...';
@@ -40,6 +46,7 @@ export const DashboardSection: React.FC<Props> = ({ title, addButtonText }) => {
                 addVisit={addVisit}
                 deleteVisit={deleteVisit}
                 addButtonText={addButtonText}
+                onDeletePolicy={deletePolicy}
               />
             );
           })}

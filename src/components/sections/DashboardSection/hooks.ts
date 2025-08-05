@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import dayjs, { Dayjs } from 'dayjs';
-import { addVisit, deleteVisit, createPolicy } from './api';
+import { addVisit, deleteVisit, createPolicy, deletePolicy } from './api';
 import { User, Visit, Policy, ExtendedPolicy } from 'src/types/data';
 import { getRemainingVisaDays } from 'src/utils/countTimeUtils';
 
@@ -112,12 +112,24 @@ export const useManageUserVisits = ({ user }: { user: User | null }) => {
     setPolicies(policies.concat(newPolicy));
   };
 
+  const onDeletePolicy = async ({ id }) => {
+    const result = await deletePolicy({ id });
+
+    if (!result.success) {
+      console.error('Failed to delete policy');
+      return;
+    }
+
+    setPolicies(policies.filter((policy: ExtendedPolicy) => policy._id !== id));
+  };
+
   return {
     policies,
     isLoading,
     addVisit: addVisitToThePolicy,
     deleteVisit: deleteVisitFromThePolicy,
-    addPolicy: addNewPolicy
+    addPolicy: addNewPolicy,
+    deletePolicy: onDeletePolicy
   };
 };
 
