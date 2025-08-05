@@ -2,7 +2,7 @@
 title: Dashboard
 type: Page
 header:
-  title: Nomad App
+  title: Visa Days Counter
 sections:
   - type: DashboardSection
     title: Visits list

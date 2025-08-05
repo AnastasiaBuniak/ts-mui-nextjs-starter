@@ -1,47 +1,16 @@
 import { useState, useEffect } from 'react';
 import dayjs, { Dayjs } from 'dayjs';
-import { addVisit, deleteVisit } from './api';
+import { addVisit, deleteVisit } from 'src/api/visit';
+import { createPolicy, deletePolicy } from 'src/api/policy';
 import { User, Visit, Policy, ExtendedPolicy } from 'src/types/data';
-
-export const useGetUserPolicies = (
-  id: string
-): { userPolicies: Policy[]; isLoading: boolean } => {
-  const [userPolicies, setUserPolicies] = useState<Policy[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/policy/${id}`,
-          {
-            method: 'GET',
-            credentials: 'include'
-          }
-        );
-        const result = await response.json();
-        if (response.ok) {
-          setUserPolicies(result.data.policies);
-          setIsLoading(false);
-        } else {
-          console.error('Failed to fetch user Policies:', result.message);
-        }
-      } catch (error) {
-        console.error('Failed to fetch user Policies:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  return { userPolicies, isLoading };
-};
+import { CreatePolicyParams, DeletePolicyParams } from 'src/types/api-types';
+import { useGetUserPolicies } from './useGetUserPolicies';
 
 export const useManageUserVisits = ({ user }: { user: User | null }) => {
   if (!user) {
     throw new Error('User is required to manage visits');
   }
-  const { userPolicies, isLoading } = useGetUserPolicies(user.id);
+  const { userPolicies, isLoading } = useGetUserPolicies();
   const getTotalDays = (visits: Visit[]) =>
     visits.reduce((sum, v) => sum + dayjs(v.exit).diff(v.entry, 'day') + 1, 0);
   const [policies, setPolicies] = useState<ExtendedPolicy[]>([]);
@@ -56,9 +25,9 @@ export const useManageUserVisits = ({ user }: { user: User | null }) => {
 
   const addVisitToThePolicy =
     (policyId: string) =>
-    async ({ enter, exit }: { enter: Dayjs; exit: Dayjs }) => {
+    async ({ entry, exit }: { entry: Dayjs; exit: Dayjs }) => {
       const result = await addVisit({
-        start: dayjs(enter).valueOf(),
+        start: dayjs(entry).valueOf(),
         exit: dayjs(exit).valueOf(),
         countryId: policyId
       });
@@ -84,7 +53,8 @@ export const useManageUserVisits = ({ user }: { user: User | null }) => {
       setPolicies(policiesWithNewVisit);
     };
 
-  const deleteVisitFromThePolicy = (visitId: string) => async () => {
+  const deleteVisitFromThePolicy = async (visit: Visit) => {
+    const visitId = visit._id;
     await deleteVisit(visitId);
     const updatedPolicies = policies.map((policy: ExtendedPolicy) => {
       if (policy.visits) {
@@ -97,10 +67,35 @@ export const useManageUserVisits = ({ user }: { user: User | null }) => {
     setPolicies(updatedPolicies);
   };
 
+  const addNewPolicy = async ({ name, description }: CreatePolicyParams) => {
+    const result = await createPolicy({ name, description });
+
+    if (!result) {
+      console.error('Failed to add policy');
+      return;
+    }
+    const newPolicy = result.data.policy;
+
+    setPolicies(policies.concat(newPolicy));
+  };
+
+  const onDeletePolicy = async ({ id }: DeletePolicyParams) => {
+    const result = await deletePolicy({ id });
+
+    if (!result.success) {
+      console.error('Failed to delete policy');
+      return;
+    }
+
+    setPolicies(policies.filter((policy: ExtendedPolicy) => policy._id !== id));
+  };
+
   return {
     policies,
     isLoading,
     addVisit: addVisitToThePolicy,
-    deleteVisit: deleteVisitFromThePolicy
+    deleteVisit: deleteVisitFromThePolicy,
+    addPolicy: addNewPolicy,
+    deletePolicy: onDeletePolicy
   };
 };

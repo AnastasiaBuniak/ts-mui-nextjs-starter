@@ -1,10 +1,10 @@
 import React from 'react';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from 'src/components/context/AuthContext';
 import { useManageUserVisits } from './hooks';
-import { Table } from './Table';
-import Form from '../../atoms/Form';
-import { Typography, List, Container, Card, ExtendButton } from '@mui/material';
+import { Typography, List, Container } from '@mui/material';
 import { ExtendedPolicy } from 'src/types/data';
+import { AddNewPolicyBlock } from './AddNewPolicyBlock';
+import { PolicyCard } from './PolicyCard';
 
 export type Props = {
   type: 'DashboardSection';
@@ -14,7 +14,14 @@ export type Props = {
 
 export const DashboardSection: React.FC<Props> = ({ title, addButtonText }) => {
   const { user } = useAuth();
-  const { policies, isLoading, addVisit, deleteVisit } = useManageUserVisits({
+  const {
+    policies,
+    isLoading,
+    addVisit,
+    deleteVisit,
+    addPolicy,
+    deletePolicy
+  } = useManageUserVisits({
     user
   });
 
@@ -31,57 +38,20 @@ export const DashboardSection: React.FC<Props> = ({ title, addButtonText }) => {
           {title}
         </Typography>
         <List disablePadding>
-          {policies.map((country: ExtendedPolicy) => {
+          {policies.map((policy: ExtendedPolicy) => {
             return (
-              <Card
-                key={country._id}
-                elevation={3}
-                sx={{
-                  background: '#6366f1',
-                  color: 'white',
-                  borderRadius: 3,
-                  mb: 4,
-                  p: 4,
-                  textAlign: 'center'
-                }}
-              >
-                <Typography variant="h5" fontWeight={600} sx={{ mb: 1 }}>
-                  {country.name}
-                </Typography>
-                <Typography variant="body2" fontWeight={700}>
-                  {country.totalDays}/180 days
-                </Typography>
-                <Container
-                  sx={{
-                    backgroundColor: '#fff',
-                    borderRadius: 3,
-                    mt: 2,
-                    pt: 2,
-                    pb: 2
-                  }}
-                >
-                  <Table
-                    country={country}
-                    deleteVisit={deleteVisit}
-                    tableHeadStyles={{
-                      borderRadius: 3
-                    }}
-                  />
-                  <Container
-                    sx={{
-                      pt: 4
-                    }}
-                  >
-                    <Form
-                      handleSubmit={addVisit(country._id)}
-                      addButtonText={addButtonText}
-                    />
-                  </Container>
-                </Container>
-              </Card>
+              <PolicyCard
+                key={policy._id}
+                policy={policy}
+                addVisit={addVisit}
+                deleteVisit={deleteVisit}
+                addButtonText={addButtonText}
+                onDeletePolicy={deletePolicy}
+              />
             );
           })}
         </List>
+        <AddNewPolicyBlock addPolicy={addPolicy} />
       </Container>
     </Container>
   );

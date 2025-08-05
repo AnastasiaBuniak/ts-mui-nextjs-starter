@@ -1,9 +1,6 @@
-interface AddVisitInput {
-  start: number;
-  exit: number;
-  countryId: string;
-}
-export const addVisit = async ({ start, exit, countryId }: AddVisitInput) => {
+import { AddVisitParams } from 'src/types/api-types';
+
+export const addVisit = async ({ start, exit, countryId }: AddVisitParams) => {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/visit`, {
       method: 'POST',
@@ -43,26 +40,5 @@ export const deleteVisit = async (id: string) => {
     }
   } catch (error) {
     console.error('Failed to delete visit aaa:', error);
-  }
-};
-
-export const getUserPoliciesByUserId = async (id: string) => {
-  try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/policy/${id}`,
-      {
-        method: 'GET',
-        credentials: 'include'
-      }
-    );
-    const result = await response.json();
-    if (response.ok) {
-      return { policiesList: result.data.policies, loading: false };
-    } else {
-      console.error('Failed to fetch user Policies:', result.message);
-    }
-  } catch (error) {
-    console.error('Failed to fetch user Policies:', error);
-    return { policiesList: [], loading: false };
   }
 };
