@@ -1,10 +1,10 @@
 import React from 'react';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from 'src/components/context/AuthContext';
 import { useManageUserVisits } from './hooks';
 import { Typography, List, Container } from '@mui/material';
 import { ExtendedPolicy } from 'src/types/data';
 import { AddNewPolicyBlock } from './AddNewPolicyBlock';
-import { PolicyCard } from './Policy';
+import { PolicyCard } from './PolicyCard';
 
 export type Props = {
   type: 'DashboardSection';
@@ -38,11 +38,11 @@ export const DashboardSection: React.FC<Props> = ({ title, addButtonText }) => {
           {title}
         </Typography>
         <List disablePadding>
-          {policies.map((country: ExtendedPolicy) => {
+          {policies.map((policy: ExtendedPolicy) => {
             return (
               <PolicyCard
-                key={country._id}
-                country={country}
+                key={policy._id}
+                policy={policy}
                 addVisit={addVisit}
                 deleteVisit={deleteVisit}
                 addButtonText={addButtonText}

@@ -1,43 +1,10 @@
 import { useState, useEffect } from 'react';
 import dayjs, { Dayjs } from 'dayjs';
-import { addVisit, deleteVisit, createPolicy, deletePolicy } from './api';
+import { addVisit, deleteVisit } from 'src/api/visit';
+import { createPolicy, deletePolicy } from 'src/api/policy';
 import { User, Visit, Policy, ExtendedPolicy } from 'src/types/data';
-import { getRemainingVisaDays } from 'src/utils/countTimeUtils';
-
-export const useGetUserPolicies = (): {
-  userPolicies: Policy[];
-  isLoading: boolean;
-} => {
-  const [userPolicies, setUserPolicies] = useState<Policy[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/policies`,
-          {
-            method: 'GET',
-            credentials: 'include'
-          }
-        );
-        const result = await response.json();
-        if (response.ok) {
-          setUserPolicies(result.data.policies);
-          setIsLoading(false);
-        } else {
-          console.error('Failed to fetch user Policies:', result.message);
-        }
-      } catch (error) {
-        console.error('Failed to fetch user Policies:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  return { userPolicies, isLoading };
-};
+import { CreatePolicyParams, DeletePolicyParams } from 'src/types/api-types';
+import { useGetUserPolicies } from './useGetUserPolicies';
 
 export const useManageUserVisits = ({ user }: { user: User | null }) => {
   if (!user) {
@@ -100,7 +67,7 @@ export const useManageUserVisits = ({ user }: { user: User | null }) => {
     setPolicies(updatedPolicies);
   };
 
-  const addNewPolicy = async ({ name, description }) => {
+  const addNewPolicy = async ({ name, description }: CreatePolicyParams) => {
     const result = await createPolicy({ name, description });
 
     if (!result) {
@@ -112,7 +79,7 @@ export const useManageUserVisits = ({ user }: { user: User | null }) => {
     setPolicies(policies.concat(newPolicy));
   };
 
-  const onDeletePolicy = async ({ id }) => {
+  const onDeletePolicy = async ({ id }: DeletePolicyParams) => {
     const result = await deletePolicy({ id });
 
     if (!result.success) {
@@ -130,32 +97,5 @@ export const useManageUserVisits = ({ user }: { user: User | null }) => {
     deleteVisit: deleteVisitFromThePolicy,
     addPolicy: addNewPolicy,
     deletePolicy: onDeletePolicy
-  };
-};
-
-export const useCalculateResult = (visits) => {
-  const [remainingDaysToStay, setRemainingDaysToStay] = useState<number | null>(
-    null
-  );
-  const [usedDays, setUsedDays] = useState<number | null>(null);
-  const [overstayedDays, setOverstayedDays] = useState<number>(0);
-  const [lastDate, setLastDate] = useState<Dayjs | null>(null);
-  const showResult = remainingDaysToStay !== null && !!visits.length;
-
-  const startCalculation = () => {
-    const result = getRemainingVisaDays(visits);
-    setUsedDays(result.usedDays);
-    setRemainingDaysToStay(result.remainingDaysToStay);
-    setLastDate(result.dateToStay);
-    setOverstayedDays(result.overstayedDays);
-  };
-
-  return {
-    usedDays,
-    overstayedDays,
-    lastDate,
-    showResult,
-    remainingDaysToStay,
-    startCalculation
   };
 };

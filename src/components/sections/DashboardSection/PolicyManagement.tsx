@@ -12,14 +12,15 @@ import Button from '@mui/material/Button';
 import { Policy } from 'src/types/data';
 
 import DeleteIcon from '@mui/icons-material/Delete';
+import { DeletePolicyParams } from 'src/types/api-types';
 
 export type Props = {
-  country: Policy;
-  onDeletePolicy: (policyId: string) => void;
+  policy: Policy;
+  onDeletePolicy: ({ id }: DeletePolicyParams) => void;
 };
 
 export const PolicyManagement: React.FC<Props> = ({
-  country,
+  policy,
   onDeletePolicy
 }) => {
   const [openDeleteConfirm, setOpenDeleteConfirm] = useState(false);
@@ -47,7 +48,7 @@ export const PolicyManagement: React.FC<Props> = ({
       <Box sx={{ display: 'flex', gap: 1 }}>
         <IconButton
           aria-label="delete policy"
-          onClick={() => handleDeleteClick(country._id)}
+          onClick={() => handleDeleteClick(policy._id)}
           sx={{ color: 'white' }}
         >
           <DeleteIcon />

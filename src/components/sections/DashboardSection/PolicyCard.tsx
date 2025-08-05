@@ -1,44 +1,30 @@
-import React, { useState } from 'react'; // Import useState
-import Form from '../../atoms/Form';
-import Table from '../../atoms/Table';
-import {
-  Typography,
-  Container,
-  Card,
-  IconButton,
-  Dialog, // Import Dialog
-  DialogTitle, // Import DialogTitle
-  DialogContent, // Import DialogContent
-  DialogActions // Import DialogActions
-} from '@mui/material';
+import React from 'react';
+import Form from 'src/components/atoms/Form';
+import Table from 'src/components/atoms/Table';
+import { Typography, Container, Card } from '@mui/material';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Result from '../../atoms/Result';
-import { Policy } from 'src/types/data';
+import Result from 'src/components/atoms/Result';
+import { ExtendedPolicy } from 'src/types/data';
 import { Visit } from 'src/types/data';
 import { Dayjs } from 'dayjs';
 
-// Import Icons
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
-
 import { useCalculateResult } from './hooks';
 import { PolicyManagement } from './PolicyManagement';
+import { DeletePolicyParams } from 'src/types/api-types';
 
 export type Props = {
-  country: Policy;
+  policy: ExtendedPolicy;
   addVisit: (
     countryId: string
   ) => (data: { entry: Dayjs; exit: Dayjs }) => Promise<void>;
   deleteVisit: (visit: Visit) => Promise<void>;
   addButtonText: string;
-  // New props for policy actions
-  onDeletePolicy: (policyId: string) => void;
-  onEditPolicy: (policyId: string) => void;
+  onDeletePolicy: ({ id }: DeletePolicyParams) => void;
 };
 
 export const PolicyCard: React.FC<Props> = ({
-  country,
+  policy,
   addVisit,
   deleteVisit,
   addButtonText,
@@ -51,11 +37,11 @@ export const PolicyCard: React.FC<Props> = ({
     showResult,
     remainingDaysToStay,
     startCalculation
-  } = useCalculateResult(country.visits);
+  } = useCalculateResult(policy.visits);
 
   return (
     <Card
-      key={country._id}
+      key={policy._id}
       elevation={3}
       sx={{
         background: '#6366f1',
@@ -77,13 +63,13 @@ export const PolicyCard: React.FC<Props> = ({
       >
         <Box sx={{ flexGrow: 1, textAlign: 'center' }}>
           <Typography variant="h5" fontWeight={600} sx={{ mb: 1 }}>
-            {country.name}
+            {policy.name}
           </Typography>
           <Typography variant="body2" fontWeight={700}>
-            {country.totalDays}/180 days
+            {policy.totalDays}/180 days
           </Typography>
         </Box>
-        <PolicyManagement onDeletePolicy={onDeletePolicy} country={country} />
+        <PolicyManagement onDeletePolicy={onDeletePolicy} policy={policy} />
       </Box>
 
       <Container
@@ -96,7 +82,7 @@ export const PolicyCard: React.FC<Props> = ({
         }}
       >
         <Table
-          data={country.visits}
+          data={policy.visits}
           onDelete={(item) => deleteVisit(item as Visit)}
           tableHeadStyles={{
             borderRadius: 3,
@@ -109,7 +95,7 @@ export const PolicyCard: React.FC<Props> = ({
           }}
         >
           <Form
-            handleSubmit={addVisit(country._id)}
+            handleSubmit={addVisit(policy._id)}
             addButtonText={addButtonText}
           />
         </Container>
@@ -128,7 +114,7 @@ export const PolicyCard: React.FC<Props> = ({
             size="large"
             color="primary"
             onClick={startCalculation}
-            disabled={!country.visits.length}
+            disabled={!policy.visits.length}
             sx={{ minWidth: '230px' }}
           >
             Calculate

@@ -1,31 +1,16 @@
 import * as React from 'react';
 import { useAuth } from '../../context/AuthContext';
-// Assuming useManageUserVisits is still needed, otherwise remove if not used in this component
-import { useManageUserVisits } from './hooks';
-import {
-  Typography,
-  List,
-  Container,
-  IconButton,
-  Button,
-  TextField // Import TextField for input fields
-} from '@mui/material';
+import { Container, IconButton, Button, TextField } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 
-// Dialog specific imports
 import { styled } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import CloseIcon from '@mui/icons-material/Close';
+import { CreatePolicyParams } from 'src/types/api-types';
 
-// Assuming ExtendedPolicy and PolicyCard are defined elsewhere
-import { ExtendedPolicy } from 'src/types/data';
-import { PolicyCard } from './Policy';
-import { describe } from 'node:test';
-
-// Styled dialog component (same as your example)
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
     padding: theme.spacing(2)
@@ -35,10 +20,12 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   }
 }));
 
-export type Props = {};
+export type Props = {
+  addPolicy: ({ name, description }: CreatePolicyParams) => void;
+};
 
 export const AddNewPolicyBlock: React.FC<Props> = ({ addPolicy }) => {
-  const { user } = useAuth(); // Keeping if user context is used elsewhere or for future features
+  const { user } = useAuth();
 
   const [open, setOpen] = React.useState(false);
   const [policyName, setPolicyName] = React.useState('');
@@ -50,22 +37,16 @@ export const AddNewPolicyBlock: React.FC<Props> = ({ addPolicy }) => {
 
   const handleClose = () => {
     setOpen(false);
-    // Optionally reset input fields when dialog closes
     setPolicyName('');
     setPolicyDescription('');
   };
 
   const handleCreatePolicy = () => {
-    // Here you would typically handle the creation of the policy
-    // using policyName and policyDescription.
     console.log('Creating policy with:', {
       name: policyName,
       description: policyDescription
     });
     addPolicy({ name: policyName, description: policyDescription });
-
-    // For example, you might call an API or dispatch an action
-    // Then close the dialog
     handleClose();
   };
 
@@ -117,7 +98,7 @@ export const AddNewPolicyBlock: React.FC<Props> = ({ addPolicy }) => {
             variant="outlined"
             value={policyName}
             onChange={(e) => setPolicyName(e.target.value)}
-            sx={{ mb: 2 }} // Margin bottom for spacing
+            sx={{ mb: 2 }}
           />
           <TextField
             margin="dense"
@@ -125,8 +106,8 @@ export const AddNewPolicyBlock: React.FC<Props> = ({ addPolicy }) => {
             label="Description"
             type="text"
             fullWidth
-            multiline // Allows for multiple lines of text
-            rows={4} // Sets the initial number of rows
+            multiline
+            rows={4}
             variant="outlined"
             value={policyDescription}
             onChange={(e) => setPolicyDescription(e.target.value)}
