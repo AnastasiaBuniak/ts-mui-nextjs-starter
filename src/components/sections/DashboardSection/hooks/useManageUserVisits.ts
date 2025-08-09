@@ -1,9 +1,13 @@
 import { useState, useEffect } from 'react';
 import dayjs, { Dayjs } from 'dayjs';
 import { addVisit, deleteVisit } from 'src/api/visit';
-import { createPolicy, deletePolicy } from 'src/api/policy';
+import { createPolicy, editPolicy, deletePolicy } from 'src/api/policy';
 import { User, Visit, Policy, ExtendedPolicy } from 'src/types/data';
-import { CreatePolicyParams, DeletePolicyParams } from 'src/types/api-types';
+import {
+  CreatePolicyParams,
+  DeletePolicyParams,
+  EditPolicyParams
+} from 'src/types/api-types';
 import { useGetUserPolicies } from './useGetUserPolicies';
 
 export const useManageUserVisits = ({ user }: { user: User | null }) => {
@@ -90,12 +94,31 @@ export const useManageUserVisits = ({ user }: { user: User | null }) => {
     setPolicies(policies.filter((policy: ExtendedPolicy) => policy._id !== id));
   };
 
+  const onEditPolicy = async ({ id, name, description }: EditPolicyParams) => {
+    const result = await editPolicy({ id, name, description });
+
+    if (!result) {
+      console.error('Failed to edit policy');
+      return;
+    }
+    const newPolicy = result.data.policy;
+    const updatedPolicies = policies.map((policy: ExtendedPolicy) => {
+      if (policy._id === newPolicy._id) {
+        return { ...policy, name, description };
+      }
+      return policy;
+    });
+
+    setPolicies(updatedPolicies);
+  };
+
   return {
     policies,
     isLoading,
     addVisit: addVisitToThePolicy,
     deleteVisit: deleteVisitFromThePolicy,
     addPolicy: addNewPolicy,
-    deletePolicy: onDeletePolicy
+    deletePolicy: onDeletePolicy,
+    editPolicy: onEditPolicy
   };
 };
