@@ -2,6 +2,7 @@ import * as React from 'react';
 import type * as types from 'types';
 
 import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
 import MuiAppBar from '@mui/material/AppBar';
 import MuiBox from '@mui/material/Box';
 import MuiToolbar from '@mui/material/Toolbar';
@@ -13,6 +14,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import SettingsIcon from '@mui/icons-material/Settings';
 
 import { userHeaderFeatures } from './hooks';
 import { useAuth } from 'src/components/context/AuthContext';
@@ -71,12 +73,7 @@ export const UserHeader: React.FC<Props> = (props) => {
           <div
             style={{ display: 'flex', alignItems: 'center', flex: '1 1 33%' }}
           >
-            <Avatar
-              src={user?.picture}
-              alt={user?.name}
-              sx={{ mr: 2, cursor: 'pointer' }}
-              onClick={handleAvatarClick}
-            />
+            <Avatar src={user?.picture} alt={user?.name} sx={{ mr: 2 }} />
             {user?.name && (
               <MuiBox sx={{ mr: 1, flexGrow: 1 }}>
                 <MuiTypography
@@ -108,17 +105,22 @@ export const UserHeader: React.FC<Props> = (props) => {
             </MuiBox>
           )}
 
-          <Button
-            onClick={logoutUser}
-            variant="contained"
-            style={{ flexGrow: 0 }}
-          >
-            Logout
-          </Button>
+          <MuiBox sx={{ flexGrow: 0 }}>
+            <IconButton
+              aria-label="edit policy"
+              onClick={handleAvatarClick}
+              sx={{ mr: 1 }}
+            >
+              <SettingsIcon color="action" />
+            </IconButton>
+            <Button onClick={logoutUser} variant="contained">
+              Logout
+            </Button>
+          </MuiBox>
         </MuiToolbar>
       </MuiAppBar>
 
-      {/* Dropdown menu under avatar */}
+      {/* Dropdown menu under settings */}
       <Menu
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}

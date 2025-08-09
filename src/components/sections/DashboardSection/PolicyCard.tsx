@@ -11,7 +11,7 @@ import { Dayjs } from 'dayjs';
 
 import { useCalculateResult } from './hooks';
 import { PolicyManagement } from './PolicyManagement';
-import { DeletePolicyParams } from 'src/types/api-types';
+import { DeletePolicyParams, EditPolicyParams } from 'src/types/api-types';
 
 export type Props = {
   policy: ExtendedPolicy;
@@ -21,6 +21,7 @@ export type Props = {
   deleteVisit: (visit: Visit) => Promise<void>;
   addButtonText: string;
   onDeletePolicy: ({ id }: DeletePolicyParams) => void;
+  onEditPolicy: ({ id, name, description }: EditPolicyParams) => void;
 };
 
 export const PolicyCard: React.FC<Props> = ({
@@ -28,7 +29,8 @@ export const PolicyCard: React.FC<Props> = ({
   addVisit,
   deleteVisit,
   addButtonText,
-  onDeletePolicy
+  onDeletePolicy,
+  onEditPolicy
 }) => {
   const {
     usedDays,
@@ -58,6 +60,7 @@ export const PolicyCard: React.FC<Props> = ({
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
+          position: 'relative',
           mb: 1
         }}
       >
@@ -65,11 +68,18 @@ export const PolicyCard: React.FC<Props> = ({
           <Typography variant="h5" fontWeight={600} sx={{ mb: 1 }}>
             {policy.name}
           </Typography>
+          <Typography variant="body1" fontWeight={600} sx={{ mb: 1 }}>
+            {policy.description}
+          </Typography>
           <Typography variant="body2" fontWeight={700}>
             {policy.totalDays}/180 days
           </Typography>
         </Box>
-        <PolicyManagement onDeletePolicy={onDeletePolicy} policy={policy} />
+        <PolicyManagement
+          onDeletePolicy={onDeletePolicy}
+          onEditPolicy={onEditPolicy}
+          policy={policy}
+        />
       </Box>
 
       <Container

@@ -1,4 +1,8 @@
-import { CreatePolicyParams, DeletePolicyParams } from 'src/types/api-types';
+import {
+  EditPolicyParams,
+  CreatePolicyParams,
+  DeletePolicyParams
+} from 'src/types/api-types';
 
 export const createPolicy = async ({
   name,
@@ -40,7 +44,6 @@ export const deletePolicy = async ({ id }: DeletePolicyParams) => {
         }
       }
     );
-    console.log(response);
 
     if (response.ok) {
       return { success: true, message: 'Policy deleted successfully' };
@@ -49,6 +52,40 @@ export const deletePolicy = async ({ id }: DeletePolicyParams) => {
     }
   } catch (error) {
     console.error('Failed to delete policy:', error);
+    return { success: false };
+  }
+};
+
+export const editPolicy = async ({
+  id,
+  name,
+  description
+}: EditPolicyParams) => {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/policy/${id}`,
+      {
+        method: 'PUT',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name,
+          description
+        })
+      }
+    );
+    const result = await response.json();
+
+    if (response.ok) {
+      return result;
+    } else {
+      console.error('Failed to edit policy:', result.message);
+    }
+    return result;
+  } catch (error) {
+    console.error('Failed to edit policy:', error);
     return { success: false };
   }
 };

@@ -20,7 +20,8 @@ export const DashboardSection: React.FC<Props> = ({ title, addButtonText }) => {
     addVisit,
     deleteVisit,
     addPolicy,
-    deletePolicy
+    deletePolicy,
+    editPolicy
   } = useManageUserVisits({
     user
   });
@@ -47,6 +48,7 @@ export const DashboardSection: React.FC<Props> = ({ title, addButtonText }) => {
                 deleteVisit={deleteVisit}
                 addButtonText={addButtonText}
                 onDeletePolicy={deletePolicy}
+                onEditPolicy={editPolicy}
               />
             );
           })}
