@@ -69,7 +69,10 @@ export const UserHeader: React.FC<Props> = (props) => {
         elevation={0}
         data-sb-field-path={fieldPath}
       >
-        <MuiToolbar disableGutters={true} sx={{ flexWrap: 'wrap' }}>
+        <MuiToolbar
+          disableGutters={true}
+          sx={{ flexWrap: 'wrap', pt: 1, pb: 1 }}
+        >
           <div
             style={{ display: 'flex', alignItems: 'center', flex: '1 1 33%' }}
           >

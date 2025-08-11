@@ -80,7 +80,7 @@ export const useManageUserVisits = ({ user }: { user: User | null }) => {
     }
     const newPolicy = result.data.policy;
 
-    setPolicies(policies.concat(newPolicy));
+    setPolicies(policies.concat({ ...newPolicy, totalDays: 1 }));
   };
 
   const onDeletePolicy = async ({ id }: DeletePolicyParams) => {
