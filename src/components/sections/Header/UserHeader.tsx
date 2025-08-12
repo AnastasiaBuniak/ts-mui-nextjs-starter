@@ -15,6 +15,7 @@ import DialogActions from '@mui/material/DialogActions';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import SettingsIcon from '@mui/icons-material/Settings';
+import { useMediaQuery, useTheme } from '@mui/material';
 
 import { userHeaderFeatures } from './hooks';
 import { useAuth } from 'src/components/context/AuthContext';
@@ -61,6 +62,9 @@ export const UserHeader: React.FC<Props> = (props) => {
     deleteUserAccount();
   };
 
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
   return (
     <>
       <MuiAppBar
@@ -71,37 +75,62 @@ export const UserHeader: React.FC<Props> = (props) => {
       >
         <MuiToolbar
           disableGutters={true}
-          sx={{ flexWrap: 'wrap', pt: 1, pb: 1 }}
+          sx={{
+            flexWrap: 'wrap',
+            pt: isMobile ? 2 : 1,
+            pb: isMobile ? 2 : 1,
+            flexDirection: isMobile ? 'column' : 'row',
+            alignItems: isMobile ? 'center' : 'flex-start'
+          }}
         >
-          <div
-            style={{ display: 'flex', alignItems: 'center', flex: '1 1 33%' }}
+          <MuiBox
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              flex: isMobile ? '1 1 100%' : '1 1 33%',
+              justifyContent: isMobile ? 'center' : 'flex-start',
+              mb: isMobile ? 2 : 0
+            }}
           >
-            <Avatar src={user?.picture} alt={user?.name} sx={{ mr: 2 }} />
+            <Avatar
+              src={user?.picture}
+              alt={user?.name}
+              sx={{ mr: isMobile ? 0 : 2 }}
+            />
             {user?.name && (
-              <MuiBox sx={{ mr: 1, flexGrow: 1 }}>
+              <MuiBox sx={{ ml: isMobile ? 2 : 0, flexGrow: 1 }}>
                 <MuiTypography
                   component="p"
                   variant="subtitle1"
                   color="text.secondary"
-                  noWrap
+                  noWrap={!isMobile}
                   data-sb-field-path=".user.name"
-                  sx={{ fontWeight: 'bold' }}
+                  sx={{
+                    fontWeight: 'bold',
+                    textAlign: isMobile ? 'center' : 'left'
+                  }}
                 >
                   Welcome, {user?.name}!
                 </MuiTypography>
               </MuiBox>
             )}
-          </div>
+          </MuiBox>
 
           {title && (
-            <MuiBox sx={{ mb: 1, mr: 2, flexGrow: 1, flex: '1 1 33%' }}>
+            <MuiBox
+              sx={{
+                mb: isMobile ? 2 : 1,
+                mr: isMobile ? 0 : 2,
+                flexGrow: 1,
+                flex: isMobile ? '1 1 100%' : '1 1 33%',
+                textAlign: isMobile ? 'center' : 'left'
+              }}
+            >
               <MuiTypography
-                component="p"
-                variant="h5"
+                component="h1"
+                variant="h6"
                 color="text.primary"
-                noWrap
                 data-sb-field-path=".title"
-                style={{ fontWeight: 'bold' }}
               >
                 {title}
               </MuiTypography>
