@@ -86,6 +86,7 @@ export const PolicyCard: React.FC<Props> = ({
         sx={{
           backgroundColor: '#fff',
           borderRadius: 3,
+          overflow: 'hidden',
           mt: 2,
           pt: 2,
           pb: 2
