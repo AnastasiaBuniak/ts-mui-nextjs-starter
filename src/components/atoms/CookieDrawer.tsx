@@ -54,8 +54,8 @@ export const CookieDrawer: React.FC<{ consentCopy: string }> = ({
         <Typography component="p" variant="h6" color="text.primary">
           Disclaimer & Cookies Notice
         </Typography>
-        <Typography component="p" variant="body1" color="text.primary">
-          {consentCopy}
+        <Typography component="div" variant="body1" color="text.primary">
+          <div dangerouslySetInnerHTML={{ __html: consentCopy }} />
         </Typography>
       </Box>
     </Drawer>
