@@ -1,26 +1,32 @@
 {
-    "type": "Config",
-    "favicon": "/images/favicon.svg",
-    "header": {
-        "title": "",
-        "navLinks": [
-            {
-                "type": "Link",
-                "label": "Home",
-                "url": "/",
-                "underline": "hover"
-            },
-            {
-                "type": "Link",
-                "label": "Disclaimer",
-                "url": "/about",
-                "underline": "hover"
-            }
-        ]
-    },
-    "footer": {
-        "copyrightText": "",
-        "navLinks": []
-    },
-    "consentCopy": "This website uses cookies to enhance your experience. The visa days calculator is provided for informational purposes only and does not constitute legal advice. Users are responsible for verifying their visa requirements with official sources. By continuing to use this site, you acknowledge and accept these terms."
+  "type": "Config",
+  "favicon": "/images/favicon.svg",
+  "header": {
+    "title": "",
+    "navLinks": [
+      {
+        "type": "Link",
+        "label": "Home",
+        "url": "/",
+        "underline": "hover"
+      },
+      {
+        "type": "Link",
+        "label": "Terms",
+        "url": "/terms",
+        "underline": "hover"
+      },
+      {
+        "type": "Link",
+        "label": "Privacy Policy",
+        "url": "/privacy",
+        "underline": "hover"
+      }
+    ]
+  },
+  "footer": {
+    "copyrightText": "",
+    "navLinks": []
+  },
+  "consentCopy": "This website uses cookies to enhance your experience. The Visa Days Calculator is provided 'as is' and does not constitute legal or immigration advice. We make no guarantees of accuracy. You're responsible for verifying results with official sources. Read more in our <a href='/terms'>Terms</a> and <a href='/privacy'>Privacy Policy</a>."
 }
