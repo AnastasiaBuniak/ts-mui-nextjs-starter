@@ -2,7 +2,7 @@ import { AddVisitParams } from 'src/types/api-types';
 
 export const addVisit = async ({ start, exit, countryId }: AddVisitParams) => {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/visit`, {
+    const response = await fetch(`/api/proxy/visit`, {
       method: 'POST',
       credentials: 'include',
       headers: {
@@ -28,13 +28,10 @@ export const addVisit = async ({ start, exit, countryId }: AddVisitParams) => {
 
 export const deleteVisit = async (id: string) => {
   try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/visit/${id}`,
-      {
-        method: 'DELETE',
-        credentials: 'include'
-      }
-    );
+    const response = await fetch(`/api/proxy/visit/${id}`, {
+      method: 'DELETE',
+      credentials: 'include'
+    });
     if (response.ok) {
       return;
     }

@@ -11,13 +11,10 @@ export const useGetUserPolicies = (): {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/policies`,
-          {
-            method: 'GET',
-            credentials: 'include'
-          }
-        );
+        const response = await fetch(`/api/proxy/policies`, {
+          method: 'GET',
+          credentials: 'include'
+        });
         const result = await response.json();
         if (response.ok) {
           setUserPolicies(result.data.policies);
