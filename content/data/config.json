@@ -21,6 +21,18 @@
         "label": "Privacy Policy",
         "url": "/privacy",
         "underline": "hover"
+      },
+      {
+        "type": "Link",
+        "label": "Signup",
+        "url": "/signup",
+        "underline": "hover"
+      },
+      {
+        "type": "Link",
+        "label": "Login",
+        "url": "/login",
+        "underline": "hover"
       }
     ]
   },
