@@ -1,6 +1,6 @@
 export const logout = async () => {
   try {
-    return await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/logout`, {
+    return await fetch(`/api/proxy/auth/logout`, {
       method: 'POST',
       credentials: 'include'
     });

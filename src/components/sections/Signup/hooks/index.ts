@@ -13,7 +13,7 @@ export const useGoogleSso = (
         setIsLoading(true);
         handler(true);
         try {
-          const response = await fetch(`api/auth/google`, {
+          const response = await fetch(`api/proxy/auth/google`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'

@@ -23,7 +23,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     const fetchMe = async () => {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/me`, {
+        const res = await fetch(`/api/proxy/me`, {
           credentials: 'include'
         });
         if (res.ok) {

@@ -1,15 +1,12 @@
 export const deleteAccount = async ({ userId }: { userId: string }) => {
   try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/user/${userId}`,
-      {
-        method: 'DELETE',
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json'
-        }
+    const response = await fetch(`/api/proxy/user/${userId}`, {
+      method: 'DELETE',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
       }
-    );
+    });
     const result = await response.json();
 
     if (response.ok) {

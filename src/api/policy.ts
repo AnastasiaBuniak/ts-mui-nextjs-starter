@@ -9,7 +9,7 @@ export const createPolicy = async ({
   description
 }: CreatePolicyParams) => {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/policy`, {
+    const response = await fetch(`/api/proxy/policy`, {
       method: 'POST',
       credentials: 'include',
       headers: {
@@ -34,16 +34,13 @@ export const createPolicy = async ({
 
 export const deletePolicy = async ({ id }: DeletePolicyParams) => {
   try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/policy/${id}`,
-      {
-        method: 'DELETE',
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json'
-        }
+    const response = await fetch(`/api/proxy/policy/${id}`, {
+      method: 'DELETE',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
       }
-    );
+    });
 
     if (response.ok) {
       return { success: true, message: 'Policy deleted successfully' };
@@ -62,20 +59,17 @@ export const editPolicy = async ({
   description
 }: EditPolicyParams) => {
   try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/policy/${id}`,
-      {
-        method: 'PUT',
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          name,
-          description
-        })
-      }
-    );
+    const response = await fetch(`/api/proxy/policy/${id}`, {
+      method: 'PUT',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name,
+        description
+      })
+    });
     const result = await response.json();
 
     if (response.ok) {
