@@ -2,6 +2,7 @@ import React from 'react';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import Box from '@mui/material/Box';
+import NextLink from 'next/link';
 
 interface ResultProps {
   remainingDaysToStay: number;
@@ -57,6 +58,16 @@ const Result: React.FC<ResultProps> = ({
             <b>{lastDate}</b>, if you use all days at once.
           </div>
         )}
+        <div>
+          Want to persist the calculations results?{' '}
+          <NextLink
+            href="/signup"
+            style={{ color: 'inherit', textDecoration: 'underline' }}
+          >
+            Register with Google
+          </NextLink>{' '}
+          for free and access it whenever you need it.
+        </div>
       </Alert>
     </Box>
   );
