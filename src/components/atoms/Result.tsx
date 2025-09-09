@@ -9,13 +9,15 @@ interface ResultProps {
   usedDays: number | null;
   lastDate: string;
   overstayedDays: number;
+  onRegisterClick: () => void;
 }
 
 const Result: React.FC<ResultProps> = ({
   remainingDaysToStay,
   usedDays,
   lastDate,
-  overstayedDays
+  overstayedDays,
+  onRegisterClick
 }) => {
   return (
     <Box mb={4} sx={{ padding: 2, textAlign: 'center' }}>
@@ -61,6 +63,7 @@ const Result: React.FC<ResultProps> = ({
         <div>
           Want to persist the calculations results?{' '}
           <NextLink
+            onClick={onRegisterClick}
             href="/signup"
             style={{ color: 'inherit', textDecoration: 'underline' }}
           >

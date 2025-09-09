@@ -1,6 +1,6 @@
 import React from 'react';
 import type * as types from 'types';
-import { Dayjs } from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -10,6 +10,7 @@ import { CALCULATION_SECTION_ID } from 'src/utils/constants';
 import Result from 'src/components/atoms/Result';
 import { useVisaDaysCalculation } from './hooks';
 import { VisitItem } from 'src/types/data';
+import Cookies from 'js-cookie';
 
 export type Props = types.CalculationSection & types.StackbitFieldPath;
 
@@ -24,6 +25,16 @@ export const CalculationSection: React.FC<Props> = (props) => {
     deleteDate,
     addDate
   } = useVisaDaysCalculation();
+
+  const onRegisterClick = () => {
+    const rawData = datesData.map(({ entry, exit }) => {
+      return {
+        entry: dayjs(entry).valueOf(),
+        exit: dayjs(exit).valueOf()
+      };
+    });
+    Cookies.set('datesData', JSON.stringify(rawData), { expires: 1 / 24 });
+  };
 
   return (
     <Card
@@ -54,6 +65,7 @@ export const CalculationSection: React.FC<Props> = (props) => {
           usedDays={usedDays}
           overstayedDays={overstayedDays}
           lastDate={(lastDate as Dayjs).format('DD/MM/YYYY')}
+          onRegisterClick={onRegisterClick}
         />
       )}
     </Card>
