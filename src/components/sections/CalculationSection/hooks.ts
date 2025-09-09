@@ -1,5 +1,5 @@
 import dayjs, { Dayjs } from 'dayjs';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { getRemainingVisaDays } from 'src/utils/countTimeUtils';
 import { VisitItem } from 'src/types/data';
 
@@ -16,6 +16,14 @@ export const useVisaDaysCalculation = () => {
   const [overstayedDays, setOverstayedDays] = useState<number>(0);
   const [lastDate, setLastDate] = useState<Dayjs | null>(null);
   const showResult = remainingDaysToStay !== null && !!datesData.length;
+
+  const startCalculation = () => {
+    const result = getRemainingVisaDays(datesData);
+    setUsedDays(result.usedDays);
+    setRemainingDaysToStay(result.remainingDaysToStay);
+    setLastDate(result.dateToStay);
+    setOverstayedDays(result.overstayedDays);
+  };
 
   const addDate = ({
     entry = null,
@@ -40,13 +48,11 @@ export const useVisaDaysCalculation = () => {
     setRemainingDaysToStay(null);
   };
 
-  const startCalculation = () => {
-    const result = getRemainingVisaDays(datesData);
-    setUsedDays(result.usedDays);
-    setRemainingDaysToStay(result.remainingDaysToStay);
-    setLastDate(result.dateToStay);
-    setOverstayedDays(result.overstayedDays);
-  };
+  useEffect(() => {
+    if (datesData.length) {
+      startCalculation();
+    }
+  }, [datesData]);
 
   return {
     datesData,

@@ -2,7 +2,6 @@ import React from 'react';
 import type * as types from 'types';
 import { Dayjs } from 'dayjs';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import Form from 'src/components/atoms/Form';
@@ -23,8 +22,7 @@ export const CalculationSection: React.FC<Props> = (props) => {
     showResult,
     remainingDaysToStay,
     deleteDate,
-    addDate,
-    startCalculation
+    addDate
   } = useVisaDaysCalculation();
 
   return (
@@ -50,27 +48,6 @@ export const CalculationSection: React.FC<Props> = (props) => {
         )}
       </Box>
       <Form {...props} handleSubmit={addDate} />
-      <Box
-        mb={4}
-        sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          gap: 2,
-          justifyContent: 'center'
-        }}
-      >
-        <Button
-          variant="contained"
-          type="button"
-          size="large"
-          color="primary"
-          onClick={startCalculation}
-          disabled={!datesData.length}
-          sx={{ minWidth: '230px' }}
-        >
-          Calculate
-        </Button>
-      </Box>
       {showResult && (
         <Result
           remainingDaysToStay={remainingDaysToStay as number}
