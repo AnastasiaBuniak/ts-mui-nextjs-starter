@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Form from 'src/components/atoms/Form';
 import Table from 'src/components/atoms/Table';
 import { Typography, Container, Card } from '@mui/material';
@@ -15,6 +15,7 @@ import { DeletePolicyParams, EditPolicyParams } from 'src/types/api-types';
 
 export type Props = {
   policy: ExtendedPolicy;
+  visits: Visit[];
   addVisit: (
     countryId: string
   ) => (data: { entry: Dayjs; exit: Dayjs }) => Promise<void>;
@@ -26,6 +27,7 @@ export type Props = {
 
 export const PolicyCard: React.FC<Props> = ({
   policy,
+  visits,
   addVisit,
   deleteVisit,
   addButtonText,
@@ -39,7 +41,13 @@ export const PolicyCard: React.FC<Props> = ({
     showResult,
     remainingDaysToStay,
     startCalculation
-  } = useCalculateResult(policy.visits);
+  } = useCalculateResult(visits);
+
+  useEffect(() => {
+    if (visits.length) {
+      startCalculation();
+    }
+  }, [visits.length]);
 
   return (
     <Card
@@ -93,7 +101,7 @@ export const PolicyCard: React.FC<Props> = ({
         }}
       >
         <Table
-          data={policy.visits}
+          data={visits}
           onDelete={(item) => deleteVisit(item as Visit)}
           tableHeadStyles={{
             borderRadius: 3,
@@ -110,33 +118,14 @@ export const PolicyCard: React.FC<Props> = ({
             addButtonText={addButtonText}
           />
         </Container>
-        <Box
-          mb={4}
-          sx={{
-            display: 'flex',
-            flexDirection: 'row',
-            gap: 2,
-            justifyContent: 'center'
-          }}
-        >
-          <Button
-            variant="contained"
-            type="button"
-            size="large"
-            color="primary"
-            onClick={startCalculation}
-            disabled={!policy.visits.length}
-            sx={{ minWidth: '230px' }}
-          >
-            Calculate
-          </Button>
-        </Box>
+
         {showResult && (
           <Result
             remainingDaysToStay={remainingDaysToStay as number}
             usedDays={usedDays}
             overstayedDays={overstayedDays}
             lastDate={(lastDate as Dayjs).format('DD/MM/YYYY')}
+            isSignedIn={true}
           />
         )}
       </Container>

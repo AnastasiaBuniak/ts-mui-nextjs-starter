@@ -9,7 +9,8 @@ interface ResultProps {
   usedDays: number | null;
   lastDate: string;
   overstayedDays: number;
-  onRegisterClick: () => void;
+  onRegisterClick?: () => void;
+  isSignedIn?: boolean;
 }
 
 const Result: React.FC<ResultProps> = ({
@@ -17,7 +18,8 @@ const Result: React.FC<ResultProps> = ({
   usedDays,
   lastDate,
   overstayedDays,
-  onRegisterClick
+  onRegisterClick,
+  isSignedIn = false
 }) => {
   return (
     <Box mb={4} sx={{ padding: 2, textAlign: 'center' }}>
@@ -61,15 +63,20 @@ const Result: React.FC<ResultProps> = ({
           </div>
         )}
         <div>
-          Want to persist the calculations results?{' '}
-          <NextLink
-            onClick={onRegisterClick}
-            href="/signup"
-            style={{ color: 'inherit', textDecoration: 'underline' }}
-          >
-            Register with Google
-          </NextLink>{' '}
-          for free and access it whenever you need it.
+          {isSignedIn ? null : (
+            <>
+              {' '}
+              Want to persist the calculations results?{' '}
+              <NextLink
+                onClick={onRegisterClick}
+                href="/signup"
+                style={{ color: 'inherit', textDecoration: 'underline' }}
+              >
+                Register with Google
+              </NextLink>{' '}
+              for free and access it whenever you need it.
+            </>
+          )}
         </div>
       </Alert>
     </Box>

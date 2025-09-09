@@ -72,6 +72,7 @@ export const DashboardSection: React.FC<Props> = ({ title, addButtonText }) => {
               <PolicyCard
                 key={policy._id}
                 policy={policy}
+                visits={policy.visits || []}
                 addVisit={addVisit}
                 deleteVisit={deleteVisit}
                 addButtonText={addButtonText}

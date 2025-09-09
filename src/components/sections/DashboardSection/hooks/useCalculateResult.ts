@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Dayjs } from 'dayjs';
 import { Visit } from 'src/types/data';
 import { getRemainingVisaDays } from 'src/utils/countTimeUtils';
