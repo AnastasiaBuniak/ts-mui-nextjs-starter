@@ -24,6 +24,12 @@
       },
       {
         "type": "Link",
+        "label": "FAQ",
+        "url": "/faq",
+        "underline": "hover"
+      },
+      {
+        "type": "Link",
         "label": "Signup",
         "url": "/signup",
         "underline": "hover"

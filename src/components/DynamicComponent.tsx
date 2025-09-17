@@ -8,6 +8,7 @@ import type { Props as SignupProps } from './sections/Signup';
 import type { Props as DashboardProps } from './sections/DashboardSection';
 import type { Props as PrivacyPolicyProps } from './sections/PrivacyPolicy';
 import type { Props as TermsProps } from './sections/Terms';
+import type { Props as AnswersListProps } from './sections/AnswersList';
 
 export type Props =
   | CardsSectionProps
@@ -17,7 +18,8 @@ export type Props =
   | SignupProps
   | PrivacyPolicyProps
   | TermsProps
-  | DashboardProps;
+  | DashboardProps
+  | AnswersListProps;
 
 type ComponentsMap = {
   [P in Props as P['type']]: ComponentType<P>;
@@ -38,6 +40,10 @@ const componentsMap: ComponentsMap = {
   ),
 
   Terms: dynamic(() => namedComponent(import('./sections/Terms'), 'Terms')),
+
+  AnswersList: dynamic(() =>
+    namedComponent(import('./sections/AnswersList'), 'AnswersList')
+  ),
 
   CalculationSection: dynamic(() =>
     namedComponent(
