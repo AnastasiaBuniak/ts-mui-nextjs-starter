@@ -3,7 +3,7 @@ title: Home
 type: Page
 sections:
   - type: HeroSection
-    title: Visa Days Calculator 
+    title: Visa Days Calculator
     subtitle: 'Check your visa days remaining for Schengen, UK, and other regions. For free. In seconds.'
     text: >
       Easily calculate the days you've spent or can stay in a country based on the visa rules. Whether for Schengen Area, UK, or others, our tool simplifies your travel planning. Use our free visa calculator to manage your travel days effectively. Whether you're navigating the 90/180 rule, checking visitor limits, or tracking multiple countries' visas, we’ve got you covered!
@@ -26,17 +26,18 @@ sections:
       mobileUrl: /images/calculator_visa_online_mobile.webp
       altText: Online Visa Calculator image
   - type: InformationSection
-    title: Logic for 90/180 visa rule calculation
+    title: General Rules of 90/180 visa rule calculation
     description: >
       The 90/180-day rule is a common visa regulation used in the Schengen Area and some other countries. The rule states that:
-    keyPoints: 
+    keyPoints:
       - A visitor cannot stay in the Schengen Zone for more than 90 days within any rolling 180-day period.
       - The 180-day period is not fixed; it’s a moving window, meaning each new day moves the counting period forward.
       - The rule applies to all short-term visa-free travelers (e.g., UK, US, Canadian, and Australian passport holders visiting Schengen).
+      - Having ETIAS does not change your allowance under the 90/180 rule — you still must not exceed 90 days in any 180-day period.
   - type: InformationSection
     title: Key rules for calculating visa days. How to calculate?
-    description: 
-    keyPoints: 
+    description:
+    keyPoints:
       - Every new entry counts towards the rolling 180-day window
       - Exiting doesn’t reset the count; previous stays in the past 180 days still matter
       - Multiple stays are combined; if a person leaves and re-enters, previous days are still counted
