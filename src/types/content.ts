@@ -69,6 +69,12 @@ export type Header = {
   type: 'Header';
   title?: string;
   navLinks?: Link[];
+  welcomeText?: string;
+  logoutText?: string;
+  deleteAccountText?: string;
+  deleteConfirmText?: string;
+  deleteCancelText?: string;
+  deleteConfirmButtonText?: string;
 };
 
 export type HeroSection = {

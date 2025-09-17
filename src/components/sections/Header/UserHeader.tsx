@@ -29,7 +29,17 @@ export type Props = types.Header &
   };
 
 export const UserHeader: React.FC<Props> = (props) => {
-  const { title, 'data-sb-object-id': objectId, user } = props;
+  const {
+    title,
+    'data-sb-object-id': objectId,
+    user,
+    welcomeText,
+    deleteAccountText,
+    deleteCancelText,
+    deleteConfirmButtonText,
+    deleteConfirmText,
+    logoutText
+  } = props;
   const userAuthData = useAuth();
 
   const { logoutUser, deleteUserAccount } = userHeaderFeatures({
@@ -110,7 +120,7 @@ export const UserHeader: React.FC<Props> = (props) => {
                     textAlign: isMobile ? 'center' : 'left'
                   }}
                 >
-                  Welcome, {user?.name}!
+                  {welcomeText} {user?.name}!
                 </MuiTypography>
               </MuiBox>
             )}
@@ -146,7 +156,7 @@ export const UserHeader: React.FC<Props> = (props) => {
               <SettingsIcon color="action" />
             </IconButton>
             <Button onClick={logoutUser} variant="contained">
-              Logout
+              {logoutText}
             </Button>
           </MuiBox>
         </MuiToolbar>
@@ -160,27 +170,25 @@ export const UserHeader: React.FC<Props> = (props) => {
         anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
         transformOrigin={{ vertical: 'top', horizontal: 'left' }}
       >
-        <MenuItem onClick={handleDeleteClick}>Delete Account</MenuItem>
+        <MenuItem onClick={handleDeleteClick}>{deleteAccountText}</MenuItem>
       </Menu>
 
       {/* Delete confirmation dialog */}
       <Dialog open={openDialog} onClose={handleCloseDialog}>
-        <DialogTitle>Delete Account</DialogTitle>
+        <DialogTitle>{deleteAccountText}</DialogTitle>
         <DialogContent>
-          <MuiTypography>
-            Are you sure you want to delete your account?
-          </MuiTypography>
+          <MuiTypography>{deleteConfirmText}</MuiTypography>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCloseDialog} color="primary">
-            No
+            {deleteCancelText}
           </Button>
           <Button
             onClick={handleConfirmDelete}
             color="error"
             variant="contained"
           >
-            Yes
+            {deleteConfirmButtonText}
           </Button>
         </DialogActions>
       </Dialog>

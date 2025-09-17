@@ -51,7 +51,6 @@ export const PolicyManagement: React.FC<Props> = ({
   };
 
   const handleConfirmEdit = () => {
-    // Add your edit logic here
     setEditOpen(false);
     onEditPolicy({
       id: policy._id,

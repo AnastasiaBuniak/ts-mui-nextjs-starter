@@ -3,7 +3,6 @@ import Form from 'src/components/atoms/Form';
 import Table from 'src/components/atoms/Table';
 import { Typography, Container, Card } from '@mui/material';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Result from 'src/components/atoms/Result';
 import { ExtendedPolicy } from 'src/types/data';
 import { Visit } from 'src/types/data';
