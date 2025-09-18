@@ -11,6 +11,7 @@ interface FormProps {
   enterTitle?: string;
   exitTitle?: string;
   addButtonText?: string;
+  selectedDateText: string;
   handleSubmit: ({ entry, exit }: { entry: Dayjs; exit: Dayjs }) => void;
 }
 
@@ -45,10 +46,12 @@ const Form: React.FC<FormProps> = (props) => {
       {isMobile ? (
         <>
           <CalendarButton
+            selectedDateText={props.selectedDateText}
             label={props.enterTitle as string}
             onChange={(val) => setEnter(val)}
           />
           <CalendarButton
+            selectedDateText={props.selectedDateText}
             label={props.exitTitle as string}
             onChange={(val) => setExit(val)}
           />

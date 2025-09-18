@@ -57,6 +57,13 @@ export type CalculationSection = {
   enterTitle?: string;
   exitTitle?: string;
   addButtonText?: string;
+  selectedDateText: string;
+  resultText: {
+    daysRemainToStay: string;
+    wantToPersistResults: string;
+    registerCta: string;
+    registerCta2: string;
+  };
 };
 
 export type Footer = {

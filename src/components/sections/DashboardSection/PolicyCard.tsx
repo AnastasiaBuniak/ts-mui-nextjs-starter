@@ -22,6 +22,13 @@ export type Props = {
   addButtonText: string;
   onDeletePolicy: ({ id }: DeletePolicyParams) => void;
   onEditPolicy: ({ id, name, description }: EditPolicyParams) => void;
+  resultText: {
+    daysRemainToStay: string;
+    wantToPersistResults: string;
+    registerCta: string;
+    registerCta2: string;
+  };
+  selectedDateText: string;
 };
 
 export const PolicyCard: React.FC<Props> = ({
@@ -31,7 +38,9 @@ export const PolicyCard: React.FC<Props> = ({
   deleteVisit,
   addButtonText,
   onDeletePolicy,
-  onEditPolicy
+  onEditPolicy,
+  resultText,
+  selectedDateText
 }) => {
   const {
     usedDays,
@@ -115,11 +124,13 @@ export const PolicyCard: React.FC<Props> = ({
           <Form
             handleSubmit={addVisit(policy._id)}
             addButtonText={addButtonText}
+            selectedDateText={selectedDateText}
           />
         </Container>
 
         {showResult && (
           <Result
+            resultText={resultText}
             remainingDaysToStay={remainingDaysToStay as number}
             usedDays={usedDays}
             overstayedDays={overstayedDays}

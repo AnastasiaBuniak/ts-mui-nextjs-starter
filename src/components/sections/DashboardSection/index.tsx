@@ -18,9 +18,21 @@ export type Props = {
   type: 'DashboardSection';
   title: string;
   addButtonText: string;
+  selectedDateText: string;
+  resultText: {
+    daysRemainToStay: string;
+    wantToPersistResults: string;
+    registerCta: string;
+    registerCta2: string;
+  };
 };
 
-export const DashboardSection: React.FC<Props> = ({ title, addButtonText }) => {
+export const DashboardSection: React.FC<Props> = ({
+  title,
+  addButtonText,
+  selectedDateText,
+  resultText
+}) => {
   const { user } = useAuth();
   const {
     policies,
@@ -94,6 +106,8 @@ export const DashboardSection: React.FC<Props> = ({ title, addButtonText }) => {
                 addButtonText={addButtonText}
                 onDeletePolicy={deletePolicy}
                 onEditPolicy={editPolicy}
+                selectedDateText={selectedDateText}
+                resultText={resultText}
               />
             );
           })}

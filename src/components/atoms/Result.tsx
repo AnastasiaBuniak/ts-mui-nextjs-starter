@@ -11,6 +11,12 @@ interface ResultProps {
   overstayedDays: number;
   onRegisterClick?: () => void;
   isSignedIn?: boolean;
+  resultText: {
+    daysRemainToStay: string;
+    wantToPersistResults: string;
+    registerCta: string;
+    registerCta2: string;
+  };
 }
 
 const Result: React.FC<ResultProps> = ({
@@ -19,7 +25,8 @@ const Result: React.FC<ResultProps> = ({
   lastDate,
   overstayedDays,
   onRegisterClick,
-  isSignedIn = false
+  isSignedIn = false,
+  resultText
 }) => {
   return (
     <Box mb={4} sx={{ padding: 2, textAlign: 'center' }}>
@@ -38,7 +45,7 @@ const Result: React.FC<ResultProps> = ({
         }}
       >
         <AlertTitle sx={{ fontWeight: 'bold' }}>
-          Days remain to stay: {remainingDaysToStay}
+          {resultText.daysRemainToStay}: {remainingDaysToStay}
         </AlertTitle>
         <div>
           You have <b>used {usedDays} days</b> of stay in the last 180 days
@@ -66,15 +73,15 @@ const Result: React.FC<ResultProps> = ({
           {isSignedIn ? null : (
             <>
               {' '}
-              Want to persist the calculations results?{' '}
+              {resultText.wantToPersistResults}{' '}
               <NextLink
                 onClick={onRegisterClick}
                 href="/signup"
                 style={{ color: 'inherit', textDecoration: 'underline' }}
               >
-                Register with Google
+                {resultText.registerCta}
               </NextLink>{' '}
-              for free and access it whenever you need it.
+              {resultText.registerCta2}
             </>
           )}
         </div>
