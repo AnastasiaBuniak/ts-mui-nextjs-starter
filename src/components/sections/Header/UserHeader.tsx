@@ -99,6 +99,32 @@ export const UserHeader: React.FC<Props> = (props) => {
             justifyContent: 'space-between'
           }}
         >
+          {title && (
+            <MuiBox
+              sx={{
+                position: isMobile ? 'relative' : 'absolute',
+                left: isMobile ? 'unset' : '50%',
+                transform: isMobile ? 'unset' : 'translateX(-50%)',
+                mb: isMobile ? 2 : 0,
+                mr: isMobile ? 0 : 2,
+                flexGrow: 1,
+                // display: isMobile ? 'none' : 'block',
+                flex: isMobile ? '1 1 100%' : '1 1 33%',
+                textAlign: isMobile ? 'center' : 'left'
+              }}
+            >
+              <a href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+                <MuiTypography
+                  component="h1"
+                  variant="h5"
+                  data-sb-field-path=".title"
+                >
+                  {title}
+                </MuiTypography>
+              </a>
+            </MuiBox>
+          )}
+
           <MuiBox
             sx={{
               display: 'flex',
@@ -130,31 +156,6 @@ export const UserHeader: React.FC<Props> = (props) => {
               </MuiBox>
             )}
           </MuiBox>
-
-          {title && (
-            <MuiBox
-              sx={{
-                position: 'absolute',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                mb: isMobile ? 2 : 0,
-                mr: isMobile ? 0 : 2,
-                flexGrow: 1,
-                flex: isMobile ? '1 1 100%' : '1 1 33%',
-                textAlign: isMobile ? 'center' : 'left'
-              }}
-            >
-              <a href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-                <MuiTypography
-                  component="h1"
-                  variant="h5"
-                  data-sb-field-path=".title"
-                >
-                  {title}
-                </MuiTypography>
-              </a>
-            </MuiBox>
-          )}
 
           <MuiBox sx={{ flex: '0 0 auto' }}>
             <IconButton
