@@ -62,8 +62,7 @@ export const Header: React.FC<Props> = (props) => {
                   key={index}
                   {...link}
                   sx={{
-                    ...(index !== navLinks.length - 1 && { mr: 2 }),
-                    mb: 1
+                    ...(index !== navLinks.length - 1 && { mr: 2 })
                   }}
                   data-sb-field-path={`.${index}`}
                 />
@@ -74,7 +73,7 @@ export const Header: React.FC<Props> = (props) => {
                 <Avatar
                   src={user?.picture}
                   alt={user?.name}
-                  sx={{ cursor: 'pointer', ml: 2, mt: 1 }}
+                  sx={{ cursor: 'pointer', ml: 2 }}
                 />
               </NextLink>
             ) : (
@@ -84,14 +83,14 @@ export const Header: React.FC<Props> = (props) => {
                   label="Signup"
                   url="/signup"
                   underline="hover"
-                  sx={{ ml: 2, mb: 1 }}
+                  sx={{ ml: 2 }}
                 />
                 <Link
                   type="Link"
                   label="Login"
                   url="/login"
                   underline="hover"
-                  sx={{ ml: 2, mb: 1 }}
+                  sx={{ ml: 2 }}
                 />
               </>
             )}
