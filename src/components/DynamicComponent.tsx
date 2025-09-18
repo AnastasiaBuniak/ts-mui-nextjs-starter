@@ -6,6 +6,7 @@ import type { Props as CalculationSectionProps } from './sections/CalculationSec
 import type { Props as InformationSectionProps } from './sections/InformationSection';
 import type { Props as SignupProps } from './sections/Signup';
 import type { Props as DashboardProps } from './sections/DashboardSection';
+import type { Props as PolicyProps } from './sections/PolicySection';
 import type { Props as PrivacyPolicyProps } from './sections/PrivacyPolicy';
 import type { Props as TermsProps } from './sections/Terms';
 import type { Props as AnswersListProps } from './sections/AnswersList';
@@ -19,6 +20,7 @@ export type Props =
   | PrivacyPolicyProps
   | TermsProps
   | DashboardProps
+  | PolicyProps
   | AnswersListProps;
 
 type ComponentsMap = {
@@ -59,6 +61,9 @@ const componentsMap: ComponentsMap = {
   ),
   DashboardSection: dynamic(() =>
     namedComponent(import('./sections/DashboardSection'), 'DashboardSection')
+  ),
+  PolicySection: dynamic(() =>
+    namedComponent(import('./sections/PolicySection'), 'PolicySection')
   )
 };
 

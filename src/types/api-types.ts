@@ -15,5 +15,5 @@ export interface EditPolicyParams {
 export interface AddVisitParams {
   start: number;
   exit: number;
-  countryId: string;
+  policyId: string;
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import type * as types from 'types';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
@@ -15,7 +16,7 @@ export type Props = {
   title: string;
   description: string;
   keyPoints: string[];
-};
+} & types.StackbitFieldPath;
 
 export const InformationSection: React.FC<Props> = ({
   title,

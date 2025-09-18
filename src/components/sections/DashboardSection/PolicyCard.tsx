@@ -1,75 +1,56 @@
-import React, { useEffect } from 'react';
-import Form from 'src/components/atoms/Form';
-import Table from 'src/components/atoms/Table';
-import { Typography, Container, Card } from '@mui/material';
+import React from 'react';
+import { Typography, Card } from '@mui/material';
 import Box from '@mui/material/Box';
-import Result from 'src/components/atoms/Result';
 import { ExtendedPolicy } from 'src/types/data';
 import { Visit } from 'src/types/data';
 import { Dayjs } from 'dayjs';
+import { useRouter } from 'next/router';
 
-import { useCalculateResult } from './hooks';
 import { PolicyManagement } from './PolicyManagement';
 import { DeletePolicyParams, EditPolicyParams } from 'src/types/api-types';
 
 export type Props = {
   policy: ExtendedPolicy;
   visits: Visit[];
-  addVisit: (
-    countryId: string
-  ) => (data: { entry: Dayjs; exit: Dayjs }) => Promise<void>;
-  deleteVisit: (visit: Visit) => Promise<void>;
-  addButtonText: string;
   onDeletePolicy: ({ id }: DeletePolicyParams) => void;
   onEditPolicy: ({ id, name, description }: EditPolicyParams) => void;
-  resultText: {
-    daysRemainToStay: string;
-    wantToPersistResults: string;
-    registerCta: string;
-    registerCta2: string;
-  };
-  selectedDateText: string;
 };
 
 export const PolicyCard: React.FC<Props> = ({
   policy,
-  visits,
-  addVisit,
-  deleteVisit,
-  addButtonText,
   onDeletePolicy,
-  onEditPolicy,
-  resultText,
-  selectedDateText
+  onEditPolicy
 }) => {
-  const {
-    usedDays,
-    overstayedDays,
-    lastDate,
-    showResult,
-    remainingDaysToStay,
-    startCalculation
-  } = useCalculateResult(visits);
+  const router = useRouter();
 
-  useEffect(() => {
-    if (visits.length) {
-      startCalculation();
-    }
-  }, [visits.length]);
+  const handleCardClick = (e: React.MouseEvent) => {
+    if ((e.target as HTMLElement).closest('[data-policy-management]')) return;
+    router.push(`/policy?id=${policy._id}`);
+  };
 
   return (
     <Card
-      key={policy._id}
       elevation={3}
       sx={{
+        width: '100%',
         background: '#6366f1',
         color: 'white',
         borderRadius: 3,
         mb: 4,
         p: 4,
         textAlign: 'center',
-        position: 'relative'
+        position: 'relative',
+        cursor: 'pointer',
+        textDecoration: 'none',
+        '&:hover': {
+          boxShadow: 6,
+          background: '#4f46e5'
+        }
       }}
+      onClick={handleCardClick}
+      tabIndex={0}
+      role="button"
+      aria-label={`View policy ${policy.name}`}
     >
       <Box
         sx={{
@@ -91,54 +72,14 @@ export const PolicyCard: React.FC<Props> = ({
             {policy.totalDays}/180 days
           </Typography>
         </Box>
-        <PolicyManagement
-          onDeletePolicy={onDeletePolicy}
-          onEditPolicy={onEditPolicy}
-          policy={policy}
-        />
+        <Box data-policy-management>
+          <PolicyManagement
+            onDeletePolicy={onDeletePolicy}
+            onEditPolicy={onEditPolicy}
+            policy={policy}
+          />
+        </Box>
       </Box>
-
-      <Container
-        sx={{
-          backgroundColor: '#fff',
-          borderRadius: 3,
-          overflow: 'hidden',
-          mt: 2,
-          pt: 2,
-          pb: 2
-        }}
-      >
-        <Table
-          data={visits}
-          onDelete={(item) => deleteVisit(item as Visit)}
-          tableHeadStyles={{
-            borderRadius: 3,
-            backgroundColor: '#f5f5f5'
-          }}
-        />
-        <Container
-          sx={{
-            pt: 4
-          }}
-        >
-          <Form
-            handleSubmit={addVisit(policy._id)}
-            addButtonText={addButtonText}
-            selectedDateText={selectedDateText}
-          />
-        </Container>
-
-        {showResult && (
-          <Result
-            resultText={resultText}
-            remainingDaysToStay={remainingDaysToStay as number}
-            usedDays={usedDays}
-            overstayedDays={overstayedDays}
-            lastDate={(lastDate as Dayjs).format('DD/MM/YYYY')}
-            isSignedIn={true}
-          />
-        )}
-      </Container>
     </Card>
   );
 };

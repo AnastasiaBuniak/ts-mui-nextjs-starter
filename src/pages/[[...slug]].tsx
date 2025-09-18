@@ -14,8 +14,8 @@ import PageContainer from 'src/components/atoms/PageContainer';
 import ProtectedRoute from '../components/ProtectedRoute';
 
 export type Props = { page: types.Page; siteConfig: types.Config };
-const protectedRoutes = ['/dashboard'];
-const routesWithoutFooter = ['/dashboard', '/signup', '/login'];
+const protectedRoutes = ['/dashboard', '/policy'];
+const routesWithoutFooter = ['/dashboard', '/policy', '/signup', '/login'];
 
 const Page: React.FC<Props> = ({ page, siteConfig }) => {
   const router = useRouter();
@@ -42,6 +42,7 @@ const Page: React.FC<Props> = ({ page, siteConfig }) => {
           {(page.sections ?? []).map((section, index) => (
             <DynamicComponent
               key={index}
+              path={router.query}
               {...section}
               data-sb-field-path={`.${index}`}
             />

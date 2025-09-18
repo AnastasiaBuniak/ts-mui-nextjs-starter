@@ -1,4 +1,5 @@
 import React from 'react';
+import type * as types from 'types';
 import { useAuth } from 'src/components/context/AuthContext';
 import { useManageUserVisits } from './hooks';
 import {
@@ -25,7 +26,7 @@ export type Props = {
     registerCta: string;
     registerCta2: string;
   };
-};
+} & types.StackbitFieldPath;
 
 export const DashboardSection: React.FC<Props> = ({
   title,
@@ -34,17 +35,10 @@ export const DashboardSection: React.FC<Props> = ({
   resultText
 }) => {
   const { user } = useAuth();
-  const {
-    policies,
-    isLoading,
-    addVisit,
-    deleteVisit,
-    addPolicy,
-    deletePolicy,
-    editPolicy
-  } = useManageUserVisits({
-    user
-  });
+  const { policies, isLoading, addPolicy, deletePolicy, editPolicy } =
+    useManageUserVisits({
+      user
+    });
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -94,24 +88,41 @@ export const DashboardSection: React.FC<Props> = ({
         >
           {title}
         </Typography>
-        <List disablePadding>
+        <Box
+          sx={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 3,
+            justifyContent: 'flex-start',
+            mb: 3
+          }}
+        >
           {policies.map((policy: ExtendedPolicy) => {
             return (
-              <PolicyCard
+              <Box
                 key={policy._id}
-                policy={policy}
-                visits={policy.visits || []}
-                addVisit={addVisit}
-                deleteVisit={deleteVisit}
-                addButtonText={addButtonText}
-                onDeletePolicy={deletePolicy}
-                onEditPolicy={editPolicy}
-                selectedDateText={selectedDateText}
-                resultText={resultText}
-              />
+                sx={{
+                  flex: '1 0 auto',
+                  minWidth: isMobile ? '100%' : '30%',
+                  maxWidth: isMobile ? '100%' : '33%',
+                  boxSizing: 'border-box',
+                  display: 'flex'
+                }}
+              >
+                <PolicyCard
+                  key={policy._id}
+                  policy={policy}
+                  visits={policy.visits || []}
+                  addButtonText={addButtonText}
+                  onDeletePolicy={deletePolicy}
+                  onEditPolicy={editPolicy}
+                  selectedDateText={selectedDateText}
+                  resultText={resultText}
+                />
+              </Box>
             );
           })}
-        </List>
+        </Box>
         <AddNewPolicyBlock addPolicy={addPolicy} />
       </Container>
     </Container>

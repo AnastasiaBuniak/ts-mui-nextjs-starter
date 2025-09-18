@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import type * as types from 'types';
 import { useGoogleSso } from './hooks';
 
 import {
@@ -31,7 +32,7 @@ export type Props = {
   termsText: string;
   termsLinkText: string;
   termsLink: string;
-};
+} & types.StackbitFieldPath;
 
 export const Signup: React.FC<Props> = ({
   pageType,
