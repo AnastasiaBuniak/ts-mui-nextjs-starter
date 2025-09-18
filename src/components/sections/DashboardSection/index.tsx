@@ -6,7 +6,9 @@ import {
   List,
   Container,
   useMediaQuery,
-  useTheme
+  useTheme,
+  CircularProgress,
+  Box
 } from '@mui/material';
 import { ExtendedPolicy } from 'src/types/data';
 import { AddNewPolicyBlock } from './AddNewPolicyBlock';
@@ -16,9 +18,21 @@ export type Props = {
   type: 'DashboardSection';
   title: string;
   addButtonText: string;
+  selectedDateText: string;
+  resultText: {
+    daysRemainToStay: string;
+    wantToPersistResults: string;
+    registerCta: string;
+    registerCta2: string;
+  };
 };
 
-export const DashboardSection: React.FC<Props> = ({ title, addButtonText }) => {
+export const DashboardSection: React.FC<Props> = ({
+  title,
+  addButtonText,
+  selectedDateText,
+  resultText
+}) => {
   const { user } = useAuth();
   const {
     policies,
@@ -35,8 +49,22 @@ export const DashboardSection: React.FC<Props> = ({ title, addButtonText }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
-  if (isLoading) {
-    return 'Loading...';
+  if (isLoading || !user) {
+    return (
+      <Box
+        sx={{
+          minHeight: '80vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          bgcolor: '#f5f5f5',
+          borderRadius: 3,
+          width: '100%'
+        }}
+      >
+        <CircularProgress color="primary" />
+      </Box>
+    );
   }
   return (
     <Container
@@ -78,6 +106,8 @@ export const DashboardSection: React.FC<Props> = ({ title, addButtonText }) => {
                 addButtonText={addButtonText}
                 onDeletePolicy={deletePolicy}
                 onEditPolicy={editPolicy}
+                selectedDateText={selectedDateText}
+                resultText={resultText}
               />
             );
           })}

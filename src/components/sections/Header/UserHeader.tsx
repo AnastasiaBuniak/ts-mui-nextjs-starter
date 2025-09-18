@@ -29,7 +29,17 @@ export type Props = types.Header &
   };
 
 export const UserHeader: React.FC<Props> = (props) => {
-  const { title, 'data-sb-object-id': objectId, user } = props;
+  const {
+    title,
+    'data-sb-object-id': objectId,
+    user,
+    welcomeText,
+    deleteAccountText,
+    deleteCancelText,
+    deleteConfirmButtonText,
+    deleteConfirmText,
+    logoutText
+  } = props;
   const userAuthData = useAuth();
 
   const { logoutUser, deleteUserAccount } = userHeaderFeatures({
@@ -69,9 +79,14 @@ export const UserHeader: React.FC<Props> = (props) => {
     <>
       <MuiAppBar
         position="static"
-        color="transparent"
+        color="primary"
         elevation={0}
         data-sb-field-path={fieldPath}
+        sx={{
+          my: 2,
+          px: 1,
+          borderRadius: 3
+        }}
       >
         <MuiToolbar
           disableGutters={true}
@@ -80,14 +95,15 @@ export const UserHeader: React.FC<Props> = (props) => {
             pt: isMobile ? 2 : 1,
             pb: isMobile ? 2 : 1,
             flexDirection: isMobile ? 'column' : 'row',
-            alignItems: isMobile ? 'center' : 'flex-start'
+            alignItems: 'center',
+            justifyContent: 'space-between'
           }}
         >
           <MuiBox
             sx={{
               display: 'flex',
               alignItems: 'center',
-              flex: isMobile ? '1 1 100%' : '1 1 33%',
+              flex: isMobile ? '1 1 100%' : '0 0 auto',
               justifyContent: isMobile ? 'center' : 'flex-start',
               mb: isMobile ? 2 : 0
             }}
@@ -102,7 +118,6 @@ export const UserHeader: React.FC<Props> = (props) => {
                 <MuiTypography
                   component="p"
                   variant="subtitle1"
-                  color="text.secondary"
                   noWrap={!isMobile}
                   data-sb-field-path=".user.name"
                   sx={{
@@ -110,7 +125,7 @@ export const UserHeader: React.FC<Props> = (props) => {
                     textAlign: isMobile ? 'center' : 'left'
                   }}
                 >
-                  Welcome, {user?.name}!
+                  {welcomeText} {user?.name}!
                 </MuiTypography>
               </MuiBox>
             )}
@@ -119,34 +134,38 @@ export const UserHeader: React.FC<Props> = (props) => {
           {title && (
             <MuiBox
               sx={{
-                mb: isMobile ? 2 : 1,
+                position: 'absolute',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                mb: isMobile ? 2 : 0,
                 mr: isMobile ? 0 : 2,
                 flexGrow: 1,
                 flex: isMobile ? '1 1 100%' : '1 1 33%',
                 textAlign: isMobile ? 'center' : 'left'
               }}
             >
-              <MuiTypography
-                component="h1"
-                variant="h6"
-                color="text.primary"
-                data-sb-field-path=".title"
-              >
-                {title}
-              </MuiTypography>
+              <a href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+                <MuiTypography
+                  component="h1"
+                  variant="h5"
+                  data-sb-field-path=".title"
+                >
+                  {title}
+                </MuiTypography>
+              </a>
             </MuiBox>
           )}
 
-          <MuiBox sx={{ flexGrow: 0 }}>
+          <MuiBox sx={{ flex: '0 0 auto' }}>
             <IconButton
               aria-label="edit policy"
               onClick={handleAvatarClick}
               sx={{ mr: 1 }}
             >
-              <SettingsIcon color="action" />
+              <SettingsIcon />
             </IconButton>
-            <Button onClick={logoutUser} variant="contained">
-              Logout
+            <Button onClick={logoutUser} variant="contained" color="error">
+              {logoutText}
             </Button>
           </MuiBox>
         </MuiToolbar>
@@ -160,27 +179,25 @@ export const UserHeader: React.FC<Props> = (props) => {
         anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
         transformOrigin={{ vertical: 'top', horizontal: 'left' }}
       >
-        <MenuItem onClick={handleDeleteClick}>Delete Account</MenuItem>
+        <MenuItem onClick={handleDeleteClick}>{deleteAccountText}</MenuItem>
       </Menu>
 
       {/* Delete confirmation dialog */}
       <Dialog open={openDialog} onClose={handleCloseDialog}>
-        <DialogTitle>Delete Account</DialogTitle>
+        <DialogTitle>{deleteAccountText}</DialogTitle>
         <DialogContent>
-          <MuiTypography>
-            Are you sure you want to delete your account?
-          </MuiTypography>
+          <MuiTypography>{deleteConfirmText}</MuiTypography>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCloseDialog} color="primary">
-            No
+            {deleteCancelText}
           </Button>
           <Button
             onClick={handleConfirmDelete}
             color="error"
             variant="contained"
           >
-            Yes
+            {deleteConfirmButtonText}
           </Button>
         </DialogActions>
       </Dialog>

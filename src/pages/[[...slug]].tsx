@@ -15,6 +15,7 @@ import ProtectedRoute from '../components/ProtectedRoute';
 
 export type Props = { page: types.Page; siteConfig: types.Config };
 const protectedRoutes = ['/dashboard'];
+const routesWithoutFooter = ['/dashboard', '/signup', '/login'];
 
 const Page: React.FC<Props> = ({ page, siteConfig }) => {
   const router = useRouter();
@@ -45,7 +46,7 @@ const Page: React.FC<Props> = ({ page, siteConfig }) => {
           ))}
         </MuiBox>
       )}
-      {siteConfig.footer && (
+      {siteConfig.footer && !routesWithoutFooter.includes(currentPath) && (
         <Footer {...siteConfig.footer} data-sb-object-id={siteConfig.__id} />
       )}
     </PageContainer>

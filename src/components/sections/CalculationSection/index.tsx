@@ -66,6 +66,7 @@ export const CalculationSection: React.FC<Props> = (props) => {
           overstayedDays={overstayedDays}
           lastDate={(lastDate as Dayjs).format('DD/MM/YYYY')}
           onRegisterClick={onRegisterClick}
+          resultText={props.resultText}
         />
       )}
     </Card>

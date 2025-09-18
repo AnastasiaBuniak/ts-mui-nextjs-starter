@@ -12,10 +12,15 @@ import { DATE_FORMAT } from 'src/utils/constants';
 
 interface CalendarButtonProps {
   label: string;
+  selectedDateText: string;
   onChange: (date: Dayjs | null) => void;
 }
 
-const CalendarButton: React.FC<CalendarButtonProps> = ({ label, onChange }) => {
+const CalendarButton: React.FC<CalendarButtonProps> = ({
+  label,
+  onChange,
+  selectedDateText
+}) => {
   const [selectedDate, setSelectedDate] = useState<Dayjs | null>(null);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
@@ -48,7 +53,7 @@ const CalendarButton: React.FC<CalendarButtonProps> = ({ label, onChange }) => {
       >
         {selectedDate ? (
           <Typography>
-            Selected date: {selectedDate.format(DATE_FORMAT)}
+            {selectedDateText}: {selectedDate.format(DATE_FORMAT)}
           </Typography>
         ) : (
           <>

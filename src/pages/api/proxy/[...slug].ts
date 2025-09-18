@@ -16,7 +16,7 @@ export default async function handler(
         'Content-Type': 'application/json'
       },
       body:
-        req.method !== 'GET' && req.method !== 'HEAD'
+        req.method !== 'GET' && req.method !== 'HEAD' && req.body
           ? JSON.stringify(req.body)
           : undefined
     });

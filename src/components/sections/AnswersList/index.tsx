@@ -6,11 +6,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-// Import your theme style
 const themeStyle = require('content/data/style.json');
-
-// The faq array is now loaded from the markdown file's data
-// It is no longer needed here
 
 export type FAQItem = {
   question: string;

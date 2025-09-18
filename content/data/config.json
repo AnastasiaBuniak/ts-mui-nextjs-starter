@@ -2,24 +2,18 @@
   "type": "Config",
   "favicon": "/images/favicon.svg",
   "header": {
-    "title": "",
+    "title": "Visa Days Calculator",
+    "welcomeText": "Welcome",
+    "deleteAccountText": "Delete Account",
+    "logoutText": "Logout",
+    "deleteConfirmText": "Are you sure you want to delete your account? This action cannot be undone.",
+    "deleteCancelText": "Cancel",
+    "deleteConfirmButtonText": "Yes, Delete",
     "navLinks": [
       {
         "type": "Link",
         "label": "Home",
         "url": "/",
-        "underline": "hover"
-      },
-      {
-        "type": "Link",
-        "label": "Terms",
-        "url": "/terms",
-        "underline": "hover"
-      },
-      {
-        "type": "Link",
-        "label": "Privacy Policy",
-        "url": "/privacy",
         "underline": "hover"
       },
       {
@@ -43,8 +37,17 @@
     ]
   },
   "footer": {
-    "copyrightText": "",
-    "navLinks": []
+    "copyrightText": "© 2025 Visa Days Calculator. All rights reserved.",
+    "navLinks": [
+      {
+        "label": "Privacy Policy",
+        "url": "/privacy"
+      },
+      {
+        "label": "Terms of Service",
+        "url": "/terms"
+      }
+    ]
   },
   "consentCopy": "This website uses cookies to enhance your experience. The Visa Days Calculator is provided 'as is' and does not constitute legal or immigration advice. We make no guarantees of accuracy. You're responsible for verifying results with official sources. Read more in our <a href='/terms'>Terms</a> and <a href='/privacy'>Privacy Policy</a>."
 }

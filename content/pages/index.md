@@ -47,6 +47,13 @@ sections:
     enterTitle: Date of entry
     exitTitle: Date of exit
     addButtonText: Add dates
+    selectedDateText: Selected date
+    resultText:
+      daysRemainToStay: Days remain to stay
+      wantToPersistResults: Want to persist the calculations results?
+      registerCta: Register with Google
+      registerCta2: for free and access it whenever you need it.
+
   - type: CardsSection
     title: Stay Informed - Essential Resources
     subtitle: Official Guidelines to Help You Travel Smart and Stay Compliant
