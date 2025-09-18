@@ -9,8 +9,8 @@ export type Props = types.Header & types.StackbitObjectId;
 export const Header: React.FC<Props> = (props) => {
   const { user } = useAuth();
 
-  if (user) {
+  if (user && props.isProtectedRoute) {
     return <UserHeader user={user} {...props} />;
   }
-  return <HeaderComponent {...props} />;
+  return <HeaderComponent {...props} user={user || undefined} />;
 };

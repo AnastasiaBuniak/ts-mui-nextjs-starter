@@ -1,5 +1,6 @@
 import * as React from 'react';
 import type * as types from 'types';
+import Link from 'next/link';
 
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
@@ -20,13 +21,7 @@ import { useMediaQuery, useTheme } from '@mui/material';
 import { userHeaderFeatures } from './hooks';
 import { useAuth } from 'src/components/context/AuthContext';
 
-export type Props = types.Header &
-  types.StackbitObjectId & {
-    user?: {
-      name: string;
-      picture: string;
-    };
-  };
+export type Props = types.Header & types.StackbitObjectId;
 
 export const UserHeader: React.FC<Props> = (props) => {
   const {
@@ -113,15 +108,20 @@ export const UserHeader: React.FC<Props> = (props) => {
                 textAlign: isMobile ? 'center' : 'left'
               }}
             >
-              <a href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+              <Link href="/" passHref legacyBehavior>
                 <MuiTypography
                   component="h1"
                   variant="h5"
                   data-sb-field-path=".title"
+                  sx={{
+                    textDecoration: 'none',
+                    color: 'inherit',
+                    cursor: 'pointer'
+                  }}
                 >
                   {title}
                 </MuiTypography>
-              </a>
+              </Link>
             </MuiBox>
           )}
 
@@ -165,7 +165,12 @@ export const UserHeader: React.FC<Props> = (props) => {
             >
               <SettingsIcon />
             </IconButton>
-            <Button onClick={logoutUser} variant="contained" color="error">
+            <Button
+              onClick={logoutUser}
+              variant="contained"
+              color="inherit"
+              sx={{ color: 'text.secondary', fontWeight: 'bold' }}
+            >
               {logoutText}
             </Button>
           </MuiBox>
