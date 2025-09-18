@@ -4,7 +4,7 @@ import { deleteAccount } from 'src/api/user';
 export const userHeaderFeatures = ({ userId }: { userId?: string }) => {
   const logoutUser = async () => {
     await logout();
-    window.location.href = '/login';
+    window.location.href = '/';
   };
 
   const deleteUserAccount = async () => {
