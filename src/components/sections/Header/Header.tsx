@@ -1,18 +1,21 @@
 import * as React from 'react';
 import type * as types from 'types';
 import { Link } from '../../atoms/Link';
+import NextLink from 'next/link';
 
 import Button from '@mui/material/Button';
 import MuiAppBar from '@mui/material/AppBar';
 import MuiBox from '@mui/material/Box';
 import MuiToolbar from '@mui/material/Toolbar';
 import MuiTypography from '@mui/material/Typography';
+import Avatar from '@mui/material/Avatar';
+
 import { handleScrollToSection } from 'src/utils/scroll';
 
 export type Props = types.Header & types.StackbitObjectId;
 
 export const Header: React.FC<Props> = (props) => {
-  const { title, navLinks = [], 'data-sb-object-id': objectId } = props;
+  const { title, navLinks = [], 'data-sb-object-id': objectId, user } = props;
   const fieldPath = objectId ? `${objectId}:header` : null;
   return (
     <MuiAppBar
@@ -38,7 +41,7 @@ export const Header: React.FC<Props> = (props) => {
         {navLinks.length > 0 && (
           <MuiBox
             component="nav"
-            sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline' }}
+            sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center' }}
             data-sb-field-path=".navLinks"
           >
             {navLinks.map(({ isAnchor, ...link }, index) =>
@@ -65,6 +68,32 @@ export const Header: React.FC<Props> = (props) => {
                   data-sb-field-path={`.${index}`}
                 />
               )
+            )}
+            {user ? (
+              <NextLink href="/dashboard" passHref legacyBehavior>
+                <Avatar
+                  src={user?.picture}
+                  alt={user?.name}
+                  sx={{ cursor: 'pointer', ml: 2, mt: 1 }}
+                />
+              </NextLink>
+            ) : (
+              <>
+                <Link
+                  type="Link"
+                  label="Signup"
+                  url="/signup"
+                  underline="hover"
+                  sx={{ ml: 2, mb: 1 }}
+                />
+                <Link
+                  type="Link"
+                  label="Login"
+                  url="/login"
+                  underline="hover"
+                  sx={{ ml: 2, mb: 1 }}
+                />
+              </>
             )}
           </MuiBox>
         )}

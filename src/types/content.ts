@@ -75,7 +75,12 @@ export type Footer = {
 export type Header = {
   type: 'Header';
   title?: string;
+  user?: {
+    name: string;
+    picture: string;
+  };
   navLinks?: Link[];
+  isProtectedRoute?: boolean;
   welcomeText?: string;
   logoutText?: string;
   deleteAccountText?: string;

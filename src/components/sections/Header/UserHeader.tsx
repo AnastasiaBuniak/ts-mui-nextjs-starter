@@ -1,5 +1,6 @@
 import * as React from 'react';
 import type * as types from 'types';
+import Link from 'next/link';
 
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
@@ -20,13 +21,7 @@ import { useMediaQuery, useTheme } from '@mui/material';
 import { userHeaderFeatures } from './hooks';
 import { useAuth } from 'src/components/context/AuthContext';
 
-export type Props = types.Header &
-  types.StackbitObjectId & {
-    user?: {
-      name: string;
-      picture: string;
-    };
-  };
+export type Props = types.Header & types.StackbitObjectId;
 
 export const UserHeader: React.FC<Props> = (props) => {
   const {
@@ -99,6 +94,37 @@ export const UserHeader: React.FC<Props> = (props) => {
             justifyContent: 'space-between'
           }}
         >
+          {title && (
+            <MuiBox
+              sx={{
+                position: isMobile ? 'relative' : 'absolute',
+                left: isMobile ? 'unset' : '50%',
+                transform: isMobile ? 'unset' : 'translateX(-50%)',
+                mb: isMobile ? 2 : 0,
+                mr: isMobile ? 0 : 2,
+                flexGrow: 1,
+                // display: isMobile ? 'none' : 'block',
+                flex: isMobile ? '1 1 100%' : '1 1 33%',
+                textAlign: isMobile ? 'center' : 'left'
+              }}
+            >
+              <Link href="/" passHref legacyBehavior>
+                <MuiTypography
+                  component="h1"
+                  variant="h5"
+                  data-sb-field-path=".title"
+                  sx={{
+                    textDecoration: 'none',
+                    color: 'inherit',
+                    cursor: 'pointer'
+                  }}
+                >
+                  {title}
+                </MuiTypography>
+              </Link>
+            </MuiBox>
+          )}
+
           <MuiBox
             sx={{
               display: 'flex',
@@ -131,31 +157,6 @@ export const UserHeader: React.FC<Props> = (props) => {
             )}
           </MuiBox>
 
-          {title && (
-            <MuiBox
-              sx={{
-                position: 'absolute',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                mb: isMobile ? 2 : 0,
-                mr: isMobile ? 0 : 2,
-                flexGrow: 1,
-                flex: isMobile ? '1 1 100%' : '1 1 33%',
-                textAlign: isMobile ? 'center' : 'left'
-              }}
-            >
-              <a href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-                <MuiTypography
-                  component="h1"
-                  variant="h5"
-                  data-sb-field-path=".title"
-                >
-                  {title}
-                </MuiTypography>
-              </a>
-            </MuiBox>
-          )}
-
           <MuiBox sx={{ flex: '0 0 auto' }}>
             <IconButton
               aria-label="edit policy"
@@ -164,7 +165,12 @@ export const UserHeader: React.FC<Props> = (props) => {
             >
               <SettingsIcon />
             </IconButton>
-            <Button onClick={logoutUser} variant="contained" color="error">
+            <Button
+              onClick={logoutUser}
+              variant="contained"
+              color="inherit"
+              sx={{ color: 'text.secondary', fontWeight: 'bold' }}
+            >
               {logoutText}
             </Button>
           </MuiBox>

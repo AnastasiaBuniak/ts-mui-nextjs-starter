@@ -20,6 +20,7 @@ const routesWithoutFooter = ['/dashboard', '/signup', '/login'];
 const Page: React.FC<Props> = ({ page, siteConfig }) => {
   const router = useRouter();
   const currentPath = '/' + (router.query.slug ?? []);
+  const isProtectedRoute = protectedRoutes.includes(currentPath);
   const header = { ...siteConfig.header, ...(page.header ?? {}) };
   const pageContent = (
     <PageContainer noHeader={page.noHeader} pageType={page.type} id={page.__id}>
@@ -32,6 +33,7 @@ const Page: React.FC<Props> = ({ page, siteConfig }) => {
         <Header
           {...(header as types.Header)}
           data-sb-object-id={siteConfig.__id}
+          isProtectedRoute={isProtectedRoute}
         />
       )}
       <CookieDrawer consentCopy={siteConfig.consentCopy} />

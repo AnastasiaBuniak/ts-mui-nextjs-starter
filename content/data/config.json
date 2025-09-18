@@ -21,18 +21,6 @@
         "label": "FAQ",
         "url": "/faq",
         "underline": "hover"
-      },
-      {
-        "type": "Link",
-        "label": "Signup",
-        "url": "/signup",
-        "underline": "hover"
-      },
-      {
-        "type": "Link",
-        "label": "Login",
-        "url": "/login",
-        "underline": "hover"
       }
     ]
   },
