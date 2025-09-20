@@ -62,18 +62,35 @@ export const PolicyManagement: React.FC<Props> = ({
   return (
     <>
       <Box
-        sx={{ display: 'flex', gap: 1, position: 'absolute', top: 0, right: 0 }}
+        sx={{
+          display: 'flex',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          px: 1,
+          pt: 1,
+          justifyContent: 'space-between'
+        }}
       >
         <IconButton
           aria-label="edit policy"
-          onClick={() => setEditOpen(true)}
+          onClick={(e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            setEditOpen(true);
+          }}
           sx={{ color: 'white' }}
         >
           <EditIcon />
         </IconButton>
         <IconButton
           aria-label="delete policy"
-          onClick={() => handleDeleteClick(policy._id)}
+          onClick={(e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            handleDeleteClick(policy._id);
+          }}
           sx={{ color: 'white' }}
         >
           <DeleteIcon />
@@ -107,7 +124,12 @@ export const PolicyManagement: React.FC<Props> = ({
           </Button>
         </DialogActions>
       </Dialog>
-      <Dialog open={editOpen} onClose={() => setEditOpen(false)}>
+      <Dialog
+        open={editOpen}
+        onClose={() => setEditOpen(false)}
+        fullWidth
+        maxWidth="sm"
+      >
         <DialogTitle>Edit Policy</DialogTitle>
         <DialogContent>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mt: 2 }}>

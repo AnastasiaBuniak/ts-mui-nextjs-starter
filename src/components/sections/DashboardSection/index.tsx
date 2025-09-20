@@ -74,7 +74,7 @@ export const DashboardSection: React.FC<Props> = ({
         maxWidth="md"
         sx={{
           py: 4,
-          px: isMobile ? 0 : 2,
+          px: 0,
           bgcolor: isMobile ? '#fff' : '#f5f5f5'
         }}
       >
@@ -103,10 +103,11 @@ export const DashboardSection: React.FC<Props> = ({
                 key={policy._id}
                 sx={{
                   flex: '1 0 auto',
-                  minWidth: isMobile ? '100%' : '30%',
-                  maxWidth: isMobile ? '100%' : '33%',
+                  maxWidth: '280px',
+                  width: '100%',
                   boxSizing: 'border-box',
-                  display: 'flex'
+                  display: 'flex',
+                  flexWrap: 'wrap'
                 }}
               >
                 <PolicyCard

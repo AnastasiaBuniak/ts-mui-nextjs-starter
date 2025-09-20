@@ -1,6 +1,9 @@
 import React from 'react';
 import { Typography, Card } from '@mui/material';
 import Box from '@mui/material/Box';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import Chip from '@mui/material/Chip';
 import { ExtendedPolicy } from 'src/types/data';
 import { Visit } from 'src/types/data';
 import { Dayjs } from 'dayjs';
@@ -33,11 +36,12 @@ export const PolicyCard: React.FC<Props> = ({
       elevation={3}
       sx={{
         width: '100%',
+        minHeight: '220px',
         background: '#6366f1',
         color: 'white',
         borderRadius: 3,
-        mb: 4,
-        p: 4,
+        py: 2,
+        px: 1,
         textAlign: 'center',
         position: 'relative',
         cursor: 'pointer',
@@ -52,34 +56,30 @@ export const PolicyCard: React.FC<Props> = ({
       role="button"
       aria-label={`View policy ${policy.name}`}
     >
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          position: 'relative',
-          mb: 1
-        }}
+      <CardContent
+        sx={{ height: '100%', display: 'flex', flexDirection: 'column', py: 0 }}
       >
-        <Box sx={{ flexGrow: 1, textAlign: 'center' }}>
-          <Typography variant="h5" fontWeight={600} sx={{ mb: 1 }}>
-            {policy.name}
-          </Typography>
-          <Typography variant="body1" fontWeight={600} sx={{ mb: 1 }}>
-            {policy.description}
-          </Typography>
-          <Typography variant="body2" fontWeight={700}>
-            {policy.totalDays}/180 days
-          </Typography>
+        <Typography variant="h5" fontWeight={600} sx={{ mb: 1 }}>
+          {policy.name}
+        </Typography>
+        <Typography
+          variant="body1"
+          sx={{ mb: 1, alignSelf: 'flex-start', textAlign: 'left' }}
+        >
+          {policy.description}
+        </Typography>
+        <Box sx={{ display: 'flex', mt: 'auto', alignItems: 'center', gap: 1 }}>
+          <Chip color="success" label={`${policy.totalDays} days used`} />
+          <Chip color="primary" label={`90/180 rule`} />
         </Box>
-        <Box data-policy-management>
-          <PolicyManagement
-            onDeletePolicy={onDeletePolicy}
-            onEditPolicy={onEditPolicy}
-            policy={policy}
-          />
-        </Box>
-      </Box>
+      </CardContent>
+      <CardActions onClick={(e) => e.stopPropagation()} data-policy-management>
+        <PolicyManagement
+          onDeletePolicy={onDeletePolicy}
+          onEditPolicy={onEditPolicy}
+          policy={policy}
+        />
+      </CardActions>
     </Card>
   );
 };
