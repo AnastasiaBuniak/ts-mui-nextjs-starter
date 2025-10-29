@@ -1,4 +1,5 @@
 import React from 'react';
+import type * as types from 'types';
 import { useAuth } from 'src/components/context/AuthContext';
 import { useManageUserVisits } from './hooks';
 import {
@@ -25,7 +26,7 @@ export type Props = {
     registerCta: string;
     registerCta2: string;
   };
-};
+} & types.StackbitFieldPath;
 
 export const DashboardSection: React.FC<Props> = ({
   title,
@@ -34,17 +35,10 @@ export const DashboardSection: React.FC<Props> = ({
   resultText
 }) => {
   const { user } = useAuth();
-  const {
-    policies,
-    isLoading,
-    addVisit,
-    deleteVisit,
-    addPolicy,
-    deletePolicy,
-    editPolicy
-  } = useManageUserVisits({
-    user
-  });
+  const { policies, isLoading, addPolicy, deletePolicy, editPolicy } =
+    useManageUserVisits({
+      user
+    });
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -72,48 +66,60 @@ export const DashboardSection: React.FC<Props> = ({
       sx={{
         py: 4,
         px: isMobile ? 0 : 2,
-        bgcolor: isMobile ? '#fff' : '#f5f5f5',
-        borderRadius: 3
+        bgcolor: isMobile
+          ? theme.colors.white
+          : theme.colors.lightNeutralGreyBg,
+        borderRadius: 1
       }}
     >
-      <Container
-        maxWidth="md"
+      <Typography
+        variant="h4"
+        fontWeight={600}
+        gutterBottom
         sx={{
-          py: 4,
-          px: isMobile ? 0 : 2,
-          bgcolor: isMobile ? '#fff' : '#f5f5f5'
+          textAlign: 'center',
+          mb: 4
         }}
       >
-        <Typography
-          variant="h5"
-          fontWeight={600}
-          gutterBottom
-          sx={{
-            textAlign: 'center'
-          }}
-        >
-          {title}
-        </Typography>
-        <List disablePadding>
-          {policies.map((policy: ExtendedPolicy) => {
-            return (
+        {title}
+      </Typography>
+      <Box
+        sx={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: 3,
+          justifyContent: isMobile ? 'center' : 'flex-start',
+          mb: 3
+        }}
+      >
+        {policies.map((policy: ExtendedPolicy) => {
+          return (
+            <Box
+              key={policy._id}
+              sx={{
+                flex: '1 0 auto',
+                maxWidth: '300px',
+                width: '100%',
+                boxSizing: 'border-box',
+                display: 'flex',
+                flexWrap: 'wrap'
+              }}
+            >
               <PolicyCard
                 key={policy._id}
                 policy={policy}
                 visits={policy.visits || []}
-                addVisit={addVisit}
-                deleteVisit={deleteVisit}
                 addButtonText={addButtonText}
                 onDeletePolicy={deletePolicy}
                 onEditPolicy={editPolicy}
                 selectedDateText={selectedDateText}
                 resultText={resultText}
               />
-            );
-          })}
-        </List>
-        <AddNewPolicyBlock addPolicy={addPolicy} />
-      </Container>
+            </Box>
+          );
+        })}
+      </Box>
+      <AddNewPolicyBlock addPolicy={addPolicy} />
     </Container>
   );
 };

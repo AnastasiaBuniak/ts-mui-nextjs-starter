@@ -32,6 +32,27 @@ export const createPolicy = async ({
   }
 };
 
+export const getPolicy = async ({ id }: { id: string }) => {
+  try {
+    const response = await fetch(`/api/proxy/policy/${id}`, {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    const result = await response.json();
+    if (response.ok) {
+      return result;
+    } else {
+      console.error('Failed to fetch policy:', result.message);
+    }
+    return result;
+  } catch (error) {
+    console.error('Failed to fetch policy:', error);
+  }
+};
+
 export const deletePolicy = async ({ id }: DeletePolicyParams) => {
   try {
     const response = await fetch(`/api/proxy/policy/${id}`, {

@@ -1,144 +1,110 @@
-import React, { useEffect } from 'react';
-import Form from 'src/components/atoms/Form';
-import Table from 'src/components/atoms/Table';
-import { Typography, Container, Card } from '@mui/material';
+import React from 'react';
+import { Typography, Card } from '@mui/material';
 import Box from '@mui/material/Box';
-import Result from 'src/components/atoms/Result';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import Chip from '@mui/material/Chip';
 import { ExtendedPolicy } from 'src/types/data';
 import { Visit } from 'src/types/data';
 import { Dayjs } from 'dayjs';
+import { useRouter } from 'next/router';
+import { getRuleResultColor } from 'src/utils/countTimeUtils';
 
-import { useCalculateResult } from './hooks';
 import { PolicyManagement } from './PolicyManagement';
 import { DeletePolicyParams, EditPolicyParams } from 'src/types/api-types';
+import theme from 'src/utils/theme';
 
 export type Props = {
   policy: ExtendedPolicy;
   visits: Visit[];
-  addVisit: (
-    countryId: string
-  ) => (data: { entry: Dayjs; exit: Dayjs }) => Promise<void>;
-  deleteVisit: (visit: Visit) => Promise<void>;
-  addButtonText: string;
-  onDeletePolicy: ({ id }: DeletePolicyParams) => void;
-  onEditPolicy: ({ id, name, description }: EditPolicyParams) => void;
-  resultText: {
+  addButtonText?: string;
+  selectedDateText?: string;
+  resultText?: {
     daysRemainToStay: string;
     wantToPersistResults: string;
     registerCta: string;
     registerCta2: string;
   };
-  selectedDateText: string;
+  onDeletePolicy: ({ id }: DeletePolicyParams) => void;
+  onEditPolicy: ({ id, name, description }: EditPolicyParams) => void;
 };
 
 export const PolicyCard: React.FC<Props> = ({
   policy,
-  visits,
-  addVisit,
-  deleteVisit,
-  addButtonText,
   onDeletePolicy,
-  onEditPolicy,
-  resultText,
-  selectedDateText
+  onEditPolicy
 }) => {
-  const {
-    usedDays,
-    overstayedDays,
-    lastDate,
-    showResult,
-    remainingDaysToStay,
-    startCalculation
-  } = useCalculateResult(visits);
+  const router = useRouter();
 
-  useEffect(() => {
-    if (visits.length) {
-      startCalculation();
-    }
-  }, [visits.length]);
+  const handleCardClick = (e: React.MouseEvent) => {
+    if ((e.target as HTMLElement).closest('[data-policy-management]')) return;
+    router.push(`/policy?id=${policy._id}`);
+  };
 
   return (
     <Card
-      key={policy._id}
       elevation={3}
       sx={{
-        background: '#6366f1',
-        color: 'white',
-        borderRadius: 3,
-        mb: 4,
-        p: 4,
+        width: '100%',
+        minHeight: '220px',
+        py: 2,
+        px: 1,
         textAlign: 'center',
-        position: 'relative'
+        position: 'relative',
+        cursor: 'pointer',
+        textDecoration: 'none',
+        '&:hover': {
+          boxShadow: 6
+        }
       }}
+      variant="inApp"
+      onClick={handleCardClick}
+      tabIndex={0}
+      role="button"
+      aria-label={`View policy ${policy.name}`}
     >
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          position: 'relative',
-          mb: 1
-        }}
+      <CardContent
+        sx={{ height: '100%', display: 'flex', flexDirection: 'column', py: 0 }}
       >
-        <Box sx={{ flexGrow: 1, textAlign: 'center' }}>
-          <Typography variant="h5" fontWeight={600} sx={{ mb: 1 }}>
-            {policy.name}
-          </Typography>
-          <Typography variant="body1" fontWeight={600} sx={{ mb: 1 }}>
-            {policy.description}
-          </Typography>
-          <Typography variant="body2" fontWeight={700}>
-            {policy.totalDays}/180 days
-          </Typography>
+        <Typography
+          variant="h5"
+          color={theme.palette.text.primary}
+          fontWeight={600}
+          sx={{
+            mb: 1,
+            mr: 1,
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            whiteSpace: 'nowrap'
+          }}
+        >
+          {policy.name}
+        </Typography>
+        <Typography
+          variant="body2"
+          sx={{ mb: 1, alignSelf: 'flex-start', textAlign: 'left' }}
+        >
+          {policy.description}
+        </Typography>
+        <Box sx={{ display: 'flex', mt: 'auto', alignItems: 'center', gap: 1 }}>
+          <Chip
+            color={getRuleResultColor({
+              allowed: policy.allowedRuleWindow,
+              current: policy.totalDays
+            })}
+            label={`${policy.totalDays} ${policy.totalDays === 1 ? 'day' : 'days'} used`}
+          />
+
+          <Chip color="primary" label={`90/180 rule`} />
         </Box>
+      </CardContent>
+      <CardActions onClick={(e) => e.stopPropagation()} data-policy-management>
         <PolicyManagement
           onDeletePolicy={onDeletePolicy}
           onEditPolicy={onEditPolicy}
           policy={policy}
         />
-      </Box>
-
-      <Container
-        sx={{
-          backgroundColor: '#fff',
-          borderRadius: 3,
-          overflow: 'hidden',
-          mt: 2,
-          pt: 2,
-          pb: 2
-        }}
-      >
-        <Table
-          data={visits}
-          onDelete={(item) => deleteVisit(item as Visit)}
-          tableHeadStyles={{
-            borderRadius: 3,
-            backgroundColor: '#f5f5f5'
-          }}
-        />
-        <Container
-          sx={{
-            pt: 4
-          }}
-        >
-          <Form
-            handleSubmit={addVisit(policy._id)}
-            addButtonText={addButtonText}
-            selectedDateText={selectedDateText}
-          />
-        </Container>
-
-        {showResult && (
-          <Result
-            resultText={resultText}
-            remainingDaysToStay={remainingDaysToStay as number}
-            usedDays={usedDays}
-            overstayedDays={overstayedDays}
-            lastDate={(lastDate as Dayjs).format('DD/MM/YYYY')}
-            isSignedIn={true}
-          />
-        )}
-      </Container>
+      </CardActions>
     </Card>
   );
 };

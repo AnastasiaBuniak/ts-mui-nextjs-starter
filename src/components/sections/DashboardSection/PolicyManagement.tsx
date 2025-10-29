@@ -11,6 +11,7 @@ import {
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { Policy } from 'src/types/data';
+import { useTheme } from '@mui/material';
 
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
@@ -32,9 +33,11 @@ export const PolicyManagement: React.FC<Props> = ({
   const [editOpen, setEditOpen] = useState(false);
   const [editName, setEditName] = useState(policy.name);
   const [editDescription, setEditDescription] = useState(policy.description);
+  const theme = useTheme();
 
   const handleDeleteClick = (policyId: string) => {
     setPolicyToDeleteId(policyId);
+    setEditOpen(false);
     setOpenDeleteConfirm(true);
   };
 
@@ -52,7 +55,7 @@ export const PolicyManagement: React.FC<Props> = ({
 
   const handleConfirmEdit = () => {
     setEditOpen(false);
-    onEditPolicy({
+    return onEditPolicy({
       id: policy._id,
       name: editName,
       description: editDescription
@@ -62,21 +65,23 @@ export const PolicyManagement: React.FC<Props> = ({
   return (
     <>
       <Box
-        sx={{ display: 'flex', gap: 1, position: 'absolute', top: 0, right: 0 }}
+        sx={{
+          position: 'absolute',
+          top: 0,
+          right: 0,
+          p: 1
+        }}
       >
         <IconButton
           aria-label="edit policy"
-          onClick={() => setEditOpen(true)}
-          sx={{ color: 'white' }}
+          onClick={(e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            setEditOpen(true);
+          }}
+          sx={{ color: theme.palette.primary.main }}
         >
           <EditIcon />
-        </IconButton>
-        <IconButton
-          aria-label="delete policy"
-          onClick={() => handleDeleteClick(policy._id)}
-          sx={{ color: 'white' }}
-        >
-          <DeleteIcon />
         </IconButton>
       </Box>
       <Dialog open={openDeleteConfirm} onClose={handleCloseDeleteConfirm}>
@@ -107,27 +112,42 @@ export const PolicyManagement: React.FC<Props> = ({
           </Button>
         </DialogActions>
       </Dialog>
-      <Dialog open={editOpen} onClose={() => setEditOpen(false)}>
+      <Dialog
+        open={editOpen}
+        onClose={() => setEditOpen(false)}
+        fullWidth
+        maxWidth="sm"
+      >
         <DialogTitle>Edit Policy</DialogTitle>
         <DialogContent>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mt: 2 }}>
             <TextField
-              label="Name"
+              label="Name (max 40 characters)"
               value={editName}
               onChange={(e) => setEditName(e.target.value)}
               fullWidth
+              error={editName.length > 40}
             />
             <TextField
-              label="Description"
+              label="Description (max 500 characters)"
               value={editDescription}
               onChange={(e) => setEditDescription(e.target.value)}
               fullWidth
               multiline
               rows={3}
+              error={editDescription.length > 500}
             />
           </Box>
         </DialogContent>
         <DialogActions>
+          <Button
+            variant="contained"
+            color="error"
+            onClick={() => handleDeleteClick(policy._id)}
+            sx={{ mr: 'auto' }}
+          >
+            Delete card
+          </Button>
           <Button
             onClick={() => setEditOpen(false)}
             variant="outlined"
@@ -139,6 +159,11 @@ export const PolicyManagement: React.FC<Props> = ({
             onClick={handleConfirmEdit}
             variant="contained"
             color="primary"
+            disabled={
+              editDescription.length > 500 ||
+              editName.trim() === '' ||
+              editName.length > 40
+            }
           >
             Confirm
           </Button>

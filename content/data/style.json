@@ -1,7 +1,13 @@
 {
-    "type": "ThemeStyle",
-    "mode": "light",
-    "primaryColor": "#4C57C5",
-    "secondaryColor": "#10B981"
-
+  "type": "ThemeStyle",
+  "mode": "light",
+  "primaryColor": "#4C57C5",
+  "secondaryColor": "#10B981",
+  "colors": {
+    "white": "#FFFFFF",
+    "mediumGrayText": "#374151",
+    "lightVioletBg": "#E0E7FF",
+    "strongVioletBg": "#C7D2FE",
+    "lightNeutralGreyBg": "#F8FAFC"
+  }
 }

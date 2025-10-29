@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type * as types from 'types';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Accordion from '@mui/material/Accordion';
@@ -18,7 +19,7 @@ export type Props = {
   title: string;
   description: string;
   items: FAQItem[];
-};
+} & types.StackbitFieldPath;
 
 export const AnswersList: React.FC<Props> = ({ title, description, items }) => (
   <Box component="main" sx={{ maxWidth: 800, mx: 'auto', px: 3, py: 5 }}>

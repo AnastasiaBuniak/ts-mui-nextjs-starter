@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import dayjs, { Dayjs } from 'dayjs';
-import { addVisit, deleteVisit } from 'src/api/visit';
+import dayjs from 'dayjs';
 import { createPolicy, editPolicy, deletePolicy } from 'src/api/policy';
 import { User, Visit, Policy, ExtendedPolicy } from 'src/types/data';
 import {
@@ -26,50 +25,6 @@ export const useManageUserVisits = ({ user }: { user: User | null }) => {
     });
     setPolicies(populatedPolicies);
   }, [userPolicies]);
-
-  const addVisitToThePolicy =
-    (policyId: string) =>
-    async ({ entry, exit }: { entry: Dayjs; exit: Dayjs }) => {
-      const result = await addVisit({
-        start: dayjs(entry).valueOf(),
-        exit: dayjs(exit).valueOf(),
-        countryId: policyId
-      });
-
-      if (!result) {
-        console.error('Failed to add visit');
-        return;
-      }
-      const newVisit = result.data.visit;
-
-      const policiesWithNewVisit = policies.map((policy: ExtendedPolicy) => {
-        if (policy._id === policyId) {
-          if (!policy.visits) {
-            policy.visits = [];
-          }
-
-          policy.visits.push(newVisit);
-          const totalDays = getTotalDays(policy.visits || []);
-          return { ...policy, totalDays };
-        }
-        return policy;
-      });
-      setPolicies(policiesWithNewVisit);
-    };
-
-  const deleteVisitFromThePolicy = async (visit: Visit) => {
-    const visitId = visit._id;
-    await deleteVisit(visitId);
-    const updatedPolicies = policies.map((policy: ExtendedPolicy) => {
-      if (policy.visits) {
-        policy.visits = policy.visits.filter((visit) => visit._id !== visitId);
-        const totalDays = getTotalDays(policy.visits || []);
-        return { ...policy, totalDays };
-      }
-      return policy;
-    });
-    setPolicies(updatedPolicies);
-  };
 
   const addNewPolicy = async ({ name, description }: CreatePolicyParams) => {
     const result = await createPolicy({ name, description });
@@ -115,8 +70,6 @@ export const useManageUserVisits = ({ user }: { user: User | null }) => {
   return {
     policies,
     isLoading,
-    addVisit: addVisitToThePolicy,
-    deleteVisit: deleteVisitFromThePolicy,
     addPolicy: addNewPolicy,
     deletePolicy: onDeletePolicy,
     editPolicy: onEditPolicy

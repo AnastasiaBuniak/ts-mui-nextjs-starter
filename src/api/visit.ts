@@ -1,6 +1,6 @@
 import { AddVisitParams } from 'src/types/api-types';
 
-export const addVisit = async ({ start, exit, countryId }: AddVisitParams) => {
+export const addVisit = async ({ start, exit, policyId }: AddVisitParams) => {
   try {
     const response = await fetch(`/api/proxy/visit`, {
       method: 'POST',
@@ -11,7 +11,7 @@ export const addVisit = async ({ start, exit, countryId }: AddVisitParams) => {
       body: JSON.stringify({
         startDate: start,
         endDate: exit,
-        policyId: countryId
+        policyId: policyId
       })
     });
     const result = await response.json();

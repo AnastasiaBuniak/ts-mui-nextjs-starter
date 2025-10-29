@@ -59,6 +59,7 @@ export const CardsSection: React.FC<Props> = (props) => {
           {items.map((item, index) => (
             <CardsSectionItem
               key={index}
+              // path="rergergabc"
               {...item}
               data-sb-field-path={`.${index}`}
             />

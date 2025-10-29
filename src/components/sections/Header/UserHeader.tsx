@@ -80,7 +80,7 @@ export const UserHeader: React.FC<Props> = (props) => {
         sx={{
           my: 2,
           px: 1,
-          borderRadius: 3
+          borderRadius: 1
         }}
       >
         <MuiToolbar
@@ -103,7 +103,6 @@ export const UserHeader: React.FC<Props> = (props) => {
                 mb: isMobile ? 2 : 0,
                 mr: isMobile ? 0 : 2,
                 flexGrow: 1,
-                // display: isMobile ? 'none' : 'block',
                 flex: isMobile ? '1 1 100%' : '1 1 33%',
                 textAlign: isMobile ? 'center' : 'left'
               }}
@@ -147,7 +146,6 @@ export const UserHeader: React.FC<Props> = (props) => {
                   noWrap={!isMobile}
                   data-sb-field-path=".user.name"
                   sx={{
-                    fontWeight: 'bold',
                     textAlign: isMobile ? 'center' : 'left'
                   }}
                 >
@@ -159,17 +157,21 @@ export const UserHeader: React.FC<Props> = (props) => {
 
           <MuiBox sx={{ flex: '0 0 auto' }}>
             <IconButton
-              aria-label="edit policy"
+              aria-label="settings"
               onClick={handleAvatarClick}
-              sx={{ mr: 1 }}
+              sx={{ mr: 1, color: '#fff' }}
             >
               <SettingsIcon />
             </IconButton>
             <Button
               onClick={logoutUser}
               variant="contained"
-              color="inherit"
-              sx={{ color: 'text.secondary', fontWeight: 'bold' }}
+              sx={{
+                background: 'white',
+                color: 'primary.main',
+                fontWeight: 'bold',
+                textTransform: 'none'
+              }}
             >
               {logoutText}
             </Button>

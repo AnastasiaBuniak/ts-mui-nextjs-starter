@@ -15,6 +15,13 @@ let theme = createTheme({
       secondary: themeStyle.mode === 'dark' ? '#979797' : '#374151'
     }
   },
+  colors: Object.keys(themeStyle.colors).reduce(
+    (acc, key) => ({ ...acc, [key]: themeStyle.colors[key] }),
+    {}
+  ),
+  shape: {
+    borderRadius: 4
+  },
   typography: {
     h1: {
       fontWeight: 500
@@ -33,6 +40,20 @@ let theme = createTheme({
           fontWeight: 'inherit'
         }
       }
+    },
+    MuiCard: {
+      variants: [
+        {
+          props: { variant: 'inApp' },
+          style: {
+            color: themeStyle.colors.mediumGrayText,
+            backgroundColor: themeStyle.colors.lightVioletBg,
+            '&:hover': {
+              backgroundColor: themeStyle.colors.strongVioletBg
+            }
+          }
+        }
+      ]
     }
   }
 });
