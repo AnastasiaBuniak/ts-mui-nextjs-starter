@@ -70,7 +70,13 @@ export const PolicyCard: React.FC<Props> = ({
           variant="h5"
           color={theme.palette.text.primary}
           fontWeight={600}
-          sx={{ mb: 1 }}
+          sx={{
+            mb: 1,
+            mr: 1,
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            whiteSpace: 'nowrap'
+          }}
         >
           {policy.name}
         </Typography>
@@ -86,7 +92,7 @@ export const PolicyCard: React.FC<Props> = ({
               allowed: policy.allowedRuleWindow,
               current: policy.totalDays
             })}
-            label={`${policy.totalDays} days used`}
+            label={`${policy.totalDays} ${policy.totalDays === 1 ? 'day' : 'days'} used`}
           />
 
           <Chip color="primary" label={`90/180 rule`} />

@@ -122,18 +122,20 @@ export const PolicyManagement: React.FC<Props> = ({
         <DialogContent>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mt: 2 }}>
             <TextField
-              label="Name"
+              label="Name (max 40 characters)"
               value={editName}
               onChange={(e) => setEditName(e.target.value)}
               fullWidth
+              error={editName.length > 40}
             />
             <TextField
-              label="Description"
+              label="Description (max 500 characters)"
               value={editDescription}
               onChange={(e) => setEditDescription(e.target.value)}
               fullWidth
               multiline
               rows={3}
+              error={editDescription.length > 500}
             />
           </Box>
         </DialogContent>
@@ -142,6 +144,7 @@ export const PolicyManagement: React.FC<Props> = ({
             variant="contained"
             color="error"
             onClick={() => handleDeleteClick(policy._id)}
+            sx={{ mr: 'auto' }}
           >
             Delete card
           </Button>
@@ -156,6 +159,11 @@ export const PolicyManagement: React.FC<Props> = ({
             onClick={handleConfirmEdit}
             variant="contained"
             color="primary"
+            disabled={
+              editDescription.length > 500 ||
+              editName.trim() === '' ||
+              editName.length > 40
+            }
           >
             Confirm
           </Button>

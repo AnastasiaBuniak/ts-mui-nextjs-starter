@@ -103,7 +103,6 @@ export const UserHeader: React.FC<Props> = (props) => {
                 mb: isMobile ? 2 : 0,
                 mr: isMobile ? 0 : 2,
                 flexGrow: 1,
-                // display: isMobile ? 'none' : 'block',
                 flex: isMobile ? '1 1 100%' : '1 1 33%',
                 textAlign: isMobile ? 'center' : 'left'
               }}
@@ -147,7 +146,6 @@ export const UserHeader: React.FC<Props> = (props) => {
                   noWrap={!isMobile}
                   data-sb-field-path=".user.name"
                   sx={{
-                    fontWeight: 'bold',
                     textAlign: isMobile ? 'center' : 'left'
                   }}
                 >

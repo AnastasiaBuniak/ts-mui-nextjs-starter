@@ -42,10 +42,6 @@ export const AddNewPolicyBlock: React.FC<Props> = ({ addPolicy }) => {
   };
 
   const handleCreatePolicy = () => {
-    console.log('Creating policy with:', {
-      name: policyName,
-      description: policyDescription
-    });
     addPolicy({ name: policyName, description: policyDescription });
     handleClose();
   };
@@ -92,18 +88,19 @@ export const AddNewPolicyBlock: React.FC<Props> = ({ addPolicy }) => {
             autoFocus
             margin="dense"
             id="name"
-            label="Policy Name"
+            label="Policy Name (max 40 characters)"
             type="text"
             fullWidth
             variant="outlined"
             value={policyName}
             onChange={(e) => setPolicyName(e.target.value)}
             sx={{ mb: 2 }}
+            error={policyName.length > 40}
           />
           <TextField
             margin="dense"
             id="description"
-            label="Description"
+            label="Description (max 500 characters)"
             type="text"
             fullWidth
             multiline
@@ -111,11 +108,21 @@ export const AddNewPolicyBlock: React.FC<Props> = ({ addPolicy }) => {
             variant="outlined"
             value={policyDescription}
             onChange={(e) => setPolicyDescription(e.target.value)}
+            error={policyDescription.length > 500}
           />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button autoFocus onClick={handleCreatePolicy} variant="contained">
+          <Button
+            autoFocus
+            onClick={handleCreatePolicy}
+            variant="contained"
+            disabled={
+              policyName.trim() === '' ||
+              policyName.length > 40 ||
+              policyDescription.length > 500
+            }
+          >
             Create
           </Button>
         </DialogActions>

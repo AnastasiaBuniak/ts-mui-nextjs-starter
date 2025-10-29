@@ -1,7 +1,6 @@
 const themeStyle = require('../../content/data/style.json');
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 
-console.log();
 let theme = createTheme({
   palette: {
     mode: themeStyle.mode ?? 'light',

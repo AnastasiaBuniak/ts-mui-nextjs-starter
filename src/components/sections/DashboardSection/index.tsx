@@ -77,8 +77,8 @@ export const DashboardSection: React.FC<Props> = ({
         fontWeight={600}
         gutterBottom
         sx={{
-          textAlign: 'center'
-          // color: theme.palette.primary.main
+          textAlign: 'center',
+          mb: 4
         }}
       >
         {title}
@@ -88,7 +88,7 @@ export const DashboardSection: React.FC<Props> = ({
           display: 'flex',
           flexWrap: 'wrap',
           gap: 3,
-          justifyContent: 'flex-start',
+          justifyContent: isMobile ? 'center' : 'flex-start',
           mb: 3
         }}
       >

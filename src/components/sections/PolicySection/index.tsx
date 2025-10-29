@@ -33,7 +33,7 @@ export const PolicySection: React.FC<Props> = ({ title, ...props }) => {
       id: props.path?.id as string | undefined
     });
 
-  if (isLoading || !userPolicy || !userPolicy.visits.length) {
+  if (isLoading || !userPolicy) {
     return (
       <Box
         sx={{
