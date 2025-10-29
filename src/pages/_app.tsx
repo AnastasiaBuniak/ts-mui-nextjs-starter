@@ -5,11 +5,12 @@ import { CacheProvider } from '@emotion/react';
 import theme from '../utils/theme';
 import createEmotionCache from '../utils/createEmotionCache';
 import { AuthProvider } from '../components/context/AuthContext';
+import { appWithTranslation } from 'next-i18next';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
-export default function App({
+function App({
   Component,
   pageProps,
   emotionCache = clientSideEmotionCache
@@ -29,3 +30,5 @@ export default function App({
     </CacheProvider>
   );
 }
+
+export default appWithTranslation(App);

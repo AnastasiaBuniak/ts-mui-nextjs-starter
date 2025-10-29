@@ -9,6 +9,8 @@ import MuiBox from '@mui/material/Box';
 import MuiToolbar from '@mui/material/Toolbar';
 import MuiTypography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
+import { useTranslation } from 'next-i18next';
+import { LanguageSwitcher } from '../../atoms/LanguageSwitcher';
 
 import { handleScrollToSection } from 'src/utils/scroll';
 
@@ -17,6 +19,7 @@ export type Props = types.Header & types.StackbitObjectId;
 export const Header: React.FC<Props> = (props) => {
   const { title, navLinks = [], 'data-sb-object-id': objectId, user } = props;
   const fieldPath = objectId ? `${objectId}:header` : null;
+  const { t } = useTranslation('common');
   return (
     <MuiAppBar
       position="static"
@@ -80,20 +83,21 @@ export const Header: React.FC<Props> = (props) => {
               <>
                 <Link
                   type="Link"
-                  label="Signup"
+                  label={t('signup')}
                   url="/signup"
                   underline="hover"
                   sx={{ ml: 2 }}
                 />
                 <Link
                   type="Link"
-                  label="Login"
+                  label={t('login')}
                   url="/login"
                   underline="hover"
                   sx={{ ml: 2 }}
                 />
               </>
             )}
+            <LanguageSwitcher />
           </MuiBox>
         )}
       </MuiToolbar>

@@ -46,6 +46,41 @@ This outputs your own Netlify visual editor URL. Open this, register, or sign in
 
 ![Next.js Dev + Netlify Create Dev](https://assets.stackbit.com/docs/next-dev-stackbit-dev.png)
 
+## Internationalization (i18n)
+
+- **Library**: `next-i18next` with `react-i18next`
+- **Locales**: English (`en`) and Ukrainian (`uk`)
+- **Config**: `next-i18next.config.js` and `next.config.js` include the i18n setup
+- **Namespaces**: `common` (stored under `public/locales/<locale>/common.json`)
+- **Provider**: App wrapped with `appWithTranslation` in `src/pages/_app.tsx`
+- **Usage**: Import `useTranslation('common')` and call `t('key')`
+- **Switcher**: A simple `LanguageSwitcher` is available at `src/components/atoms/LanguageSwitcher.tsx`
+
+Example:
+
+```tsx
+import { useTranslation } from 'next-i18next';
+const { t } = useTranslation('common');
+return <span>{t('login')}</span>;
+```
+
+### Lokalise workflow
+
+Lokalise manages the JSON resources. Recommended setup:
+
+1. Create a Lokalise project with i18next JSON format.
+2. Add locales `en` and `uk` and the `common` namespace.
+3. Sync files using the Lokalise CLI (`lokalise2`) or CI:
+   - Download: `lokalise2 file download --format json --unzip-to public/locales --original-filenames=false --export-empty-as skip --include-desc=false`
+   - Upload: `lokalise2 file upload --lang-iso en --file public/locales/en/common.json --detect-icu-plurals true`
+
+Env vars used by the CLI:
+
+- `LOKALISE_TOKEN`: API token
+- `LOKALISE_PROJECT_ID`: Project ID
+
+Note: Markdown content in `content/pages` is not yet localized; pages render the same content across locales. You can introduce localized markdown later (e.g., per-locale files or fetching localized content).
+
 ## Next Steps
 
 Here are a few suggestions on what to do next if you're new to Netlify visual editor:
