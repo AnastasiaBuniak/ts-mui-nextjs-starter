@@ -24,11 +24,7 @@ const CustomTable: React.FC<TableProps> = ({
   tableHeadStyles
 }) => {
   return (
-    <TableContainer
-      component={Paper}
-      elevation={0}
-      sx={{ borderRadius: '4px' }}
-    >
+    <TableContainer component={Paper} elevation={0}>
       <Table>
         <TableHead>
           <TableRow sx={{ ...tableHeadStyles }}>

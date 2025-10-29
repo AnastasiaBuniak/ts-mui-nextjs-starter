@@ -12,6 +12,7 @@ import { getRuleResultColor } from 'src/utils/countTimeUtils';
 
 import { PolicyManagement } from './PolicyManagement';
 import { DeletePolicyParams, EditPolicyParams } from 'src/types/api-types';
+import theme from 'src/utils/theme';
 
 export type Props = {
   policy: ExtendedPolicy;
@@ -46,9 +47,6 @@ export const PolicyCard: React.FC<Props> = ({
       sx={{
         width: '100%',
         minHeight: '220px',
-        background: '#6366f1',
-        color: 'white',
-        borderRadius: 3,
         py: 2,
         px: 1,
         textAlign: 'center',
@@ -56,10 +54,10 @@ export const PolicyCard: React.FC<Props> = ({
         cursor: 'pointer',
         textDecoration: 'none',
         '&:hover': {
-          boxShadow: 6,
-          background: '#4f46e5'
+          boxShadow: 6
         }
       }}
+      variant="inApp"
       onClick={handleCardClick}
       tabIndex={0}
       role="button"
@@ -68,11 +66,16 @@ export const PolicyCard: React.FC<Props> = ({
       <CardContent
         sx={{ height: '100%', display: 'flex', flexDirection: 'column', py: 0 }}
       >
-        <Typography variant="h5" fontWeight={600} sx={{ mb: 1 }}>
+        <Typography
+          variant="h5"
+          color={theme.palette.text.primary}
+          fontWeight={600}
+          sx={{ mb: 1 }}
+        >
           {policy.name}
         </Typography>
         <Typography
-          variant="body1"
+          variant="body2"
           sx={{ mb: 1, alignSelf: 'flex-start', textAlign: 'left' }}
         >
           {policy.description}

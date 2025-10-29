@@ -8,6 +8,7 @@ import { ExtendedPolicy } from 'src/types/data';
 import { Visit } from 'src/types/data';
 import { Dayjs } from 'dayjs';
 import { useCalculateResult } from './hooks';
+import theme from 'src/utils/theme';
 
 export type Props = {
   policy: ExtendedPolicy;
@@ -51,13 +52,11 @@ export const PolicyCard: React.FC<Props> = ({
       key={policy._id}
       elevation={3}
       sx={{
-        background: '#6366f1',
-        color: 'white',
-        borderRadius: 3,
         mb: 4,
         p: 4,
         textAlign: 'center',
-        position: 'relative'
+        position: 'relative',
+        backgroundColor: theme.colors.lightVioletBg
       }}
     >
       <Box

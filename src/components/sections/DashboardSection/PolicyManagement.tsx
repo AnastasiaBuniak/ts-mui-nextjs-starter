@@ -11,6 +11,7 @@ import {
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { Policy } from 'src/types/data';
+import { useTheme } from '@mui/material';
 
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
@@ -32,6 +33,7 @@ export const PolicyManagement: React.FC<Props> = ({
   const [editOpen, setEditOpen] = useState(false);
   const [editName, setEditName] = useState(policy.name);
   const [editDescription, setEditDescription] = useState(policy.description);
+  const theme = useTheme();
 
   const handleDeleteClick = (policyId: string) => {
     setPolicyToDeleteId(policyId);
@@ -53,7 +55,7 @@ export const PolicyManagement: React.FC<Props> = ({
 
   const handleConfirmEdit = () => {
     setEditOpen(false);
-    onEditPolicy({
+    return onEditPolicy({
       id: policy._id,
       name: editName,
       description: editDescription
@@ -77,7 +79,7 @@ export const PolicyManagement: React.FC<Props> = ({
             e.preventDefault();
             setEditOpen(true);
           }}
-          sx={{ color: 'white' }}
+          sx={{ color: theme.palette.primary.main }}
         >
           <EditIcon />
         </IconButton>

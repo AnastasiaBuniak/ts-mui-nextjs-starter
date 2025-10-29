@@ -66,16 +66,19 @@ export const DashboardSection: React.FC<Props> = ({
       sx={{
         py: 4,
         px: isMobile ? 0 : 2,
-        bgcolor: isMobile ? '#fff' : '#EFF5FB',
-        borderRadius: 3
+        bgcolor: isMobile
+          ? theme.colors.white
+          : theme.colors.lightNeutralGreyBg,
+        borderRadius: 1
       }}
     >
       <Typography
-        variant="h5"
+        variant="h4"
         fontWeight={600}
         gutterBottom
         sx={{
           textAlign: 'center'
+          // color: theme.palette.primary.main
         }}
       >
         {title}
