@@ -169,7 +169,11 @@ export const UserHeader: React.FC<Props> = (props) => {
               onClick={logoutUser}
               variant="contained"
               color="inherit"
-              sx={{ color: 'text.secondary', fontWeight: 'bold' }}
+              sx={{
+                color: 'text.secondary',
+                fontWeight: 'bold',
+                textTransform: 'none'
+              }}
             >
               {logoutText}
             </Button>

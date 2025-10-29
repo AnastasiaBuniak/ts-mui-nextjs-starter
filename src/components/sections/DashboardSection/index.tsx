@@ -66,66 +66,57 @@ export const DashboardSection: React.FC<Props> = ({
       sx={{
         py: 4,
         px: isMobile ? 0 : 2,
-        bgcolor: isMobile ? '#fff' : '#f5f5f5',
+        bgcolor: isMobile ? '#fff' : '#EFF5FB',
         borderRadius: 3
       }}
     >
-      <Container
-        maxWidth="md"
+      <Typography
+        variant="h5"
+        fontWeight={600}
+        gutterBottom
         sx={{
-          py: 4,
-          px: 0,
-          bgcolor: isMobile ? '#fff' : '#f5f5f5'
+          textAlign: 'center'
         }}
       >
-        <Typography
-          variant="h5"
-          fontWeight={600}
-          gutterBottom
-          sx={{
-            textAlign: 'center'
-          }}
-        >
-          {title}
-        </Typography>
-        <Box
-          sx={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: 3,
-            justifyContent: 'flex-start',
-            mb: 3
-          }}
-        >
-          {policies.map((policy: ExtendedPolicy) => {
-            return (
-              <Box
+        {title}
+      </Typography>
+      <Box
+        sx={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: 3,
+          justifyContent: 'flex-start',
+          mb: 3
+        }}
+      >
+        {policies.map((policy: ExtendedPolicy) => {
+          return (
+            <Box
+              key={policy._id}
+              sx={{
+                flex: '1 0 auto',
+                maxWidth: '300px',
+                width: '100%',
+                boxSizing: 'border-box',
+                display: 'flex',
+                flexWrap: 'wrap'
+              }}
+            >
+              <PolicyCard
                 key={policy._id}
-                sx={{
-                  flex: '1 0 auto',
-                  maxWidth: '280px',
-                  width: '100%',
-                  boxSizing: 'border-box',
-                  display: 'flex',
-                  flexWrap: 'wrap'
-                }}
-              >
-                <PolicyCard
-                  key={policy._id}
-                  policy={policy}
-                  visits={policy.visits || []}
-                  addButtonText={addButtonText}
-                  onDeletePolicy={deletePolicy}
-                  onEditPolicy={editPolicy}
-                  selectedDateText={selectedDateText}
-                  resultText={resultText}
-                />
-              </Box>
-            );
-          })}
-        </Box>
-        <AddNewPolicyBlock addPolicy={addPolicy} />
-      </Container>
+                policy={policy}
+                visits={policy.visits || []}
+                addButtonText={addButtonText}
+                onDeletePolicy={deletePolicy}
+                onEditPolicy={editPolicy}
+                selectedDateText={selectedDateText}
+                resultText={resultText}
+              />
+            </Box>
+          );
+        })}
+      </Box>
+      <AddNewPolicyBlock addPolicy={addPolicy} />
     </Container>
   );
 };

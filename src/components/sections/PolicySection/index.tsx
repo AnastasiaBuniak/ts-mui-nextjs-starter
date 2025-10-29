@@ -1,8 +1,16 @@
 import React from 'react';
 import type * as types from 'types';
 import { useGetUserPolicy } from './hooks';
-import { Typography, Container, CircularProgress, Box } from '@mui/material';
+import {
+  Typography,
+  Container,
+  CircularProgress,
+  Box,
+  Button
+} from '@mui/material';
 import { PolicyCard } from './PolicyCard';
+import { useRouter } from 'next/router';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'; // Add this import
 
 export type Props = {
   type: 'PolicySection';
@@ -18,9 +26,11 @@ export type Props = {
 } & types.StackbitFieldPath;
 
 export const PolicySection: React.FC<Props> = ({ title, ...props }) => {
+  const router = useRouter();
+
   const { userPolicy, isLoading, addPolicyVisit, deletePolicyVisit } =
     useGetUserPolicy({
-      id: props.path.id as string | undefined
+      id: props.path?.id as string | undefined
     });
 
   if (isLoading || !userPolicy || !userPolicy.visits.length) {
@@ -43,9 +53,26 @@ export const PolicySection: React.FC<Props> = ({ title, ...props }) => {
 
   return (
     <Container maxWidth="md" sx={{ py: 4 }}>
-      <Typography variant="h5" fontWeight={600} gutterBottom textAlign="center">
-        Policy id: {props.path.id}
-      </Typography>
+      <Button
+        variant="outlined"
+        color="inherit"
+        sx={{
+          mb: 3,
+          bgcolor: '#fff',
+          borderColor: '#ccc',
+          color: '#333',
+          textTransform: 'none',
+          fontWeight: 500,
+          '&:hover': {
+            bgcolor: '#f9f9f9',
+            borderColor: '#bbb'
+          }
+        }}
+        onClick={() => router.push('/dashboard')}
+        startIcon={<ArrowBackIcon />} // Add this prop
+      >
+        Back
+      </Button>
       <PolicyCard
         policy={userPolicy}
         visits={userPolicy.visits}

@@ -35,6 +35,7 @@ export const PolicyManagement: React.FC<Props> = ({
 
   const handleDeleteClick = (policyId: string) => {
     setPolicyToDeleteId(policyId);
+    setEditOpen(false);
     setOpenDeleteConfirm(true);
   };
 
@@ -63,14 +64,10 @@ export const PolicyManagement: React.FC<Props> = ({
     <>
       <Box
         sx={{
-          display: 'flex',
           position: 'absolute',
           top: 0,
-          left: 0,
-          width: '100%',
-          px: 1,
-          pt: 1,
-          justifyContent: 'space-between'
+          right: 0,
+          p: 1
         }}
       >
         <IconButton
@@ -83,17 +80,6 @@ export const PolicyManagement: React.FC<Props> = ({
           sx={{ color: 'white' }}
         >
           <EditIcon />
-        </IconButton>
-        <IconButton
-          aria-label="delete policy"
-          onClick={(e) => {
-            e.stopPropagation();
-            e.preventDefault();
-            handleDeleteClick(policy._id);
-          }}
-          sx={{ color: 'white' }}
-        >
-          <DeleteIcon />
         </IconButton>
       </Box>
       <Dialog open={openDeleteConfirm} onClose={handleCloseDeleteConfirm}>
@@ -150,6 +136,13 @@ export const PolicyManagement: React.FC<Props> = ({
           </Box>
         </DialogContent>
         <DialogActions>
+          <Button
+            variant="contained"
+            color="error"
+            onClick={() => handleDeleteClick(policy._id)}
+          >
+            Delete card
+          </Button>
           <Button
             onClick={() => setEditOpen(false)}
             variant="outlined"

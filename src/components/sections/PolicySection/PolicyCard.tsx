@@ -73,7 +73,7 @@ export const PolicyCard: React.FC<Props> = ({
           <Typography variant="h5" fontWeight={600} sx={{ mb: 1 }}>
             {policy.name}
           </Typography>
-          <Typography variant="body1" fontWeight={600} sx={{ mb: 1 }}>
+          <Typography variant="body1" sx={{ mb: 1 }}>
             {policy.description}
           </Typography>
           <Typography variant="body2" fontWeight={700}>

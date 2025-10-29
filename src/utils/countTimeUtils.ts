@@ -44,3 +44,15 @@ export const getRemainingVisaDays = (
     dateToStay
   };
 };
+
+export const getRuleResultColor = ({
+  current,
+  allowed
+}: {
+  current: number;
+  allowed: number;
+}) => {
+  if (current > allowed) return 'error';
+  if (current > allowed * 0.8) return 'warning';
+  return 'success';
+};

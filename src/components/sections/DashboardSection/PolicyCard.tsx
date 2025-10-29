@@ -8,6 +8,7 @@ import { ExtendedPolicy } from 'src/types/data';
 import { Visit } from 'src/types/data';
 import { Dayjs } from 'dayjs';
 import { useRouter } from 'next/router';
+import { getRuleResultColor } from 'src/utils/countTimeUtils';
 
 import { PolicyManagement } from './PolicyManagement';
 import { DeletePolicyParams, EditPolicyParams } from 'src/types/api-types';
@@ -15,6 +16,14 @@ import { DeletePolicyParams, EditPolicyParams } from 'src/types/api-types';
 export type Props = {
   policy: ExtendedPolicy;
   visits: Visit[];
+  addButtonText?: string;
+  selectedDateText?: string;
+  resultText?: {
+    daysRemainToStay: string;
+    wantToPersistResults: string;
+    registerCta: string;
+    registerCta2: string;
+  };
   onDeletePolicy: ({ id }: DeletePolicyParams) => void;
   onEditPolicy: ({ id, name, description }: EditPolicyParams) => void;
 };
@@ -69,7 +78,14 @@ export const PolicyCard: React.FC<Props> = ({
           {policy.description}
         </Typography>
         <Box sx={{ display: 'flex', mt: 'auto', alignItems: 'center', gap: 1 }}>
-          <Chip color="success" label={`${policy.totalDays} days used`} />
+          <Chip
+            color={getRuleResultColor({
+              allowed: policy.allowedRuleWindow,
+              current: policy.totalDays
+            })}
+            label={`${policy.totalDays} days used`}
+          />
+
           <Chip color="primary" label={`90/180 rule`} />
         </Box>
       </CardContent>
