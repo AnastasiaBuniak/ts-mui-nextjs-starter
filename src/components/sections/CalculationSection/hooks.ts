@@ -1,6 +1,6 @@
 import dayjs, { Dayjs } from 'dayjs';
 import { useState, useEffect } from 'react';
-import { getRemainingVisaDays } from 'src/utils/countTimeUtils';
+import { getRemainingSchengenRuleDays } from 'src/utils/schengenRuleUtils';
 import { VisitItem } from 'src/types/data';
 
 export const useVisaDaysCalculation = () => {
@@ -18,7 +18,7 @@ export const useVisaDaysCalculation = () => {
   const showResult = remainingDaysToStay !== null && !!datesData.length;
 
   const startCalculation = () => {
-    const result = getRemainingVisaDays(datesData);
+    const result = getRemainingSchengenRuleDays(datesData);
     setUsedDays(result.usedDays);
     setRemainingDaysToStay(result.remainingDaysToStay);
     setLastDate(result.dateToStay);

@@ -8,7 +8,7 @@ import { ExtendedPolicy } from 'src/types/data';
 import { Visit } from 'src/types/data';
 import { Dayjs } from 'dayjs';
 import { useRouter } from 'next/router';
-import { getRuleResultColor } from 'src/utils/countTimeUtils';
+import { getSchengenRuleResultColor } from 'src/utils/schengenRuleUtils';
 
 import { PolicyManagement } from './PolicyManagement';
 import { DeletePolicyParams, EditPolicyParams } from 'src/types/api-types';
@@ -88,7 +88,7 @@ export const PolicyCard: React.FC<Props> = ({
         </Typography>
         <Box sx={{ display: 'flex', mt: 'auto', alignItems: 'center', gap: 1 }}>
           <Chip
-            color={getRuleResultColor({
+            color={getSchengenRuleResultColor({
               allowed: policy.allowedRuleWindow,
               current: policy.totalDays
             })}

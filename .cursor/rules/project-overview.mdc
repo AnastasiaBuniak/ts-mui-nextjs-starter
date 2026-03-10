@@ -1,0 +1,82 @@
+---
+description: High-level overview of the Netlify Next.js + TypeScript + MUI starter project
+alwaysApply: true
+---
+
+## Project Overview
+
+This repository is a **Netlify Next.js + TypeScript + MUI starter** with **visual editing** support via the Netlify visual editor. It is meant as a minimal, opinionated starting point for building new projects that:
+
+- Use **Next.js** (App Router-style pages in `src/pages`)
+- Use **TypeScript** across the codebase
+- Use **MUI** (Material UI) as the primary component library
+- Use **markdown files as a Git content source** for pages and content
+- Are intended to be deployed on **Netlify** with the Netlify visual editor
+
+## Core Technologies
+
+- **Framework**: Next.js (`next`, `react`, `react-dom`)
+- **Language**: TypeScript
+- **UI Library**: MUI (`@mui/material`, `@mui/icons-material`, `@mui/x-date-pickers`) with Emotion styling
+- **Styling Engine**: Emotion (`@emotion/react`, `@emotion/styled`, `@emotion/server`, `@emotion/cache`)
+- **Content Source**: Markdown files as Git content, wired for Netlify visual editing
+- **Tooling**:
+  - ESLint (with `eslint-config-next` and Prettier integration)
+  - Prettier (formatting, also used via `lint-staged`)
+  - Husky + `lint-staged` for pre-commit checks
+
+## Application Shell
+
+- The custom Next.js app component lives in `src/pages/_app.tsx`.
+- The root component composes the following providers:
+  - `CacheProvider` from Emotion, using a shared client-side Emotion cache.
+  - `GoogleOAuthProvider` from `@react-oauth/google`, configured with `NEXT_PUBLIC_GOOGLE_CLIENT_ID`.
+  - `AuthProvider` from `components/context/AuthContext` for app-wide authentication context.
+  - `ThemeProvider` from MUI, using the project theme from `utils/theme`.
+  - `CssBaseline` from MUI for consistent base styles.
+- All page components (`Component`) are rendered inside this provider stack, so any new pages automatically inherit the theme, auth, and OAuth context.
+
+## Development & Scripts
+
+- **Start dev server**: `npm run dev`
+- **Build for production**: `npm run build`
+- **Start production server**: `npm run start`
+- **Export static site**: `npm run export`
+- **Format code with Prettier (src only)**: `npm run prettier`
+
+Husky and `lint-staged` are configured so that, on commit:
+
+- For `**/*.{js,jsx,ts,tsx}`:
+  - Run ESLint with `--fix`
+  - Run Prettier
+- For `**/*.{css,scss,md,json}`:
+  - Run Prettier
+
+## Netlify & Visual Editing
+
+- This starter is wired to be deployed via the **“Deploy to Netlify”** flow.
+- It supports **Netlify visual editor**, with markdown as the backing Git content source.
+- Typical local workflow:
+  1. Run `npm install` and then `npm run dev` for the Next.js dev server.
+  2. Install `@stackbit/cli` globally and run `stackbit dev` for the Netlify visual editor dev server.
+  3. Use the generated visual editor URL to visually edit pages and components backed by this repo.
+
+## Environment
+
+- OAuth and other client-exposed configuration values are managed via environment variables, such as:
+  - `NEXT_PUBLIC_GOOGLE_CLIENT_ID` (used by `GoogleOAuthProvider` in `_app.tsx`).
+- Example environment configuration is documented in `.env.example`; actual runtime values are stored in `.env` (not committed).
+
+## Positioning
+
+Use this starter when you want:
+
+- A **Next.js + TS + MUI** baseline, already wired with:
+  - MUI theming and global styles
+  - Emotion for styling and SSR compatibility
+  - Authentication context and Google OAuth provider hook points
+- A project pre-configured for:
+  - **Netlify deployment**
+  - **Netlify visual editor** for content management
+  - Common linting and formatting standards via ESLint + Prettier.
+
