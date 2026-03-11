@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import MenuItem from '@mui/material/MenuItem';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import CalendarInput from './CalendarInput';
@@ -19,6 +21,7 @@ const Form: React.FC<FormProps> = (props) => {
   const [entry, setEnter] = useState<Dayjs | null>(null);
   const [exit, setExit] = useState<Dayjs | null>(null);
   const [defaultExit, setDefaultExit] = useState<Dayjs | undefined>(undefined);
+  const [selectedRule, setSelectedRule] = useState('schengen-90-180');
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -38,56 +41,82 @@ const Form: React.FC<FormProps> = (props) => {
       onSubmit={onSubmit}
       sx={{
         display: 'flex',
-        flexDirection: isMobile ? 'column' : 'row',
+        flexDirection: 'column',
         gap: 2,
-        justifyContent: 'center'
+        alignItems: 'center'
       }}
     >
-      {isMobile ? (
-        <>
-          <CalendarButton
-            selectedDateText={props.selectedDateText}
-            label={props.enterTitle as string}
-            onChange={(val) => setEnter(val)}
-          />
-          <CalendarButton
-            selectedDateText={props.selectedDateText}
-            label={props.exitTitle as string}
-            onChange={(val) => setExit(val)}
-          />
-        </>
-      ) : (
-        <>
-          <CalendarInput
-            label={props.enterTitle as string}
-            value={entry}
-            onChange={(val) => {
-              setEnter(val), setDefaultExit(val as Dayjs);
-            }}
-          />
-          <CalendarInput
-            label={props.exitTitle as string}
-            value={exit}
-            onChange={(val) => setExit(val)}
-            defaultValue={defaultExit}
-          />
-        </>
-      )}
-      <Button
-        type="submit"
-        size="large"
-        variant="contained"
-        color="secondary"
-        disabled={!entry || !exit}
+      {/* 1st line: rule selector */}
+      <TextField
+        select
+        label="Rule"
+        value={selectedRule}
+        onChange={(event) => setSelectedRule(event.target.value)}
         sx={{
-          textTransform: 'initial',
-          alignSelf: 'center',
           minWidth: '230px',
           minHeight: '56px'
         }}
       >
-        {props.addButtonText}
-      </Button>
+        <MenuItem value="schengen-90-180">90/180 Schengen rule</MenuItem>
+      </TextField>
+
+      {/* 2nd line: dates + button */}
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: isMobile ? 'column' : 'row',
+          gap: 2,
+          justifyContent: 'center',
+          width: '100%'
+        }}
+      >
+        {isMobile ? (
+          <>
+            <CalendarButton
+              selectedDateText={props.selectedDateText}
+              label={props.enterTitle as string}
+              onChange={(val) => setEnter(val)}
+            />
+            <CalendarButton
+              selectedDateText={props.selectedDateText}
+              label={props.exitTitle as string}
+              onChange={(val) => setExit(val)}
+            />
+          </>
+        ) : (
+          <>
+            <CalendarInput
+              label={props.enterTitle as string}
+              value={entry}
+              onChange={(val) => {
+                setEnter(val), setDefaultExit(val as Dayjs);
+              }}
+            />
+            <CalendarInput
+              label={props.exitTitle as string}
+              value={exit}
+              onChange={(val) => setExit(val)}
+              defaultValue={defaultExit}
+            />
+          </>
+        )}
+
+        <Button
+          type="submit"
+          size="large"
+          variant="contained"
+          color="secondary"
+          disabled={!entry || !exit}
+          sx={{
+            textTransform: 'initial',
+            alignSelf: 'center',
+            minWidth: '230px',
+            minHeight: '56px'
+          }}
+        >
+          {props.addButtonText}
+        </Button>
+      </Box>
     </Box>
   );
 };

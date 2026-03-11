@@ -8,7 +8,7 @@ import { VISA_DAYS, VISA_WINDOW } from './constants';
  * @param {number} windowDays - Rolling window duration (defaults to 180 days)
  * @returns {number} Remaining days in the Schengen area
  */
-export const getRemainingVisaDays = (
+export const getRemainingSchengenRuleDays = (
   stays: any[],
   referenceDate: Dayjs = dayjs(),
   windowDays: number = VISA_WINDOW
@@ -45,7 +45,7 @@ export const getRemainingVisaDays = (
   };
 };
 
-export const getRuleResultColor = ({
+export const getSchengenRuleResultColor = ({
   current,
   allowed
 }: {

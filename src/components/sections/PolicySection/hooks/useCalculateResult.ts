@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Dayjs } from 'dayjs';
 import { Visit } from 'src/types/data';
-import { getRemainingVisaDays } from 'src/utils/countTimeUtils';
+import { getRemainingSchengenRuleDays } from 'src/utils/schengenRuleUtils';
 
 export const useCalculateResult = (visits: Visit[]) => {
   const [remainingDaysToStay, setRemainingDaysToStay] = useState<number | null>(
@@ -13,7 +13,7 @@ export const useCalculateResult = (visits: Visit[]) => {
   const showResult = remainingDaysToStay !== null && !!visits.length;
 
   const startCalculation = () => {
-    const result = getRemainingVisaDays(visits);
+    const result = getRemainingSchengenRuleDays(visits);
     setUsedDays(result.usedDays);
     setRemainingDaysToStay(result.remainingDaysToStay);
     setLastDate(result.dateToStay);
