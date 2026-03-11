@@ -8,6 +8,9 @@ import { useTheme } from '@mui/material/styles';
 import CalendarInput from './CalendarInput';
 import CalendarButton from './CalendarButton';
 import { Dayjs } from 'dayjs';
+import { TaxResidencyMode } from 'src/utils/taxResidencyUtils';
+
+type RuleType = 'schengen-90-180' | 'tax-183';
 
 interface FormProps {
   enterTitle?: string;
@@ -15,15 +18,29 @@ interface FormProps {
   addButtonText?: string;
   selectedDateText: string;
   handleSubmit: ({ entry, exit }: { entry: Dayjs; exit: Dayjs }) => void;
+  rule?: RuleType;
+  onRuleChange?: (rule: RuleType) => void;
+  country?: string;
+  onCountryChange?: (country: string) => void;
+  taxMode?: TaxResidencyMode;
+  onTaxModeChange?: (mode: TaxResidencyMode) => void;
 }
 
 const Form: React.FC<FormProps> = (props) => {
   const [entry, setEnter] = useState<Dayjs | null>(null);
   const [exit, setExit] = useState<Dayjs | null>(null);
   const [defaultExit, setDefaultExit] = useState<Dayjs | undefined>(undefined);
-  const [selectedRule, setSelectedRule] = useState('schengen-90-180');
+  const [selectedRuleState, setSelectedRuleState] =
+    useState<RuleType>('schengen-90-180');
+  const [countryState, setCountryState] = useState<string>('');
+  const [taxModeState, setTaxModeState] =
+    useState<TaxResidencyMode>('calendar');
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+  const selectedRule = props.rule ?? selectedRuleState;
+  const selectedCountry = props.country ?? countryState;
+  const selectedTaxMode = props.taxMode ?? taxModeState;
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -46,19 +63,81 @@ const Form: React.FC<FormProps> = (props) => {
         alignItems: 'center'
       }}
     >
-      {/* 1st line: rule selector */}
-      <TextField
-        select
-        label="Rule"
-        value={selectedRule}
-        onChange={(event) => setSelectedRule(event.target.value)}
+      {/* 1st line: rule selector (+ tax options when applicable) */}
+      <Box
         sx={{
-          minWidth: '230px',
-          minHeight: '56px'
+          display: 'flex',
+          flexDirection: isMobile ? 'column' : 'row',
+          gap: 2,
+          justifyContent: 'center',
+          width: '100%'
         }}
       >
-        <MenuItem value="schengen-90-180">90/180 Schengen rule</MenuItem>
-      </TextField>
+        <TextField
+          select
+          label="Rule"
+          value={selectedRule}
+          onChange={(event) => {
+            const newRule = event.target.value as RuleType;
+            setSelectedRuleState(newRule);
+            props.onRuleChange?.(newRule);
+          }}
+          sx={{
+            minWidth: '230px',
+            minHeight: '56px'
+          }}
+        >
+          <MenuItem value="schengen-90-180">90/180 Schengen rule</MenuItem>
+          <MenuItem value="tax-183">183-day tax residency</MenuItem>
+        </TextField>
+
+        {selectedRule === 'tax-183' && (
+          <>
+            <TextField
+              select
+              label="Country"
+              value={selectedCountry}
+              onChange={(event) => {
+                const newCountry = event.target.value;
+                setCountryState(newCountry);
+                props.onCountryChange?.(newCountry);
+              }}
+              sx={{
+                minWidth: '230px',
+                minHeight: '56px'
+              }}
+            >
+              <MenuItem value="">Select country</MenuItem>
+              <MenuItem value="ES">Spain</MenuItem>
+              <MenuItem value="PT">Portugal</MenuItem>
+              <MenuItem value="FR">France</MenuItem>
+              <MenuItem value="IT">Italy</MenuItem>
+              <MenuItem value="DE">Germany</MenuItem>
+              <MenuItem value="OTHER">Other</MenuItem>
+            </TextField>
+
+            <TextField
+              select
+              label="Tax window"
+              value={selectedTaxMode}
+              onChange={(event) => {
+                const newMode = event.target.value as TaxResidencyMode;
+                setTaxModeState(newMode);
+                props.onTaxModeChange?.(newMode);
+              }}
+              sx={{
+                minWidth: '230px',
+                minHeight: '56px'
+              }}
+            >
+              <MenuItem value="calendar">
+                Calendar year (Jan 1 – Dec 31)
+              </MenuItem>
+              <MenuItem value="rolling">Rolling 365-day window</MenuItem>
+            </TextField>
+          </>
+        )}
+      </Box>
 
       {/* 2nd line: dates + button */}
       <Box
