@@ -9,8 +9,7 @@ import CalendarInput from './CalendarInput';
 import CalendarButton from './CalendarButton';
 import { Dayjs } from 'dayjs';
 import { TaxResidencyMode } from 'src/utils/taxResidencyUtils';
-
-type RuleType = 'schengen-90-180' | 'tax-183';
+import { PolicyType } from 'src/types/data';
 
 interface FormProps {
   enterTitle?: string;
@@ -18,8 +17,8 @@ interface FormProps {
   addButtonText?: string;
   selectedDateText: string;
   handleSubmit: ({ entry, exit }: { entry: Dayjs; exit: Dayjs }) => void;
-  rule?: RuleType;
-  onRuleChange?: (rule: RuleType) => void;
+  rule?: PolicyType;
+  onRuleChange?: (rule: PolicyType) => void;
   country?: string;
   onCountryChange?: (country: string) => void;
   taxMode?: TaxResidencyMode;
@@ -31,7 +30,7 @@ const Form: React.FC<FormProps> = (props) => {
   const [exit, setExit] = useState<Dayjs | null>(null);
   const [defaultExit, setDefaultExit] = useState<Dayjs | undefined>(undefined);
   const [selectedRuleState, setSelectedRuleState] =
-    useState<RuleType>('schengen-90-180');
+    useState<PolicyType>(PolicyType.Schengen90_180);
   const [countryState, setCountryState] = useState<string>('');
   const [taxModeState, setTaxModeState] =
     useState<TaxResidencyMode>('calendar');
@@ -78,7 +77,7 @@ const Form: React.FC<FormProps> = (props) => {
           label="Rule"
           value={selectedRule}
           onChange={(event) => {
-            const newRule = event.target.value as RuleType;
+            const newRule = event.target.value as PolicyType;
             setSelectedRuleState(newRule);
             props.onRuleChange?.(newRule);
           }}
@@ -87,11 +86,13 @@ const Form: React.FC<FormProps> = (props) => {
             minHeight: '56px'
           }}
         >
-          <MenuItem value="schengen-90-180">90/180 Schengen rule</MenuItem>
-          <MenuItem value="tax-183">183-day tax residency</MenuItem>
+          <MenuItem value={PolicyType.Schengen90_180}>
+            90/180 Schengen rule
+          </MenuItem>
+          <MenuItem value={PolicyType.Tax183}>183-day tax residency</MenuItem>
         </TextField>
 
-        {selectedRule === 'tax-183' && (
+        {selectedRule === PolicyType.Tax183 && (
           <>
             <TextField
               select

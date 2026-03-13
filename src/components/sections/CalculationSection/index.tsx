@@ -8,15 +8,15 @@ import Form from 'src/components/atoms/Form';
 import Table from 'src/components/atoms/Table';
 import { CALCULATION_SECTION_ID } from 'src/utils/constants';
 import Result from 'src/components/atoms/Result';
-import { useVisaDaysCalculation, CalculatorRuleType } from './hooks';
-import { VisitItem } from 'src/types/data';
+import { useVisaDaysCalculation } from './hooks';
+import { VisitItem, PolicyType } from 'src/types/data';
 import Cookies from 'js-cookie';
 import { TaxResidencyMode } from 'src/utils/taxResidencyUtils';
 
 export type Props = types.CalculationSection & types.StackbitFieldPath;
 
 export const CalculationSection: React.FC<Props> = (props) => {
-  const [rule, setRule] = useState<CalculatorRuleType>('schengen-90-180');
+  const [rule, setRule] = useState<PolicyType>(PolicyType.Schengen90_180);
   const [taxMode, setTaxMode] = useState<TaxResidencyMode>('calendar');
   const [country, setCountry] = useState<string>('');
   const {

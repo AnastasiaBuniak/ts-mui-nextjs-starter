@@ -7,8 +7,7 @@ import {
   TaxResidencyMode,
   TaxResidencyRiskLevel
 } from 'src/utils/taxResidencyUtils';
-
-type RuleType = 'schengen-90-180' | 'tax-183';
+import { PolicyType } from 'src/types/data';
 
 interface ResultProps {
   remainingDaysToStay: number;
@@ -17,7 +16,7 @@ interface ResultProps {
   overstayedDays: number;
   onRegisterClick?: () => void;
   isSignedIn?: boolean;
-  ruleType?: RuleType;
+  ruleType?: PolicyType;
   taxMode?: TaxResidencyMode;
   taxRiskLevel?: TaxResidencyRiskLevel | null;
   isTaxResident?: boolean | null;
@@ -36,13 +35,13 @@ const Result: React.FC<ResultProps> = ({
   overstayedDays,
   onRegisterClick,
   isSignedIn = false,
-  ruleType = 'schengen-90-180',
+  ruleType = PolicyType.Schengen90_180,
   taxMode = 'calendar',
   taxRiskLevel,
   isTaxResident,
   resultText
 }) => {
-  const isSchengen = ruleType === 'schengen-90-180';
+  const isSchengen = ruleType === PolicyType.Schengen90_180;
 
   const getTaxSeverity = (): 'success' | 'warning' | 'error' => {
     if (taxRiskLevel === 'error') return 'error';

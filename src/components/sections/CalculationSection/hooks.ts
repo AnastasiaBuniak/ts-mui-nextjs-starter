@@ -6,12 +6,10 @@ import {
   TaxResidencyMode,
   TaxResidencyRiskLevel
 } from 'src/utils/taxResidencyUtils';
-import { VisitItem } from 'src/types/data';
-
-export type CalculatorRuleType = 'schengen-90-180' | 'tax-183';
+import { VisitItem, PolicyType } from 'src/types/data';
 
 export const useVisaDaysCalculation = (
-  rule: CalculatorRuleType,
+  rule: PolicyType,
   taxMode: TaxResidencyMode,
   countryCode: string
 ) => {
@@ -32,7 +30,7 @@ export const useVisaDaysCalculation = (
   const showResult = remainingDaysToStay !== null && !!datesData.length;
 
   const startCalculation = () => {
-    if (rule === 'schengen-90-180') {
+    if (rule === PolicyType.Schengen90_180) {
       const result = getRemainingSchengenRuleDays(datesData);
       setUsedDays(result.usedDays);
       setRemainingDaysToStay(result.remainingDaysToStay);
