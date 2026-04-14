@@ -37,3 +37,8 @@ export type VisitItem = {
   days: number;
   index: number;
 };
+
+export enum PolicyType {
+  Schengen90_180 = 'schengen-90-180',
+  Tax183 = 'tax-183'
+}

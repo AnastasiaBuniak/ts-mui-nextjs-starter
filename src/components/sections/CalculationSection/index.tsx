@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type * as types from 'types';
 import dayjs, { Dayjs } from 'dayjs';
 import Box from '@mui/material/Box';
@@ -9,12 +9,15 @@ import Table from 'src/components/atoms/Table';
 import { CALCULATION_SECTION_ID } from 'src/utils/constants';
 import Result from 'src/components/atoms/Result';
 import { useVisaDaysCalculation } from './hooks';
-import { VisitItem } from 'src/types/data';
+import { VisitItem, PolicyType } from 'src/types/data';
 import Cookies from 'js-cookie';
+import { TaxResidencyMode } from 'src/utils/taxResidencyUtils';
 
 export type Props = types.CalculationSection & types.StackbitFieldPath;
 
 export const CalculationSection: React.FC<Props> = (props) => {
+  const [rule, setRule] = useState<PolicyType>(PolicyType.Schengen90_180);
+  const [taxMode, setTaxMode] = useState<TaxResidencyMode>('calendar');
   const {
     datesData,
     usedDays,
@@ -22,9 +25,12 @@ export const CalculationSection: React.FC<Props> = (props) => {
     lastDate,
     showResult,
     remainingDaysToStay,
+    isTaxResident,
+    taxRiskLevel,
     deleteDate,
-    addDate
-  } = useVisaDaysCalculation();
+    addDate,
+    startCalculation
+  } = useVisaDaysCalculation(rule, taxMode);
 
   const onRegisterClick = () => {
     const rawData = datesData.map(({ entry, exit }) => {
@@ -58,14 +64,35 @@ export const CalculationSection: React.FC<Props> = (props) => {
           />
         )}
       </Box>
-      <Form {...props} handleSubmit={addDate} />
+      <Form
+        {...props}
+        handleSubmit={addDate}
+        rule={rule}
+        onRuleChange={(newRule) => {
+          setRule(newRule);
+          if (datesData.length) {
+            startCalculation({ ruleOverride: newRule });
+          }
+        }}
+        taxMode={taxMode}
+        onTaxModeChange={(newMode) => {
+          setTaxMode(newMode);
+          if (datesData.length) {
+            startCalculation({ taxModeOverride: newMode });
+          }
+        }}
+      />
       {showResult && (
         <Result
           remainingDaysToStay={remainingDaysToStay as number}
           usedDays={usedDays}
           overstayedDays={overstayedDays}
-          lastDate={(lastDate as Dayjs).format('DD/MM/YYYY')}
+          lastDate={lastDate ? (lastDate as Dayjs).format('DD/MM/YYYY') : ''}
           onRegisterClick={onRegisterClick}
+          ruleType={rule}
+          taxMode={taxMode}
+          taxRiskLevel={taxRiskLevel}
+          isTaxResident={isTaxResident}
           resultText={props.resultText}
         />
       )}
