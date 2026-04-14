@@ -3,7 +3,6 @@ import dayjs, { Dayjs } from 'dayjs';
 export interface Stay {
   entry: Dayjs;
   exit: Dayjs;
-  countryCode: string;
 }
 
 const TAX_RESIDENCY_LIMIT = 182;
@@ -27,7 +26,6 @@ export interface TaxResidencyStatus {
  */
 export const getTaxResidencyStatus = (
   stays: Stay[],
-  countryCode: string,
   referenceDate: Dayjs = dayjs(),
   mode: TaxResidencyMode = 'calendar'
 ): TaxResidencyStatus => {
@@ -38,23 +36,21 @@ export const getTaxResidencyStatus = (
 
   let usedDays = 0;
 
-  stays
-    .filter((stay) => stay.countryCode === countryCode)
-    .forEach(({ entry, exit }) => {
-      const stayEntry = dayjs(entry);
-      const stayExit = dayjs(exit);
+  stays.forEach(({ entry, exit }) => {
+    const stayEntry = dayjs(entry);
+    const stayExit = dayjs(exit);
 
-      // If stay overlaps with the window [windowStart, referenceDate]
-      if (stayExit.isAfter(windowStart) && stayEntry.isBefore(referenceDate)) {
-        const validEnter = stayEntry.isBefore(windowStart)
-          ? windowStart
-          : stayEntry;
-        const validExit = stayExit.isAfter(referenceDate)
-          ? referenceDate
-          : stayExit;
-        usedDays += validExit.diff(validEnter, 'day') + 1;
-      }
-    });
+    // If stay overlaps with the window [windowStart, referenceDate]
+    if (stayExit.isAfter(windowStart) && stayEntry.isBefore(referenceDate)) {
+      const validEnter = stayEntry.isBefore(windowStart)
+        ? windowStart
+        : stayEntry;
+      const validExit = stayExit.isAfter(referenceDate)
+        ? referenceDate
+        : stayExit;
+      usedDays += validExit.diff(validEnter, 'day') + 1;
+    }
+  });
 
   const remainingDays = Math.max(TAX_RESIDENCY_LIMIT - usedDays, 0);
   const isTaxResident = usedDays > TAX_RESIDENCY_LIMIT;

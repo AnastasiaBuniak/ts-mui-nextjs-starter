@@ -35,6 +35,11 @@ export const PolicyCard: React.FC<Props> = ({
   onEditPolicy
 }) => {
   const router = useRouter();
+  const isTaxResidencyRule =
+    policy.allowedRuleWindow === 183 && policy.ruleWindow === 365;
+  const ruleLabel = isTaxResidencyRule
+    ? 'Tax residency'
+    : `${policy.allowedRuleWindow}/${policy.ruleWindow} rule`;
 
   const handleCardClick = (e: React.MouseEvent) => {
     if ((e.target as HTMLElement).closest('[data-policy-management]')) return;
@@ -95,7 +100,7 @@ export const PolicyCard: React.FC<Props> = ({
             label={`${policy.totalDays} ${policy.totalDays === 1 ? 'day' : 'days'} used`}
           />
 
-          <Chip color="primary" label={`90/180 rule`} />
+          <Chip color="primary" label={ruleLabel} />
         </Box>
       </CardContent>
       <CardActions onClick={(e) => e.stopPropagation()} data-policy-management>

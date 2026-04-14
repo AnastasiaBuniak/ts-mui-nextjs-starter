@@ -18,7 +18,6 @@ export type Props = types.CalculationSection & types.StackbitFieldPath;
 export const CalculationSection: React.FC<Props> = (props) => {
   const [rule, setRule] = useState<PolicyType>(PolicyType.Schengen90_180);
   const [taxMode, setTaxMode] = useState<TaxResidencyMode>('calendar');
-  const [country, setCountry] = useState<string>('');
   const {
     datesData,
     usedDays,
@@ -29,8 +28,9 @@ export const CalculationSection: React.FC<Props> = (props) => {
     isTaxResident,
     taxRiskLevel,
     deleteDate,
-    addDate
-  } = useVisaDaysCalculation(rule, taxMode, country);
+    addDate,
+    startCalculation
+  } = useVisaDaysCalculation(rule, taxMode);
 
   const onRegisterClick = () => {
     const rawData = datesData.map(({ entry, exit }) => {
@@ -68,11 +68,19 @@ export const CalculationSection: React.FC<Props> = (props) => {
         {...props}
         handleSubmit={addDate}
         rule={rule}
-        onRuleChange={(newRule) => setRule(newRule)}
-        country={country}
-        onCountryChange={(newCountry) => setCountry(newCountry)}
+        onRuleChange={(newRule) => {
+          setRule(newRule);
+          if (datesData.length) {
+            startCalculation({ ruleOverride: newRule });
+          }
+        }}
         taxMode={taxMode}
-        onTaxModeChange={(newMode) => setTaxMode(newMode)}
+        onTaxModeChange={(newMode) => {
+          setTaxMode(newMode);
+          if (datesData.length) {
+            startCalculation({ taxModeOverride: newMode });
+          }
+        }}
       />
       {showResult && (
         <Result

@@ -10,8 +10,7 @@ import { VisitItem, PolicyType } from 'src/types/data';
 
 export const useVisaDaysCalculation = (
   rule: PolicyType,
-  taxMode: TaxResidencyMode,
-  countryCode: string
+  taxMode: TaxResidencyMode
 ) => {
   const [datesData, setDatesData] = useState<
     { entry: Dayjs | null; exit: Dayjs | null; days: number }[]
@@ -29,9 +28,25 @@ export const useVisaDaysCalculation = (
     useState<TaxResidencyRiskLevel | null>(null);
   const showResult = remainingDaysToStay !== null && !!datesData.length;
 
-  const startCalculation = () => {
-    if (rule === PolicyType.Schengen90_180) {
-      const result = getRemainingSchengenRuleDays(datesData);
+  const startCalculation = ({
+    ruleOverride,
+    taxModeOverride,
+    datesDataOverride
+  }: {
+    ruleOverride?: PolicyType;
+    taxModeOverride?: TaxResidencyMode;
+    datesDataOverride?: {
+      entry: Dayjs | null;
+      exit: Dayjs | null;
+      days: number;
+    }[];
+  } = {}) => {
+    const currentRule = ruleOverride ?? rule;
+    const currentTaxMode = taxModeOverride ?? taxMode;
+    const currentDatesData = datesDataOverride ?? datesData;
+
+    if (currentRule === PolicyType.Schengen90_180) {
+      const result = getRemainingSchengenRuleDays(currentDatesData);
       setUsedDays(result.usedDays);
       setRemainingDaysToStay(result.remainingDaysToStay);
       setLastDate(result.dateToStay);
@@ -41,20 +56,14 @@ export const useVisaDaysCalculation = (
       return;
     }
 
-    const taxStays = datesData
+    const taxStays = currentDatesData
       .filter((item) => item.entry && item.exit)
       .map((item) => ({
         entry: item.entry as Dayjs,
-        exit: item.exit as Dayjs,
-        countryCode: 'XX'
+        exit: item.exit as Dayjs
       }));
 
-    const taxResult = getTaxResidencyStatus(
-      taxStays,
-      countryCode || 'XX',
-      dayjs(),
-      taxMode
-    );
+    const taxResult = getTaxResidencyStatus(taxStays, dayjs(), currentTaxMode);
 
     setUsedDays(taxResult.usedDays);
     setRemainingDaysToStay(taxResult.remainingDays);
@@ -91,7 +100,7 @@ export const useVisaDaysCalculation = (
     if (datesData.length) {
       startCalculation();
     }
-  }, [datesData, rule, taxMode, countryCode]);
+  }, [datesData, rule, taxMode]);
 
   return {
     datesData,

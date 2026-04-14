@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import Form from 'src/components/atoms/Form';
 import Table from 'src/components/atoms/Table';
 import { Typography, Container, Card } from '@mui/material';
 import Box from '@mui/material/Box';
 import Result from 'src/components/atoms/Result';
-import { ExtendedPolicy } from 'src/types/data';
+import { ExtendedPolicy, PolicyType } from 'src/types/data';
 import { Visit } from 'src/types/data';
 import { Dayjs } from 'dayjs';
 import { useCalculateResult } from './hooks';
 import theme from 'src/utils/theme';
+import { TaxResidencyMode } from 'src/utils/taxResidencyUtils';
 
 export type Props = {
   policy: ExtendedPolicy;
@@ -32,20 +33,17 @@ export const PolicyCard: React.FC<Props> = ({
   deleteVisit,
   ...props
 }) => {
+  const [rule, setRule] = useState<PolicyType>(PolicyType.Schengen90_180);
+  const [taxMode, setTaxMode] = useState<TaxResidencyMode>('calendar');
   const {
     usedDays,
     overstayedDays,
     lastDate,
     showResult,
     remainingDaysToStay,
-    startCalculation
-  } = useCalculateResult(visits);
-
-  useEffect(() => {
-    if (visits.length) {
-      startCalculation();
-    }
-  }, [visits.length]);
+    isTaxResident,
+    taxRiskLevel
+  } = useCalculateResult(visits, rule, taxMode);
 
   return (
     <Card
@@ -108,6 +106,10 @@ export const PolicyCard: React.FC<Props> = ({
             handleSubmit={addVisit}
             addButtonText={props.addButtonText}
             selectedDateText={props.selectedDateText}
+            rule={rule}
+            onRuleChange={setRule}
+            taxMode={taxMode}
+            onTaxModeChange={setTaxMode}
           />
         </Container>
 
@@ -117,8 +119,12 @@ export const PolicyCard: React.FC<Props> = ({
             remainingDaysToStay={remainingDaysToStay as number}
             usedDays={usedDays}
             overstayedDays={overstayedDays}
-            lastDate={(lastDate as Dayjs).format('DD/MM/YYYY')}
+            lastDate={lastDate ? (lastDate as Dayjs).format('DD/MM/YYYY') : ''}
             isSignedIn={true}
+            ruleType={rule}
+            taxMode={taxMode}
+            taxRiskLevel={taxRiskLevel}
+            isTaxResident={isTaxResident}
           />
         )}
       </Container>

@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
+import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import CalendarInput from './CalendarInput';
@@ -19,8 +20,6 @@ interface FormProps {
   handleSubmit: ({ entry, exit }: { entry: Dayjs; exit: Dayjs }) => void;
   rule?: PolicyType;
   onRuleChange?: (rule: PolicyType) => void;
-  country?: string;
-  onCountryChange?: (country: string) => void;
   taxMode?: TaxResidencyMode;
   onTaxModeChange?: (mode: TaxResidencyMode) => void;
 }
@@ -29,16 +28,15 @@ const Form: React.FC<FormProps> = (props) => {
   const [entry, setEnter] = useState<Dayjs | null>(null);
   const [exit, setExit] = useState<Dayjs | null>(null);
   const [defaultExit, setDefaultExit] = useState<Dayjs | undefined>(undefined);
-  const [selectedRuleState, setSelectedRuleState] =
-    useState<PolicyType>(PolicyType.Schengen90_180);
-  const [countryState, setCountryState] = useState<string>('');
+  const [selectedRuleState, setSelectedRuleState] = useState<PolicyType>(
+    PolicyType.Schengen90_180
+  );
   const [taxModeState, setTaxModeState] =
     useState<TaxResidencyMode>('calendar');
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const selectedRule = props.rule ?? selectedRuleState;
-  const selectedCountry = props.country ?? countryState;
   const selectedTaxMode = props.taxMode ?? taxModeState;
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -74,7 +72,7 @@ const Form: React.FC<FormProps> = (props) => {
       >
         <TextField
           select
-          label="Rule"
+          label="Visa rule"
           value={selectedRule}
           onChange={(event) => {
             const newRule = event.target.value as PolicyType;
@@ -94,29 +92,6 @@ const Form: React.FC<FormProps> = (props) => {
 
         {selectedRule === PolicyType.Tax183 && (
           <>
-            <TextField
-              select
-              label="Country"
-              value={selectedCountry}
-              onChange={(event) => {
-                const newCountry = event.target.value;
-                setCountryState(newCountry);
-                props.onCountryChange?.(newCountry);
-              }}
-              sx={{
-                minWidth: '230px',
-                minHeight: '56px'
-              }}
-            >
-              <MenuItem value="">Select country</MenuItem>
-              <MenuItem value="ES">Spain</MenuItem>
-              <MenuItem value="PT">Portugal</MenuItem>
-              <MenuItem value="FR">France</MenuItem>
-              <MenuItem value="IT">Italy</MenuItem>
-              <MenuItem value="DE">Germany</MenuItem>
-              <MenuItem value="OTHER">Other</MenuItem>
-            </TextField>
-
             <TextField
               select
               label="Tax window"
@@ -139,6 +114,15 @@ const Form: React.FC<FormProps> = (props) => {
           </>
         )}
       </Box>
+      <Typography
+        variant="caption"
+        color="text.secondary"
+        sx={{ width: '100%', textAlign: 'center' }}
+      >
+        {selectedRule === PolicyType.Tax183
+          ? '183-day calculation: tax residency applies when total stay reaches 183+ days in the selected tax window.'
+          : '90/180 calculation: you can stay up to 90 days in any rolling 180-day period.'}
+      </Typography>
 
       {/* 2nd line: dates + button */}
       <Box
