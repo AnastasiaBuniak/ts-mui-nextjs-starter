@@ -1,0 +1,15 @@
+{
+  "auth": {
+    "signup": "Signup",
+    "login": "Login"
+  },
+  "common": {
+    "close": "Close"
+  },
+  "cookie": {
+    "title": "Disclaimer & Cookies Notice"
+  },
+  "language": {
+    "label": "Language"
+  }
+}

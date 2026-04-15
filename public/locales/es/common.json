@@ -1,0 +1,15 @@
+{
+  "auth": {
+    "signup": "Registrarse",
+    "login": "Iniciar sesion"
+  },
+  "common": {
+    "close": "Cerrar"
+  },
+  "cookie": {
+    "title": "Aviso de Cookies y Descargo de Responsabilidad"
+  },
+  "language": {
+    "label": "Idioma"
+  }
+}

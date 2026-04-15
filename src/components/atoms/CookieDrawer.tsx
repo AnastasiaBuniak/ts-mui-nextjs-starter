@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
+import { useTranslation } from 'next-i18next';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Typography from '@mui/material/Typography';
@@ -11,6 +12,7 @@ import { CONSENT_COOKIE_NAME } from 'src/utils/constants';
 export const CookieDrawer: React.FC<{ consentCopy: string }> = ({
   consentCopy
 }) => {
+  const { t } = useTranslation('common');
   const [isOpen, setIsOpen] = useState<boolean>(true);
 
   useEffect(() => {
@@ -42,8 +44,8 @@ export const CookieDrawer: React.FC<{ consentCopy: string }> = ({
         sx={{ display: 'flex', justifyContent: 'flex-end' }}
       >
         <IconButton
-          aria-label="Close"
-          title="Close"
+          aria-label={t('common.close')}
+          title={t('common.close')}
           color="primary"
           onClick={closeDrawer}
         >
@@ -52,7 +54,7 @@ export const CookieDrawer: React.FC<{ consentCopy: string }> = ({
       </Box>
       <Box component="section" sx={{ px: 3, pb: 3 }}>
         <Typography component="p" variant="h6" color="text.primary">
-          Disclaimer & Cookies Notice
+          {t('cookie.title')}
         </Typography>
         <Typography component="div" variant="body1" color="text.primary">
           <div dangerouslySetInnerHTML={{ __html: consentCopy }} />

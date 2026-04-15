@@ -1,0 +1,15 @@
+{
+  "auth": {
+    "signup": "Cadastrar",
+    "login": "Entrar"
+  },
+  "common": {
+    "close": "Fechar"
+  },
+  "cookie": {
+    "title": "Aviso de cookies e isencao de responsabilidade"
+  },
+  "language": {
+    "label": "Idioma"
+  }
+}
