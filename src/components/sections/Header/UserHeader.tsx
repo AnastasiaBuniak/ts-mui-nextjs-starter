@@ -20,6 +20,7 @@ import { useMediaQuery, useTheme } from '@mui/material';
 
 import { userHeaderFeatures } from './hooks';
 import { useAuth } from 'src/components/context/AuthContext';
+import { LanguageSwitcher } from 'src/components/atoms/LanguageSwitcher';
 
 export type Props = types.Header & types.StackbitObjectId;
 
@@ -156,6 +157,7 @@ export const UserHeader: React.FC<Props> = (props) => {
           </MuiBox>
 
           <MuiBox sx={{ flex: '0 0 auto' }}>
+            <LanguageSwitcher lightText />
             <IconButton
               aria-label="settings"
               onClick={handleAvatarClick}

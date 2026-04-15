@@ -1,0 +1,15 @@
+{
+  "auth": {
+    "signup": "Inscription",
+    "login": "Connexion"
+  },
+  "common": {
+    "close": "Fermer"
+  },
+  "cookie": {
+    "title": "Avertissement et cookies"
+  },
+  "language": {
+    "label": "Langue"
+  }
+}

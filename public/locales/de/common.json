@@ -1,0 +1,15 @@
+{
+  "auth": {
+    "signup": "Registrieren",
+    "login": "Anmelden"
+  },
+  "common": {
+    "close": "Schliessen"
+  },
+  "cookie": {
+    "title": "Hinweis zu Cookies und Haftungsausschluss"
+  },
+  "language": {
+    "label": "Sprache"
+  }
+}

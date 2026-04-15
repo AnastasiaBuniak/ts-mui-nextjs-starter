@@ -2,11 +2,13 @@ import * as React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import type * as types from 'types';
 import { DynamicComponent } from '../components/DynamicComponent';
 import { Header } from '../components/sections/Header';
 import { Footer } from '../components/sections/Footer';
 import { pagesByType, siteConfig, urlToContent } from '../utils/content';
+import { i18nConfig } from 'src/utils/i18n';
 
 import MuiBox from '@mui/material/Box';
 import CookieDrawer from '../components/atoms/CookieDrawer';
@@ -19,7 +21,23 @@ const routesWithoutFooter = ['/dashboard', '/policy', '/signup', '/login'];
 
 const Page: React.FC<Props> = ({ page, siteConfig }) => {
   const router = useRouter();
-  const currentPath = '/' + (router.query.slug ?? []);
+  const locale = router.locale || i18nConfig.defaultLocale;
+  const canonicalBaseUrl = process.env.NEXT_PUBLIC_SITE_URL;
+  const slugSegments = Array.isArray(router.query.slug)
+    ? router.query.slug
+    : [];
+  const currentUrl = '/' + slugSegments.join('/');
+  const normalizedCurrentUrl = currentUrl === '//' ? '/' : currentUrl;
+  const canonicalUrl = canonicalBaseUrl
+    ? `${canonicalBaseUrl}${locale === i18nConfig.defaultLocale ? '' : `/${locale}`}${normalizedCurrentUrl}`
+    : null;
+  const hrefLangUrls = (router.locales || []).map((availableLocale) => ({
+    locale: availableLocale,
+    href: canonicalBaseUrl
+      ? `${canonicalBaseUrl}${availableLocale === i18nConfig.defaultLocale ? '' : `/${availableLocale}`}${normalizedCurrentUrl}`
+      : null
+  }));
+  const currentPath = currentUrl;
   const isProtectedRoute = protectedRoutes.includes(currentPath);
   const header = { ...siteConfig.header, ...(page.header ?? {}) };
   const pageContent = (
@@ -28,6 +46,25 @@ const Page: React.FC<Props> = ({ page, siteConfig }) => {
         <title>{page.title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {siteConfig.favicon && <link rel="icon" href={siteConfig.favicon} />}
+        {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+        {hrefLangUrls.map(
+          (item) =>
+            item.href && (
+              <link
+                key={item.locale}
+                rel="alternate"
+                hrefLang={item.locale}
+                href={item.href}
+              />
+            )
+        )}
+        {canonicalBaseUrl && (
+          <link
+            rel="alternate"
+            hrefLang="x-default"
+            href={`${canonicalBaseUrl}${normalizedCurrentUrl}`}
+          />
+        )}
       </Head>
       {page.noHeader || !header ? null : (
         <Header
@@ -68,15 +105,33 @@ export default Page;
 export const getStaticPaths: GetStaticPaths = () => {
   const pages = pagesByType('Page');
   return {
-    paths: Object.keys(pages),
+    paths: i18nConfig.locales.flatMap((locale) =>
+      Object.keys(pages).map((url) => ({
+        params: { slug: slugFromUrl(url) },
+        locale
+      }))
+    ),
     fallback: false
   };
 };
 
-export const getStaticProps: GetStaticProps<Props, { slug: string[] }> = ({
-  params
-}) => {
+export const getStaticProps: GetStaticProps<
+  Props,
+  { slug: string[] }
+> = async ({ params, locale }) => {
   const url = '/' + (params?.slug || []).join('/');
-  const page = urlToContent(url) as types.Page;
-  return { props: { page, siteConfig: siteConfig() } };
+  const activeLocale = locale || i18nConfig.defaultLocale;
+  const page = urlToContent(url, activeLocale) as types.Page;
+  return {
+    props: {
+      page,
+      siteConfig: siteConfig(),
+      ...(await serverSideTranslations(activeLocale, ['common']))
+    }
+  };
 };
+
+function slugFromUrl(url: string) {
+  if (url === '/') return [];
+  return url.replace(/^\//, '').split('/');
+}

@@ -2,6 +2,8 @@ import { ThemeProvider } from '@mui/material/styles';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider } from '@emotion/react';
+import { appWithTranslation } from 'next-i18next';
+import type { AppProps } from 'next/app';
 import theme from '../utils/theme';
 import createEmotionCache from '../utils/createEmotionCache';
 import { AuthProvider } from '../components/context/AuthContext';
@@ -9,11 +11,11 @@ import { AuthProvider } from '../components/context/AuthContext';
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
-export default function App({
+function App({
   Component,
   pageProps,
   emotionCache = clientSideEmotionCache
-}: any) {
+}: AppProps & { emotionCache?: any }) {
   return (
     <CacheProvider value={emotionCache}>
       <GoogleOAuthProvider
@@ -29,3 +31,5 @@ export default function App({
     </CacheProvider>
   );
 }
+
+export default appWithTranslation(App);

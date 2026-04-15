@@ -2,6 +2,7 @@ import * as React from 'react';
 import type * as types from 'types';
 import { Link } from '../../atoms/Link';
 import NextLink from 'next/link';
+import { useTranslation } from 'next-i18next';
 
 import Button from '@mui/material/Button';
 import MuiAppBar from '@mui/material/AppBar';
@@ -11,11 +12,13 @@ import MuiTypography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
 
 import { handleScrollToSection } from 'src/utils/scroll';
+import { LanguageSwitcher } from 'src/components/atoms/LanguageSwitcher';
 
 export type Props = types.Header & types.StackbitObjectId;
 
 export const Header: React.FC<Props> = (props) => {
   const { title, navLinks = [], 'data-sb-object-id': objectId, user } = props;
+  const { t } = useTranslation('common');
   const fieldPath = objectId ? `${objectId}:header` : null;
   return (
     <MuiAppBar
@@ -68,6 +71,7 @@ export const Header: React.FC<Props> = (props) => {
                 />
               )
             )}
+            <LanguageSwitcher />
             {user ? (
               <NextLink href="/dashboard" passHref legacyBehavior>
                 <Avatar
@@ -80,14 +84,14 @@ export const Header: React.FC<Props> = (props) => {
               <>
                 <Link
                   type="Link"
-                  label="Signup"
+                  label={t('auth.signup')}
                   url="/signup"
                   underline="hover"
                   sx={{ ml: 2 }}
                 />
                 <Link
                   type="Link"
-                  label="Login"
+                  label={t('auth.login')}
                   url="/login"
                   underline="hover"
                   sx={{ ml: 2 }}
