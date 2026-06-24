@@ -1,19 +1,18 @@
-<!-- TODO: translate this page to es. Seeded from default locale. -->
-
 ---
-title: Signup
+title: Registro
+description: Crea una cuenta gratuita en la Calculadora de Días de Visa con Google y guarda tus cálculos de días de visa.
 type: Page
 noHeader: true
 sections:
   - type: Signup
     pageType: signup
-    title: Welcome to Visa Days Calculator!
-    subtitle: Sign up here to continue
+    title: ¡Bienvenido a la Calculadora de Días de Visa!
+    subtitle: Regístrate aquí para continuar
     sideImageUrl: https://images.unsplash.com/photo-1524850301259-7729d41d11d9?q=80&w=794&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-    buttonText: Signup with Google
-    errorText: Failed to signup with Google. Please try again later.
-    buttonErrorText: Please agree to terms of use
-    termsText: By proceeding, I agree to the
-    termsLinkText: terms and conditions
+    buttonText: Registrarse con Google
+    errorText: No se pudo registrarse con Google. Inténtalo de nuevo más tarde.
+    buttonErrorText: Acepta los términos de uso
+    termsText: Al continuar, acepto los
+    termsLinkText: términos y condiciones
     termsLink: /terms
 ---

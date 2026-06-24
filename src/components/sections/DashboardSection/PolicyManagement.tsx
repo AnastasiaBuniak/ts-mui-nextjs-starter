@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'next-i18next';
 import {
   Typography,
   IconButton,
@@ -28,6 +29,7 @@ export const PolicyManagement: React.FC<Props> = ({
   onDeletePolicy,
   onEditPolicy
 }) => {
+  const { t } = useTranslation('common');
   const [openDeleteConfirm, setOpenDeleteConfirm] = useState(false);
   const [policyToDeleteId, setPolicyToDeleteId] = useState<string | null>(null);
   const [editOpen, setEditOpen] = useState(false);
@@ -73,7 +75,7 @@ export const PolicyManagement: React.FC<Props> = ({
         }}
       >
         <IconButton
-          aria-label="edit policy"
+          aria-label={t('dashboard.editPolicyAria')}
           onClick={(e) => {
             e.stopPropagation();
             e.preventDefault();
@@ -85,9 +87,9 @@ export const PolicyManagement: React.FC<Props> = ({
         </IconButton>
       </Box>
       <Dialog open={openDeleteConfirm} onClose={handleCloseDeleteConfirm}>
-        <DialogTitle>Are you sure?</DialogTitle>
+        <DialogTitle>{t('dashboard.deleteConfirmTitle')}</DialogTitle>
         <DialogContent>
-          <Typography>Do you really want to delete this policy?</Typography>
+          <Typography>{t('dashboard.deleteConfirm')}</Typography>
         </DialogContent>
         <DialogActions>
           <Button
@@ -95,7 +97,7 @@ export const PolicyManagement: React.FC<Props> = ({
             variant="outlined"
             sx={{ color: 'black', borderColor: 'grey.400' }}
           >
-            No
+            {t('common.no')}
           </Button>
           <Button
             onClick={handleConfirmDelete}
@@ -108,7 +110,7 @@ export const PolicyManagement: React.FC<Props> = ({
               }
             }}
           >
-            Yes
+            {t('common.yes')}
           </Button>
         </DialogActions>
       </Dialog>
@@ -118,18 +120,18 @@ export const PolicyManagement: React.FC<Props> = ({
         fullWidth
         maxWidth="sm"
       >
-        <DialogTitle>Edit Policy</DialogTitle>
+        <DialogTitle>{t('dashboard.editPolicy')}</DialogTitle>
         <DialogContent>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mt: 2 }}>
             <TextField
-              label="Name (max 40 characters)"
+              label={t('dashboard.nameLabel')}
               value={editName}
               onChange={(e) => setEditName(e.target.value)}
               fullWidth
               error={editName.length > 40}
             />
             <TextField
-              label="Description (max 500 characters)"
+              label={t('dashboard.descriptionLabel')}
               value={editDescription}
               onChange={(e) => setEditDescription(e.target.value)}
               fullWidth
@@ -146,14 +148,14 @@ export const PolicyManagement: React.FC<Props> = ({
             onClick={() => handleDeleteClick(policy._id)}
             sx={{ mr: 'auto' }}
           >
-            Delete card
+            {t('dashboard.deleteCard')}
           </Button>
           <Button
             onClick={() => setEditOpen(false)}
             variant="outlined"
             sx={{ color: 'black', borderColor: 'grey.400' }}
           >
-            Cancel
+            {t('common.cancel')}
           </Button>
           <Button
             onClick={handleConfirmEdit}
@@ -165,7 +167,7 @@ export const PolicyManagement: React.FC<Props> = ({
               editName.length > 40
             }
           >
-            Confirm
+            {t('common.confirm')}
           </Button>
         </DialogActions>
       </Dialog>

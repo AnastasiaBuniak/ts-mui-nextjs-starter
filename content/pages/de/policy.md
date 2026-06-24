@@ -1,18 +1,17 @@
-<!-- TODO: translate this page to de. Seeded from default locale. -->
-
 ---
-title: Policy
+title: Richtlinie
+description: Berechnen und verfolgen Sie Visa-Tage für eine bestimmte Aufenthaltsrichtlinie mit Ein- und Ausreisedaten.
 type: Page
 header:
-  title: Visa Days Calculator
+  title: Visa-Tage-Rechner
 sections:
   - type: PolicySection
-    title: Visits list
-    addButtonText: Add dates
-    selectedDateText: Selected date
+    title: Aufenthaltsliste
+    addButtonText: Daten hinzufügen
+    selectedDateText: Ausgewähltes Datum
     resultText:
-      daysRemainToStay: Days remain to stay
-      wantToPersistResults: Want to persist the calculations results?
-      registerCta: Register with Google
-      registerCta2: for free and access it whenever you need it.
+      daysRemainToStay: Verbleibende Aufenthaltstage
+      wantToPersistResults: Möchten Sie die Berechnungsergebnisse speichern?
+      registerCta: Mit Google registrieren
+      registerCta2: kostenlos und jederzeit darauf zugreifen.
 ---

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'next-i18next';
 import Form from 'src/components/atoms/Form';
 import Table from 'src/components/atoms/Table';
 import { Typography, Container, Card } from '@mui/material';
@@ -33,6 +34,7 @@ export const PolicyCard: React.FC<Props> = ({
   deleteVisit,
   ...props
 }) => {
+  const { t } = useTranslation('common');
   const [rule, setRule] = useState<PolicyType>(PolicyType.Schengen90_180);
   const [taxMode, setTaxMode] = useState<TaxResidencyMode>('calendar');
   const {
@@ -74,7 +76,7 @@ export const PolicyCard: React.FC<Props> = ({
             {policy.description}
           </Typography>
           <Typography variant="body2" fontWeight={700}>
-            {policy.totalDays}/180 days
+            {t('policy.daysOfTotal', { used: policy.totalDays })}
           </Typography>
         </Box>
       </Box>

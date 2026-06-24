@@ -1,11 +1,10 @@
-<!-- TODO: translate this page to es. Seeded from default locale. -->
-
 ---
-title: Dashboard
+title: Panel
+description: Gestiona y consulta tu lista de visitas guardadas en la Calculadora de Días de Visa.
 type: Page
 header:
-  title: Visa Days Calculator
+  title: Calculadora de Días de Visa
 sections:
   - type: DashboardSection
-    title: Visits list
+    title: Lista de visitas
 ---

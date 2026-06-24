@@ -4,12 +4,81 @@
     "login": "Login"
   },
   "common": {
-    "close": "Close"
+    "back": "Back",
+    "cancel": "Cancel",
+    "close": "Close",
+    "confirm": "Confirm",
+    "create": "Create",
+    "delete": "Delete",
+    "no": "No",
+    "settings": "Settings",
+    "yes": "Yes"
   },
   "cookie": {
     "title": "Disclaimer & Cookies Notice"
   },
+  "dashboard": {
+    "addNewPolicy": "Add New Policy",
+    "addPolicyAria": "add policy",
+    "day": "day",
+    "days": "days",
+    "daysUsed": "{{count}} {{unit}} used",
+    "deleteCard": "Delete card",
+    "deleteConfirm": "Do you really want to delete this policy?",
+    "deleteConfirmTitle": "Are you sure?",
+    "descriptionLabel": "Description (max 500 characters)",
+    "editPolicy": "Edit Policy",
+    "editPolicyAria": "edit policy",
+    "nameLabel": "Name (max 40 characters)",
+    "policyNameLabel": "Policy Name (max 40 characters)",
+    "taxResidency": "Tax residency",
+    "viewPolicyAria": "View policy {{name}}",
+    "ruleLabel": "{{allowed}}/{{window}} rule"
+  },
+  "form": {
+    "calendarYear": "Calendar year (Jan 1 – Dec 31)",
+    "rollingWindow": "Rolling 365-day window",
+    "schengenCaption": "90/180 calculation: you can stay up to 90 days in any rolling 180-day period.",
+    "schengenRule": "90/180 Schengen rule",
+    "tax183Rule": "183-day tax residency",
+    "taxCaption": "183-day calculation: tax residency applies when total stay reaches 183+ days in the selected tax window.",
+    "taxWindow": "Tax window",
+    "visaRule": "Visa rule"
+  },
   "language": {
-    "label": "Language"
+    "de": "Deutsch",
+    "en": "English",
+    "es": "Español",
+    "fr": "Français",
+    "label": "Language",
+    "pt-BR": "Português (Brasil)"
+  },
+  "meta": {
+    "defaultDescription": "Track your visa days with our online visa calculator. Calculate how many days you've stayed and how many you have left for hassle-free travel planning."
+  },
+  "policy": {
+    "daysOfTotal": "{{used}}/180 days"
+  },
+  "result": {
+    "allowed90Days": "You are allowed 90 days in a 180-day period.",
+    "calendarYear": "calendar year",
+    "daysBeforeTaxThreshold": "Days before 183-day tax threshold",
+    "likelyTaxResident": "You are likely to be considered a <strong>tax resident</strong> under the 183-day rule. Please consult a qualified tax advisor for your specific situation.",
+    "noDaysRemaining": "As of today, you cannot stay any longer and have <strong>0 days</strong> remaining. You could regain the right to stay only after enough previous days drop out of your 180-day window.",
+    "overstayedBy": "You <strong>overstayed by {{days}} days</strong>.",
+    "overstayedTaxBy": "You have exceeded the 183-day threshold by <strong>{{days}} days</strong>.",
+    "remainingBeforeTax": "You have <strong>{{days}} days</strong> before reaching the 183-day tax residency threshold in this window.",
+    "rolling365": "rolling 365-day",
+    "schengenUsedDays": "You have <strong>used {{days}} days</strong> of stay in the last 180 days window.",
+    "stayUntilDate": "You can stay for <strong>{{days}} days </strong> more, until <strong>{{date}}</strong>, if you use all days at once.",
+    "taxThreshold": "The tax residency threshold is 183 days in a year.",
+    "taxUsedDays": "You have <strong>used {{days}} days</strong> of presence in the selected {{window}} window."
+  },
+  "table": {
+    "actions": "Actions",
+    "deleteAria": "delete",
+    "duration": "Duration (days)",
+    "entry": "Entry",
+    "exit": "Exit"
   }
 }

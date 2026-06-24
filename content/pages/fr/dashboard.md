@@ -1,11 +1,10 @@
-<!-- TODO: translate this page to fr. Seeded from default locale. -->
-
 ---
-title: Dashboard
+title: Tableau de bord
+description: Consultez et gérez la liste de vos séjours et calculs de jours de visa enregistrés.
 type: Page
 header:
-  title: Visa Days Calculator
+  title: Calculateur de jours de visa
 sections:
   - type: DashboardSection
-    title: Visits list
+    title: Liste des visites
 ---

@@ -4,12 +4,81 @@
     "login": "Entrar"
   },
   "common": {
-    "close": "Fechar"
+    "back": "Voltar",
+    "cancel": "Cancelar",
+    "close": "Fechar",
+    "confirm": "Confirmar",
+    "create": "Criar",
+    "delete": "Excluir",
+    "no": "Não",
+    "settings": "Configurações",
+    "yes": "Sim"
   },
   "cookie": {
-    "title": "Aviso de cookies e isencao de responsabilidade"
+    "title": "Aviso legal e de cookies"
+  },
+  "dashboard": {
+    "addNewPolicy": "Adicionar nova política",
+    "addPolicyAria": "adicionar política",
+    "day": "dia",
+    "days": "dias",
+    "daysUsed": "{{count}} {{unit}} utilizados",
+    "deleteCard": "Excluir cartão",
+    "deleteConfirm": "Deseja realmente excluir esta política?",
+    "deleteConfirmTitle": "Tem certeza?",
+    "descriptionLabel": "Descrição (máx. 500 caracteres)",
+    "editPolicy": "Editar política",
+    "editPolicyAria": "editar política",
+    "nameLabel": "Nome (máx. 40 caracteres)",
+    "policyNameLabel": "Nome da política (máx. 40 caracteres)",
+    "taxResidency": "Residência fiscal",
+    "viewPolicyAria": "Ver política {{name}}",
+    "ruleLabel": "regra {{allowed}}/{{window}}"
+  },
+  "form": {
+    "calendarYear": "Ano civil (1 jan – 31 dez)",
+    "rollingWindow": "Janela móvel de 365 dias",
+    "schengenCaption": "Cálculo 90/180: você pode permanecer até 90 dias em qualquer período móvel de 180 dias.",
+    "schengenRule": "Regra Schengen 90/180",
+    "tax183Rule": "Residência fiscal de 183 dias",
+    "taxCaption": "Cálculo de 183 dias: a residência fiscal se aplica quando a estadia total atinge 183+ dias na janela fiscal selecionada.",
+    "taxWindow": "Janela fiscal",
+    "visaRule": "Regra de visto"
   },
   "language": {
-    "label": "Idioma"
+    "de": "Deutsch",
+    "en": "English",
+    "es": "Español",
+    "fr": "Français",
+    "label": "Idioma",
+    "pt-BR": "Português (Brasil)"
+  },
+  "meta": {
+    "defaultDescription": "Acompanhe seus dias de visto com nossa calculadora online. Calcule quantos dias você já permaneceu e quantos ainda restam para planejar suas viagens com tranquilidade."
+  },
+  "policy": {
+    "daysOfTotal": "{{used}}/180 dias"
+  },
+  "result": {
+    "allowed90Days": "Você tem permissão para 90 dias em um período de 180 dias.",
+    "calendarYear": "ano civil",
+    "daysBeforeTaxThreshold": "Dias antes do limite fiscal de 183 dias",
+    "likelyTaxResident": "É provável que você seja considerado <strong>residente fiscal</strong> pela regra dos 183 dias. Consulte um consultor fiscal qualificado para sua situação específica.",
+    "noDaysRemaining": "A partir de hoje, você não pode permanecer mais e tem <strong>0 dias</strong> restantes. Só poderá recuperar o direito de permanência quando dias anteriores suficientes saírem da sua janela de 180 dias.",
+    "overstayedBy": "Você <strong>excedeu sua estadia em {{days}} dias</strong>.",
+    "overstayedTaxBy": "Você excedeu o limite de 183 dias em <strong>{{days}} dias</strong>.",
+    "remainingBeforeTax": "Você tem <strong>{{days}} dias</strong> antes de atingir o limite de residência fiscal de 183 dias nesta janela.",
+    "rolling365": "janela móvel de 365 dias",
+    "schengenUsedDays": "Você <strong>utilizou {{days}} dias</strong> de estadia na janela dos últimos 180 dias.",
+    "stayUntilDate": "Você pode permanecer por mais <strong>{{days}} dias</strong>, até <strong>{{date}}</strong>, se usar todos os dias de uma vez.",
+    "taxThreshold": "O limite de residência fiscal é de 183 dias por ano.",
+    "taxUsedDays": "Você <strong>utilizou {{days}} dias</strong> de presença na janela {{window}} selecionada."
+  },
+  "table": {
+    "actions": "Ações",
+    "deleteAria": "excluir",
+    "duration": "Duração (dias)",
+    "entry": "Entrada",
+    "exit": "Saída"
   }
 }

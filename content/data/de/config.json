@@ -1,0 +1,41 @@
+{
+  "type": "Config",
+  "favicon": "/images/favicon.svg",
+  "header": {
+    "title": "Visa-Tage-Rechner",
+    "welcomeText": "Willkommen",
+    "deleteAccountText": "Konto löschen",
+    "logoutText": "Abmelden",
+    "deleteConfirmText": "Sind Sie sicher, dass Sie Ihr Konto löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+    "deleteCancelText": "Abbrechen",
+    "deleteConfirmButtonText": "Ja, löschen",
+    "navLinks": [
+      {
+        "type": "Link",
+        "label": "Startseite",
+        "url": "/",
+        "underline": "hover"
+      },
+      {
+        "type": "Link",
+        "label": "FAQ",
+        "url": "/faq",
+        "underline": "hover"
+      }
+    ]
+  },
+  "footer": {
+    "copyrightText": "© 2026 Visa-Tage-Rechner. Alle Rechte vorbehalten.",
+    "navLinks": [
+      {
+        "label": "Datenschutzrichtlinie",
+        "url": "/privacy"
+      },
+      {
+        "label": "Nutzungsbedingungen",
+        "url": "/terms"
+      }
+    ]
+  },
+  "consentCopy": "Diese Website verwendet Cookies, um Ihr Erlebnis zu verbessern. Der Visa-Tage-Rechner wird 'wie besehen' bereitgestellt und stellt keine Rechts- oder Einwanderungsberatung dar. Wir garantieren keine Genauigkeit. Sie sind dafür verantwortlich, die Ergebnisse mit offiziellen Quellen zu überprüfen. Lesen Sie mehr in unseren <a href='/de/terms'>Nutzungsbedingungen</a> und <a href='/de/privacy'>Datenschutzrichtlinie</a>."
+}

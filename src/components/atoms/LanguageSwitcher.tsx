@@ -6,14 +6,6 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
-const labels: Record<string, string> = {
-  en: 'English',
-  es: 'Espanol',
-  'pt-BR': 'Portugues (Brasil)',
-  de: 'Deutsch',
-  fr: 'Francais'
-};
-
 export const LanguageSwitcher: React.FC<{ lightText?: boolean }> = ({
   lightText = false
 }) => {
@@ -54,7 +46,7 @@ export const LanguageSwitcher: React.FC<{ lightText?: boolean }> = ({
       >
         {(router.locales || []).map((locale) => (
           <MenuItem key={locale} value={locale}>
-            {labels[locale] || locale}
+            {t(`language.${locale}`)}
           </MenuItem>
         ))}
       </Select>

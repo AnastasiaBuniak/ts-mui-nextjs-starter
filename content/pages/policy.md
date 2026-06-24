@@ -1,5 +1,6 @@
 ---
 title: Policy
+description: View and manage visits for a specific visa or tax residency policy.
 type: Page
 header:
   title: Visa Days Calculator

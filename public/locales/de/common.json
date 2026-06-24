@@ -4,12 +4,81 @@
     "login": "Anmelden"
   },
   "common": {
-    "close": "Schliessen"
+    "back": "Zurück",
+    "cancel": "Abbrechen",
+    "close": "Schließen",
+    "confirm": "Bestätigen",
+    "create": "Erstellen",
+    "delete": "Löschen",
+    "no": "Nein",
+    "settings": "Einstellungen",
+    "yes": "Ja"
   },
   "cookie": {
-    "title": "Hinweis zu Cookies und Haftungsausschluss"
+    "title": "Haftungsausschluss & Cookie-Hinweis"
+  },
+  "dashboard": {
+    "addNewPolicy": "Neue Richtlinie hinzufügen",
+    "addPolicyAria": "Richtlinie hinzufügen",
+    "day": "Tag",
+    "days": "Tage",
+    "daysUsed": "{{count}} {{unit}} genutzt",
+    "deleteCard": "Karte löschen",
+    "deleteConfirm": "Möchten Sie diese Richtlinie wirklich löschen?",
+    "deleteConfirmTitle": "Sind Sie sicher?",
+    "descriptionLabel": "Beschreibung (max. 500 Zeichen)",
+    "editPolicy": "Richtlinie bearbeiten",
+    "editPolicyAria": "Richtlinie bearbeiten",
+    "nameLabel": "Name (max. 40 Zeichen)",
+    "policyNameLabel": "Richtlinienname (max. 40 Zeichen)",
+    "taxResidency": "Steuerliche Ansässigkeit",
+    "viewPolicyAria": "Richtlinie {{name}} anzeigen",
+    "ruleLabel": "{{allowed}}/{{window}}-Regel"
+  },
+  "form": {
+    "calendarYear": "Kalenderjahr (1. Jan. – 31. Dez.)",
+    "rollingWindow": "Rollierendes 365-Tage-Fenster",
+    "schengenCaption": "90/180-Berechnung: Sie dürfen bis zu 90 Tage in einem rollierenden 180-Tage-Zeitraum bleiben.",
+    "schengenRule": "90/180-Schengen-Regel",
+    "tax183Rule": "183-Tage-Steueransässigkeit",
+    "taxCaption": "183-Tage-Berechnung: Steuerliche Ansässigkeit gilt, wenn der Gesamtaufenthalt im gewählten Steuerfenster 183+ Tage erreicht.",
+    "taxWindow": "Steuerfenster",
+    "visaRule": "Visumregel"
   },
   "language": {
-    "label": "Sprache"
+    "de": "Deutsch",
+    "en": "English",
+    "es": "Español",
+    "fr": "Français",
+    "label": "Sprache",
+    "pt-BR": "Português (Brasil)"
+  },
+  "meta": {
+    "defaultDescription": "Verfolgen Sie Ihre Visatage mit unserem Online-Visarechner. Berechnen Sie, wie viele Tage Sie bereits verbracht haben und wie viele Ihnen noch für eine stressfreie Reiseplanung bleiben."
+  },
+  "policy": {
+    "daysOfTotal": "{{used}}/180 Tage"
+  },
+  "result": {
+    "allowed90Days": "Ihnen stehen 90 Tage in einem 180-Tage-Zeitraum zu.",
+    "calendarYear": "Kalenderjahr",
+    "daysBeforeTaxThreshold": "Tage bis zur 183-Tage-Steuerschwelle",
+    "likelyTaxResident": "Sie gelten wahrscheinlich als <strong>steuerlich ansässig</strong> nach der 183-Tage-Regel. Bitte konsultieren Sie einen qualifizierten Steuerberater für Ihre spezifische Situation.",
+    "noDaysRemaining": "Ab heute können Sie nicht länger bleiben und haben noch <strong>0 Tage</strong>. Sie können das Aufenthaltsrecht erst wiedererlangen, wenn genügend frühere Tage aus Ihrem 180-Tage-Fenster auslaufen.",
+    "overstayedBy": "Sie haben Ihren Aufenthalt um <strong>{{days}} Tage</strong> überschritten.",
+    "overstayedTaxBy": "Sie haben die 183-Tage-Schwelle um <strong>{{days}} Tage</strong> überschritten.",
+    "remainingBeforeTax": "Ihnen verbleiben <strong>{{days}} Tage</strong>, bevor Sie die 183-Tage-Schwelle für steuerliche Ansässigkeit in diesem Fenster erreichen.",
+    "rolling365": "rollierendes 365-Tage-Fenster",
+    "schengenUsedDays": "Sie haben <strong>{{days}} Tage</strong> Aufenthalt im letzten 180-Tage-Fenster genutzt.",
+    "stayUntilDate": "Sie können noch <strong>{{days}} Tage</strong> bleiben, bis zum <strong>{{date}}</strong>, wenn Sie alle Tage auf einmal nutzen.",
+    "taxThreshold": "Die Schwelle für steuerliche Ansässigkeit beträgt 183 Tage pro Jahr.",
+    "taxUsedDays": "Sie haben <strong>{{days}} Tage</strong> Anwesenheit im gewählten {{window}}-Fenster genutzt."
+  },
+  "table": {
+    "actions": "Aktionen",
+    "deleteAria": "löschen",
+    "duration": "Dauer (Tage)",
+    "entry": "Einreise",
+    "exit": "Ausreise"
   }
 }

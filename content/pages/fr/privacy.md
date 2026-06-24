@@ -1,29 +1,28 @@
-<!-- TODO: translate this page to fr. Seeded from default locale. -->
-
 ---
-title: Privacy Policy
+title: Politique de confidentialité
+description: Découvrez comment vos données personnelles sont collectées, utilisées et protégées lorsque vous utilisez ce site web.
 type: Page
 sections:
   - type: PrivacyPolicy
-    title: Privacy Policy
-    description: This Privacy Policy describes how your personal data is collected, used, and protected when you use this website (the “Service”).
+    title: Politique de confidentialité
+    description: La présente politique de confidentialité décrit comment vos données personnelles sont collectées, utilisées et protégées lorsque vous utilisez ce site web (le « Service »).
     items:
-      - name: Who We Are
-        description: This website is operated by an independent developer. If you have questions about your data or this policy, please contact visadayscalculator@gmail.com.
-      - name: What Data We Collect and Why
-        description: When you sign in with Google, we collect your email address to associate your saved calculator data with your account. Your Google display name may be shown in the UI, but is not stored. Any data you enter on the main homepage is not stored or collected unless you choose to sign in and save it. We do not collect or store your password, payment details, or any sensitive personal data.
-      - name: Legal Basis
-        description: We rely on your consent and our legitimate interest in providing the Service to process your data.
-      - name: Data Storage
-        description: Your data is stored securely using MongoDB Atlas in the AWS Stockholm region (eu-north-1). We use Mongoose to manage the database. MongoDB complies with GDPR regulations and provides secure hosting environments.
-      - name: Data Sharing
-        description: Your data is never sold or shared with third parties. It is only used to provide this service. Third-party services involved in delivering this functionality include Google (authentication) and MongoDB Atlas (data storage).
-      - name: Your Rights
-        description: Under GDPR, you have the right to access the data we hold about you, request deletion of your data, correct your data, and withdraw consent at any time. To exercise any of these rights, please contact us at visadayscalculator@gmail.com.
+      - name: Qui sommes-nous
+        description: Ce site web est exploité par un développeur indépendant. Si vous avez des questions concernant vos données ou la présente politique, veuillez contacter visadayscalculator@gmail.com.
+      - name: Quelles données nous collectons et pourquoi
+        description: Lorsque vous vous connectez avec Google, nous collectons votre adresse e-mail pour associer vos données de calculateur enregistrées à votre compte. Votre nom d'affichage Google peut apparaître dans l'interface, mais n'est pas stocké. Les données que vous saisissez sur la page d'accueil ne sont ni stockées ni collectées, sauf si vous choisissez de vous connecter et de les enregistrer. Nous ne collectons ni ne stockons votre mot de passe, vos coordonnées bancaires ou toute donnée personnelle sensible.
+      - name: Base juridique
+        description: Nous nous appuyons sur votre consentement et notre intérêt légitime à fournir le Service pour traiter vos données.
+      - name: Stockage des données
+        description: Vos données sont stockées de manière sécurisée via MongoDB Atlas dans la région AWS Stockholm (eu-north-1). Nous utilisons Mongoose pour gérer la base de données. MongoDB est conforme au RGPD et fournit des environnements d'hébergement sécurisés.
+      - name: Partage des données
+        description: Vos données ne sont jamais vendues ni partagées avec des tiers. Elles sont uniquement utilisées pour fournir ce service. Les services tiers impliqués dans la fourniture de cette fonctionnalité incluent Google (authentification) et MongoDB Atlas (stockage des données).
+      - name: Vos droits
+        description: En vertu du RGPD, vous avez le droit d'accéder aux données que nous détenons à votre sujet, de demander leur suppression, de les faire corriger et de retirer votre consentement à tout moment. Pour exercer l'un de ces droits, veuillez nous contacter à visadayscalculator@gmail.com.
       - name: Cookies
-        description: This site uses essential cookies to remember your cookie consent along with tracking and analytics cookies.
-      - name: Retention
-        description: We retain your data as long as your registered account exists. You may request data deletion at any time.
-      - name: Changes
-        description: We may update this policy in the future. Any changes will be posted on this page.
+        description: Ce site utilise des cookies essentiels pour mémoriser votre consentement aux cookies, ainsi que des cookies de suivi et d'analyse.
+      - name: Conservation
+        description: Nous conservons vos données tant que votre compte enregistré existe. Vous pouvez demander la suppression de vos données à tout moment.
+      - name: Modifications
+        description: Nous pouvons mettre à jour cette politique à l'avenir. Toute modification sera publiée sur cette page.
 ---

@@ -1,15 +1,84 @@
 {
   "auth": {
-    "signup": "Inscription",
-    "login": "Connexion"
+    "signup": "S'inscrire",
+    "login": "Se connecter"
   },
   "common": {
-    "close": "Fermer"
+    "back": "Retour",
+    "cancel": "Annuler",
+    "close": "Fermer",
+    "confirm": "Confirmer",
+    "create": "Créer",
+    "delete": "Supprimer",
+    "no": "Non",
+    "settings": "Paramètres",
+    "yes": "Oui"
   },
   "cookie": {
-    "title": "Avertissement et cookies"
+    "title": "Avertissement et avis sur les cookies"
+  },
+  "dashboard": {
+    "addNewPolicy": "Ajouter une nouvelle politique",
+    "addPolicyAria": "ajouter une politique",
+    "day": "jour",
+    "days": "jours",
+    "daysUsed": "{{count}} {{unit}} utilisés",
+    "deleteCard": "Supprimer la carte",
+    "deleteConfirm": "Voulez-vous vraiment supprimer cette politique ?",
+    "deleteConfirmTitle": "Êtes-vous sûr ?",
+    "descriptionLabel": "Description (max. 500 caractères)",
+    "editPolicy": "Modifier la politique",
+    "editPolicyAria": "modifier la politique",
+    "nameLabel": "Nom (max. 40 caractères)",
+    "policyNameLabel": "Nom de la politique (max. 40 caractères)",
+    "taxResidency": "Résidence fiscale",
+    "viewPolicyAria": "Voir la politique {{name}}",
+    "ruleLabel": "règle {{allowed}}/{{window}}"
+  },
+  "form": {
+    "calendarYear": "Année civile (1er janv. – 31 déc.)",
+    "rollingWindow": "Fenêtre glissante de 365 jours",
+    "schengenCaption": "Calcul 90/180 : vous pouvez rester jusqu'à 90 jours dans toute période glissante de 180 jours.",
+    "schengenRule": "Règle Schengen 90/180",
+    "tax183Rule": "Résidence fiscale 183 jours",
+    "taxCaption": "Calcul 183 jours : la résidence fiscale s'applique lorsque le séjour total atteint 183+ jours dans la fenêtre fiscale sélectionnée.",
+    "taxWindow": "Fenêtre fiscale",
+    "visaRule": "Règle de visa"
   },
   "language": {
-    "label": "Langue"
+    "de": "Deutsch",
+    "en": "English",
+    "es": "Español",
+    "fr": "Français",
+    "label": "Langue",
+    "pt-BR": "Português (Brasil)"
+  },
+  "meta": {
+    "defaultDescription": "Suivez vos jours de visa avec notre calculateur en ligne. Calculez combien de jours vous avez passés et combien il vous en reste pour planifier vos voyages en toute sérénité."
+  },
+  "policy": {
+    "daysOfTotal": "{{used}}/180 jours"
+  },
+  "result": {
+    "allowed90Days": "Vous êtes autorisé à rester 90 jours sur une période de 180 jours.",
+    "calendarYear": "année civile",
+    "daysBeforeTaxThreshold": "Jours avant le seuil fiscal de 183 jours",
+    "likelyTaxResident": "Vous êtes probablement considéré comme <strong>résident fiscal</strong> selon la règle des 183 jours. Veuillez consulter un conseiller fiscal qualifié pour votre situation spécifique.",
+    "noDaysRemaining": "À ce jour, vous ne pouvez plus rester et il vous reste <strong>0 jour</strong>. Vous ne pourrez retrouver le droit de séjour que lorsque suffisamment de jours antérieurs sortiront de votre fenêtre de 180 jours.",
+    "overstayedBy": "Vous avez <strong>dépassé votre séjour de {{days}} jours</strong>.",
+    "overstayedTaxBy": "Vous avez dépassé le seuil de 183 jours de <strong>{{days}} jours</strong>.",
+    "remainingBeforeTax": "Il vous reste <strong>{{days}} jours</strong> avant d'atteindre le seuil de résidence fiscale de 183 jours dans cette fenêtre.",
+    "rolling365": "fenêtre glissante de 365 jours",
+    "schengenUsedDays": "Vous avez <strong>utilisé {{days}} jours</strong> de séjour dans la fenêtre des 180 derniers jours.",
+    "stayUntilDate": "Vous pouvez rester <strong>{{days}} jours</strong> de plus, jusqu'au <strong>{{date}}</strong>, si vous utilisez tous les jours d'un coup.",
+    "taxThreshold": "Le seuil de résidence fiscale est de 183 jours par an.",
+    "taxUsedDays": "Vous avez <strong>utilisé {{days}} jours</strong> de présence dans la fenêtre {{window}} sélectionnée."
+  },
+  "table": {
+    "actions": "Actions",
+    "deleteAria": "supprimer",
+    "duration": "Durée (jours)",
+    "entry": "Entrée",
+    "exit": "Sortie"
   }
 }

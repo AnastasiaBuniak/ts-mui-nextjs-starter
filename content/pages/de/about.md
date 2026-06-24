@@ -1,15 +1,14 @@
-<!-- TODO: translate this page to de. Seeded from default locale. -->
-
 ---
-title: About
+title: Über uns
+description: Haftungsausschluss und wichtige Hinweise zur Nutzung des Visa-Tage-Rechners. Die Informationen dienen nur der allgemeinen Orientierung und stellen keine Rechtsberatung dar.
 type: Page
 sections:
   - type: HeroSection
-    title: Disclaimer
+    title: Haftungsausschluss
     subtitle: 
     text: >
-      The information provided on this website is intended solely for general informational purposes and doesn't provide legal advice. While we strive to ensure accuracy, we do not guarantee the completeness, reliability, or applicability of the visa days calculation. This tool is not intended to provide legal or official consultation. Users are fully responsible for verifying the accuracy of their stay and adhering to any relevant immigration regulations. We do not assume any liability for any consequences that may arise from the use of this tool.
+      Die auf dieser Website bereitgestellten Informationen dienen ausschließlich allgemeinen Informationszwecken und stellen keine Rechtsberatung dar. Obwohl wir uns um Genauigkeit bemühen, garantieren wir weder Vollständigkeit, Zuverlässigkeit noch Anwendbarkeit der Visa-Tagesberechnung. Dieses Tool ist nicht als rechtliche oder offizielle Beratung gedacht. Nutzerinnen und Nutzer sind vollständig dafür verantwortlich, die Richtigkeit ihres Aufenthalts zu überprüfen und alle relevanten Einwanderungsvorschriften einzuhalten. Wir übernehmen keine Haftung für Folgen, die aus der Nutzung dieses Tools entstehen können.
 
-      **By using this website, you acknowledge and agree to these terms.**
+      **Mit der Nutzung dieser Website erkennen Sie diese Bedingungen an und stimmen ihnen zu.**
 
 ---

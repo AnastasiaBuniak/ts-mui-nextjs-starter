@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'next-i18next';
 import { Typography, Card } from '@mui/material';
 import Box from '@mui/material/Box';
 import CardContent from '@mui/material/CardContent';
@@ -35,11 +36,15 @@ export const PolicyCard: React.FC<Props> = ({
   onEditPolicy
 }) => {
   const router = useRouter();
+  const { t } = useTranslation('common');
   const isTaxResidencyRule =
     policy.allowedRuleWindow === 183 && policy.ruleWindow === 365;
   const ruleLabel = isTaxResidencyRule
-    ? 'Tax residency'
-    : `${policy.allowedRuleWindow}/${policy.ruleWindow} rule`;
+    ? t('dashboard.taxResidency')
+    : t('dashboard.ruleLabel', {
+        allowed: policy.allowedRuleWindow,
+        window: policy.ruleWindow
+      });
 
   const handleCardClick = (e: React.MouseEvent) => {
     if ((e.target as HTMLElement).closest('[data-policy-management]')) return;
@@ -66,7 +71,7 @@ export const PolicyCard: React.FC<Props> = ({
       onClick={handleCardClick}
       tabIndex={0}
       role="button"
-      aria-label={`View policy ${policy.name}`}
+      aria-label={t('dashboard.viewPolicyAria', { name: policy.name })}
     >
       <CardContent
         sx={{ height: '100%', display: 'flex', flexDirection: 'column', py: 0 }}
@@ -97,7 +102,13 @@ export const PolicyCard: React.FC<Props> = ({
               allowed: policy.allowedRuleWindow,
               current: policy.totalDays
             })}
-            label={`${policy.totalDays} ${policy.totalDays === 1 ? 'day' : 'days'} used`}
+            label={t('dashboard.daysUsed', {
+              count: policy.totalDays,
+              unit:
+                policy.totalDays === 1
+                  ? t('dashboard.day')
+                  : t('dashboard.days')
+            })}
           />
 
           <Chip color="primary" label={ruleLabel} />

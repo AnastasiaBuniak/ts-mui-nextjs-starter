@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import type * as types from 'types';
@@ -21,6 +22,7 @@ const routesWithoutFooter = ['/dashboard', '/policy', '/signup', '/login'];
 
 const Page: React.FC<Props> = ({ page, siteConfig }) => {
   const router = useRouter();
+  const { t } = useTranslation('common');
   const locale = router.locale || i18nConfig.defaultLocale;
   const canonicalBaseUrl = process.env.NEXT_PUBLIC_SITE_URL;
   const slugSegments = Array.isArray(router.query.slug)
@@ -37,6 +39,9 @@ const Page: React.FC<Props> = ({ page, siteConfig }) => {
       ? `${canonicalBaseUrl}${availableLocale === i18nConfig.defaultLocale ? '' : `/${availableLocale}`}${normalizedCurrentUrl}`
       : null
   }));
+  const metaDescription =
+    (page as types.Page & { description?: string }).description ||
+    t('meta.defaultDescription');
   const currentPath = currentUrl;
   const isProtectedRoute = protectedRoutes.includes(currentPath);
   const header = { ...siteConfig.header, ...(page.header ?? {}) };
@@ -44,6 +49,19 @@ const Page: React.FC<Props> = ({ page, siteConfig }) => {
     <PageContainer noHeader={page.noHeader} pageType={page.type} id={page.__id}>
       <Head>
         <title>{page.title}</title>
+        <meta name="description" content={metaDescription} />
+        <meta property="og:title" content={page.title} />
+        <meta property="og:description" content={metaDescription} />
+        <meta property="og:locale" content={locale.replace('-', '_')} />
+        {(router.locales || [])
+          .filter((availableLocale) => availableLocale !== locale)
+          .map((availableLocale) => (
+            <meta
+              key={availableLocale}
+              property="og:locale:alternate"
+              content={availableLocale.replace('-', '_')}
+            />
+          ))}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {siteConfig.favicon && <link rel="icon" href={siteConfig.favicon} />}
         {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
@@ -125,7 +143,7 @@ export const getStaticProps: GetStaticProps<
   return {
     props: {
       page,
-      siteConfig: siteConfig(),
+      siteConfig: siteConfig(activeLocale),
       ...(await serverSideTranslations(activeLocale, ['common']))
     }
   };

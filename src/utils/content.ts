@@ -79,7 +79,7 @@ function urlToFilePairs(locale: string = i18nConfig.defaultLocale) {
   const mergedFiles =
     locale === i18nConfig.defaultLocale
       ? defaultLocalePages
-      : [...localized, ...defaultLocalePages];
+      : [...defaultLocalePages, ...localized];
 
   return mergedFiles.map((file) => [fileToUrl(file), file]);
 }
@@ -107,6 +107,17 @@ export function pagesByType(
   return result;
 }
 
-export function siteConfig() {
-  return readContent(siteConfigFile) as types.Config;
+function siteConfigFileForLocale(locale: string) {
+  if (locale === i18nConfig.defaultLocale) {
+    return siteConfigFile;
+  }
+  const localizedFile = path.join(dataDir, locale, 'config.json');
+  if (fs.existsSync(localizedFile)) {
+    return localizedFile;
+  }
+  return siteConfigFile;
+}
+
+export function siteConfig(locale: string = i18nConfig.defaultLocale) {
+  return readContent(siteConfigFileForLocale(locale)) as types.Config;
 }

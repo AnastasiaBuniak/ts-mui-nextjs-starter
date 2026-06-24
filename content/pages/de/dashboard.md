@@ -1,11 +1,10 @@
-<!-- TODO: translate this page to de. Seeded from default locale. -->
-
 ---
 title: Dashboard
+description: Verwalten Sie Ihre gespeicherten Visa-Aufenthalte und Berechnungen an einem Ort.
 type: Page
 header:
-  title: Visa Days Calculator
+  title: Visa-Tage-Rechner
 sections:
   - type: DashboardSection
-    title: Visits list
+    title: Aufenthaltsliste
 ---

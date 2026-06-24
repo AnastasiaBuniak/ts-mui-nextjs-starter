@@ -1,42 +1,41 @@
-<!-- TODO: translate this page to fr. Seeded from default locale. -->
-
 ---
 title: FAQ
+description: Réponses aux questions les plus fréquentes sur le calcul des jours de visa, la règle Schengen 90/180, les séjours au Royaume-Uni et l'utilisation du calculateur.
 type: Page
 sections:
   - type: AnswersList
-    title: Frequently Asked Questions
-    description: Have questions about how to calculate your visa days? This FAQ covers the most common topics travelers ask about the Schengen 90/180-day rule, UK visitor stays, and other visa day calculations. Our answers explain how the rules work, how to use the calculator, and what to watch out for if you travel frequently. The information here is based on official guidelines but is provided for general reference only. Always double-check with government sources or embassies before planning long stays abroad.
+    title: Foire aux questions
+    description: Vous avez des questions sur le calcul de vos jours de visa ? Cette FAQ couvre les sujets les plus courants que les voyageurs posent sur la règle Schengen 90/180, les séjours visiteur au Royaume-Uni et d'autres calculs de jours de visa. Nos réponses expliquent le fonctionnement des règles, l'utilisation du calculateur et les points de vigilance si vous voyagez fréquemment. Les informations présentées ici s'appuient sur des lignes directrices officielles, mais sont fournies à titre de référence générale uniquement. Vérifiez toujours auprès des sources gouvernementales ou des ambassades avant de planifier de longs séjours à l'étranger.
 
     items:
-      - question: 'How does the Schengen 90/180-day rule work?'
-        answer: 'The 90/180-day rule means you may stay in the Schengen Area for up to 90 days within any rolling 180-day period. The “rolling” part means each day you stay, you look back over the past 180 days to count how many days you’ve already used. If you reach 90, you must leave and wait until some days from earlier in that 180-day window expire (“drop off”) before you can return.'
-      - question: 'How do I use the visa days calculator?'
-        answer: 'Enter your past entry and exit dates for each stay in the relevant region (e.g. Schengen, UK). The calculator then sums up how many days you’ve already used within the past 180 days (or whatever rule applies), and tells you how many more days you can stay (if any).'
-      - question: 'Do exit dates count?'
-        answer: 'Yes. Your stay is counted from the date of entry up to and including the date of exit. Every full day you are present in the region counts toward your total.'
-      - question: 'What if I have multiple entries and exits?'
-        answer: 'The calculator adds them all together. Even if you leave and return, previous stays within the 180-day window are included in the total number of days used.'
-      - question: 'When does the 180-day period start?'
-        answer: "The 180-day period is a rolling window. That means if today is “X”, you look back 180 days from “X”, and count all days you're in the region in that span."
-      - question: 'What happens if I exceed 90 days in the Schengen Area?'
-        answer: 'Overstaying can lead to fines, entry bans, or difficulties with future travel or visa applications. The exact penalty depends on the country. Always check local rules and try to avoid exceeding the limit.'
-      - question: 'Do transit days or layovers count towards my stay?'
-        answer: 'Usually, transit through an airport where you do not pass immigration doesn’t count. But if you go through immigration, or leave the airport and stay, then those days count. Rules can vary by country, so check the specifics.'
-      - question: 'Does the calculator cover visa requirements for the UK or non-Schengen countries?'
-        answer: 'Yes. This tool supports calculations for the Schengen Area, the UK, and potentially other regions, depending on available data. (You can check region selection on the site.)'
-      - question: 'Is the calculation legal or guaranteed?'
-        answer: 'No. The calculator is for informational purposes only. Though it uses official rules, it does not constitute legal advice. Always verify with official sources. Our site has a disclaimer about this.'
-      - question: 'How often are visa rules updated?'
-        answer: 'Visa policies can change. We strive to keep the tool updated with the most current rules. However, official government sources are the final authority. It’s a good idea to check recent policy announcements if you plan long-term travels.'
-      - question: 'Does the calculator account for special permits or visas that allow longer stays?'
-        answer: 'No. The calculator assumes standard short-term visa or visa-exempt rules (like the 90/180 rule for Schengen). If you have a special permit, long-stay visa, or residency permit, its allowances may differ significantly.'
-      - question: 'What if I travel in multiple Schengen countries?'
-        answer: 'The Schengen Area counts as one region for the purpose of the 90/180 rule. So it doesn’t matter which specific Schengen countries you visit — what matters is total days spent in any Schengen country during the rolling period.'
-      - question: 'Can I use this calculator on mobile devices?'
-        answer: 'Yes. The site is mobile-friendly and works on phones and tablets. You can input dates and see results just as on desktop.'
-      - question: 'What if I misremember one of my entry or exit dates?'
-        answer: 'Try to be as accurate as possible. If you misestimate, your total might be off. The calculator result will only be as good as the data you input. If unsure, check your passport stamps, boarding passes or travel records.'
-      - question: 'Does the calculator support languages other than English?'
-        answer: 'Currently, English is the primary language. Depending on demand, the site may add more languages. If you’d like a particular translation, you can contact the site. (Optional: mention which ones are planned.)'
+      - question: 'Comment fonctionne la règle Schengen 90/180 jours ?'
+        answer: 'La règle 90/180 jours signifie que vous pouvez séjourner dans l''espace Schengen jusqu''à 90 jours au cours de toute période glissante de 180 jours. La notion de « glissante » signifie que chaque jour de séjour, vous regardez en arrière sur les 180 derniers jours pour compter combien de jours vous avez déjà utilisés. Si vous atteignez 90, vous devez quitter et attendre que certains jours du début de cette fenêtre de 180 jours expirent (« tombent ») avant de pouvoir revenir.'
+      - question: 'Comment utiliser le calculateur de jours de visa ?'
+        answer: 'Saisissez vos dates d''entrée et de sortie passées pour chaque séjour dans la région concernée (p. ex. Schengen, Royaume-Uni). Le calculateur additionne ensuite le nombre de jours que vous avez déjà utilisés au cours des 180 derniers jours (ou selon la règle applicable) et vous indique combien de jours supplémentaires vous pouvez encore séjourner (le cas échéant).'
+      - question: 'Les dates de sortie sont-elles comptabilisées ?'
+        answer: 'Oui. Votre séjour est compté de la date d''entrée jusqu''à la date de sortie incluse. Chaque journée complète passée dans la région compte dans votre total.'
+      - question: 'Que se passe-t-il si j''ai plusieurs entrées et sorties ?'
+        answer: 'Le calculateur les additionne toutes. Même si vous partez et revenez, les séjours antérieurs dans la fenêtre de 180 jours sont inclus dans le nombre total de jours utilisés.'
+      - question: 'Quand commence la période de 180 jours ?'
+        answer: "La période de 180 jours est une fenêtre glissante. Cela signifie que si aujourd'hui est « X », vous regardez en arrière 180 jours à partir de « X » et comptez tous les jours où vous êtes dans la région sur cette période."
+      - question: 'Que se passe-t-il si je dépasse 90 jours dans l''espace Schengen ?'
+        answer: 'Un dépassement de séjour peut entraîner des amendes, des interdictions d''entrée ou des difficultés pour de futurs voyages ou demandes de visa. La sanction exacte dépend du pays. Vérifiez toujours les règles locales et essayez d''éviter de dépasser la limite.'
+      - question: 'Les jours de transit ou d''escale comptent-ils dans mon séjour ?'
+        answer: 'En général, un transit dans un aéroport sans passage par l''immigration ne compte pas. Mais si vous passez par l''immigration, ou quittez l''aéroport et restez sur place, ces jours comptent. Les règles peuvent varier selon le pays, vérifiez donc les spécificités.'
+      - question: 'Le calculateur couvre-t-il les exigences de visa pour le Royaume-Uni ou les pays hors Schengen ?'
+        answer: 'Oui. Cet outil prend en charge les calculs pour l''espace Schengen, le Royaume-Uni et potentiellement d''autres régions, selon les données disponibles. (Vous pouvez vérifier la sélection de région sur le site.)'
+      - question: 'Le calcul est-il juridiquement contraignant ou garanti ?'
+        answer: 'Non. Le calculateur est fourni à titre informatif uniquement. Bien qu''il s''appuie sur des règles officielles, il ne constitue pas un conseil juridique. Vérifiez toujours auprès de sources officielles. Notre site comporte un avertissement à ce sujet.'
+      - question: 'À quelle fréquence les règles de visa sont-elles mises à jour ?'
+        answer: 'Les politiques de visa peuvent évoluer. Nous nous efforçons de maintenir l''outil à jour avec les règles les plus récentes. Cependant, les sources gouvernementales officielles font foi. Il est conseillé de consulter les annonces récentes si vous planifiez des voyages de longue durée.'
+      - question: 'Le calculateur prend-il en compte les permis spéciaux ou visas permettant des séjours plus longs ?'
+        answer: 'Non. Le calculateur suppose des règles standard de visa court séjour ou d''exemption de visa (comme la règle 90/180 pour Schengen). Si vous disposez d''un permis spécial, d''un visa long séjour ou d''un titre de séjour, les quotas peuvent différer considérablement.'
+      - question: 'Que se passe-t-il si je voyage dans plusieurs pays Schengen ?'
+        answer: 'L''espace Schengen compte comme une seule région aux fins de la règle 90/180. Peu importe les pays Schengen que vous visitez — ce qui compte, c''est le total des jours passés dans n''importe quel pays Schengen au cours de la période glissante.'
+      - question: 'Puis-je utiliser ce calculateur sur des appareils mobiles ?'
+        answer: 'Oui. Le site est adapté aux mobiles et fonctionne sur téléphones et tablettes. Vous pouvez saisir des dates et consulter les résultats comme sur ordinateur.'
+      - question: 'Que faire si je me trompe sur une date d''entrée ou de sortie ?'
+        answer: 'Essayez d''être aussi précis que possible. Si vous vous trompez, votre total peut être erroné. Le résultat du calculateur ne sera fiable que dans la mesure de la qualité des données saisies. En cas de doute, consultez les tampons de votre passeport, les cartes d''embarquement ou vos registres de voyage.'
+      - question: 'Le calculateur prend-il en charge d''autres langues que l''anglais ?'
+        answer: 'Oui. Le site est disponible en anglais, espagnol, portugais (Brésil), allemand et français. Vous pouvez changer de langue à tout moment via le sélecteur de langue du site.'
 ---
