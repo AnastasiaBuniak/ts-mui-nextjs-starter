@@ -1,18 +1,11 @@
 import * as React from 'react';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
+import { persistLocale } from 'src/utils/i18n';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-
-const labels: Record<string, string> = {
-  en: 'English',
-  es: 'Espanol',
-  'pt-BR': 'Portugues (Brasil)',
-  de: 'Deutsch',
-  fr: 'Francais'
-};
 
 export const LanguageSwitcher: React.FC<{ lightText?: boolean }> = ({
   lightText = false
@@ -23,6 +16,7 @@ export const LanguageSwitcher: React.FC<{ lightText?: boolean }> = ({
 
   const handleLocaleChange = (event: SelectChangeEvent<string>) => {
     const locale = event.target.value;
+    persistLocale(locale);
     router.push(router.asPath, router.asPath, { locale });
   };
 
@@ -54,7 +48,7 @@ export const LanguageSwitcher: React.FC<{ lightText?: boolean }> = ({
       >
         {(router.locales || []).map((locale) => (
           <MenuItem key={locale} value={locale}>
-            {labels[locale] || locale}
+            {t(`language.${locale}`)}
           </MenuItem>
         ))}
       </Select>

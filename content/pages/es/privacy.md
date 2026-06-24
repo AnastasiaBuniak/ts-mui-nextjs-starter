@@ -1,29 +1,28 @@
-<!-- TODO: translate this page to es. Seeded from default locale. -->
-
 ---
-title: Privacy Policy
+title: Política de privacidad
+description: Cómo recopilamos, usamos y protegemos tus datos personales cuando utilizas la Calculadora de Días de Visa.
 type: Page
 sections:
   - type: PrivacyPolicy
-    title: Privacy Policy
-    description: This Privacy Policy describes how your personal data is collected, used, and protected when you use this website (the “Service”).
+    title: Política de privacidad
+    description: Esta Política de privacidad describe cómo se recopilan, utilizan y protegen tus datos personales cuando usas este sitio web (el «Servicio»).
     items:
-      - name: Who We Are
-        description: This website is operated by an independent developer. If you have questions about your data or this policy, please contact visadayscalculator@gmail.com.
-      - name: What Data We Collect and Why
-        description: When you sign in with Google, we collect your email address to associate your saved calculator data with your account. Your Google display name may be shown in the UI, but is not stored. Any data you enter on the main homepage is not stored or collected unless you choose to sign in and save it. We do not collect or store your password, payment details, or any sensitive personal data.
-      - name: Legal Basis
-        description: We rely on your consent and our legitimate interest in providing the Service to process your data.
-      - name: Data Storage
-        description: Your data is stored securely using MongoDB Atlas in the AWS Stockholm region (eu-north-1). We use Mongoose to manage the database. MongoDB complies with GDPR regulations and provides secure hosting environments.
-      - name: Data Sharing
-        description: Your data is never sold or shared with third parties. It is only used to provide this service. Third-party services involved in delivering this functionality include Google (authentication) and MongoDB Atlas (data storage).
-      - name: Your Rights
-        description: Under GDPR, you have the right to access the data we hold about you, request deletion of your data, correct your data, and withdraw consent at any time. To exercise any of these rights, please contact us at visadayscalculator@gmail.com.
+      - name: Quiénes somos
+        description: Este sitio web es operado por un desarrollador independiente. Si tienes preguntas sobre tus datos o esta política, escríbenos a visadayscalculator@gmail.com.
+      - name: Qué datos recopilamos y por qué
+        description: Cuando inicias sesión con Google, recopilamos tu dirección de correo electrónico para asociar los datos guardados de la calculadora con tu cuenta. Tu nombre para mostrar de Google puede aparecer en la interfaz, pero no se almacena. Los datos que introduces en la página principal no se guardan ni recopilan a menos que elijas iniciar sesión y guardarlos. No recopilamos ni almacenamos tu contraseña, datos de pago ni ningún dato personal sensible.
+      - name: Base legal
+        description: Nos basamos en tu consentimiento y en nuestro interés legítimo en prestar el Servicio para tratar tus datos.
+      - name: Almacenamiento de datos
+        description: Tus datos se almacenan de forma segura en MongoDB Atlas en la región AWS de Estocolmo (eu-north-1). Usamos Mongoose para gestionar la base de datos. MongoDB cumple con el RGPD y ofrece entornos de alojamiento seguros.
+      - name: Compartición de datos
+        description: Tus datos nunca se venden ni se comparten con terceros. Solo se utilizan para prestar este servicio. Los servicios de terceros implicados en esta funcionalidad incluyen Google (autenticación) y MongoDB Atlas (almacenamiento de datos).
+      - name: Tus derechos
+        description: Según el RGPD, tienes derecho a acceder a los datos que conservamos sobre ti, solicitar la eliminación de tus datos, corregirlos y retirar tu consentimiento en cualquier momento. Para ejercer cualquiera de estos derechos, contáctanos en visadayscalculator@gmail.com.
       - name: Cookies
-        description: This site uses essential cookies to remember your cookie consent along with tracking and analytics cookies.
-      - name: Retention
-        description: We retain your data as long as your registered account exists. You may request data deletion at any time.
-      - name: Changes
-        description: We may update this policy in the future. Any changes will be posted on this page.
+        description: Este sitio utiliza cookies esenciales para recordar tu consentimiento de cookies, así como cookies de seguimiento y analíticas.
+      - name: Conservación
+        description: Conservamos tus datos mientras exista tu cuenta registrada. Puedes solicitar la eliminación de datos en cualquier momento.
+      - name: Cambios
+        description: Podemos actualizar esta política en el futuro. Cualquier cambio se publicará en esta página.
 ---

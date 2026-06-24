@@ -1,15 +1,14 @@
-<!-- TODO: translate this page to es. Seeded from default locale. -->
-
 ---
-title: About
+title: Acerca de
+description: Aviso legal sobre el uso de la Calculadora de Días de Visa. La información es solo orientativa y no constituye asesoramiento legal.
 type: Page
 sections:
   - type: HeroSection
-    title: Disclaimer
+    title: Aviso legal
     subtitle: 
     text: >
-      The information provided on this website is intended solely for general informational purposes and doesn't provide legal advice. While we strive to ensure accuracy, we do not guarantee the completeness, reliability, or applicability of the visa days calculation. This tool is not intended to provide legal or official consultation. Users are fully responsible for verifying the accuracy of their stay and adhering to any relevant immigration regulations. We do not assume any liability for any consequences that may arise from the use of this tool.
+      La información proporcionada en este sitio web tiene únicamente fines informativos generales y no constituye asesoramiento legal. Aunque nos esforzamos por garantizar la exactitud, no aseguramos la integridad, fiabilidad ni aplicabilidad del cálculo de días de visa. Esta herramienta no pretende ofrecer consulta legal u oficial. Los usuarios son plenamente responsables de verificar la exactitud de su estancia y de cumplir las normativas de inmigración aplicables. No asumimos responsabilidad alguna por las consecuencias que puedan derivarse del uso de esta herramienta.
 
-      **By using this website, you acknowledge and agree to these terms.**
+      **Al usar este sitio web, reconoces y aceptas estos términos.**
 
 ---

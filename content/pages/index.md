@@ -1,5 +1,6 @@
 ---
 title: Home
+description: Track your visa days and tax residency with our free online calculator. Check Schengen 90/180 and 183-day rules in seconds.
 type: Page
 sections:
   - type: HeroSection

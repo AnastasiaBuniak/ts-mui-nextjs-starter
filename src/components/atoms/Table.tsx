@@ -1,6 +1,7 @@
 import React from 'react';
 import { Dayjs } from 'dayjs';
 import dayjs from 'dayjs';
+import { useTranslation } from 'next-i18next';
 import IconButton from '@mui/material/IconButton';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
@@ -23,15 +24,17 @@ const CustomTable: React.FC<TableProps> = ({
   onDelete,
   tableHeadStyles
 }) => {
+  const { t } = useTranslation('common');
+
   return (
     <TableContainer component={Paper} elevation={0}>
       <Table>
         <TableHead>
           <TableRow sx={{ ...tableHeadStyles }}>
-            <TableCell>Entry</TableCell>
-            <TableCell>Exit</TableCell>
-            <TableCell>Duration (days)</TableCell>
-            <TableCell>Actions</TableCell>
+            <TableCell>{t('table.entry')}</TableCell>
+            <TableCell>{t('table.exit')}</TableCell>
+            <TableCell>{t('table.duration')}</TableCell>
+            <TableCell>{t('table.actions')}</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -45,7 +48,7 @@ const CustomTable: React.FC<TableProps> = ({
               <TableCell>
                 <IconButton
                   onClick={() => onDelete({ ...row, index })}
-                  aria-label="delete"
+                  aria-label={t('table.deleteAria')}
                 >
                   <DeleteIcon color="primary" />
                 </IconButton>

@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useAuth } from './context/AuthContext';
 import { useRouter } from 'next/router';
 import { CircularProgress, Box } from '@mui/material';
+import { localePath } from 'src/utils/i18n';
 
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({
   children
@@ -11,7 +12,8 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({
 
   useEffect(() => {
     if (!loading && !user) {
-      router.push('/login'); // or wherever your login page is
+      const locale = router.locale || router.defaultLocale || 'en';
+      router.push(localePath('/login', locale));
     }
   }, [loading, user, router]);
 

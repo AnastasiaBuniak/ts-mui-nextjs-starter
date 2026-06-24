@@ -1,18 +1,17 @@
-<!-- TODO: translate this page to es. Seeded from default locale. -->
-
 ---
-title: Policy
+title: Política
+description: Añade fechas de entrada y salida y calcula los días de visa restantes para tu política de viaje.
 type: Page
 header:
-  title: Visa Days Calculator
+  title: Calculadora de Días de Visa
 sections:
   - type: PolicySection
-    title: Visits list
-    addButtonText: Add dates
-    selectedDateText: Selected date
+    title: Lista de visitas
+    addButtonText: Añadir fechas
+    selectedDateText: Fecha seleccionada
     resultText:
-      daysRemainToStay: Days remain to stay
-      wantToPersistResults: Want to persist the calculations results?
-      registerCta: Register with Google
-      registerCta2: for free and access it whenever you need it.
+      daysRemainToStay: Días restantes para permanecer
+      wantToPersistResults: ¿Quieres guardar los resultados del cálculo?
+      registerCta: Regístrate con Google
+      registerCta2: gratis y accede cuando lo necesites.
 ---

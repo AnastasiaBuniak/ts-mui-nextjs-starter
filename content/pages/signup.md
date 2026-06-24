@@ -1,5 +1,6 @@
 ---
 title: Signup
+description: Create a free Visa Days Calculator account to save and access your visa day calculations anytime.
 type: Page
 noHeader: true
 sections:

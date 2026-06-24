@@ -1,18 +1,17 @@
-<!-- TODO: translate this page to pt-BR. Seeded from default locale. -->
-
 ---
-title: Policy
+title: Política
+description: Gerencie e calcule dias de visto e residência fiscal para suas visitas salvas em um único lugar.
 type: Page
 header:
-  title: Visa Days Calculator
+  title: Calculadora de Dias de Visto
 sections:
   - type: PolicySection
-    title: Visits list
-    addButtonText: Add dates
-    selectedDateText: Selected date
+    title: Lista de visitas
+    addButtonText: Adicionar datas
+    selectedDateText: Data selecionada
     resultText:
-      daysRemainToStay: Days remain to stay
-      wantToPersistResults: Want to persist the calculations results?
-      registerCta: Register with Google
-      registerCta2: for free and access it whenever you need it.
+      daysRemainToStay: Dias restantes para permanecer
+      wantToPersistResults: Deseja salvar os resultados dos cálculos?
+      registerCta: Cadastre-se com o Google
+      registerCta2: gratuitamente e acesse quando precisar.
 ---

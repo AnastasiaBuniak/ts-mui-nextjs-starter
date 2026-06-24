@@ -1,5 +1,6 @@
 ---
 title: Login
+description: Log in to your Visa Days Calculator account to access saved visa and tax residency calculations.
 type: Page
 noHeader: true
 sections:

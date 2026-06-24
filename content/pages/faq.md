@@ -1,5 +1,6 @@
 ---
 title: FAQ
+description: Answers to common questions about Schengen 90/180 visa rules, UK visitor stays, tax residency calculations, and how to use our calculator.
 type: Page
 sections:
   - type: AnswersList
@@ -36,5 +37,5 @@ sections:
       - question: 'What if I misremember one of my entry or exit dates?'
         answer: 'Try to be as accurate as possible. If you misestimate, your total might be off. The calculator result will only be as good as the data you input. If unsure, check your passport stamps, boarding passes or travel records.'
       - question: 'Does the calculator support languages other than English?'
-        answer: 'Currently, English is the primary language. Depending on demand, the site may add more languages. If you’d like a particular translation, you can contact the site. (Optional: mention which ones are planned.)'
+        answer: 'Yes. The site is available in English, Spanish, Portuguese (Brazil), German, and French. Use the language switcher in the header to change the interface and content language.'
 ---

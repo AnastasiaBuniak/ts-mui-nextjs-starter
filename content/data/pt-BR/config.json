@@ -1,0 +1,41 @@
+{
+  "type": "Config",
+  "favicon": "/images/favicon.svg",
+  "header": {
+    "title": "Calculadora de Dias de Visto",
+    "welcomeText": "Bem-vindo",
+    "deleteAccountText": "Excluir conta",
+    "logoutText": "Sair",
+    "deleteConfirmText": "Tem certeza de que deseja excluir sua conta? Esta ação não pode ser desfeita.",
+    "deleteCancelText": "Cancelar",
+    "deleteConfirmButtonText": "Sim, excluir",
+    "navLinks": [
+      {
+        "type": "Link",
+        "label": "Início",
+        "url": "/",
+        "underline": "hover"
+      },
+      {
+        "type": "Link",
+        "label": "Perguntas frequentes",
+        "url": "/faq",
+        "underline": "hover"
+      }
+    ]
+  },
+  "footer": {
+    "copyrightText": "© 2026 Calculadora de Dias de Visto. Todos os direitos reservados.",
+    "navLinks": [
+      {
+        "label": "Política de privacidade",
+        "url": "/privacy"
+      },
+      {
+        "label": "Termos de serviço",
+        "url": "/terms"
+      }
+    ]
+  },
+  "consentCopy": "Este site usa cookies para melhorar sua experiência. A Calculadora de Dias de Visto é fornecida 'como está' e não constitui aconselhamento jurídico ou de imigração. Não garantimos a precisão. Você é responsável por verificar os resultados com fontes oficiais. Leia mais em nossos <a href='/pt-BR/terms'>Termos</a> e <a href='/pt-BR/privacy'>Política de privacidade</a>."
+}

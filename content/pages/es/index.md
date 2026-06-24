@@ -1,23 +1,22 @@
-<!-- TODO: translate this page to es. Seeded from default locale. -->
-
 ---
-title: Home
+title: Inicio
+description: Calcula gratis los días de visa y la residencia fiscal para Schengen, el Reino Unido y otras regiones. Herramienta rápida para las reglas 90/180 y 183 días.
 type: Page
 sections:
   - type: HeroSection
-    title: Visa & Tax Residency Calculator
-    subtitle: 'Check visa days and tax residency calculations for Schengen, UK, and other regions. For free. In seconds.'
+    title: Calculadora de días de visa y residencia fiscal
+    subtitle: 'Consulta el cálculo de días de visa y residencia fiscal para Schengen, el Reino Unido y otras regiones. Gratis. En segundos.'
     text: >
-      Easily calculate the days you've spent or can stay in a country based on visa rules and tax residency calculation rules. Whether for Schengen Area, UK, or others, our tool simplifies your travel planning. Use our free calculator to manage visa stays and tax residency thresholds effectively. Whether you're navigating the 90/180 rule, checking visitor limits, or tracking your 183-day tax residency status, we’ve got you covered!
+      Calcula fácilmente los días que has pasado o puedes permanecer en un país según las normas de visa y las reglas de cálculo de residencia fiscal. Ya sea para el Espacio Schengen, el Reino Unido u otras regiones, nuestra herramienta simplifica la planificación de tus viajes. Usa nuestra calculadora gratuita para gestionar las estancias con visa y los umbrales de residencia fiscal de forma eficaz. Ya sea que estés navegando la regla 90/180, comprobando límites de visita o haciendo seguimiento de tu estatus de residencia fiscal de 183 días, ¡te tenemos cubierto!
     actions:
       - type: Button
-        label: Start Calculation
+        label: Iniciar cálculo
         url: 'calculation_section'
         size: large
         variant: contained
         color: primary
       - type: Button
-        label: Learn How It Works
+        label: Cómo funciona
         url: 'information_section'
         size: large
         variant: outlined
@@ -26,127 +25,127 @@ sections:
       type: Image
       url: /images/calculator_visa_online_desktop.webp
       mobileUrl: /images/calculator_visa_online_mobile.webp
-      altText: Online Visa Calculator image
+      altText: Imagen de la calculadora de visa en línea
   - type: InformationSection
-    title: General Rules of 90/180 visa rule calculation
+    title: Reglas generales del cálculo de la regla de visa 90/180
     description: >
-      The 90/180-day rule is a common visa regulation used in the Schengen Area and some other countries. The rule states that:
+      La regla de 90/180 días es una normativa de visa común en el Espacio Schengen y en algunos otros países. La regla establece que:
     keyPoints:
-      - A visitor cannot stay in the Schengen Zone for more than 90 days within any rolling 180-day period.
-      - The 180-day period is not fixed; it’s a moving window, meaning each new day moves the counting period forward.
-      - The rule applies to all short-term visa-free travelers (e.g., UK, US, Canadian, and Australian passport holders visiting Schengen).
-      - Having ETIAS does not change your allowance under the 90/180 rule — you still must not exceed 90 days in any 180-day period.
+      - Un visitante no puede permanecer en la Zona Schengen más de 90 días en cualquier período móvil de 180 días.
+      - El período de 180 días no es fijo; es una ventana móvil, lo que significa que cada nuevo día desplaza el período de conteo hacia adelante.
+      - La regla se aplica a todos los viajeros de corta estancia sin visa (por ejemplo, titulares de pasaporte del Reino Unido, EE. UU., Canadá y Australia que visitan Schengen).
+      - 'Tener ETIAS no cambia tu cupo bajo la regla 90/180: aún no debes superar los 90 días en ningún período de 180 días.'
   - type: InformationSection
-    title: Key rules for calculating visa days. How to calculate?
+    title: Reglas clave para calcular los días de visa. ¿Cómo calcular?
     description:
     keyPoints:
-      - Every new entry counts towards the rolling 180-day window
-      - Exiting doesn’t reset the count; previous stays in the past 180 days still matter
-      - Multiple stays are combined; if a person leaves and re-enters, previous days are still counted
-      - If a traveler has already stayed 90 days in the past 180 days, they must leave and wait until days “drop off” before re-entering
+      - Cada nueva entrada cuenta para la ventana móvil de 180 días
+      - Salir no reinicia el conteo; las estancias anteriores en los últimos 180 días siguen contando
+      - Se combinan varias estancias; si una persona sale y vuelve a entrar, los días anteriores siguen contándose
+      - Si un viajero ya ha permanecido 90 días en los últimos 180 días, debe salir y esperar a que los días «caigan» antes de volver a entrar
   - type: InformationSection
-    title: General rules of 183-day tax residency calculation
+    title: Reglas generales del cálculo de residencia fiscal de 183 días
     description: >
-      The 183-day rule is a common threshold used to assess tax residency in many countries. While details vary by jurisdiction, the general principle is:
+      La regla de 183 días es un umbral común para evaluar la residencia fiscal en muchos países. Aunque los detalles varían según la jurisdicción, el principio general es:
     keyPoints:
-      - If your physical presence reaches 183 days or more in the relevant period, you may be treated as a tax resident.
-      - The relevant period can be a calendar year (Jan 1 - Dec 31) or a rolling window, depending on the country.
-      - Day-counting methods can differ by jurisdiction (for example, treatment of arrival/departure days), so always verify local guidance.
-      - Tax residency status can affect filing obligations and potential taxation of worldwide income.
+      - Si tu presencia física alcanza 183 días o más en el período relevante, puedes ser considerado residente fiscal.
+      - El período relevante puede ser un año calendario (1 de enero - 31 de diciembre) o una ventana móvil, según el país.
+      - Los métodos de conteo de días pueden diferir según la jurisdicción (por ejemplo, el tratamiento de los días de llegada/salida), así que verifica siempre la normativa local.
+      - El estatus de residencia fiscal puede afectar las obligaciones de declaración y la posible tributación de la renta mundial.
   - type: InformationSection
-    title: Key rules for calculating tax residency days. How to calculate?
+    title: Reglas clave para calcular los días de residencia fiscal. ¿Cómo calcular?
     description:
     keyPoints:
-      - Track each day of presence in the country and keep complete travel records.
-      - Select the correct tax window for your country rule (calendar year or rolling period).
-      - Combine all stays in the selected window to get your total days for tax residency calculation.
-      - When your total approaches 183 days, plan ahead and confirm your status with official guidance or a qualified advisor.
+      - Registra cada día de presencia en el país y conserva registros de viaje completos.
+      - Selecciona la ventana fiscal correcta para la regla de tu país (año calendario o período móvil).
+      - Combina todas las estancias en la ventana seleccionada para obtener el total de días para el cálculo de residencia fiscal.
+      - Cuando tu total se acerque a 183 días, planifica con antelación y confirma tu estatus con orientación oficial o un asesor cualificado.
   - type: CalculationSection
-    title: Calculate visa days and tax residency
-    enterTitle: Date of entry
-    exitTitle: Date of exit
-    addButtonText: Add dates
-    selectedDateText: Selected date
+    title: Calcula días de visa y residencia fiscal
+    enterTitle: Fecha de entrada
+    exitTitle: Fecha de salida
+    addButtonText: Añadir fechas
+    selectedDateText: Fecha seleccionada
     resultText:
-      daysRemainToStay: Days remain to stay
-      wantToPersistResults: Want to persist the calculations results?
-      registerCta: Register with Google
-      registerCta2: for free and access it whenever you need it.
+      daysRemainToStay: Días restantes para permanecer
+      wantToPersistResults: ¿Quieres guardar los resultados del cálculo?
+      registerCta: Regístrate con Google
+      registerCta2: gratis y accede cuando lo necesites.
 
   - type: CardsSection
-    title: Stay Informed - Essential Resources
-    subtitle: Official Guidelines to Help You Travel Smart and Stay Compliant
+    title: Mantente informado - Recursos esenciales
+    subtitle: Directrices oficiales para viajar con inteligencia y cumplir la normativa
     items:
       - type: Card
-        title: Schengen Visa Info - Official Rules & Guidelines
+        title: Información sobre visa Schengen - Reglas y directrices oficiales
         image:
           type: Image
           url: /images/border-guard.svg
-          altText: Border guard image
+          altText: Imagen de control fronterizo
         text: >
-          Stay informed with the latest Schengen visa regulations, entry requirements, and stay limits directly from trusted sources.
+          Mantente informado con las últimas normativas de visa Schengen, requisitos de entrada y límites de estancia directamente de fuentes fiables.
         actions:
           - type: Button
-            label: Read the Docs
+            label: Leer la documentación
             url: 'https://www.schengenvisainfo.com/'
       - type: Card
-        title: EU Migration and Home Affairs - Visa Policy
+        title: Migración y Asuntos de Interior de la UE - Política de visados
         image:
           type: Image
           url: /images/visa-stamp.svg
-          altText: Visa stamp image
+          altText: Imagen de sello de visa
         text: >
-          Explore detailed information about the EU’s visa policy, including the 90/180-day rule and country-specific agreements.
+          Explora información detallada sobre la política de visados de la UE, incluida la regla 90/180 y los acuerdos específicos por país.
         actions:
           - type: Button
-            label: Read the Docs
+            label: Leer la documentación
             url: 'https://home-affairs.ec.europa.eu/policies/schengen-borders-and-visa/visa-policy_en/'
       - type: Card
-        title: European Travel Information and Authorisation System (ETIAS)
+        title: Sistema Europeo de Información y Autorización de Viaje (ETIAS)
         image:
           type: Image
           url: /images/international-passport.svg
-          altText: International passport image
+          altText: Imagen de pasaporte internacional
         text: >
-          Learn about ETIAS requirements, designed for visa-exempt travelers to the Schengen Area, and stay updated on upcoming changes
+          Infórmate sobre los requisitos de ETIAS, diseñado para viajeros exentos de visa al Espacio Schengen, y mantente al día de los próximos cambios
         actions:
           - type: Button
-            label: Read the Docs
+            label: Leer la documentación
             url: 'https://travel-europe.europa.eu/etias_en/'
       - type: Card
-        title: OECD - Tax Residency Guidance
+        title: OCDE - Orientación sobre residencia fiscal
         image:
           type: Image
           url: /images/international-passport.svg
-          altText: International passport image
+          altText: Imagen de pasaporte internacional
         text: >
-          Review international guidance on tax residency concepts and cross-border transparency standards from the OECD.
+          Consulta orientación internacional sobre conceptos de residencia fiscal y estándares de transparencia transfronteriza de la OCDE.
         actions:
           - type: Button
-            label: Read the Docs
+            label: Leer la documentación
             url: 'https://www.oecd.org/en/networks/global-forum-tax-transparency/resources/aeoi-implementation-portal/tax-residency.html'
       - type: Card
-        title: IRS - Substantial Presence Test
+        title: IRS - Prueba de presencia sustancial
         image:
           type: Image
           url: /images/border-guard.svg
-          altText: Border guard image
+          altText: Imagen de control fronterizo
         text: >
-          Check official U.S. tax residency rules and day-counting methodology used under the substantial presence test.
+          Consulta las normas oficiales de residencia fiscal de EE. UU. y la metodología de conteo de días bajo la prueba de presencia sustancial.
         actions:
           - type: Button
-            label: Read the Docs
+            label: Leer la documentación
             url: 'https://www.irs.gov/individuals/international-taxpayers/substantial-presence-test/'
       - type: Card
-        title: Your Europe - Income Taxes Abroad
+        title: Tu Europa - Impuestos sobre la renta en el extranjero
         image:
           type: Image
           url: /images/visa-stamp.svg
-          altText: Visa stamp image
+          altText: Imagen de sello de visa
         text: >
-          Find official EU guidance for citizens managing cross-border income tax and residency-related tax obligations.
+          Encuentra orientación oficial de la UE para ciudadanos que gestionan impuestos sobre la renta transfronterizos y obligaciones fiscales relacionadas con la residencia.
         actions:
           - type: Button
-            label: Read the Docs
+            label: Leer la documentación
             url: 'https://europa.eu/youreurope/citizens/work/taxes/income-taxes-abroad/'
 ---

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'next-i18next';
 import type * as types from 'types';
 import { useGetUserPolicy } from './hooks';
 import {
@@ -10,7 +11,8 @@ import {
 } from '@mui/material';
 import { PolicyCard } from './PolicyCard';
 import { useRouter } from 'next/router';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack'; // Add this import
+import { localePath } from 'src/utils/i18n';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 export type Props = {
   type: 'PolicySection';
@@ -27,6 +29,7 @@ export type Props = {
 
 export const PolicySection: React.FC<Props> = ({ title, ...props }) => {
   const router = useRouter();
+  const { t } = useTranslation('common');
 
   const { userPolicy, isLoading, addPolicyVisit, deletePolicyVisit } =
     useGetUserPolicy({
@@ -68,10 +71,14 @@ export const PolicySection: React.FC<Props> = ({ title, ...props }) => {
             borderColor: '#bbb'
           }
         }}
-        onClick={() => router.push('/dashboard')}
-        startIcon={<ArrowBackIcon />} // Add this prop
+        onClick={() =>
+          router.push(
+            localePath('/dashboard', router.locale || router.defaultLocale)
+          )
+        }
+        startIcon={<ArrowBackIcon />}
       >
-        Back
+        {t('common.back')}
       </Button>
       <PolicyCard
         policy={userPolicy}

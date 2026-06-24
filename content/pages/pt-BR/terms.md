@@ -1,27 +1,26 @@
-<!-- TODO: translate this page to pt-BR. Seeded from default locale. -->
-
 ---
-title: Terms
+title: Termos
+description: Termos de Serviço que regem o uso deste site e de suas ferramentas de cálculo de dias de visto e residência fiscal.
 type: Page
 sections:
   - type: Terms
-    title: Terms of Service
-    description: These Terms of Service ("Terms") govern your use of this website and its services ("Service"). By accessing or using the Service, you agree to be bound by these Terms. If you do not agree, please do not use the Service.
+    title: Termos de Serviço
+    description: Estes Termos de Serviço ("Termos") regem o uso deste site e seus serviços ("Serviço"). Ao acessar ou usar o Serviço, você concorda em estar vinculado a estes Termos. Se você não concordar, por favor, não use o Serviço.
     items:
-      - title: Use of the Service
-        description: This Service is provided for informational purposes only. It helps users track time spent in visa zones such as the Schengen Area, but does not guarantee accuracy and does not constitute legal advice. You are solely responsible for verifying your visa requirements, travel history, and legal obligations using official sources or legal counsel. The results provided by the calculator are estimations based on user input and public rules, which may change or be interpreted differently by immigration authorities.
-      - title: Accounts and Authentication
-        description: You may choose to sign in using Google authentication. Your email address is stored for the purpose of saving your data and allowing you to access it later. Your Google display name may be shown in the UI but is not stored.
-      - title: Availability and Changes
-        description: This Service is provided “as is” and “as available”. While we strive for accuracy and availability, we do not guarantee that the Service will always be available, error-free, or up to date. We reserve the right to modify, suspend, or discontinue any part of the Service at any time without notice.
-      - title: Your Responsibilities
-        description: You agree to use this Service lawfully and not for any purpose that is prohibited by these Terms. You must not misuse the Service, attempt to gain unauthorized access, or interfere with its normal operation.
-      - title: Data and Privacy
-        description: We take your privacy seriously. Please refer to our Privacy Policy to understand how we collect, store, and use your personal data.
-      - title: Limitation of Liability
-        description: The Service is provided "as is" and "as available" without warranties of any kind, express or implied. We do not guarantee that the information provided is accurate, complete, or current. To the maximum extent permitted by law, we disclaim all liability for any direct, indirect, incidental, or consequential damages arising from the use of or reliance on the Service, including but not limited to incorrect travel calculations, denied entries, overstays, or legal penalties. By using the Service, you agree that you are solely responsible for your actions and decisions based on the data shown by this tool.
-      - title: Contact
-        description: If you have any questions about these Terms, please contact us at visadayscalculator@gmail.com
-      - title: Changes to These Terms
-        description: We may update these Terms from time to time. Any changes will be posted on this page. By continuing to use the Service, you agree to the most recent version of these Terms.
+      - title: Uso do Serviço
+        description: Este Serviço é fornecido apenas para fins informativos. Ele ajuda os usuários a acompanhar o tempo passado em zonas de visto, como a Área Schengen, mas não garante precisão e não constitui aconselhamento jurídico. Você é o único responsável por verificar seus requisitos de visto, histórico de viagens e obrigações legais usando fontes oficiais ou assessoria jurídica. Os resultados fornecidos pela calculadora são estimativas baseadas na entrada do usuário e em regras públicas, que podem mudar ou ser interpretadas de forma diferente pelas autoridades de imigração.
+      - title: Contas e autenticação
+        description: Você pode optar por fazer login usando a autenticação do Google. Seu endereço de e-mail é armazenado para salvar seus dados e permitir que você os acesse posteriormente. Seu nome de exibição do Google pode ser mostrado na interface, mas não é armazenado.
+      - title: Disponibilidade e alterações
+        description: Este Serviço é fornecido "no estado em que se encontra" e "conforme disponível". Embora nos esforcemos pela precisão e disponibilidade, não garantimos que o Serviço estará sempre disponível, livre de erros ou atualizado. Reservamo-nos o direito de modificar, suspender ou descontinuar qualquer parte do Serviço a qualquer momento, sem aviso prévio.
+      - title: Suas responsabilidades
+        description: Você concorda em usar este Serviço de forma lícita e não para qualquer finalidade proibida por estes Termos. Você não deve fazer uso indevido do Serviço, tentar obter acesso não autorizado ou interferir em seu funcionamento normal.
+      - title: Dados e privacidade
+        description: Levamos sua privacidade a sério. Consulte nossa Política de Privacidade para entender como coletamos, armazenamos e usamos seus dados pessoais.
+      - title: Limitação de responsabilidade
+        description: O Serviço é fornecido "no estado em que se encontra" e "conforme disponível", sem garantias de qualquer tipo, expressas ou implícitas. Não garantimos que as informações fornecidas sejam precisas, completas ou atuais. Na máxima extensão permitida por lei, isentamo-nos de toda responsabilidade por quaisquer danos diretos, indiretos, incidentais ou consequenciais decorrentes do uso ou da confiança no Serviço, incluindo, mas não se limitando a, cálculos de viagem incorretos, entradas negadas, permanências além do permitido ou penalidades legais. Ao usar o Serviço, você concorda que é o único responsável por suas ações e decisões baseadas nos dados exibidos por esta ferramenta.
+      - title: Contato
+        description: Se você tiver alguma dúvida sobre estes Termos, entre em contato conosco pelo e-mail visadayscalculator@gmail.com
+      - title: Alterações nestes Termos
+        description: Podemos atualizar estes Termos periodicamente. Quaisquer alterações serão publicadas nesta página. Ao continuar usando o Serviço, você concorda com a versão mais recente destes Termos.
 ---

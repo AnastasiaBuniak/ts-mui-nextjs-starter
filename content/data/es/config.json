@@ -1,0 +1,41 @@
+{
+  "type": "Config",
+  "favicon": "/images/favicon.svg",
+  "header": {
+    "title": "Calculadora de Días de Visa",
+    "welcomeText": "Bienvenido",
+    "deleteAccountText": "Eliminar cuenta",
+    "logoutText": "Cerrar sesión",
+    "deleteConfirmText": "¿Está seguro de que desea eliminar su cuenta? Esta acción no se puede deshacer.",
+    "deleteCancelText": "Cancelar",
+    "deleteConfirmButtonText": "Sí, eliminar",
+    "navLinks": [
+      {
+        "type": "Link",
+        "label": "Inicio",
+        "url": "/",
+        "underline": "hover"
+      },
+      {
+        "type": "Link",
+        "label": "Preguntas frecuentes",
+        "url": "/faq",
+        "underline": "hover"
+      }
+    ]
+  },
+  "footer": {
+    "copyrightText": "© 2026 Calculadora de Días de Visa. Todos los derechos reservados.",
+    "navLinks": [
+      {
+        "label": "Política de privacidad",
+        "url": "/privacy"
+      },
+      {
+        "label": "Términos de servicio",
+        "url": "/terms"
+      }
+    ]
+  },
+  "consentCopy": "Este sitio web utiliza cookies para mejorar su experiencia. La Calculadora de Días de Visa se proporciona 'tal cual' y no constituye asesoramiento legal o de inmigración. No garantizamos la exactitud. Usted es responsable de verificar los resultados con fuentes oficiales. Lea más en nuestros <a href='/es/terms'>Términos</a> y <a href='/es/privacy'>Política de privacidad</a>."
+}

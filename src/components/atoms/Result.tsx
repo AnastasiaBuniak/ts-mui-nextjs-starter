@@ -3,6 +3,7 @@ import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import Box from '@mui/material/Box';
 import NextLink from 'next/link';
+import { Trans, useTranslation } from 'next-i18next';
 import {
   TaxResidencyMode,
   TaxResidencyRiskLevel
@@ -41,6 +42,7 @@ const Result: React.FC<ResultProps> = ({
   isTaxResident,
   resultText
 }) => {
+  const { t } = useTranslation('common');
   const isSchengen = ruleType === PolicyType.Schengen90_180;
 
   const getTaxSeverity = (): 'success' | 'warning' | 'error' => {
@@ -48,6 +50,9 @@ const Result: React.FC<ResultProps> = ({
     if (taxRiskLevel === 'warning') return 'warning';
     return 'success';
   };
+
+  const taxWindowLabel =
+    taxMode === 'calendar' ? t('result.calendarYear') : t('result.rolling365');
 
   return (
     <Box mb={4} sx={{ padding: 2, textAlign: 'center' }}>
@@ -76,58 +81,79 @@ const Result: React.FC<ResultProps> = ({
         <AlertTitle sx={{ fontWeight: 'bold' }}>
           {isSchengen
             ? `${resultText.daysRemainToStay}: ${remainingDaysToStay}`
-            : `Days before 183-day tax threshold: ${remainingDaysToStay}`}
+            : `${t('result.daysBeforeTaxThreshold')}: ${remainingDaysToStay}`}
         </AlertTitle>
         {isSchengen ? (
           <>
             <div>
-              You have <b>used {usedDays} days</b> of stay in the last 180 days
-              window.
+              <Trans
+                i18nKey="result.schengenUsedDays"
+                values={{ days: usedDays }}
+                components={{ strong: <strong /> }}
+              />
               {!!overstayedDays && (
                 <span>
-                  You <b>overstayed by {overstayedDays} days</b>.
+                  {' '}
+                  <Trans
+                    i18nKey="result.overstayedBy"
+                    values={{ days: overstayedDays }}
+                    components={{ strong: <strong /> }}
+                  />
                 </span>
               )}
             </div>
-            <div>You are allowed 90 days in a 180-day period.</div>
+            <div>{t('result.allowed90Days')}</div>
             {overstayedDays > 0 ? (
               <div>
-                As of today, you cannot stay any longer and have <b>0 days</b>{' '}
-                remaining. You could regain the right to stay only after enough
-                previous days drop out of your 180-day window.
+                <Trans
+                  i18nKey="result.noDaysRemaining"
+                  components={{ strong: <strong /> }}
+                />
               </div>
             ) : (
               <div>
-                You can stay for <b>{remainingDaysToStay} days </b> more, until{' '}
-                <b>{lastDate}</b>, if you use all days at once.
+                <Trans
+                  i18nKey="result.stayUntilDate"
+                  values={{ days: remainingDaysToStay, date: lastDate }}
+                  components={{ strong: <strong /> }}
+                />
               </div>
             )}
           </>
         ) : (
           <>
             <div>
-              You have <b>used {usedDays} days</b> of presence in the selected{' '}
-              {taxMode === 'calendar' ? 'calendar year' : 'rolling 365-day'}{' '}
-              window.
+              <Trans
+                i18nKey="result.taxUsedDays"
+                values={{ days: usedDays, window: taxWindowLabel }}
+                components={{ strong: <strong /> }}
+              />
               {!!overstayedDays && (
                 <span>
                   {' '}
-                  You have exceeded the 183-day threshold by{' '}
-                  <b>{overstayedDays} days</b>.
+                  <Trans
+                    i18nKey="result.overstayedTaxBy"
+                    values={{ days: overstayedDays }}
+                    components={{ strong: <strong /> }}
+                  />
                 </span>
               )}
             </div>
-            <div>The tax residency threshold is 183 days in a year.</div>
+            <div>{t('result.taxThreshold')}</div>
             {isTaxResident ? (
               <div>
-                You are likely to be considered a <b>tax resident</b> under the
-                183-day rule. Please consult a qualified tax advisor for your
-                specific situation.
+                <Trans
+                  i18nKey="result.likelyTaxResident"
+                  components={{ strong: <strong /> }}
+                />
               </div>
             ) : (
               <div>
-                You have <b>{remainingDaysToStay} days</b> before reaching the
-                183-day tax residency threshold in this window.
+                <Trans
+                  i18nKey="result.remainingBeforeTax"
+                  values={{ days: remainingDaysToStay }}
+                  components={{ strong: <strong /> }}
+                />
               </div>
             )}
           </>

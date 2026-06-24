@@ -1,5 +1,6 @@
 ---
 title: Privacy Policy
+description: Learn how Visa Days Calculator collects, uses, and protects your personal data under GDPR.
 type: Page
 sections:
   - type: PrivacyPolicy

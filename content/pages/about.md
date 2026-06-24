@@ -1,5 +1,6 @@
 ---
 title: About
+description: Disclaimer and important information about using the Visa Days Calculator for visa and tax residency planning.
 type: Page
 sections:
   - type: HeroSection

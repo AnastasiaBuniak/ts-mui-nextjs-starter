@@ -1,18 +1,17 @@
-<!-- TODO: translate this page to fr. Seeded from default locale. -->
-
 ---
-title: Login
+title: Connexion
+description: Connectez-vous à votre compte pour accéder à vos calculs de jours de visa enregistrés.
 type: Page
 noHeader: true
 sections:
   - type: Signup
     pageType: login
-    title: Welcome Back!
-    subtitle: Nice to see you again! Log in here to continue.
+    title: Bon retour !
+    subtitle: Ravi de vous revoir ! Connectez-vous ici pour continuer.
     sideImageUrl: https://plus.unsplash.com/premium_photo-1664368832311-7fe635e32c7c?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-    buttonText: Login with Google
-    errorText: Failed to login with Google. Please try again later.
-    bottomText: Don't have an account?
-    bottomLinkText: Get Started
+    buttonText: Se connecter avec Google
+    errorText: Échec de la connexion avec Google. Veuillez réessayer plus tard.
+    bottomText: Vous n'avez pas de compte ?
+    bottomLinkText: Commencer
     bottomLink: /signup
 ---

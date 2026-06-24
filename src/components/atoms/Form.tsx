@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'next-i18next';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -25,6 +26,7 @@ interface FormProps {
 }
 
 const Form: React.FC<FormProps> = (props) => {
+  const { t } = useTranslation('common');
   const [entry, setEnter] = useState<Dayjs | null>(null);
   const [exit, setExit] = useState<Dayjs | null>(null);
   const [defaultExit, setDefaultExit] = useState<Dayjs | undefined>(undefined);
@@ -72,7 +74,7 @@ const Form: React.FC<FormProps> = (props) => {
       >
         <TextField
           select
-          label="Visa rule"
+          label={t('form.visaRule')}
           value={selectedRule}
           onChange={(event) => {
             const newRule = event.target.value as PolicyType;
@@ -85,16 +87,16 @@ const Form: React.FC<FormProps> = (props) => {
           }}
         >
           <MenuItem value={PolicyType.Schengen90_180}>
-            90/180 Schengen rule
+            {t('form.schengenRule')}
           </MenuItem>
-          <MenuItem value={PolicyType.Tax183}>183-day tax residency</MenuItem>
+          <MenuItem value={PolicyType.Tax183}>{t('form.tax183Rule')}</MenuItem>
         </TextField>
 
         {selectedRule === PolicyType.Tax183 && (
           <>
             <TextField
               select
-              label="Tax window"
+              label={t('form.taxWindow')}
               value={selectedTaxMode}
               onChange={(event) => {
                 const newMode = event.target.value as TaxResidencyMode;
@@ -106,10 +108,8 @@ const Form: React.FC<FormProps> = (props) => {
                 minHeight: '56px'
               }}
             >
-              <MenuItem value="calendar">
-                Calendar year (Jan 1 – Dec 31)
-              </MenuItem>
-              <MenuItem value="rolling">Rolling 365-day window</MenuItem>
+              <MenuItem value="calendar">{t('form.calendarYear')}</MenuItem>
+              <MenuItem value="rolling">{t('form.rollingWindow')}</MenuItem>
             </TextField>
           </>
         )}
@@ -120,8 +120,8 @@ const Form: React.FC<FormProps> = (props) => {
         sx={{ width: '100%', textAlign: 'center' }}
       >
         {selectedRule === PolicyType.Tax183
-          ? '183-day calculation: tax residency applies when total stay reaches 183+ days in the selected tax window.'
-          : '90/180 calculation: you can stay up to 90 days in any rolling 180-day period.'}
+          ? t('form.taxCaption')
+          : t('form.schengenCaption')}
       </Typography>
 
       {/* 2nd line: dates + button */}

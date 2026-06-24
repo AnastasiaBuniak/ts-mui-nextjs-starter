@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useTranslation } from 'next-i18next';
 import { useAuth } from '../../context/AuthContext';
 import { Container, IconButton, Button, TextField } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
@@ -25,6 +26,7 @@ export type Props = {
 };
 
 export const AddNewPolicyBlock: React.FC<Props> = ({ addPolicy }) => {
+  const { t } = useTranslation('common');
   const { user } = useAuth();
 
   const [open, setOpen] = React.useState(false);
@@ -58,7 +60,10 @@ export const AddNewPolicyBlock: React.FC<Props> = ({ addPolicy }) => {
           alignItems: 'center'
         }}
       >
-        <IconButton onClick={handleClickOpen} aria-label="add policy">
+        <IconButton
+          onClick={handleClickOpen}
+          aria-label={t('dashboard.addPolicyAria')}
+        >
           <AddIcon color="primary" />
         </IconButton>
       </Container>
@@ -69,10 +74,10 @@ export const AddNewPolicyBlock: React.FC<Props> = ({ addPolicy }) => {
         open={open}
       >
         <DialogTitle sx={{ m: 0, p: 2 }} id="add-policy-dialog-title">
-          Add New Policy
+          {t('dashboard.addNewPolicy')}
         </DialogTitle>
         <IconButton
-          aria-label="close"
+          aria-label={t('common.close')}
           onClick={handleClose}
           sx={(theme) => ({
             position: 'absolute',
@@ -88,7 +93,7 @@ export const AddNewPolicyBlock: React.FC<Props> = ({ addPolicy }) => {
             autoFocus
             margin="dense"
             id="name"
-            label="Policy Name (max 40 characters)"
+            label={t('dashboard.policyNameLabel')}
             type="text"
             fullWidth
             variant="outlined"
@@ -100,7 +105,7 @@ export const AddNewPolicyBlock: React.FC<Props> = ({ addPolicy }) => {
           <TextField
             margin="dense"
             id="description"
-            label="Description (max 500 characters)"
+            label={t('dashboard.descriptionLabel')}
             type="text"
             fullWidth
             multiline
@@ -112,7 +117,7 @@ export const AddNewPolicyBlock: React.FC<Props> = ({ addPolicy }) => {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleClose}>{t('common.cancel')}</Button>
           <Button
             autoFocus
             onClick={handleCreatePolicy}
@@ -123,7 +128,7 @@ export const AddNewPolicyBlock: React.FC<Props> = ({ addPolicy }) => {
               policyDescription.length > 500
             }
           >
-            Create
+            {t('common.create')}
           </Button>
         </DialogActions>
       </BootstrapDialog>
