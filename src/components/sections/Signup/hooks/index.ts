@@ -1,9 +1,12 @@
 import { useGoogleLogin } from '@react-oauth/google';
+import { useRouter } from 'next/router';
 import React, { useState } from 'react';
+import { localePath } from 'src/utils/i18n';
 
 export const useGoogleSso = (
   handler: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
+  const router = useRouter();
   const [isError, setIsError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -13,7 +16,7 @@ export const useGoogleSso = (
         setIsLoading(true);
         handler(true);
         try {
-          const response = await fetch(`api/proxy/auth/google`, {
+          const response = await fetch('/api/proxy/auth/google', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -21,11 +24,12 @@ export const useGoogleSso = (
             body: JSON.stringify({ code: codeResponse.code }),
             credentials: 'include'
           });
-          const data = await response.json();
+          await response.json();
 
           setIsError(!response.ok);
           if (response.ok) {
-            window.location.href = '/dashboard';
+            const locale = router.locale || router.defaultLocale || 'en';
+            window.location.href = localePath('/dashboard', locale);
           }
         } catch (error) {
           setIsError(true);

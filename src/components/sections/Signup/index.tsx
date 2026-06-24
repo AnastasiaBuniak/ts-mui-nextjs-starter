@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import type * as types from 'types';
 import { useGoogleSso } from './hooks';
+import { LanguageSwitcher } from 'src/components/atoms/LanguageSwitcher';
 
 import {
   Box,
@@ -71,6 +72,7 @@ export const Signup: React.FC<Props> = ({
     <Box
       sx={{
         flexGrow: 1,
+        position: 'relative',
         ...(isMobile && {
           minHeight: '100vh',
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${sideImageUrl})`,
@@ -82,6 +84,16 @@ export const Signup: React.FC<Props> = ({
         })
       }}
     >
+      <Box
+        sx={{
+          position: 'absolute',
+          top: 16,
+          right: 16,
+          zIndex: 1
+        }}
+      >
+        <LanguageSwitcher lightText={isMobile} />
+      </Box>
       <Grid container sx={{ minHeight: '100vh' }}>
         {!isMobile && (
           <Grid
