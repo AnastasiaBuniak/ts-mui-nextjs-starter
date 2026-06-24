@@ -11,7 +11,8 @@ import {
 } from '@mui/material';
 import { PolicyCard } from './PolicyCard';
 import { useRouter } from 'next/router';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack'; // Add this import
+import { localePath } from 'src/utils/i18n';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 export type Props = {
   type: 'PolicySection';
@@ -70,8 +71,12 @@ export const PolicySection: React.FC<Props> = ({ title, ...props }) => {
             borderColor: '#bbb'
           }
         }}
-        onClick={() => router.push('/dashboard')}
-        startIcon={<ArrowBackIcon />} // Add this prop
+        onClick={() =>
+          router.push(
+            localePath('/dashboard', router.locale || router.defaultLocale)
+          )
+        }
+        startIcon={<ArrowBackIcon />}
       >
         {t('common.back')}
       </Button>

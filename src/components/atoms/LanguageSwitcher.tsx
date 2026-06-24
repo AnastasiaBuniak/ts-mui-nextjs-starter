@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
+import { persistLocale } from 'src/utils/i18n';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -15,6 +16,7 @@ export const LanguageSwitcher: React.FC<{ lightText?: boolean }> = ({
 
   const handleLocaleChange = (event: SelectChangeEvent<string>) => {
     const locale = event.target.value;
+    persistLocale(locale);
     router.push(router.asPath, router.asPath, { locale });
   };
 

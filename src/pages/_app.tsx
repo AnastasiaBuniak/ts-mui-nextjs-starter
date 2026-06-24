@@ -7,6 +7,7 @@ import type { AppProps } from 'next/app';
 import theme from '../utils/theme';
 import createEmotionCache from '../utils/createEmotionCache';
 import { AuthProvider } from '../components/context/AuthContext';
+import { LocalePersist } from '../components/atoms/LocalePersist';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -24,6 +25,7 @@ function App({
         <AuthProvider>
           <ThemeProvider theme={theme}>
             <CssBaseline />
+            <LocalePersist />
             <Component {...pageProps} />
           </ThemeProvider>
         </AuthProvider>

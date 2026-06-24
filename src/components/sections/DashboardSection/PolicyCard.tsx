@@ -13,6 +13,7 @@ import { getSchengenRuleResultColor } from 'src/utils/schengenRuleUtils';
 
 import { PolicyManagement } from './PolicyManagement';
 import { DeletePolicyParams, EditPolicyParams } from 'src/types/api-types';
+import { localePath } from 'src/utils/i18n';
 import theme from 'src/utils/theme';
 
 export type Props = {
@@ -48,7 +49,12 @@ export const PolicyCard: React.FC<Props> = ({
 
   const handleCardClick = (e: React.MouseEvent) => {
     if ((e.target as HTMLElement).closest('[data-policy-management]')) return;
-    router.push(`/policy?id=${policy._id}`);
+    router.push(
+      localePath(
+        `/policy?id=${policy._id}`,
+        router.locale || router.defaultLocale
+      )
+    );
   };
 
   return (

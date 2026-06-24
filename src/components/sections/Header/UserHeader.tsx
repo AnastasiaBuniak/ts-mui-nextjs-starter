@@ -22,6 +22,7 @@ import { useTranslation } from 'next-i18next';
 import { userHeaderFeatures } from './hooks';
 import { useAuth } from 'src/components/context/AuthContext';
 import { LanguageSwitcher } from 'src/components/atoms/LanguageSwitcher';
+import { useRouter } from 'next/router';
 
 export type Props = types.Header & types.StackbitObjectId;
 
@@ -38,10 +39,12 @@ export const UserHeader: React.FC<Props> = (props) => {
     logoutText
   } = props;
   const userAuthData = useAuth();
+  const router = useRouter();
   const { t } = useTranslation('common');
 
   const { logoutUser, deleteUserAccount } = userHeaderFeatures({
-    userId: userAuthData?.user?.id
+    userId: userAuthData?.user?.id,
+    locale: router.locale
   });
   const fieldPath = objectId ? `${objectId}:header` : null;
 
