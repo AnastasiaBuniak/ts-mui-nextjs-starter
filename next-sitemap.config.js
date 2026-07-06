@@ -1,7 +1,27 @@
 /** @type {import('next-sitemap').IConfig} */
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://example.com';
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://example.com').replace(
+  /\/$/,
+  ''
+);
 const locales = ['en', 'es', 'pt-BR', 'de', 'fr'];
 const defaultLocale = 'en';
+
+const placeholderSiteUrls = new Set(['https://example.com', 'http://example.com']);
+
+if (!process.env.NEXT_PUBLIC_SITE_URL) {
+  console.warn(
+    '[seo] NEXT_PUBLIC_SITE_URL is not set. Sitemap and robots.txt will use a placeholder domain.'
+  );
+} else if (
+  process.env.NODE_ENV === 'production' &&
+  (placeholderSiteUrls.has(siteUrl) ||
+    siteUrl.includes('localhost') ||
+    siteUrl.includes('127.0.0.1'))
+) {
+  console.warn(
+    `[seo] NEXT_PUBLIC_SITE_URL (${siteUrl}) is not a production domain. Update it in your deployment environment before going live.`
+  );
+}
 
 module.exports = {
   siteUrl,

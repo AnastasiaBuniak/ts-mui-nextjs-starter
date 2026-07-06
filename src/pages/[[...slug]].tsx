@@ -10,6 +10,7 @@ import { Header } from '../components/sections/Header';
 import { Footer } from '../components/sections/Footer';
 import { pagesByType, siteConfig, urlToContent } from '../utils/content';
 import { i18nConfig } from 'src/utils/i18n';
+import { getSiteUrl } from 'src/utils/site';
 
 import MuiBox from '@mui/material/Box';
 import CookieDrawer from '../components/atoms/CookieDrawer';
@@ -24,7 +25,7 @@ const Page: React.FC<Props> = ({ page, siteConfig }) => {
   const router = useRouter();
   const { t } = useTranslation('common');
   const locale = router.locale || i18nConfig.defaultLocale;
-  const canonicalBaseUrl = process.env.NEXT_PUBLIC_SITE_URL;
+  const canonicalBaseUrl = getSiteUrl();
   const slugSegments = Array.isArray(router.query.slug)
     ? router.query.slug
     : [];
