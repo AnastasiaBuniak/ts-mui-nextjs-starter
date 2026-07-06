@@ -1,4 +1,5 @@
 import dayjs, { Dayjs } from 'dayjs';
+import { DATE_FORMAT } from './constants';
 import 'dayjs/locale/de';
 import 'dayjs/locale/es';
 import 'dayjs/locale/fr';
@@ -42,7 +43,7 @@ const dayjsLocaleByAppLocale: Record<string, string> = {
 
 export function formatLocalizedDate(date: Dayjs, locale: string): string {
   const dayjsLocale = dayjsLocaleByAppLocale[locale] || 'en';
-  return date.locale(dayjsLocale).format('L');
+  return date.locale(dayjsLocale).format(DATE_FORMAT);
 }
 
 export function localizeInternalHtmlLinks(
