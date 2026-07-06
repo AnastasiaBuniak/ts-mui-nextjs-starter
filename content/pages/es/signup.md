@@ -1,5 +1,5 @@
 ---
-title: Registro
+title: Crear una Cuenta Gratuita
 description: Crea una cuenta gratuita en la Calculadora de Días de Visa con Google y guarda tus cálculos de días de visa.
 type: Page
 noHeader: true

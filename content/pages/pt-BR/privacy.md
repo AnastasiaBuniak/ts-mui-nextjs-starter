@@ -1,5 +1,5 @@
 ---
-title: Política de Privacidade
+title: Política de Privacidade | Proteção de Dados
 description: Saiba como seus dados pessoais são coletados, usados e protegidos quando você utiliza este site e seus serviços.
 type: Page
 sections:

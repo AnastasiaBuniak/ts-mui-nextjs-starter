@@ -1,5 +1,5 @@
 ---
-title: Politique de confidentialité
+title: Politique de Confidentialité | RGPD
 description: Découvrez comment vos données personnelles sont collectées, utilisées et protégées lorsque vous utilisez ce site web.
 type: Page
 sections:

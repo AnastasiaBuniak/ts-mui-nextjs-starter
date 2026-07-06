@@ -11,6 +11,7 @@ import { Footer } from '../components/sections/Footer';
 import { pagesByType, siteConfig, urlToContent } from '../utils/content';
 import { i18nConfig } from 'src/utils/i18n';
 import { getSiteUrl } from 'src/utils/site';
+import { buildPageTitle } from 'src/utils/seo';
 
 import MuiBox from '@mui/material/Box';
 import CookieDrawer from '../components/atoms/CookieDrawer';
@@ -43,15 +44,16 @@ const Page: React.FC<Props> = ({ page, siteConfig }) => {
   const metaDescription =
     (page as types.Page & { description?: string }).description ||
     t('meta.defaultDescription');
+  const documentTitle = buildPageTitle(page.title, siteConfig.header?.title);
   const currentPath = currentUrl;
   const isProtectedRoute = protectedRoutes.includes(currentPath);
   const header = { ...siteConfig.header, ...(page.header ?? {}) };
   const pageContent = (
     <PageContainer noHeader={page.noHeader} pageType={page.type} id={page.__id}>
       <Head>
-        <title>{page.title}</title>
+        <title>{documentTitle}</title>
         <meta name="description" content={metaDescription} />
-        <meta property="og:title" content={page.title} />
+        <meta property="og:title" content={documentTitle} />
         <meta property="og:description" content={metaDescription} />
         <meta property="og:locale" content={locale.replace('-', '_')} />
         {(router.locales || [])

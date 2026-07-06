@@ -1,5 +1,5 @@
 ---
-title: Início
+title: Calculadora Gratuita de Dias de Visto e Residência Fiscal | Schengen 90/180
 description: Calcule dias de visto e residência fiscal para Schengen, Reino Unido e outras regiões. Ferramenta gratuita e rápida para planejar suas viagens com segurança.
 type: Page
 sections:

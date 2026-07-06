@@ -1,5 +1,5 @@
 ---
-title: Acerca de
+title: Acerca de y Aviso Legal
 description: Aviso legal sobre el uso de la Calculadora de Días de Visa. La información es solo orientativa y no constituye asesoramiento legal.
 type: Page
 sections:

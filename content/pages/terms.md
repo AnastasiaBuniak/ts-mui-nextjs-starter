@@ -1,5 +1,5 @@
 ---
-title: Terms
+title: Terms of Service
 description: Terms of Service for using the Visa Days Calculator website and its visa and tax residency tools.
 type: Page
 sections:

@@ -1,5 +1,5 @@
 ---
-title: Politique
+title: Gérer les Calculs de Politique Visa
 description: Ajoutez des dates de séjour et calculez vos jours de visa restants pour une politique enregistrée.
 type: Page
 header:

@@ -1,5 +1,5 @@
 ---
-title: Sobre
+title: Sobre e Aviso Legal
 description: Aviso legal sobre o uso da calculadora de dias de visto. As informações são apenas para fins informativos e não constituem aconselhamento jurídico.
 type: Page
 sections:

@@ -1,5 +1,5 @@
 ---
-title: Conditions
+title: Conditions d'Utilisation
 description: Conditions d'utilisation du site web et de ses services, y compris les responsabilités des utilisateurs et les limitations de responsabilité.
 type: Page
 sections:
