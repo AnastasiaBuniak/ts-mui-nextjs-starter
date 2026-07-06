@@ -137,27 +137,31 @@ const Form: React.FC<FormProps> = (props) => {
         {isMobile ? (
           <>
             <CalendarButton
-              selectedDateText={props.selectedDateText}
-              label={props.enterTitle as string}
+              selectedDateText={
+                props.selectedDateText || t('form.selectedDate')
+              }
+              label={props.enterTitle || t('form.dateOfEntry')}
               onChange={(val) => setEnter(val)}
             />
             <CalendarButton
-              selectedDateText={props.selectedDateText}
-              label={props.exitTitle as string}
+              selectedDateText={
+                props.selectedDateText || t('form.selectedDate')
+              }
+              label={props.exitTitle || t('form.dateOfExit')}
               onChange={(val) => setExit(val)}
             />
           </>
         ) : (
           <>
             <CalendarInput
-              label={props.enterTitle as string}
+              label={props.enterTitle || t('form.dateOfEntry')}
               value={entry}
               onChange={(val) => {
                 setEnter(val), setDefaultExit(val as Dayjs);
               }}
             />
             <CalendarInput
-              label={props.exitTitle as string}
+              label={props.exitTitle || t('form.dateOfExit')}
               value={exit}
               onChange={(val) => setExit(val)}
               defaultValue={defaultExit}
@@ -178,7 +182,7 @@ const Form: React.FC<FormProps> = (props) => {
             minHeight: '56px'
           }}
         >
-          {props.addButtonText}
+          {props.addButtonText || t('form.addDates')}
         </Button>
       </Box>
     </Box>

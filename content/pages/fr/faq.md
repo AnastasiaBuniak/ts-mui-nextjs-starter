@@ -1,5 +1,5 @@
 ---
-title: FAQ
+title: FAQ Jours de Visa et Règle Schengen 90/180
 description: Réponses aux questions les plus fréquentes sur le calcul des jours de visa, la règle Schengen 90/180, les séjours au Royaume-Uni et l'utilisation du calculateur.
 type: Page
 sections:

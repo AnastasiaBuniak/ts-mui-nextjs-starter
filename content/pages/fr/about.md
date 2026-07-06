@@ -1,5 +1,5 @@
 ---
-title: À propos
+title: À Propos et Avertissement Légal
 description: Avertissement concernant l'utilisation du calculateur de jours de visa et les limites de responsabilité liées aux informations fournies.
 type: Page
 sections:

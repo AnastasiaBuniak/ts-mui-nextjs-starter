@@ -36,10 +36,14 @@
     "ruleLabel": "règle {{allowed}}/{{window}}"
   },
   "form": {
+    "addDates": "Ajouter des dates",
     "calendarYear": "Année civile (1er janv. – 31 déc.)",
+    "dateOfEntry": "Date d'entrée",
+    "dateOfExit": "Date de sortie",
     "rollingWindow": "Fenêtre glissante de 365 jours",
     "schengenCaption": "Calcul 90/180 : vous pouvez rester jusqu'à 90 jours dans toute période glissante de 180 jours.",
     "schengenRule": "Règle Schengen 90/180",
+    "selectedDate": "Date sélectionnée",
     "tax183Rule": "Résidence fiscale 183 jours",
     "taxCaption": "Calcul 183 jours : la résidence fiscale s'applique lorsque le séjour total atteint 183+ jours dans la fenêtre fiscale sélectionnée.",
     "taxWindow": "Fenêtre fiscale",
@@ -63,16 +67,20 @@
     "allowed90Days": "Vous êtes autorisé à rester 90 jours sur une période de 180 jours.",
     "calendarYear": "année civile",
     "daysBeforeTaxThreshold": "Jours avant le seuil fiscal de 183 jours",
+    "daysRemainToStay": "Jours restants pour séjourner",
     "likelyTaxResident": "Vous êtes probablement considéré comme <strong>résident fiscal</strong> selon la règle des 183 jours. Veuillez consulter un conseiller fiscal qualifié pour votre situation spécifique.",
     "noDaysRemaining": "À ce jour, vous ne pouvez plus rester et il vous reste <strong>0 jour</strong>. Vous ne pourrez retrouver le droit de séjour que lorsque suffisamment de jours antérieurs sortiront de votre fenêtre de 180 jours.",
     "overstayedBy": "Vous avez <strong>dépassé votre séjour de {{days}} jours</strong>.",
     "overstayedTaxBy": "Vous avez dépassé le seuil de 183 jours de <strong>{{days}} jours</strong>.",
+    "registerCta": "S'inscrire avec Google",
+    "registerCta2": "gratuitement et y accéder quand vous en avez besoin.",
     "remainingBeforeTax": "Il vous reste <strong>{{days}} jours</strong> avant d'atteindre le seuil de résidence fiscale de 183 jours dans cette fenêtre.",
     "rolling365": "fenêtre glissante de 365 jours",
     "schengenUsedDays": "Vous avez <strong>utilisé {{days}} jours</strong> de séjour dans la fenêtre des 180 derniers jours.",
     "stayUntilDate": "Vous pouvez rester <strong>{{days}} jours</strong> de plus, jusqu'au <strong>{{date}}</strong>, si vous utilisez tous les jours d'un coup.",
     "taxThreshold": "Le seuil de résidence fiscale est de 183 jours par an.",
-    "taxUsedDays": "Vous avez <strong>utilisé {{days}} jours</strong> de présence dans la fenêtre {{window}} sélectionnée."
+    "taxUsedDays": "Vous avez <strong>utilisé {{days}} jours</strong> de présence dans la fenêtre {{window}} sélectionnée.",
+    "wantToPersistResults": "Vous souhaitez enregistrer les résultats des calculs ?"
   },
   "table": {
     "actions": "Actions",

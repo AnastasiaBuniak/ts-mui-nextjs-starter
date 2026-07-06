@@ -36,10 +36,14 @@
     "ruleLabel": "regra {{allowed}}/{{window}}"
   },
   "form": {
+    "addDates": "Adicionar datas",
     "calendarYear": "Ano civil (1 jan – 31 dez)",
+    "dateOfEntry": "Data de entrada",
+    "dateOfExit": "Data de saída",
     "rollingWindow": "Janela móvel de 365 dias",
     "schengenCaption": "Cálculo 90/180: você pode permanecer até 90 dias em qualquer período móvel de 180 dias.",
     "schengenRule": "Regra Schengen 90/180",
+    "selectedDate": "Data selecionada",
     "tax183Rule": "Residência fiscal de 183 dias",
     "taxCaption": "Cálculo de 183 dias: a residência fiscal se aplica quando a estadia total atinge 183+ dias na janela fiscal selecionada.",
     "taxWindow": "Janela fiscal",
@@ -63,16 +67,20 @@
     "allowed90Days": "Você tem permissão para 90 dias em um período de 180 dias.",
     "calendarYear": "ano civil",
     "daysBeforeTaxThreshold": "Dias antes do limite fiscal de 183 dias",
+    "daysRemainToStay": "Dias restantes para permanecer",
     "likelyTaxResident": "É provável que você seja considerado <strong>residente fiscal</strong> pela regra dos 183 dias. Consulte um consultor fiscal qualificado para sua situação específica.",
     "noDaysRemaining": "A partir de hoje, você não pode permanecer mais e tem <strong>0 dias</strong> restantes. Só poderá recuperar o direito de permanência quando dias anteriores suficientes saírem da sua janela de 180 dias.",
     "overstayedBy": "Você <strong>excedeu sua estadia em {{days}} dias</strong>.",
     "overstayedTaxBy": "Você excedeu o limite de 183 dias em <strong>{{days}} dias</strong>.",
+    "registerCta": "Cadastre-se com o Google",
+    "registerCta2": "gratuitamente e acesse quando precisar.",
     "remainingBeforeTax": "Você tem <strong>{{days}} dias</strong> antes de atingir o limite de residência fiscal de 183 dias nesta janela.",
     "rolling365": "janela móvel de 365 dias",
     "schengenUsedDays": "Você <strong>utilizou {{days}} dias</strong> de estadia na janela dos últimos 180 dias.",
     "stayUntilDate": "Você pode permanecer por mais <strong>{{days}} dias</strong>, até <strong>{{date}}</strong>, se usar todos os dias de uma vez.",
     "taxThreshold": "O limite de residência fiscal é de 183 dias por ano.",
-    "taxUsedDays": "Você <strong>utilizou {{days}} dias</strong> de presença na janela {{window}} selecionada."
+    "taxUsedDays": "Você <strong>utilizou {{days}} dias</strong> de presença na janela {{window}} selecionada.",
+    "wantToPersistResults": "Deseja salvar os resultados dos cálculos?"
   },
   "table": {
     "actions": "Ações",

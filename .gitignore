@@ -44,3 +44,7 @@ yarn-error.log*
 
 # Local Netlify folder
 .netlify
+
+# Generated at build time by next-sitemap (postbuild)
+/public/sitemap*.xml
+/public/robots.txt

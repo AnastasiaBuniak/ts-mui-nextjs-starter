@@ -12,10 +12,14 @@ import { useVisaDaysCalculation } from './hooks';
 import { VisitItem, PolicyType } from 'src/types/data';
 import Cookies from 'js-cookie';
 import { TaxResidencyMode } from 'src/utils/taxResidencyUtils';
+import { useRouter } from 'next/router';
+import { formatLocalizedDate } from 'src/utils/i18n';
 
 export type Props = types.CalculationSection & types.StackbitFieldPath;
 
 export const CalculationSection: React.FC<Props> = (props) => {
+  const router = useRouter();
+  const locale = router.locale || router.defaultLocale || 'en';
   const [rule, setRule] = useState<PolicyType>(PolicyType.Schengen90_180);
   const [taxMode, setTaxMode] = useState<TaxResidencyMode>('calendar');
   const {
@@ -87,13 +91,14 @@ export const CalculationSection: React.FC<Props> = (props) => {
           remainingDaysToStay={remainingDaysToStay as number}
           usedDays={usedDays}
           overstayedDays={overstayedDays}
-          lastDate={lastDate ? (lastDate as Dayjs).format('DD/MM/YYYY') : ''}
+          lastDate={
+            lastDate ? formatLocalizedDate(lastDate as Dayjs, locale) : ''
+          }
           onRegisterClick={onRegisterClick}
           ruleType={rule}
           taxMode={taxMode}
           taxRiskLevel={taxRiskLevel}
           isTaxResident={isTaxResident}
-          resultText={props.resultText}
         />
       )}
     </Card>

@@ -1,5 +1,5 @@
 ---
-title: Accueil
+title: Calculateur Gratuit de Jours de Visa et Résidence Fiscale | Schengen 90/180
 description: Calculez gratuitement vos jours de visa et votre résidence fiscale pour l'espace Schengen, le Royaume-Uni et d'autres régions en quelques secondes.
 type: Page
 sections:

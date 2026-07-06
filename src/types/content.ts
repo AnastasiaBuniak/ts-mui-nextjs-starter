@@ -9,6 +9,8 @@ export type Config = {
   __url: null;
   type: 'Config';
   favicon?: string;
+  ogImage?: string;
+  ogImageAlt?: string;
   header?: Header;
   footer?: Footer;
   consentCopy: string;
@@ -58,7 +60,7 @@ export type CalculationSection = {
   exitTitle?: string;
   addButtonText?: string;
   selectedDateText: string;
-  resultText: {
+  resultText?: {
     daysRemainToStay: string;
     wantToPersistResults: string;
     registerCta: string;

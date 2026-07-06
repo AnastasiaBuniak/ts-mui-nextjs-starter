@@ -1,5 +1,5 @@
 ---
-title: Termos
+title: Termos de Serviço
 description: Termos de Serviço que regem o uso deste site e de suas ferramentas de cálculo de dias de visto e residência fiscal.
 type: Page
 sections:

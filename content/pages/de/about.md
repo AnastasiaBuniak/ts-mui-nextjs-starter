@@ -1,5 +1,5 @@
 ---
-title: Über uns
+title: Über uns & Haftungsausschluss
 description: Haftungsausschluss und wichtige Hinweise zur Nutzung des Visa-Tage-Rechners. Die Informationen dienen nur der allgemeinen Orientierung und stellen keine Rechtsberatung dar.
 type: Page
 sections:

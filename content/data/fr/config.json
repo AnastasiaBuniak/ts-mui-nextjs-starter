@@ -1,6 +1,8 @@
 {
   "type": "Config",
   "favicon": "/images/favicon.svg",
+  "ogImage": "/images/calculator_visa_online_desktop.webp",
+  "ogImageAlt": "Calculateur en ligne de jours de visa et de résidence fiscale pour la règle Schengen 90/180",
   "header": {
     "title": "Calculateur de jours de visa",
     "welcomeText": "Bienvenue",
@@ -37,5 +39,5 @@
       }
     ]
   },
-  "consentCopy": "Ce site utilise des cookies pour améliorer votre expérience. Le calculateur de jours de visa est fourni « tel quel » et ne constitue pas un conseil juridique ou en matière d'immigration. Nous ne garantissons pas l'exactitude. Vous êtes responsable de vérifier les résultats auprès de sources officielles. En savoir plus dans nos <a href='/fr/terms'>Conditions</a> et <a href='/fr/privacy'>Politique de confidentialité</a>."
+  "consentCopy": "Ce site utilise des cookies pour améliorer votre expérience. Le calculateur de jours de visa est fourni « tel quel » et ne constitue pas un conseil juridique ou en matière d'immigration. Nous ne garantissons pas l'exactitude. Vous êtes responsable de vérifier les résultats auprès de sources officielles. En savoir plus dans nos <a href='/terms'>Conditions</a> et <a href='/privacy'>Politique de confidentialité</a>."
 }

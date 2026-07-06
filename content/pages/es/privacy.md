@@ -1,5 +1,5 @@
 ---
-title: Política de privacidad
+title: Política de Privacidad | Protección de Datos
 description: Cómo recopilamos, usamos y protegemos tus datos personales cuando utilizas la Calculadora de Días de Visa.
 type: Page
 sections:

@@ -1,5 +1,5 @@
 ---
-title: Términos
+title: Términos de Servicio
 description: Términos de servicio que rigen el uso de la Calculadora de Días de Visa. Léelos antes de utilizar el sitio.
 type: Page
 sections:

@@ -1,5 +1,5 @@
 ---
-title: Datenschutzrichtlinie
+title: Datenschutzrichtlinie | DSGVO & Datenschutz
 description: Erfahren Sie, wie wir Ihre personenbezogenen Daten erfassen, verwenden und schützen, wenn Sie diese Website (den „Dienst“) nutzen.
 type: Page
 sections:

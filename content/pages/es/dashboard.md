@@ -1,5 +1,5 @@
 ---
-title: Panel
+title: Panel de Políticas de Visa
 description: Gestiona y consulta tu lista de visitas guardadas en la Calculadora de Días de Visa.
 type: Page
 header:

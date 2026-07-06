@@ -1,5 +1,5 @@
 ---
-title: FAQ
+title: FAQ zu Visa-Tagen und der Schengen-90/180-Regel
 description: Antworten auf häufige Fragen zur Berechnung von Visa-Tagen, der Schengen-90/180-Regel, UK-Besucheraufenthalten und zur Nutzung unseres Rechners.
 type: Page
 sections:

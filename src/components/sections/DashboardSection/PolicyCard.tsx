@@ -21,12 +21,6 @@ export type Props = {
   visits: Visit[];
   addButtonText?: string;
   selectedDateText?: string;
-  resultText?: {
-    daysRemainToStay: string;
-    wantToPersistResults: string;
-    registerCta: string;
-    registerCta2: string;
-  };
   onDeletePolicy: ({ id }: DeletePolicyParams) => void;
   onEditPolicy: ({ id, name, description }: EditPolicyParams) => void;
 };

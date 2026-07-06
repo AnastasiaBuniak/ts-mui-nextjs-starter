@@ -1,6 +1,8 @@
 {
   "type": "Config",
   "favicon": "/images/favicon.svg",
+  "ogImage": "/images/calculator_visa_online_desktop.webp",
+  "ogImageAlt": "Online visa and tax residency calculator for Schengen 90/180 rules",
   "header": {
     "title": "Visa Days Calculator",
     "welcomeText": "Welcome",

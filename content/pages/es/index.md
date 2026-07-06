@@ -1,5 +1,5 @@
 ---
-title: Inicio
+title: Calculadora Gratuita de Días de Visa y Residencia Fiscal | Schengen 90/180
 description: Calcula gratis los días de visa y la residencia fiscal para Schengen, el Reino Unido y otras regiones. Herramienta rápida para las reglas 90/180 y 183 días.
 type: Page
 sections:

@@ -1,5 +1,7 @@
 import * as React from 'react';
+import Head from 'next/head';
 import type * as types from 'types';
+import { buildFaqPageJsonLd } from 'src/utils/seo';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Accordion from '@mui/material/Accordion';
@@ -21,62 +23,76 @@ export type Props = {
   items: FAQItem[];
 } & types.StackbitFieldPath;
 
-export const AnswersList: React.FC<Props> = ({ title, description, items }) => (
-  <Box component="main" sx={{ maxWidth: 800, mx: 'auto', px: 3, py: 5 }}>
-    <Typography variant="h4" component="h1" gutterBottom sx={{ mb: 4 }}>
-      {title}
-    </Typography>
-    {description && (
-      <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
-        {description}
-      </Typography>
-    )}
-    {items.map((item, idx) => (
-      <Box key={idx} sx={{ mb: 4 }}>
-        <Accordion sx={{ borderRadius: '4px', overflow: 'hidden' }}>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon sx={{ color: '#fff' }} />}
-            sx={{
-              bgcolor: themeStyle.primaryColor ?? '#1F2B9D',
-              color: '#fff',
-              '& .MuiTypography-root': { color: '#fff' },
-              minHeight: 64,
-              '&.Mui-expanded': { minHeight: 64 }
-            }}
-          >
-            <Typography
-              variant="subtitle1"
-              fontWeight={600}
-              sx={{ display: 'flex', alignItems: 'center' }}
-            >
-              <Box
-                component="span"
+export const AnswersList: React.FC<Props> = ({ title, description, items }) => {
+  const faqJsonLd = buildFaqPageJsonLd(items);
+
+  return (
+    <>
+      {faqJsonLd && (
+        <Head>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+          />
+        </Head>
+      )}
+      <Box component="main" sx={{ maxWidth: 800, mx: 'auto', px: 3, py: 5 }}>
+        <Typography variant="h4" component="h1" gutterBottom sx={{ mb: 4 }}>
+          {title}
+        </Typography>
+        {description && (
+          <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
+            {description}
+          </Typography>
+        )}
+        {items.map((item, idx) => (
+          <Box key={idx} sx={{ mb: 4 }}>
+            <Accordion sx={{ borderRadius: '4px', overflow: 'hidden' }}>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon sx={{ color: '#fff' }} />}
                 sx={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: 28,
-                  height: 28,
-                  borderRadius: '50%',
-                  bgcolor: 'rgba(255,255,255,0.18)',
+                  bgcolor: themeStyle.primaryColor ?? '#1F2B9D',
                   color: '#fff',
-                  fontWeight: 700,
-                  fontSize: 18,
-                  mr: 2
+                  '& .MuiTypography-root': { color: '#fff' },
+                  minHeight: 64,
+                  '&.Mui-expanded': { minHeight: 64 }
                 }}
               >
-                {idx + 1}
-              </Box>
-              {item.question}
-            </Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography variant="body1">{item.answer}</Typography>
-          </AccordionDetails>
-        </Accordion>
+                <Typography
+                  variant="subtitle1"
+                  fontWeight={600}
+                  sx={{ display: 'flex', alignItems: 'center' }}
+                >
+                  <Box
+                    component="span"
+                    sx={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      width: 28,
+                      height: 28,
+                      borderRadius: '50%',
+                      bgcolor: 'rgba(255,255,255,0.18)',
+                      color: '#fff',
+                      fontWeight: 700,
+                      fontSize: 18,
+                      mr: 2
+                    }}
+                  >
+                    {idx + 1}
+                  </Box>
+                  {item.question}
+                </Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Typography variant="body1">{item.answer}</Typography>
+              </AccordionDetails>
+            </Accordion>
+          </Box>
+        ))}
       </Box>
-    ))}
-  </Box>
-);
+    </>
+  );
+};
 
 export default AnswersList;

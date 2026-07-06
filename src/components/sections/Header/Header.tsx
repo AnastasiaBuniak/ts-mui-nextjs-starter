@@ -13,12 +13,16 @@ import Avatar from '@mui/material/Avatar';
 
 import { handleScrollToSection } from 'src/utils/scroll';
 import { LanguageSwitcher } from 'src/components/atoms/LanguageSwitcher';
+import { localePath } from 'src/utils/i18n';
+import { useRouter } from 'next/router';
 
 export type Props = types.Header & types.StackbitObjectId;
 
 export const Header: React.FC<Props> = (props) => {
   const { title, navLinks = [], 'data-sb-object-id': objectId, user } = props;
   const { t } = useTranslation('common');
+  const router = useRouter();
+  const locale = router.locale || router.defaultLocale || 'en';
   const fieldPath = objectId ? `${objectId}:header` : null;
   return (
     <MuiAppBar
@@ -73,7 +77,11 @@ export const Header: React.FC<Props> = (props) => {
             )}
             <LanguageSwitcher />
             {user ? (
-              <NextLink href="/dashboard" passHref legacyBehavior>
+              <NextLink
+                href={localePath('/dashboard', locale)}
+                passHref
+                legacyBehavior
+              >
                 <Avatar
                   src={user?.picture}
                   alt={user?.name}

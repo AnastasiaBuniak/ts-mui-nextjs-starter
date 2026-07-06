@@ -36,10 +36,14 @@
     "ruleLabel": "regla {{allowed}}/{{window}}"
   },
   "form": {
+    "addDates": "Añadir fechas",
     "calendarYear": "Año calendario (1 ene – 31 dic)",
+    "dateOfEntry": "Fecha de entrada",
+    "dateOfExit": "Fecha de salida",
     "rollingWindow": "Ventana móvil de 365 días",
     "schengenCaption": "Cálculo 90/180: puede permanecer hasta 90 días en cualquier período móvil de 180 días.",
     "schengenRule": "Regla Schengen 90/180",
+    "selectedDate": "Fecha seleccionada",
     "tax183Rule": "Residencia fiscal de 183 días",
     "taxCaption": "Cálculo de 183 días: la residencia fiscal aplica cuando la estancia total alcanza 183+ días en la ventana fiscal seleccionada.",
     "taxWindow": "Ventana fiscal",
@@ -63,16 +67,20 @@
     "allowed90Days": "Se le permiten 90 días en un período de 180 días.",
     "calendarYear": "año calendario",
     "daysBeforeTaxThreshold": "Días antes del umbral fiscal de 183 días",
+    "daysRemainToStay": "Días restantes para permanecer",
     "likelyTaxResident": "Es probable que se le considere <strong>residente fiscal</strong> según la regla de 183 días. Consulte a un asesor fiscal calificado para su situación específica.",
     "noDaysRemaining": "A partir de hoy, no puede permanecer más y le quedan <strong>0 días</strong>. Solo podrá recuperar el derecho a permanecer cuando suficientes días anteriores salgan de su ventana de 180 días.",
     "overstayedBy": "Ha <strong>excedido su estancia en {{days}} días</strong>.",
     "overstayedTaxBy": "Ha superado el umbral de 183 días en <strong>{{days}} días</strong>.",
+    "registerCta": "Regístrate con Google",
+    "registerCta2": "gratis y accede cuando lo necesites.",
     "remainingBeforeTax": "Le quedan <strong>{{days}} días</strong> antes de alcanzar el umbral de residencia fiscal de 183 días en esta ventana.",
     "rolling365": "ventana móvil de 365 días",
     "schengenUsedDays": "Ha <strong>utilizado {{days}} días</strong> de estancia en la ventana de los últimos 180 días.",
     "stayUntilDate": "Puede permanecer <strong>{{days}} días</strong> más, hasta el <strong>{{date}}</strong>, si utiliza todos los días de una vez.",
     "taxThreshold": "El umbral de residencia fiscal es de 183 días al año.",
-    "taxUsedDays": "Ha <strong>utilizado {{days}} días</strong> de presencia en la ventana {{window}} seleccionada."
+    "taxUsedDays": "Ha <strong>utilizado {{days}} días</strong> de presencia en la ventana {{window}} seleccionada.",
+    "wantToPersistResults": "¿Quieres guardar los resultados del cálculo?"
   },
   "table": {
     "actions": "Acciones",

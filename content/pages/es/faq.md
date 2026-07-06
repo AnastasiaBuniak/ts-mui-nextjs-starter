@@ -1,5 +1,5 @@
 ---
-title: Preguntas frecuentes
+title: Preguntas Frecuentes sobre Días de Visa y Schengen 90/180
 description: Respuestas a las preguntas más habituales sobre el cálculo de días de visa, la regla Schengen 90/180, estancias en el Reino Unido y cómo usar la calculadora.
 type: Page
 sections:

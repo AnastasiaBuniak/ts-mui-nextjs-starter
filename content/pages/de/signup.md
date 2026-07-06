@@ -1,5 +1,5 @@
 ---
-title: Registrieren
+title: Kostenloses Konto Erstellen
 description: Erstellen Sie ein kostenloses Konto mit Google, um Ihre Visa-Tage-Berechnungen zu speichern und jederzeit darauf zuzugreifen.
 type: Page
 noHeader: true

@@ -1,5 +1,5 @@
 ---
-title: FAQ
+title: Schengen 90/180 & Visa Days FAQ
 description: Answers to common questions about Schengen 90/180 visa rules, UK visitor stays, tax residency calculations, and how to use our calculator.
 type: Page
 sections:

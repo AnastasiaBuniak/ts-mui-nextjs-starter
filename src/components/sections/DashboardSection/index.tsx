@@ -20,19 +20,12 @@ export type Props = {
   title: string;
   addButtonText: string;
   selectedDateText: string;
-  resultText: {
-    daysRemainToStay: string;
-    wantToPersistResults: string;
-    registerCta: string;
-    registerCta2: string;
-  };
 } & types.StackbitFieldPath;
 
 export const DashboardSection: React.FC<Props> = ({
   title,
   addButtonText,
-  selectedDateText,
-  resultText
+  selectedDateText
 }) => {
   const { user } = useAuth();
   const { policies, isLoading, addPolicy, deletePolicy, editPolicy } =
@@ -113,7 +106,6 @@ export const DashboardSection: React.FC<Props> = ({
                 onDeletePolicy={deletePolicy}
                 onEditPolicy={editPolicy}
                 selectedDateText={selectedDateText}
-                resultText={resultText}
               />
             </Box>
           );

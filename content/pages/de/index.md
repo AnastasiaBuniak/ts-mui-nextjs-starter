@@ -1,5 +1,5 @@
 ---
-title: Startseite
+title: Kostenloser Visa- & Steueraufenthaltsrechner | Schengen 90/180
 description: Berechnen Sie Visa-Tage und Steueraufenthaltsstatus für Schengen, UK und weitere Regionen kostenlos und in Sekunden. Unser Rechner unterstützt die 90/180-Regel und die 183-Tage-Steuerresidenz.
 type: Page
 sections:

@@ -1,5 +1,5 @@
 ---
-title: Painel
+title: Painel de Políticas de Visto
 description: Acesse seu painel para visualizar e gerenciar a lista de visitas e cálculos de dias de visto salvos.
 type: Page
 header:

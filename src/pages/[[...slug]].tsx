@@ -10,6 +10,12 @@ import { Header } from '../components/sections/Header';
 import { Footer } from '../components/sections/Footer';
 import { pagesByType, siteConfig, urlToContent } from '../utils/content';
 import { i18nConfig } from 'src/utils/i18n';
+import { getSiteUrl } from 'src/utils/site';
+import {
+  buildPageTitle,
+  buildSocialMeta,
+  isNonIndexableRoute
+} from 'src/utils/seo';
 
 import MuiBox from '@mui/material/Box';
 import CookieDrawer from '../components/atoms/CookieDrawer';
@@ -24,7 +30,7 @@ const Page: React.FC<Props> = ({ page, siteConfig }) => {
   const router = useRouter();
   const { t } = useTranslation('common');
   const locale = router.locale || i18nConfig.defaultLocale;
-  const canonicalBaseUrl = process.env.NEXT_PUBLIC_SITE_URL;
+  const canonicalBaseUrl = getSiteUrl();
   const slugSegments = Array.isArray(router.query.slug)
     ? router.query.slug
     : [];
@@ -42,16 +48,46 @@ const Page: React.FC<Props> = ({ page, siteConfig }) => {
   const metaDescription =
     (page as types.Page & { description?: string }).description ||
     t('meta.defaultDescription');
+  const documentTitle = buildPageTitle(page.title, siteConfig.header?.title);
+  const socialMeta = buildSocialMeta({
+    siteUrl: canonicalBaseUrl,
+    canonicalUrl,
+    title: documentTitle,
+    description: metaDescription,
+    ogImagePath: siteConfig.ogImage,
+    ogImageAlt: siteConfig.ogImageAlt
+  });
   const currentPath = currentUrl;
+  const shouldNoIndex = isNonIndexableRoute(currentPath);
   const isProtectedRoute = protectedRoutes.includes(currentPath);
   const header = { ...siteConfig.header, ...(page.header ?? {}) };
   const pageContent = (
     <PageContainer noHeader={page.noHeader} pageType={page.type} id={page.__id}>
       <Head>
-        <title>{page.title}</title>
+        <title>{documentTitle}</title>
         <meta name="description" content={metaDescription} />
-        <meta property="og:title" content={page.title} />
+        {shouldNoIndex && <meta name="robots" content="noindex, nofollow" />}
+        <meta property="og:title" content={documentTitle} />
         <meta property="og:description" content={metaDescription} />
+        {socialMeta.ogUrl && (
+          <meta property="og:url" content={socialMeta.ogUrl} />
+        )}
+        <meta property="og:type" content={socialMeta.ogType} />
+        {socialMeta.ogImageUrl && (
+          <>
+            <meta property="og:image" content={socialMeta.ogImageUrl} />
+            <meta property="og:image:alt" content={socialMeta.ogImageAlt} />
+          </>
+        )}
+        <meta name="twitter:card" content={socialMeta.twitterCard} />
+        <meta name="twitter:title" content={socialMeta.twitterTitle} />
+        <meta
+          name="twitter:description"
+          content={socialMeta.twitterDescription}
+        />
+        {socialMeta.twitterImageUrl && (
+          <meta name="twitter:image" content={socialMeta.twitterImageUrl} />
+        )}
         <meta property="og:locale" content={locale.replace('-', '_')} />
         {(router.locales || [])
           .filter((availableLocale) => availableLocale !== locale)

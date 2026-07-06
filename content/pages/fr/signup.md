@@ -1,5 +1,5 @@
 ---
-title: Inscription
+title: Créer un Compte Gratuit
 description: Créez un compte gratuit pour enregistrer et accéder à vos calculs de jours de visa à tout moment.
 type: Page
 noHeader: true

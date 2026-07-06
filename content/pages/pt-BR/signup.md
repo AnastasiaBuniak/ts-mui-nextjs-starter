@@ -1,5 +1,5 @@
 ---
-title: Cadastro
+title: Criar uma Conta Gratuita
 description: Crie sua conta gratuita na Calculadora de Dias de Visto para salvar seus cálculos e acessá-los quando precisar.
 type: Page
 noHeader: true

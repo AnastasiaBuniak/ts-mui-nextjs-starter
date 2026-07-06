@@ -8,6 +8,8 @@ import Result from 'src/components/atoms/Result';
 import { ExtendedPolicy, PolicyType } from 'src/types/data';
 import { Visit } from 'src/types/data';
 import { Dayjs } from 'dayjs';
+import { useRouter } from 'next/router';
+import { formatLocalizedDate } from 'src/utils/i18n';
 import { useCalculateResult } from './hooks';
 import theme from 'src/utils/theme';
 import { TaxResidencyMode } from 'src/utils/taxResidencyUtils';
@@ -18,13 +20,13 @@ export type Props = {
   addVisit: (data: { entry: Dayjs; exit: Dayjs }) => Promise<void>;
   deleteVisit: (visit: Visit) => Promise<void>;
   addButtonText: string;
-  resultText: {
+  selectedDateText: string;
+  resultText?: {
     daysRemainToStay: string;
     wantToPersistResults: string;
     registerCta: string;
     registerCta2: string;
   };
-  selectedDateText: string;
 };
 
 export const PolicyCard: React.FC<Props> = ({
@@ -32,8 +34,11 @@ export const PolicyCard: React.FC<Props> = ({
   visits,
   addVisit,
   deleteVisit,
-  ...props
+  addButtonText,
+  selectedDateText
 }) => {
+  const router = useRouter();
+  const locale = router.locale || router.defaultLocale || 'en';
   const { t } = useTranslation('common');
   const [rule, setRule] = useState<PolicyType>(PolicyType.Schengen90_180);
   const [taxMode, setTaxMode] = useState<TaxResidencyMode>('calendar');
@@ -106,8 +111,8 @@ export const PolicyCard: React.FC<Props> = ({
         >
           <Form
             handleSubmit={addVisit}
-            addButtonText={props.addButtonText}
-            selectedDateText={props.selectedDateText}
+            addButtonText={addButtonText}
+            selectedDateText={selectedDateText}
             rule={rule}
             onRuleChange={setRule}
             taxMode={taxMode}
@@ -117,11 +122,12 @@ export const PolicyCard: React.FC<Props> = ({
 
         {showResult && (
           <Result
-            resultText={props.resultText}
             remainingDaysToStay={remainingDaysToStay as number}
             usedDays={usedDays}
             overstayedDays={overstayedDays}
-            lastDate={lastDate ? (lastDate as Dayjs).format('DD/MM/YYYY') : ''}
+            lastDate={
+              lastDate ? formatLocalizedDate(lastDate as Dayjs, locale) : ''
+            }
             isSignedIn={true}
             ruleType={rule}
             taxMode={taxMode}
