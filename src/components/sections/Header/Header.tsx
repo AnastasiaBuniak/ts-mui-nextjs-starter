@@ -75,7 +75,6 @@ export const Header: React.FC<Props> = (props) => {
                 />
               )
             )}
-            <LanguageSwitcher />
             {user ? (
               <NextLink
                 href={localePath('/dashboard', locale)}
@@ -106,6 +105,7 @@ export const Header: React.FC<Props> = (props) => {
                 />
               </>
             )}
+            <LanguageSwitcher />
           </MuiBox>
         )}
       </MuiToolbar>

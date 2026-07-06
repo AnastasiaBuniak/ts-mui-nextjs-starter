@@ -16,8 +16,14 @@ sections:
         variant: contained
         color: primary
       - type: Button
-        label: Learn How It Works
-        url: 'information_section'
+        label: Learn about 90/180 visa rule
+        url: 'information_section:visa'
+        size: large
+        variant: outlined
+        color: primary
+      - type: Button
+        label: Learn about tax residency rules
+        url: 'information_section:tax'
         size: large
         variant: outlined
         color: primary
@@ -26,40 +32,42 @@ sections:
       url: /images/calculator_visa_online_desktop.webp
       mobileUrl: /images/calculator_visa_online_mobile.webp
       altText: Online Visa Calculator image
-  - type: InformationSection
-    title: General Rules of 90/180 visa rule calculation
-    description: >
-      The 90/180-day rule is a common visa regulation used in the Schengen Area and some other countries. The rule states that:
-    keyPoints:
-      - A visitor cannot stay in the Schengen Zone for more than 90 days within any rolling 180-day period.
-      - The 180-day period is not fixed; it’s a moving window, meaning each new day moves the counting period forward.
-      - The rule applies to all short-term visa-free travelers (e.g., UK, US, Canadian, and Australian passport holders visiting Schengen).
-      - Having ETIAS does not change your allowance under the 90/180 rule — you still must not exceed 90 days in any 180-day period.
-  - type: InformationSection
-    title: Key rules for calculating visa days. How to calculate?
-    description:
-    keyPoints:
-      - Every new entry counts towards the rolling 180-day window
-      - Exiting doesn’t reset the count; previous stays in the past 180 days still matter
-      - Multiple stays are combined; if a person leaves and re-enters, previous days are still counted
-      - If a traveler has already stayed 90 days in the past 180 days, they must leave and wait until days “drop off” before re-entering
-  - type: InformationSection
-    title: General rules of 183-day tax residency calculation
-    description: >
-      The 183-day rule is a common threshold used to assess tax residency in many countries. While details vary by jurisdiction, the general principle is:
-    keyPoints:
-      - If your physical presence reaches 183 days or more in the relevant period, you may be treated as a tax resident.
-      - The relevant period can be a calendar year (Jan 1 - Dec 31) or a rolling window, depending on the country.
-      - Day-counting methods can differ by jurisdiction (for example, treatment of arrival/departure days), so always verify local guidance.
-      - Tax residency status can affect filing obligations and potential taxation of worldwide income.
-  - type: InformationSection
-    title: Key rules for calculating tax residency days. How to calculate?
-    description:
-    keyPoints:
-      - Track each day of presence in the country and keep complete travel records.
-      - Select the correct tax window for your country rule (calendar year or rolling period).
-      - Combine all stays in the selected window to get your total days for tax residency calculation.
-      - When your total approaches 183 days, plan ahead and confirm your status with official guidance or a qualified advisor.
+  - type: InformationTabsSection
+    tabs:
+      - label: 90/180 Visa Rule
+        items:
+          - title: General Rules of 90/180 visa rule calculation
+            description: >
+              The 90/180-day rule is a common visa regulation used in the Schengen Area and some other countries. The rule states that:
+            keyPoints:
+              - A visitor cannot stay in the Schengen Zone for more than 90 days within any rolling 180-day period.
+              - The 180-day period is not fixed; it’s a moving window, meaning each new day moves the counting period forward.
+              - The rule applies to all short-term visa-free travelers (e.g., UK, US, Canadian, and Australian passport holders visiting Schengen).
+              - Having ETIAS does not change your allowance under the 90/180 rule — you still must not exceed 90 days in any 180-day period.
+          - title: Key rules for calculating visa days. How to calculate?
+            description:
+            keyPoints:
+              - Every new entry counts towards the rolling 180-day window
+              - Exiting doesn’t reset the count; previous stays in the past 180 days still matter
+              - Multiple stays are combined; if a person leaves and re-enters, previous days are still counted
+              - If a traveler has already stayed 90 days in the past 180 days, they must leave and wait until days “drop off” before re-entering
+      - label: 183-Day Tax Residency
+        items:
+          - title: General rules of 183-day tax residency calculation
+            description: >
+              The 183-day rule is a common threshold used to assess tax residency in many countries. While details vary by jurisdiction, the general principle is:
+            keyPoints:
+              - If your physical presence reaches 183 days or more in the relevant period, you may be treated as a tax resident.
+              - The relevant period can be a calendar year (Jan 1 - Dec 31) or a rolling window, depending on the country.
+              - Day-counting methods can differ by jurisdiction (for example, treatment of arrival/departure days), so always verify local guidance.
+              - Tax residency status can affect filing obligations and potential taxation of worldwide income.
+          - title: Key rules for calculating tax residency days. How to calculate?
+            description:
+            keyPoints:
+              - Track each day of presence in the country and keep complete travel records.
+              - Select the correct tax window for your country rule (calendar year or rolling period).
+              - Combine all stays in the selected window to get your total days for tax residency calculation.
+              - When your total approaches 183 days, plan ahead and confirm your status with official guidance or a qualified advisor.
   - type: CalculationSection
     title: Calculate visa days and tax residency
     enterTitle: Date of entry
