@@ -16,8 +16,14 @@ sections:
         variant: contained
         color: primary
       - type: Button
-        label: Saiba como funciona
-        url: 'information_section'
+        label: Saiba sobre a regra de visto 90/180
+        url: 'information_section:visa'
+        size: large
+        variant: outlined
+        color: primary
+      - type: Button
+        label: Saiba sobre as regras de residência fiscal
+        url: 'information_section:tax'
         size: large
         variant: outlined
         color: primary
@@ -26,40 +32,42 @@ sections:
       url: /images/calculator_visa_online_desktop.webp
       mobileUrl: /images/calculator_visa_online_mobile.webp
       altText: Imagem da calculadora de visto online
-  - type: InformationSection
-    title: Regras gerais do cálculo da regra de visto 90/180
-    description: >
-      A regra 90/180 dias é uma regulamentação de visto comum usada na Área Schengen e em alguns outros países. A regra estabelece que:
-    keyPoints:
-      - Um visitante não pode permanecer na Zona Schengen por mais de 90 dias em qualquer período móvel de 180 dias.
-      - O período de 180 dias não é fixo; é uma janela móvel, o que significa que cada novo dia avança o período de contagem.
-      - A regra se aplica a todos os viajantes isentos de visto de curta duração (por exemplo, portadores de passaporte do Reino Unido, EUA, Canadá e Austrália que visitam o Schengen).
-      - Ter o ETIAS não altera sua permissão sob a regra 90/180 — você ainda não pode exceder 90 dias em qualquer período de 180 dias.
-  - type: InformationSection
-    title: Regras principais para calcular dias de visto. Como calcular?
-    description:
-    keyPoints:
-      - Cada nova entrada conta para a janela móvel de 180 dias
-      - A saída não reinicia a contagem; estadias anteriores nos últimos 180 dias ainda contam
-      - Múltiplas estadias são somadas; se a pessoa sai e reentra, os dias anteriores ainda são contabilizados
-      - Se um viajante já permaneceu 90 dias nos últimos 180 dias, deve sair e aguardar até que os dias "expirem" antes de reentrar
-  - type: InformationSection
-    title: Regras gerais do cálculo de residência fiscal de 183 dias
-    description: >
-      A regra dos 183 dias é um limite comum usado para avaliar a residência fiscal em muitos países. Embora os detalhes variem conforme a jurisdição, o princípio geral é:
-    keyPoints:
-      - Se sua presença física atingir 183 dias ou mais no período relevante, você pode ser considerado residente fiscal.
-      - O período relevante pode ser um ano civil (1º de janeiro a 31 de dezembro) ou uma janela móvel, dependendo do país.
-      - Os métodos de contagem de dias podem diferir conforme a jurisdição (por exemplo, tratamento dos dias de chegada/partida), portanto sempre verifique a orientação local.
-      - O status de residência fiscal pode afetar obrigações de declaração e a tributação potencial de renda mundial.
-  - type: InformationSection
-    title: Regras principais para calcular dias de residência fiscal. Como calcular?
-    description:
-    keyPoints:
-      - Registre cada dia de presença no país e mantenha registros completos de viagem.
-      - Selecione a janela fiscal correta para a regra do seu país (ano civil ou período móvel).
-      - Combine todas as estadias na janela selecionada para obter o total de dias para o cálculo de residência fiscal.
-      - Quando seu total se aproximar de 183 dias, planeje com antecedência e confirme seu status com orientação oficial ou um consultor qualificado.
+  - type: InformationTabsSection
+    tabs:
+      - label: Regra de visto 90/180
+        items:
+          - title: Regras gerais do cálculo da regra de visto 90/180
+            description: >
+              A regra 90/180 dias é uma regulamentação de visto comum usada na Área Schengen e em alguns outros países. A regra estabelece que:
+            keyPoints:
+              - Um visitante não pode permanecer na Zona Schengen por mais de 90 dias em qualquer período móvel de 180 dias.
+              - O período de 180 dias não é fixo; é uma janela móvel, o que significa que cada novo dia avança o período de contagem.
+              - A regra se aplica a todos os viajantes isentos de visto de curta duração (por exemplo, portadores de passaporte do Reino Unido, EUA, Canadá e Austrália que visitam o Schengen).
+              - Ter o ETIAS não altera sua permissão sob a regra 90/180 — você ainda não pode exceder 90 dias em qualquer período de 180 dias.
+          - title: Regras principais para calcular dias de visto. Como calcular?
+            description:
+            keyPoints:
+              - Cada nova entrada conta para a janela móvel de 180 dias
+              - A saída não reinicia a contagem; estadias anteriores nos últimos 180 dias ainda contam
+              - Múltiplas estadias são somadas; se a pessoa sai e reentra, os dias anteriores ainda são contabilizados
+              - Se um viajante já permaneceu 90 dias nos últimos 180 dias, deve sair e aguardar até que os dias "expirem" antes de reentrar
+      - label: Residência fiscal 183 dias
+        items:
+          - title: Regras gerais do cálculo de residência fiscal de 183 dias
+            description: >
+              A regra dos 183 dias é um limite comum usado para avaliar a residência fiscal em muitos países. Embora os detalhes variem conforme a jurisdição, o princípio geral é:
+            keyPoints:
+              - Se sua presença física atingir 183 dias ou mais no período relevante, você pode ser considerado residente fiscal.
+              - O período relevante pode ser um ano civil (1º de janeiro a 31 de dezembro) ou uma janela móvel, dependendo do país.
+              - Os métodos de contagem de dias podem diferir conforme a jurisdição (por exemplo, tratamento dos dias de chegada/partida), portanto sempre verifique a orientação local.
+              - O status de residência fiscal pode afetar obrigações de declaração e a tributação potencial de renda mundial.
+          - title: Regras principais para calcular dias de residência fiscal. Como calcular?
+            description:
+            keyPoints:
+              - Registre cada dia de presença no país e mantenha registros completos de viagem.
+              - Selecione a janela fiscal correta para a regra do seu país (ano civil ou período móvel).
+              - Combine todas as estadias na janela selecionada para obter o total de dias para o cálculo de residência fiscal.
+              - Quando seu total se aproximar de 183 dias, planeje com antecedência e confirma seu status com orientação oficial ou um consultor qualificado.
   - type: CalculationSection
     title: Calcular dias de visto e residência fiscal
     enterTitle: Data de entrada

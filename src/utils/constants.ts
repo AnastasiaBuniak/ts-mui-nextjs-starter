@@ -2,6 +2,15 @@ export const CALCULATION_SECTION_ID = 'calculation_section';
 export const INFORMATION_SECTION_ID = 'information_section';
 export const CARDS_SECTION_ID = 'documentation_section';
 
+export const INFORMATION_TAB_KEYS = {
+  visa: 0,
+  tax: 1
+} as const;
+
+export type InformationTabKey = keyof typeof INFORMATION_TAB_KEYS;
+
+export const INFORMATION_SECTION_TAB_EVENT = 'information-section-tab-change';
+
 export const DATE_FORMAT = 'DD/MM/YYYY';
 
 export const VISA_DAYS = 90;

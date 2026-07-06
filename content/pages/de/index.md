@@ -16,8 +16,14 @@ sections:
         variant: contained
         color: primary
       - type: Button
-        label: So funktioniert es
-        url: 'information_section'
+        label: Mehr zur 90/180-Visaregel
+        url: 'information_section:visa'
+        size: large
+        variant: outlined
+        color: primary
+      - type: Button
+        label: Mehr zu den Steuerresidenz-Regeln
+        url: 'information_section:tax'
         size: large
         variant: outlined
         color: primary
@@ -26,40 +32,42 @@ sections:
       url: /images/calculator_visa_online_desktop.webp
       mobileUrl: /images/calculator_visa_online_mobile.webp
       altText: Abbildung des Online-Visa-Rechners
-  - type: InformationSection
-    title: Allgemeine Regeln zur Berechnung der 90/180-Visaregel
-    description: >
-      Die 90/180-Tage-Regel ist eine gängige Visabestimmung im Schengen-Raum und in einigen anderen Ländern. Die Regel besagt:
-    keyPoints:
-      - Ein Besucher darf sich in der Schengen-Zone nicht länger als 90 Tage innerhalb eines beliebigen rollierenden 180-Tage-Zeitraums aufhalten.
-      - Der 180-Tage-Zeitraum ist nicht fest; er ist ein gleitendes Fenster – jeder neue Tag verschiebt den Zählzeitraum nach vorn.
-      - Die Regel gilt für alle kurzfristigen visumfreien Reisenden (z. B. Inhaber britischer, US-amerikanischer, kanadischer und australischer Pässe, die Schengen besuchen).
-      - ETIAS ändert nichts an Ihrem Kontingent nach der 90/180-Regel – Sie dürfen weiterhin nicht mehr als 90 Tage in einem beliebigen 180-Tage-Zeitraum verbringen.
-  - type: InformationSection
-    title: Wichtige Regeln zur Berechnung von Visa-Tagen. Wie wird berechnet?
-    description:
-    keyPoints:
-      - Jede neue Einreise zählt für das rollierende 180-Tage-Fenster
-      - Das Verlassen setzt die Zählung nicht zurück; frühere Aufenthalte in den letzten 180 Tagen bleiben relevant
-      - Mehrere Aufenthalte werden zusammengezählt; verlässt eine Person das Land und reist erneut ein, werden frühere Tage weiterhin gezählt
-      - Hat ein Reisender bereits 90 Tage in den letzten 180 Tagen verbracht, muss er das Land verlassen und warten, bis Tage „abfallen“, bevor er erneut einreisen kann
-  - type: InformationSection
-    title: Allgemeine Regeln zur Berechnung der 183-Tage-Steuerresidenz
-    description: >
-      Die 183-Tage-Regel ist ein gängiger Schwellenwert zur Beurteilung der Steuerresidenz in vielen Ländern. Die Details variieren je nach Rechtsordnung, das allgemeine Prinzip lautet jedoch:
-    keyPoints:
-      - Erreicht Ihre physische Anwesenheit 183 Tage oder mehr im relevanten Zeitraum, können Sie als steuerlich ansässig behandelt werden.
-      - Der relevante Zeitraum kann ein Kalenderjahr (1. Jan. – 31. Dez.) oder ein rollierendes Fenster sein – je nach Land.
-      - Die Methoden zur Tageszählung können je nach Rechtsordnung unterschiedlich sein (z. B. Behandlung von An- und Abreisetagen); prüfen Sie daher stets die lokalen Vorgaben.
-      - Der Steuerresidenzstatus kann Auswirkungen auf Meldepflichten und die Besteuerung des weltweiten Einkommens haben.
-  - type: InformationSection
-    title: Wichtige Regeln zur Berechnung von Steueraufenthaltstagen. Wie wird berechnet?
-    description:
-    keyPoints:
-      - Erfassen Sie jeden Anwesenheitstag im Land und führen Sie vollständige Reiseunterlagen.
-      - Wählen Sie das richtige Steuerfenster für die Regel Ihres Landes (Kalenderjahr oder rollierender Zeitraum).
-      - Addieren Sie alle Aufenthalte im gewählten Fenster, um Ihre Gesamttage für die Steuerresidenzberechnung zu ermitteln.
-      - Nähert sich Ihre Summe 183 Tagen, planen Sie voraus und bestätigen Sie Ihren Status anhand offizieller Vorgaben oder mit qualifizierter Beratung.
+  - type: InformationTabsSection
+    tabs:
+      - label: 90/180-Visaregel
+        items:
+          - title: Allgemeine Regeln zur Berechnung der 90/180-Visaregel
+            description: >
+              Die 90/180-Tage-Regel ist eine gängige Visabestimmung im Schengen-Raum und in einigen anderen Ländern. Die Regel besagt:
+            keyPoints:
+              - Ein Besucher darf sich in der Schengen-Zone nicht länger als 90 Tage innerhalb eines beliebigen rollierenden 180-Tage-Zeitraums aufhalten.
+              - Der 180-Tage-Zeitraum ist nicht fest; er ist ein gleitendes Fenster – jeder neue Tag verschiebt den Zählzeitraum nach vorn.
+              - Die Regel gilt für alle kurzfristigen visumfreien Reisenden (z. B. Inhaber britischer, US-amerikanischer, kanadischer und australischer Pässe, die Schengen besuchen).
+              - ETIAS ändert nichts an Ihrem Kontingent nach der 90/180-Regel – Sie dürfen weiterhin nicht mehr als 90 Tage in einem beliebigen 180-Tage-Zeitraum verbringen.
+          - title: Wichtige Regeln zur Berechnung von Visa-Tagen. Wie wird berechnet?
+            description:
+            keyPoints:
+              - Jede neue Einreise zählt für das rollierende 180-Tage-Fenster
+              - Das Verlassen setzt die Zählung nicht zurück; frühere Aufenthalte in den letzten 180 Tagen bleiben relevant
+              - Mehrere Aufenthalte werden zusammengezählt; verlässt eine Person das Land und reist erneut ein, werden frühere Tage weiterhin gezählt
+              - Hat ein Reisender bereits 90 Tage in den letzten 180 Tagen verbracht, muss er das Land verlassen und warten, bis Tage „abfallen“, bevor er erneut einreisen kann
+      - label: 183-Tage-Steuerresidenz
+        items:
+          - title: Allgemeine Regeln zur Berechnung der 183-Tage-Steuerresidenz
+            description: >
+              Die 183-Tage-Regel ist ein gängiger Schwellenwert zur Beurteilung der Steuerresidenz in vielen Ländern. Die Details variieren je nach Rechtsordnung, das allgemeine Prinzip lautet jedoch:
+            keyPoints:
+              - Erreicht Ihre physische Anwesenheit 183 Tage oder mehr im relevanten Zeitraum, können Sie als steuerlich ansässig behandelt werden.
+              - Der relevante Zeitraum kann ein Kalenderjahr (1. Jan. – 31. Dez.) oder ein rollierendes Fenster sein – je nach Land.
+              - Die Methoden zur Tageszählung können je nach Rechtsordnung unterschiedlich sein (z. B. Behandlung von An- und Abreisetagen); prüfen Sie daher stets die lokalen Vorgaben.
+              - Der Steuerresidenzstatus kann Auswirkungen auf Meldepflichten und die Besteuerung des weltweiten Einkommens haben.
+          - title: Wichtige Regeln zur Berechnung von Steueraufenthaltstagen. Wie wird berechnet?
+            description:
+            keyPoints:
+              - Erfassen Sie jeden Anwesenheitstag im Land und führen Sie vollständige Reiseunterlagen.
+              - Wählen Sie das richtige Steuerfenster für die Regel Ihres Landes (Kalenderjahr oder rollierender Zeitraum).
+              - Addieren Sie alle Aufenthalte im gewählten Fenster, um Ihre Gesamttage für die Steuerresidenzberechnung zu ermitteln.
+              - Nähert sich Ihre Summe 183 Tagen, planen Sie voraus und bestätigen Sie Ihren Status anhand offizieller Vorgaben oder mit qualifizierter Beratung.
   - type: CalculationSection
     title: Visa-Tage und Steueraufenthalt berechnen
     enterTitle: Einreisedatum

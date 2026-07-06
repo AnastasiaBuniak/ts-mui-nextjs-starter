@@ -16,8 +16,14 @@ sections:
         variant: contained
         color: primary
       - type: Button
-        label: Cómo funciona
-        url: 'information_section'
+        label: Conoce la regla de visa 90/180
+        url: 'information_section:visa'
+        size: large
+        variant: outlined
+        color: primary
+      - type: Button
+        label: Conoce las reglas de residencia fiscal
+        url: 'information_section:tax'
         size: large
         variant: outlined
         color: primary
@@ -26,40 +32,42 @@ sections:
       url: /images/calculator_visa_online_desktop.webp
       mobileUrl: /images/calculator_visa_online_mobile.webp
       altText: Imagen de la calculadora de visa en línea
-  - type: InformationSection
-    title: Reglas generales del cálculo de la regla de visa 90/180
-    description: >
-      La regla de 90/180 días es una normativa de visa común en el Espacio Schengen y en algunos otros países. La regla establece que:
-    keyPoints:
-      - Un visitante no puede permanecer en la Zona Schengen más de 90 días en cualquier período móvil de 180 días.
-      - El período de 180 días no es fijo; es una ventana móvil, lo que significa que cada nuevo día desplaza el período de conteo hacia adelante.
-      - La regla se aplica a todos los viajeros de corta estancia sin visa (por ejemplo, titulares de pasaporte del Reino Unido, EE. UU., Canadá y Australia que visitan Schengen).
-      - 'Tener ETIAS no cambia tu cupo bajo la regla 90/180: aún no debes superar los 90 días en ningún período de 180 días.'
-  - type: InformationSection
-    title: Reglas clave para calcular los días de visa. ¿Cómo calcular?
-    description:
-    keyPoints:
-      - Cada nueva entrada cuenta para la ventana móvil de 180 días
-      - Salir no reinicia el conteo; las estancias anteriores en los últimos 180 días siguen contando
-      - Se combinan varias estancias; si una persona sale y vuelve a entrar, los días anteriores siguen contándose
-      - Si un viajero ya ha permanecido 90 días en los últimos 180 días, debe salir y esperar a que los días «caigan» antes de volver a entrar
-  - type: InformationSection
-    title: Reglas generales del cálculo de residencia fiscal de 183 días
-    description: >
-      La regla de 183 días es un umbral común para evaluar la residencia fiscal en muchos países. Aunque los detalles varían según la jurisdicción, el principio general es:
-    keyPoints:
-      - Si tu presencia física alcanza 183 días o más en el período relevante, puedes ser considerado residente fiscal.
-      - El período relevante puede ser un año calendario (1 de enero - 31 de diciembre) o una ventana móvil, según el país.
-      - Los métodos de conteo de días pueden diferir según la jurisdicción (por ejemplo, el tratamiento de los días de llegada/salida), así que verifica siempre la normativa local.
-      - El estatus de residencia fiscal puede afectar las obligaciones de declaración y la posible tributación de la renta mundial.
-  - type: InformationSection
-    title: Reglas clave para calcular los días de residencia fiscal. ¿Cómo calcular?
-    description:
-    keyPoints:
-      - Registra cada día de presencia en el país y conserva registros de viaje completos.
-      - Selecciona la ventana fiscal correcta para la regla de tu país (año calendario o período móvil).
-      - Combina todas las estancias en la ventana seleccionada para obtener el total de días para el cálculo de residencia fiscal.
-      - Cuando tu total se acerque a 183 días, planifica con antelación y confirma tu estatus con orientación oficial o un asesor cualificado.
+  - type: InformationTabsSection
+    tabs:
+      - label: Regla de visa 90/180
+        items:
+          - title: Reglas generales del cálculo de la regla de visa 90/180
+            description: >
+              La regla de 90/180 días es una normativa de visa común en el Espacio Schengen y en algunos otros países. La regla establece que:
+            keyPoints:
+              - Un visitante no puede permanecer en la Zona Schengen más de 90 días en cualquier período móvil de 180 días.
+              - El período de 180 días no es fijo; es una ventana móvil, lo que significa que cada nuevo día desplaza el período de conteo hacia adelante.
+              - La regla se aplica a todos los viajeros de corta estancia sin visa (por ejemplo, titulares de pasaporte del Reino Unido, EE. UU., Canadá y Australia que visitan Schengen).
+              - 'Tener ETIAS no cambia tu cupo bajo la regla 90/180: aún no debes superar los 90 días en ningún período de 180 días.'
+          - title: Reglas clave para calcular los días de visa. ¿Cómo calcular?
+            description:
+            keyPoints:
+              - Cada nueva entrada cuenta para la ventana móvil de 180 días
+              - Salir no reinicia el conteo; las estancias anteriores en los últimos 180 días siguen contando
+              - Se combinan varias estancias; si una persona sale y vuelve a entrar, los días anteriores siguen contándose
+              - Si un viajero ya ha permanecido 90 días en los últimos 180 días, debe salir y esperar a que los días «caigan» antes de volver a entrar
+      - label: Residencia fiscal 183 días
+        items:
+          - title: Reglas generales del cálculo de residencia fiscal de 183 días
+            description: >
+              La regla de 183 días es un umbral común para evaluar la residencia fiscal en muchos países. Aunque los detalles varían según la jurisdicción, el principio general es:
+            keyPoints:
+              - Si tu presencia física alcanza 183 días o más en el período relevante, puedes ser considerado residente fiscal.
+              - El período relevante puede ser un año calendario (1 de enero - 31 de diciembre) o una ventana móvil, según el país.
+              - Los métodos de conteo de días pueden diferir según la jurisdicción (por ejemplo, el tratamiento de los días de llegada/salida), así que verifica siempre la normativa local.
+              - El estatus de residencia fiscal puede afectar las obligaciones de declaración y la posible tributación de la renta mundial.
+          - title: Reglas clave para calcular los días de residencia fiscal. ¿Cómo calcular?
+            description:
+            keyPoints:
+              - Registra cada día de presencia en el país y conserva registros de viaje completos.
+              - Selecciona la ventana fiscal correcta para la regla de tu país (año calendario o período móvil).
+              - Combina todas las estancias en la ventana seleccionada para obtener el total de días para el cálculo de residencia fiscal.
+              - Cuando tu total se acerque a 183 días, planifica con antelación y confirma tu estatus con orientación oficial o un asesor cualificado.
   - type: CalculationSection
     title: Calcula días de visa y residencia fiscal
     enterTitle: Fecha de entrada
