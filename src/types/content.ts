@@ -9,6 +9,8 @@ export type Config = {
   __url: null;
   type: 'Config';
   favicon?: string;
+  ogImage?: string;
+  ogImageAlt?: string;
   header?: Header;
   footer?: Footer;
   consentCopy: string;

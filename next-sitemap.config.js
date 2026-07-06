@@ -5,6 +5,14 @@ const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://example.com').repl
 );
 const locales = ['en', 'es', 'pt-BR', 'de', 'fr'];
 const defaultLocale = 'en';
+// Keep in sync with nonIndexableRoutes in src/utils/seo.ts
+const nonIndexableRoutes = [
+  '/login',
+  '/signup',
+  '/dashboard',
+  '/policy',
+  '/localization-todo'
+];
 
 const placeholderSiteUrls = new Set(['https://example.com', 'http://example.com']);
 
@@ -26,10 +34,15 @@ if (!process.env.NEXT_PUBLIC_SITE_URL) {
 module.exports = {
   siteUrl,
   generateRobotsTxt: true,
+  exclude: nonIndexableRoutes,
   robotsTxtOptions: {
     policies: [{ userAgent: '*', allow: '/' }]
   },
   transform: async (config, path) => {
+    if (nonIndexableRoutes.includes(path)) {
+      return null;
+    }
+
     const isDefaultLocalePath = !locales.some(
       (locale) =>
         locale !== defaultLocale &&

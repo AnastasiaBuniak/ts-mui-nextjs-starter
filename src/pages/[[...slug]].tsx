@@ -11,7 +11,11 @@ import { Footer } from '../components/sections/Footer';
 import { pagesByType, siteConfig, urlToContent } from '../utils/content';
 import { i18nConfig } from 'src/utils/i18n';
 import { getSiteUrl } from 'src/utils/site';
-import { buildPageTitle } from 'src/utils/seo';
+import {
+  buildPageTitle,
+  buildSocialMeta,
+  isNonIndexableRoute
+} from 'src/utils/seo';
 
 import MuiBox from '@mui/material/Box';
 import CookieDrawer from '../components/atoms/CookieDrawer';
@@ -45,7 +49,16 @@ const Page: React.FC<Props> = ({ page, siteConfig }) => {
     (page as types.Page & { description?: string }).description ||
     t('meta.defaultDescription');
   const documentTitle = buildPageTitle(page.title, siteConfig.header?.title);
+  const socialMeta = buildSocialMeta({
+    siteUrl: canonicalBaseUrl,
+    canonicalUrl,
+    title: documentTitle,
+    description: metaDescription,
+    ogImagePath: siteConfig.ogImage,
+    ogImageAlt: siteConfig.ogImageAlt
+  });
   const currentPath = currentUrl;
+  const shouldNoIndex = isNonIndexableRoute(currentPath);
   const isProtectedRoute = protectedRoutes.includes(currentPath);
   const header = { ...siteConfig.header, ...(page.header ?? {}) };
   const pageContent = (
@@ -53,8 +66,28 @@ const Page: React.FC<Props> = ({ page, siteConfig }) => {
       <Head>
         <title>{documentTitle}</title>
         <meta name="description" content={metaDescription} />
+        {shouldNoIndex && <meta name="robots" content="noindex, nofollow" />}
         <meta property="og:title" content={documentTitle} />
         <meta property="og:description" content={metaDescription} />
+        {socialMeta.ogUrl && (
+          <meta property="og:url" content={socialMeta.ogUrl} />
+        )}
+        <meta property="og:type" content={socialMeta.ogType} />
+        {socialMeta.ogImageUrl && (
+          <>
+            <meta property="og:image" content={socialMeta.ogImageUrl} />
+            <meta property="og:image:alt" content={socialMeta.ogImageAlt} />
+          </>
+        )}
+        <meta name="twitter:card" content={socialMeta.twitterCard} />
+        <meta name="twitter:title" content={socialMeta.twitterTitle} />
+        <meta
+          name="twitter:description"
+          content={socialMeta.twitterDescription}
+        />
+        {socialMeta.twitterImageUrl && (
+          <meta name="twitter:image" content={socialMeta.twitterImageUrl} />
+        )}
         <meta property="og:locale" content={locale.replace('-', '_')} />
         {(router.locales || [])
           .filter((availableLocale) => availableLocale !== locale)

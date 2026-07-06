@@ -1,6 +1,8 @@
 {
   "type": "Config",
   "favicon": "/images/favicon.svg",
+  "ogImage": "/images/calculator_visa_online_desktop.webp",
+  "ogImageAlt": "Calculadora en línea de días de visa y residencia fiscal para la regla Schengen 90/180",
   "header": {
     "title": "Calculadora de Días de Visa",
     "welcomeText": "Bienvenido",
