@@ -3,12 +3,14 @@ import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import Box from '@mui/material/Box';
 import NextLink from 'next/link';
+import { useRouter } from 'next/router';
 import { Trans, useTranslation } from 'next-i18next';
 import {
   TaxResidencyMode,
   TaxResidencyRiskLevel
 } from 'src/utils/taxResidencyUtils';
 import { PolicyType } from 'src/types/data';
+import { localePath } from 'src/utils/i18n';
 
 interface ResultProps {
   remainingDaysToStay: number;
@@ -21,12 +23,6 @@ interface ResultProps {
   taxMode?: TaxResidencyMode;
   taxRiskLevel?: TaxResidencyRiskLevel | null;
   isTaxResident?: boolean | null;
-  resultText: {
-    daysRemainToStay: string;
-    wantToPersistResults: string;
-    registerCta: string;
-    registerCta2: string;
-  };
 }
 
 const Result: React.FC<ResultProps> = ({
@@ -39,10 +35,11 @@ const Result: React.FC<ResultProps> = ({
   ruleType = PolicyType.Schengen90_180,
   taxMode = 'calendar',
   taxRiskLevel,
-  isTaxResident,
-  resultText
+  isTaxResident
 }) => {
+  const router = useRouter();
   const { t } = useTranslation('common');
+  const locale = router.locale || router.defaultLocale || 'en';
   const isSchengen = ruleType === PolicyType.Schengen90_180;
 
   const getTaxSeverity = (): 'success' | 'warning' | 'error' => {
@@ -80,7 +77,7 @@ const Result: React.FC<ResultProps> = ({
       >
         <AlertTitle sx={{ fontWeight: 'bold' }}>
           {isSchengen
-            ? `${resultText.daysRemainToStay}: ${remainingDaysToStay}`
+            ? `${t('result.daysRemainToStay')}: ${remainingDaysToStay}`
             : `${t('result.daysBeforeTaxThreshold')}: ${remainingDaysToStay}`}
         </AlertTitle>
         {isSchengen ? (
@@ -162,15 +159,15 @@ const Result: React.FC<ResultProps> = ({
           {isSignedIn ? null : (
             <>
               {' '}
-              {resultText.wantToPersistResults}{' '}
+              {t('result.wantToPersistResults')}{' '}
               <NextLink
                 onClick={onRegisterClick}
-                href="/signup"
+                href={localePath('/signup', locale)}
                 style={{ color: 'inherit', textDecoration: 'underline' }}
               >
-                {resultText.registerCta}
+                {t('result.registerCta')}
               </NextLink>{' '}
-              {resultText.registerCta2}
+              {t('result.registerCta2')}
             </>
           )}
         </div>

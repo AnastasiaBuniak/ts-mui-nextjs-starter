@@ -1,3 +1,9 @@
+import dayjs, { Dayjs } from 'dayjs';
+import 'dayjs/locale/de';
+import 'dayjs/locale/es';
+import 'dayjs/locale/fr';
+import 'dayjs/locale/pt-br';
+
 export const i18nConfig = {
   defaultLocale: 'en',
   locales: ['en', 'es', 'pt-BR', 'de', 'fr']
@@ -24,6 +30,28 @@ export function localePath(
     return normalized;
   }
   return `/${locale}${normalized}`;
+}
+
+const dayjsLocaleByAppLocale: Record<string, string> = {
+  en: 'en',
+  es: 'es',
+  de: 'de',
+  fr: 'fr',
+  'pt-BR': 'pt-br'
+};
+
+export function formatLocalizedDate(date: Dayjs, locale: string): string {
+  const dayjsLocale = dayjsLocaleByAppLocale[locale] || 'en';
+  return date.locale(dayjsLocale).format('L');
+}
+
+export function localizeInternalHtmlLinks(
+  html: string,
+  locale: string = i18nConfig.defaultLocale
+): string {
+  return html.replace(/href=(['"])(\/[^'"]*)\1/g, (_match, quote, path) => {
+    return `href=${quote}${localePath(path, locale)}${quote}`;
+  });
 }
 
 export function getStoredLocale(): string {

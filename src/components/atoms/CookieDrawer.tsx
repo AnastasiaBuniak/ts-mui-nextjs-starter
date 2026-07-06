@@ -8,11 +8,16 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import { CONSENT_COOKIE_NAME } from 'src/utils/constants';
+import { useRouter } from 'next/router';
+import { localizeInternalHtmlLinks } from 'src/utils/i18n';
 
 export const CookieDrawer: React.FC<{ consentCopy: string }> = ({
   consentCopy
 }) => {
   const { t } = useTranslation('common');
+  const router = useRouter();
+  const locale = router.locale || router.defaultLocale || 'en';
+  const localizedConsentCopy = localizeInternalHtmlLinks(consentCopy, locale);
   const [isOpen, setIsOpen] = useState<boolean>(true);
 
   useEffect(() => {
@@ -57,7 +62,7 @@ export const CookieDrawer: React.FC<{ consentCopy: string }> = ({
           {t('cookie.title')}
         </Typography>
         <Typography component="div" variant="body1" color="text.primary">
-          <div dangerouslySetInnerHTML={{ __html: consentCopy }} />
+          <div dangerouslySetInnerHTML={{ __html: localizedConsentCopy }} />
         </Typography>
       </Box>
     </Drawer>

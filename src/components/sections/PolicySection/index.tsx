@@ -19,7 +19,7 @@ export type Props = {
   title: string;
   addButtonText: string;
   selectedDateText: string;
-  resultText: {
+  resultText?: {
     daysRemainToStay: string;
     wantToPersistResults: string;
     registerCta: string;
@@ -86,7 +86,6 @@ export const PolicySection: React.FC<Props> = ({ title, ...props }) => {
         addVisit={addPolicyVisit}
         deleteVisit={deletePolicyVisit}
         addButtonText={props.addButtonText}
-        resultText={props.resultText}
         selectedDateText={props.selectedDateText}
       />
     </Container>

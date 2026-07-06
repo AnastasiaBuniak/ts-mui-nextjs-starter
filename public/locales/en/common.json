@@ -36,10 +36,14 @@
     "ruleLabel": "{{allowed}}/{{window}} rule"
   },
   "form": {
+    "addDates": "Add dates",
     "calendarYear": "Calendar year (Jan 1 – Dec 31)",
+    "dateOfEntry": "Date of entry",
+    "dateOfExit": "Date of exit",
     "rollingWindow": "Rolling 365-day window",
     "schengenCaption": "90/180 calculation: you can stay up to 90 days in any rolling 180-day period.",
     "schengenRule": "90/180 Schengen rule",
+    "selectedDate": "Selected date",
     "tax183Rule": "183-day tax residency",
     "taxCaption": "183-day calculation: tax residency applies when total stay reaches 183+ days in the selected tax window.",
     "taxWindow": "Tax window",
@@ -63,16 +67,20 @@
     "allowed90Days": "You are allowed 90 days in a 180-day period.",
     "calendarYear": "calendar year",
     "daysBeforeTaxThreshold": "Days before 183-day tax threshold",
+    "daysRemainToStay": "Days remain to stay",
     "likelyTaxResident": "You are likely to be considered a <strong>tax resident</strong> under the 183-day rule. Please consult a qualified tax advisor for your specific situation.",
     "noDaysRemaining": "As of today, you cannot stay any longer and have <strong>0 days</strong> remaining. You could regain the right to stay only after enough previous days drop out of your 180-day window.",
     "overstayedBy": "You <strong>overstayed by {{days}} days</strong>.",
     "overstayedTaxBy": "You have exceeded the 183-day threshold by <strong>{{days}} days</strong>.",
+    "registerCta": "Register with Google",
+    "registerCta2": "for free and access it whenever you need it.",
     "remainingBeforeTax": "You have <strong>{{days}} days</strong> before reaching the 183-day tax residency threshold in this window.",
     "rolling365": "rolling 365-day",
     "schengenUsedDays": "You have <strong>used {{days}} days</strong> of stay in the last 180 days window.",
     "stayUntilDate": "You can stay for <strong>{{days}} days </strong> more, until <strong>{{date}}</strong>, if you use all days at once.",
     "taxThreshold": "The tax residency threshold is 183 days in a year.",
-    "taxUsedDays": "You have <strong>used {{days}} days</strong> of presence in the selected {{window}} window."
+    "taxUsedDays": "You have <strong>used {{days}} days</strong> of presence in the selected {{window}} window.",
+    "wantToPersistResults": "Want to persist the calculation results?"
   },
   "table": {
     "actions": "Actions",

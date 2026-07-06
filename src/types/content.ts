@@ -60,7 +60,7 @@ export type CalculationSection = {
   exitTitle?: string;
   addButtonText?: string;
   selectedDateText: string;
-  resultText: {
+  resultText?: {
     daysRemainToStay: string;
     wantToPersistResults: string;
     registerCta: string;

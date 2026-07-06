@@ -1,6 +1,8 @@
 import * as React from 'react';
 import NextLink from 'next/link';
+import { useRouter } from 'next/router';
 import type * as types from 'types';
+import { localePath } from 'src/utils/i18n';
 
 import MuiLink from '@mui/material/Link';
 
@@ -8,6 +10,7 @@ export type Props = types.Link &
   types.StackbitFieldPath & { className?: string; sx?: { [key: string]: any } };
 
 export const Link: React.FC<Props> = (props) => {
+  const router = useRouter();
   const {
     className,
     label,
@@ -17,6 +20,11 @@ export const Link: React.FC<Props> = (props) => {
     sx,
     'data-sb-field-path': fieldPath
   } = props;
+  const locale = router.locale || router.defaultLocale || 'en';
+  const href =
+    url.startsWith('http') || url.startsWith('#')
+      ? url
+      : localePath(url, locale);
   const annotations = fieldPath
     ? [fieldPath, `${fieldPath}.url#@href`].join(' ').trim()
     : null;
@@ -24,7 +32,7 @@ export const Link: React.FC<Props> = (props) => {
   return (
     <MuiLink
       component={NextLink}
-      href={url}
+      href={href}
       className={className}
       underline={underline}
       color={color}

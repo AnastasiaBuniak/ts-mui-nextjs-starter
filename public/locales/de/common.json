@@ -36,10 +36,14 @@
     "ruleLabel": "{{allowed}}/{{window}}-Regel"
   },
   "form": {
+    "addDates": "Daten hinzufügen",
     "calendarYear": "Kalenderjahr (1. Jan. – 31. Dez.)",
+    "dateOfEntry": "Einreisedatum",
+    "dateOfExit": "Ausreisedatum",
     "rollingWindow": "Rollierendes 365-Tage-Fenster",
     "schengenCaption": "90/180-Berechnung: Sie dürfen bis zu 90 Tage in einem rollierenden 180-Tage-Zeitraum bleiben.",
     "schengenRule": "90/180-Schengen-Regel",
+    "selectedDate": "Ausgewähltes Datum",
     "tax183Rule": "183-Tage-Steueransässigkeit",
     "taxCaption": "183-Tage-Berechnung: Steuerliche Ansässigkeit gilt, wenn der Gesamtaufenthalt im gewählten Steuerfenster 183+ Tage erreicht.",
     "taxWindow": "Steuerfenster",
@@ -63,16 +67,20 @@
     "allowed90Days": "Ihnen stehen 90 Tage in einem 180-Tage-Zeitraum zu.",
     "calendarYear": "Kalenderjahr",
     "daysBeforeTaxThreshold": "Tage bis zur 183-Tage-Steuerschwelle",
+    "daysRemainToStay": "Verbleibende Aufenthaltstage",
     "likelyTaxResident": "Sie gelten wahrscheinlich als <strong>steuerlich ansässig</strong> nach der 183-Tage-Regel. Bitte konsultieren Sie einen qualifizierten Steuerberater für Ihre spezifische Situation.",
     "noDaysRemaining": "Ab heute können Sie nicht länger bleiben und haben noch <strong>0 Tage</strong>. Sie können das Aufenthaltsrecht erst wiedererlangen, wenn genügend frühere Tage aus Ihrem 180-Tage-Fenster auslaufen.",
     "overstayedBy": "Sie haben Ihren Aufenthalt um <strong>{{days}} Tage</strong> überschritten.",
     "overstayedTaxBy": "Sie haben die 183-Tage-Schwelle um <strong>{{days}} Tage</strong> überschritten.",
+    "registerCta": "Mit Google registrieren",
+    "registerCta2": "kostenlos und jederzeit darauf zugreifen.",
     "remainingBeforeTax": "Ihnen verbleiben <strong>{{days}} Tage</strong>, bevor Sie die 183-Tage-Schwelle für steuerliche Ansässigkeit in diesem Fenster erreichen.",
     "rolling365": "rollierendes 365-Tage-Fenster",
     "schengenUsedDays": "Sie haben <strong>{{days}} Tage</strong> Aufenthalt im letzten 180-Tage-Fenster genutzt.",
     "stayUntilDate": "Sie können noch <strong>{{days}} Tage</strong> bleiben, bis zum <strong>{{date}}</strong>, wenn Sie alle Tage auf einmal nutzen.",
     "taxThreshold": "Die Schwelle für steuerliche Ansässigkeit beträgt 183 Tage pro Jahr.",
-    "taxUsedDays": "Sie haben <strong>{{days}} Tage</strong> Anwesenheit im gewählten {{window}}-Fenster genutzt."
+    "taxUsedDays": "Sie haben <strong>{{days}} Tage</strong> Anwesenheit im gewählten {{window}}-Fenster genutzt.",
+    "wantToPersistResults": "Möchten Sie die Berechnungsergebnisse speichern?"
   },
   "table": {
     "actions": "Aktionen",

@@ -23,6 +23,7 @@ import { userHeaderFeatures } from './hooks';
 import { useAuth } from 'src/components/context/AuthContext';
 import { LanguageSwitcher } from 'src/components/atoms/LanguageSwitcher';
 import { useRouter } from 'next/router';
+import { localePath } from 'src/utils/i18n';
 
 export type Props = types.Header & types.StackbitObjectId;
 
@@ -41,6 +42,7 @@ export const UserHeader: React.FC<Props> = (props) => {
   const userAuthData = useAuth();
   const router = useRouter();
   const { t } = useTranslation('common');
+  const locale = router.locale || router.defaultLocale || 'en';
 
   const { logoutUser, deleteUserAccount } = userHeaderFeatures({
     userId: userAuthData?.user?.id,
@@ -113,7 +115,7 @@ export const UserHeader: React.FC<Props> = (props) => {
                 textAlign: isMobile ? 'center' : 'left'
               }}
             >
-              <Link href="/" passHref legacyBehavior>
+              <Link href={localePath('/', locale)} passHref legacyBehavior>
                 <MuiTypography
                   component="h1"
                   variant="h5"
