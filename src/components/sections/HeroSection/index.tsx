@@ -25,16 +25,20 @@ export const HeroSection: React.FC<Props> = (props) => {
   const hasTextContent = !!title || !!subtitle || !!text || actions.length > 0;
 
   return (
-    <MuiBox sx={{ py: 6 }} data-sb-field-path={fieldPath}>
-      <MuiGrid container spacing={4}>
+    <MuiBox sx={{ py: { xs: 6, md: 10 } }} data-sb-field-path={fieldPath}>
+      <MuiGrid container spacing={6} alignItems="center">
         {hasTextContent && (
           <MuiGrid item xs={12} md={image?.url ? 6 : 12}>
             {title && (
               <MuiTypography
                 component="h1"
-                variant="h2"
+                variant="h1"
                 color="text.primary"
                 data-sb-field-path=".title"
+                sx={{
+                  fontSize: { xs: '2.75rem', md: '3.5rem' },
+                  maxWidth: 640
+                }}
               >
                 {title}
               </MuiTypography>
@@ -42,9 +46,12 @@ export const HeroSection: React.FC<Props> = (props) => {
             {subtitle && (
               <MuiTypography
                 component="p"
-                variant="h5"
-                color="primary"
-                sx={{ ...(!!title && { mt: 1 }) }}
+                variant="subtitle1"
+                color="text.secondary"
+                sx={{
+                  ...(!!title && { mt: 2.5 }),
+                  maxWidth: 520
+                }}
                 data-sb-field-path=".subtitle"
               >
                 {subtitle}
@@ -61,7 +68,10 @@ export const HeroSection: React.FC<Props> = (props) => {
             )}
             {actions.length > 0 && (
               <MuiStack
-                sx={{ ...(!!(title || subtitle || text) && { mt: 4 }) }}
+                sx={{
+                  ...(!!(title || subtitle || text) && { mt: 4 }),
+                  gap: 1.5
+                }}
                 direction="row"
                 alignItems="center"
                 justifyContent="flex-start"
@@ -72,10 +82,15 @@ export const HeroSection: React.FC<Props> = (props) => {
                   <Button
                     key={index}
                     {...action}
+                    size="medium"
                     sx={{
-                      mr: 2,
-                      mb: 2,
-                      minWidth: '220px'
+                      height: 40,
+                      minHeight: 40,
+                      px: 2,
+                      fontSize: 14,
+                      fontWeight: 600,
+                      borderRadius: '8px',
+                      boxShadow: 'none'
                     }}
                     onClick={handleScrollToSection(action.url)}
                     data-sb-field-path={`.${index}`}
@@ -102,7 +117,7 @@ export const HeroSection: React.FC<Props> = (props) => {
               style={{
                 width: '100%',
                 height: 'auto',
-                borderRadius: '4px',
+                borderRadius: 12,
                 maxWidth: '100%'
               }}
             />

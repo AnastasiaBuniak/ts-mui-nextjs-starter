@@ -24,9 +24,11 @@ export const InformationBlock: React.FC<InformationBlockProps> = ({
   return (
     <Box
       sx={{
-        p: 2,
-        backgroundColor: '#EFF5FB',
-        borderRadius: '4px',
+        p: { xs: 2.5, sm: 3 },
+        backgroundColor: 'background.paper',
+        border: 1,
+        borderColor: 'divider',
+        borderRadius: '12px',
         mb: 2
       }}
       data-sb-field-path={fieldPath}
@@ -42,7 +44,7 @@ export const InformationBlock: React.FC<InformationBlockProps> = ({
         </Typography>
         {description && (
           <Typography
-            sx={{ marginBottom: '0', fontWeight: 'bold' }}
+            sx={{ marginBottom: '0', fontWeight: 500 }}
             variant="body1"
             paragraph
             data-sb-field-path={fieldPath ? '.description' : undefined}

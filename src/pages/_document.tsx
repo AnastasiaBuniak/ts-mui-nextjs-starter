@@ -3,12 +3,13 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 import createEmotionServer from '@emotion/server/create-instance';
 import createEmotionCache from '../utils/createEmotionCache';
 import GoogleTag from '../components/atoms/GoogleTag';
+import { sans } from '../utils/font';
 
 export default class MyDocument extends Document {
   render() {
     const locale = this.props.__NEXT_DATA__.locale || 'en';
     return (
-      <Html lang={locale}>
+      <Html lang={locale} className={sans.className}>
         <Head>
           <GoogleTag />
         </Head>

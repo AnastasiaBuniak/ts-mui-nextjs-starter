@@ -49,13 +49,20 @@ export const CalculationSection: React.FC<Props> = (props) => {
   return (
     <Card
       id={CALCULATION_SECTION_ID}
-      sx={{ backgroundColor: '#EFF5FB', mt: 3 }}
+      sx={(theme) => ({
+        mt: { xs: 4, md: 6 },
+        mb: { xs: 2, md: 4 },
+        px: { xs: 2, sm: 4 },
+        py: { xs: 2, sm: 3 },
+        backgroundColor: theme.colors.softVioletBg,
+        border: '2px solid',
+        borderColor: 'primary.main'
+      })}
     >
       <CardHeader
-        mb={4}
-        component="h2"
-        title={`${props.title}:`}
-        sx={{ backgroundColor: '#4C57C5', color: 'white', mt: 0 }}
+        title={props.title}
+        titleTypographyProps={{ variant: 'h4', component: 'h2' }}
+        sx={{ px: 0, pt: 1, pb: 1 }}
       />
       <Box mb={4} sx={{ width: '100%' }}>
         {!!datesData.length && (
@@ -63,7 +70,7 @@ export const CalculationSection: React.FC<Props> = (props) => {
             data={datesData}
             onDelete={(item) => deleteDate(item as VisitItem)}
             tableHeadStyles={{
-              fontWeight: 'bold'
+              fontWeight: 600
             }}
           />
         )}

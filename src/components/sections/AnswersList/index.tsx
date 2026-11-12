@@ -9,8 +9,6 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-const themeStyle = require('content/data/style.json');
-
 export type FAQItem = {
   question: string;
   answer: string;
@@ -36,8 +34,11 @@ export const AnswersList: React.FC<Props> = ({ title, description, items }) => {
           />
         </Head>
       )}
-      <Box component="main" sx={{ maxWidth: 800, mx: 'auto', px: 3, py: 5 }}>
-        <Typography variant="h4" component="h1" gutterBottom sx={{ mb: 4 }}>
+      <Box
+        component="main"
+        sx={{ maxWidth: 800, mx: 'auto', px: 1, py: { xs: 5, md: 8 } }}
+      >
+        <Typography variant="h3" component="h1" gutterBottom sx={{ mb: 2 }}>
           {title}
         </Typography>
         {description && (
@@ -47,13 +48,21 @@ export const AnswersList: React.FC<Props> = ({ title, description, items }) => {
         )}
         {items.map((item, idx) => (
           <Box key={idx} sx={{ mb: 4 }}>
-            <Accordion sx={{ borderRadius: '4px', overflow: 'hidden' }}>
+            <Accordion
+              disableGutters
+              elevation={0}
+              sx={{
+                border: 1,
+                borderColor: 'divider',
+                borderRadius: 2,
+                overflow: 'hidden',
+                '&:before': { display: 'none' }
+              }}
+            >
               <AccordionSummary
-                expandIcon={<ExpandMoreIcon sx={{ color: '#fff' }} />}
+                expandIcon={<ExpandMoreIcon />}
                 sx={{
-                  bgcolor: themeStyle.primaryColor ?? '#1F2B9D',
-                  color: '#fff',
-                  '& .MuiTypography-root': { color: '#fff' },
+                  px: 2,
                   minHeight: 64,
                   '&.Mui-expanded': { minHeight: 64 }
                 }}
@@ -72,10 +81,10 @@ export const AnswersList: React.FC<Props> = ({ title, description, items }) => {
                       width: 28,
                       height: 28,
                       borderRadius: '50%',
-                      bgcolor: 'rgba(255,255,255,0.18)',
-                      color: '#fff',
+                      bgcolor: 'primary.main',
+                      color: 'primary.contrastText',
                       fontWeight: 700,
-                      fontSize: 18,
+                      fontSize: 14,
                       mr: 2
                     }}
                   >

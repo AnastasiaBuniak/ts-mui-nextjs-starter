@@ -13,10 +13,33 @@ import Avatar from '@mui/material/Avatar';
 
 import { handleScrollToSection } from 'src/utils/scroll';
 import { LanguageSwitcher } from 'src/components/atoms/LanguageSwitcher';
+import { Logo } from 'src/components/atoms/Logo';
 import { localePath } from 'src/utils/i18n';
 import { useRouter } from 'next/router';
 
 export type Props = types.Header & types.StackbitObjectId;
+
+const navLinkSx = {
+  color: 'text.secondary',
+  fontWeight: 500,
+  fontSize: 14,
+  lineHeight: 1,
+  letterSpacing: '-0.01em',
+  '&:hover': { color: 'text.primary' }
+};
+
+const signupButtonSx = {
+  height: 36,
+  minHeight: 36,
+  minWidth: 0,
+  px: 1.75,
+  py: 0,
+  fontSize: 14,
+  fontWeight: 600,
+  letterSpacing: '-0.01em',
+  borderRadius: '8px',
+  boxShadow: 'none'
+};
 
 export const Header: React.FC<Props> = (props) => {
   const { title, navLinks = [], 'data-sb-object-id': objectId, user } = props;
@@ -26,20 +49,53 @@ export const Header: React.FC<Props> = (props) => {
   const fieldPath = objectId ? `${objectId}:header` : null;
   return (
     <MuiAppBar
-      position="static"
-      color="transparent"
+      position="sticky"
+      color="inherit"
       elevation={0}
       data-sb-field-path={fieldPath}
+      sx={{
+        bgcolor: 'background.paper',
+        borderBottom: 1,
+        borderColor: 'divider',
+        zIndex: (theme) => theme.zIndex.appBar
+      }}
     >
-      <MuiToolbar disableGutters={true} sx={{ flexWrap: 'wrap' }}>
+      <MuiToolbar
+        disableGutters
+        sx={{
+          minHeight: { xs: 60, sm: 64 },
+          maxWidth: 1200,
+          width: '100%',
+          mx: 'auto',
+          px: { xs: 2, md: 3 },
+          gap: { xs: 2, md: 4 },
+          boxSizing: 'border-box'
+        }}
+      >
         {title && (
-          <MuiBox sx={{ mb: 1, mr: 2, flexGrow: 1 }}>
+          <MuiBox
+            component={NextLink}
+            href={localePath('/', locale)}
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 1,
+              flexShrink: 0,
+              textDecoration: 'none',
+              color: 'text.primary'
+            }}
+          >
+            <Logo />
             <MuiTypography
-              component="p"
-              variant="h6"
-              color="text.primary"
+              component="span"
+              variant="body1"
               noWrap
               data-sb-field-path=".title"
+              sx={{
+                fontSize: 15,
+                fontWeight: 700,
+                letterSpacing: '-0.03em'
+              }}
             >
               {title}
             </MuiTypography>
@@ -48,7 +104,12 @@ export const Header: React.FC<Props> = (props) => {
         {navLinks.length > 0 && (
           <MuiBox
             component="nav"
-            sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center' }}
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: { xs: 2, md: 3 },
+              minWidth: 0
+            }}
             data-sb-field-path=".navLinks"
           >
             {navLinks.map(({ isAnchor, ...link }, index) =>
@@ -56,11 +117,11 @@ export const Header: React.FC<Props> = (props) => {
                 <Button
                   key={index}
                   variant="text"
+                  color="inherit"
                   component="a"
-                  size="large"
                   onClick={handleScrollToSection(link.url)}
                   data-sb-field-path={`.${index}`}
-                  sx={{ padding: 0, textTransform: 'none' }}
+                  sx={{ ...navLinkSx, p: 0, minWidth: 0, minHeight: 0 }}
                 >
                   {link.label}
                 </Button>
@@ -68,46 +129,59 @@ export const Header: React.FC<Props> = (props) => {
                 <Link
                   key={index}
                   {...link}
-                  sx={{
-                    ...(index !== navLinks.length - 1 && { mr: 2 })
-                  }}
+                  color="inherit"
+                  underline="hover"
+                  sx={navLinkSx}
                   data-sb-field-path={`.${index}`}
                 />
               )
             )}
-            {user ? (
-              <NextLink
-                href={localePath('/dashboard', locale)}
-                passHref
-                legacyBehavior
-              >
-                <Avatar
-                  src={user?.picture}
-                  alt={user?.name}
-                  sx={{ cursor: 'pointer', ml: 2 }}
-                />
-              </NextLink>
-            ) : (
-              <>
-                <Link
-                  type="Link"
-                  label={t('auth.signup')}
-                  url="/signup"
-                  underline="hover"
-                  sx={{ ml: 2 }}
-                />
-                <Link
-                  type="Link"
-                  label={t('auth.login')}
-                  url="/login"
-                  underline="hover"
-                  sx={{ ml: 2 }}
-                />
-              </>
-            )}
-            <LanguageSwitcher />
           </MuiBox>
         )}
+        <MuiBox
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 2,
+            ml: 'auto',
+            flexShrink: 0
+          }}
+        >
+          <LanguageSwitcher compact />
+          {user ? (
+            <NextLink
+              href={localePath('/dashboard', locale)}
+              passHref
+              legacyBehavior
+            >
+              <Avatar
+                src={user?.picture}
+                alt={user?.name}
+                sx={{ cursor: 'pointer', width: 32, height: 32 }}
+              />
+            </NextLink>
+          ) : (
+            <>
+              <Link
+                type="Link"
+                label={t('auth.login')}
+                url="/login"
+                underline="hover"
+                color="inherit"
+                sx={navLinkSx}
+              />
+              <Button
+                component={NextLink}
+                href={localePath('/signup', locale)}
+                variant="contained"
+                color="primary"
+                sx={signupButtonSx}
+              >
+                {t('auth.signup')}
+              </Button>
+            </>
+          )}
+        </MuiBox>
       </MuiToolbar>
     </MuiAppBar>
   );

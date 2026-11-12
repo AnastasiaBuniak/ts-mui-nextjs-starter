@@ -18,6 +18,7 @@ import {
 } from 'src/utils/seo';
 
 import MuiBox from '@mui/material/Box';
+import Container from '@mui/material/Container';
 import CookieDrawer from '../components/atoms/CookieDrawer';
 import PageContainer from 'src/components/atoms/PageContainer';
 import ProtectedRoute from '../components/ProtectedRoute';
@@ -25,6 +26,34 @@ import ProtectedRoute from '../components/ProtectedRoute';
 export type Props = { page: types.Page; siteConfig: types.Config };
 const protectedRoutes = ['/dashboard', '/policy'];
 const routesWithoutFooter = ['/dashboard', '/policy', '/signup', '/login'];
+
+const PageBody: React.FC<{
+  page: types.Page;
+  siteConfig: types.Config;
+  currentPath: string;
+}> = ({ page, siteConfig, currentPath }) => {
+  const router = useRouter();
+
+  return (
+    <>
+      {(page.sections ?? []).length > 0 && (
+        <MuiBox component="main" data-sb-field-path="sections">
+          {(page.sections ?? []).map((section, index) => (
+            <DynamicComponent
+              key={index}
+              path={router.query}
+              {...section}
+              data-sb-field-path={`.${index}`}
+            />
+          ))}
+        </MuiBox>
+      )}
+      {siteConfig.footer && !routesWithoutFooter.includes(currentPath) && (
+        <Footer {...siteConfig.footer} data-sb-object-id={siteConfig.__id} />
+      )}
+    </>
+  );
+};
 
 const Page: React.FC<Props> = ({ page, siteConfig }) => {
   const router = useRouter();
@@ -128,20 +157,20 @@ const Page: React.FC<Props> = ({ page, siteConfig }) => {
         />
       )}
       <CookieDrawer consentCopy={siteConfig.consentCopy} />
-      {(page.sections ?? []).length > 0 && (
-        <MuiBox component="main" data-sb-field-path="sections">
-          {(page.sections ?? []).map((section, index) => (
-            <DynamicComponent
-              key={index}
-              path={router.query}
-              {...section}
-              data-sb-field-path={`.${index}`}
-            />
-          ))}
-        </MuiBox>
-      )}
-      {siteConfig.footer && !routesWithoutFooter.includes(currentPath) && (
-        <Footer {...siteConfig.footer} data-sb-object-id={siteConfig.__id} />
+      {page.noHeader ? (
+        <PageBody
+          page={page}
+          siteConfig={siteConfig}
+          currentPath={currentPath}
+        />
+      ) : (
+        <Container maxWidth="lg" sx={{ px: { xs: 2, md: 3 } }}>
+          <PageBody
+            page={page}
+            siteConfig={siteConfig}
+            currentPath={currentPath}
+          />
+        </Container>
       )}
     </PageContainer>
   );

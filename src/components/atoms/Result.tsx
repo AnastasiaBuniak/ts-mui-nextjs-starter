@@ -1,7 +1,7 @@
 import React from 'react';
 import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
 import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { Trans, useTranslation } from 'next-i18next';
@@ -11,6 +11,7 @@ import {
 } from 'src/utils/taxResidencyUtils';
 import { PolicyType } from 'src/types/data';
 import { localePath } from 'src/utils/i18n';
+import theme from 'src/utils/theme';
 
 interface ResultProps {
   remainingDaysToStay: number;
@@ -51,8 +52,29 @@ const Result: React.FC<ResultProps> = ({
   const taxWindowLabel =
     taxMode === 'calendar' ? t('result.calendarYear') : t('result.rolling365');
 
+  const resultLabel = isSchengen
+    ? t('result.daysRemainToStay')
+    : t('result.daysBeforeTaxThreshold');
+
   return (
-    <Box mb={4} sx={{ padding: 2, textAlign: 'center' }}>
+    <Box mb={2} sx={{ px: { xs: 1, sm: 2 }, pb: 2, textAlign: 'center' }}>
+      <Typography
+        component="p"
+        variant="h2"
+        color="primary"
+        sx={{
+          fontWeight: 600,
+          fontSize: { xs: '3.5rem', md: '4.5rem' },
+          letterSpacing: '-0.05em',
+          lineHeight: 1,
+          fontVariantNumeric: 'tabular-nums'
+        }}
+      >
+        {remainingDaysToStay}
+      </Typography>
+      <Typography color="text.secondary" sx={{ mt: 1, mb: 3 }}>
+        {resultLabel}
+      </Typography>
       <Alert
         severity={
           isSchengen
@@ -65,21 +87,13 @@ const Result: React.FC<ResultProps> = ({
         variant="standard"
         sx={{
           display: 'flex',
-          flexDirection: 'row',
-          gap: 2,
-          justifyContent: 'center',
-          mb: 0,
-          border:
-            isSchengen && remainingDaysToStay <= 0
-              ? '1px solid #5f2120'
-              : '1px solid #4caf50'
+          flexDirection: 'column',
+          alignItems: 'center',
+          textAlign: 'center',
+          border: 1,
+          borderColor: 'divider'
         }}
       >
-        <AlertTitle sx={{ fontWeight: 'bold' }}>
-          {isSchengen
-            ? `${t('result.daysRemainToStay')}: ${remainingDaysToStay}`
-            : `${t('result.daysBeforeTaxThreshold')}: ${remainingDaysToStay}`}
-        </AlertTitle>
         {isSchengen ? (
           <>
             <div>
@@ -163,7 +177,10 @@ const Result: React.FC<ResultProps> = ({
               <NextLink
                 onClick={onRegisterClick}
                 href={localePath('/signup', locale)}
-                style={{ color: 'inherit', textDecoration: 'underline' }}
+                style={{
+                  color: theme.palette.primary.main,
+                  textDecoration: 'underline'
+                }}
               >
                 {t('result.registerCta')}
               </NextLink>{' '}

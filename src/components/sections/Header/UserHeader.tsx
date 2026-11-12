@@ -22,6 +22,7 @@ import { useTranslation } from 'next-i18next';
 import { userHeaderFeatures } from './hooks';
 import { useAuth } from 'src/components/context/AuthContext';
 import { LanguageSwitcher } from 'src/components/atoms/LanguageSwitcher';
+import { Logo } from 'src/components/atoms/Logo';
 import { useRouter } from 'next/router';
 import { localePath } from 'src/utils/i18n';
 
@@ -81,22 +82,29 @@ export const UserHeader: React.FC<Props> = (props) => {
   return (
     <>
       <MuiAppBar
-        position="static"
-        color="primary"
+        position="sticky"
+        color="inherit"
         elevation={0}
         data-sb-field-path={fieldPath}
         sx={{
-          my: 2,
-          px: 1,
-          borderRadius: 1
+          bgcolor: 'background.paper',
+          color: 'text.primary',
+          borderBottom: 1,
+          borderColor: 'divider'
         }}
       >
         <MuiToolbar
           disableGutters={true}
           sx={{
             flexWrap: 'wrap',
-            pt: isMobile ? 2 : 1,
-            pb: isMobile ? 2 : 1,
+            minHeight: 64,
+            maxWidth: 1200,
+            width: '100%',
+            mx: 'auto',
+            px: { xs: 2, md: 3 },
+            boxSizing: 'border-box',
+            pt: isMobile ? 1.5 : 0,
+            pb: isMobile ? 1.5 : 0,
             flexDirection: isMobile ? 'column' : 'row',
             alignItems: 'center',
             justifyContent: 'space-between'
@@ -116,18 +124,31 @@ export const UserHeader: React.FC<Props> = (props) => {
               }}
             >
               <Link href={localePath('/', locale)} passHref legacyBehavior>
-                <MuiTypography
-                  component="h1"
-                  variant="h5"
-                  data-sb-field-path=".title"
+                <MuiBox
+                  component="a"
                   sx={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 1,
                     textDecoration: 'none',
                     color: 'inherit',
                     cursor: 'pointer'
                   }}
                 >
-                  {title}
-                </MuiTypography>
+                  <Logo />
+                  <MuiTypography
+                    component="h1"
+                    variant="h5"
+                    data-sb-field-path=".title"
+                    sx={{
+                      fontSize: 15,
+                      fontWeight: 700,
+                      letterSpacing: '-0.03em'
+                    }}
+                  >
+                    {title}
+                  </MuiTypography>
+                </MuiBox>
               </Link>
             </MuiBox>
           )}
@@ -164,22 +185,25 @@ export const UserHeader: React.FC<Props> = (props) => {
           </MuiBox>
 
           <MuiBox sx={{ flex: '0 0 auto' }}>
-            <LanguageSwitcher lightText />
+            <LanguageSwitcher compact />
             <IconButton
               aria-label={t('common.settings')}
               onClick={handleAvatarClick}
-              sx={{ mr: 1, color: '#fff' }}
+              sx={{ mr: 1, color: 'text.primary' }}
             >
               <SettingsIcon />
             </IconButton>
             <Button
               onClick={logoutUser}
               variant="contained"
+              color="primary"
               sx={{
-                background: 'white',
-                color: 'primary.main',
-                fontWeight: 'bold',
-                textTransform: 'none'
+                height: 36,
+                minHeight: 36,
+                px: 1.75,
+                fontSize: 14,
+                borderRadius: '8px',
+                boxShadow: 'none'
               }}
             >
               {logoutText}

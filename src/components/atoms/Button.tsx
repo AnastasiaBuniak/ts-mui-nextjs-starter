@@ -30,7 +30,7 @@ export const Button: React.FC<Props> = (props) => {
       variant={variant}
       size={size}
       color={color}
-      sx={{ borderRadius: '2px', ...sx }}
+      sx={sx}
       data-sb-field-path={annotations}
     >
       <span data-sb-field-path=".label">{label}</span>
