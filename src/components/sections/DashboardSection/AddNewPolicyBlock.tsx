@@ -49,12 +49,11 @@ export const AddNewPolicyBlock: React.FC<Props> = ({ addPolicy }) => {
   };
 
   return (
-    <Container maxWidth="lg" sx={{ bgcolor: '#f5f5f5' }}>
+    <Container maxWidth="lg">
       <Container
         maxWidth="md"
         sx={{
           py: 4,
-          bgcolor: '#f5f5f5',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center'

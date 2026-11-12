@@ -173,13 +173,17 @@ const Form: React.FC<FormProps> = (props) => {
           type="submit"
           size="large"
           variant="contained"
-          color="secondary"
+          color="primary"
           disabled={!entry || !exit}
           sx={{
-            textTransform: 'initial',
             alignSelf: 'center',
-            minWidth: '230px',
-            minHeight: '56px'
+            minWidth: '140px',
+            height: 40,
+            minHeight: 40,
+            px: 2,
+            fontSize: 14,
+            borderRadius: '8px',
+            boxShadow: 'none'
           }}
         >
           {props.addButtonText || t('form.addDates')}

@@ -53,7 +53,11 @@ export const InformationTabsSection: React.FC<Props> = ({
   }, []);
 
   return (
-    <Box id={INFORMATION_SECTION_ID} data-sb-field-path={fieldPath}>
+    <Box
+      id={INFORMATION_SECTION_ID}
+      data-sb-field-path={fieldPath}
+      sx={{ py: { xs: 2, md: 4 } }}
+    >
       <Container maxWidth="lg" disableGutters={true}>
         <Box
           sx={{

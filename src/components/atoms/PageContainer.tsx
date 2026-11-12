@@ -20,8 +20,7 @@ const PageContainer: React.FC<PageContainerProps> = ({
       <Box
         data-sb-object-id={id}
         sx={{
-          px: noHeader ? 0 : 3,
-          backgroundColor: '#00b0ff',
+          backgroundColor: 'background.default',
           minHeight: '100vh'
         }}
       >
@@ -31,11 +30,16 @@ const PageContainer: React.FC<PageContainerProps> = ({
       </Box>
     );
   }
+
   return (
-    <Box sx={{ px: noHeader ? 0 : 3 }} data-sb-object-id={id}>
-      <Container maxWidth={noHeader ? false : 'lg'} disableGutters={true}>
-        {children}
-      </Container>
+    <Box
+      sx={{
+        bgcolor: noHeader ? 'transparent' : 'background.default',
+        minHeight: '100vh'
+      }}
+      data-sb-object-id={id}
+    >
+      {children}
     </Box>
   );
 };

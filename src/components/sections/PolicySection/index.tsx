@@ -44,7 +44,7 @@ export const PolicySection: React.FC<Props> = ({ title, ...props }) => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          bgcolor: '#f5f5f5',
+          bgcolor: 'background.paper',
           borderRadius: 3,
           width: '100%'
         }}
@@ -58,19 +58,8 @@ export const PolicySection: React.FC<Props> = ({ title, ...props }) => {
     <Container maxWidth="md" sx={{ py: 4 }}>
       <Button
         variant="outlined"
-        color="inherit"
-        sx={{
-          mb: 3,
-          bgcolor: '#fff',
-          borderColor: '#ccc',
-          color: '#333',
-          textTransform: 'none',
-          fontWeight: 500,
-          '&:hover': {
-            bgcolor: '#f9f9f9',
-            borderColor: '#bbb'
-          }
-        }}
+        color="primary"
+        sx={{ mb: 3 }}
         onClick={() =>
           router.push(
             localePath('/dashboard', router.locale || router.defaultLocale)

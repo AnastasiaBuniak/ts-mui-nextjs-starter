@@ -53,7 +53,6 @@ export const PolicyCard: React.FC<Props> = ({
 
   return (
     <Card
-      elevation={3}
       sx={{
         width: '100%',
         minHeight: '220px',
@@ -62,10 +61,7 @@ export const PolicyCard: React.FC<Props> = ({
         textAlign: 'center',
         position: 'relative',
         cursor: 'pointer',
-        textDecoration: 'none',
-        '&:hover': {
-          boxShadow: 6
-        }
+        textDecoration: 'none'
       }}
       variant="inApp"
       onClick={handleCardClick}

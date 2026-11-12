@@ -88,7 +88,9 @@ export const PolicyCard: React.FC<Props> = ({
 
       <Container
         sx={{
-          backgroundColor: '#fff',
+          backgroundColor: 'background.paper',
+          border: 1,
+          borderColor: 'divider',
           borderRadius: 3,
           overflow: 'hidden',
           mt: 2,
@@ -101,7 +103,7 @@ export const PolicyCard: React.FC<Props> = ({
           onDelete={deleteVisit as unknown as (item: unknown) => void}
           tableHeadStyles={{
             borderRadius: 3,
-            backgroundColor: '#f5f5f5'
+            backgroundColor: 'action.hover'
           }}
         />
         <Container

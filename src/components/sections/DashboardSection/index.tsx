@@ -44,7 +44,7 @@ export const DashboardSection: React.FC<Props> = ({
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          bgcolor: '#f5f5f5',
+          bgcolor: 'background.paper',
           borderRadius: 3,
           width: '100%'
         }}
@@ -59,10 +59,8 @@ export const DashboardSection: React.FC<Props> = ({
       sx={{
         py: 4,
         px: isMobile ? 0 : 2,
-        bgcolor: isMobile
-          ? theme.colors.white
-          : theme.colors.lightNeutralGreyBg,
-        borderRadius: 1
+        bgcolor: 'background.paper',
+        borderRadius: 2
       }}
     >
       <Typography

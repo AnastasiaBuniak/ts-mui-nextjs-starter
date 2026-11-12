@@ -14,20 +14,31 @@ export const Footer: React.FC<Props> = (props) => {
   return (
     <MuiBox
       component="footer"
-      sx={{ alignItems: 'center', display: 'flex', flexWrap: 'wrap', py: 3 }}
+      sx={{
+        alignItems: 'center',
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: 2,
+        mt: 8,
+        py: 4,
+        borderTop: 1,
+        borderColor: 'divider'
+      }}
       data-sb-field-path={fieldPath}
     >
       {navLinks.length > 0 && (
         <MuiBox
           component="nav"
-          sx={{ display: 'flex', flexGrow: 1, flexWrap: 'wrap' }}
+          sx={{ display: 'flex', flexGrow: 1, flexWrap: 'wrap', gap: 3 }}
           data-sb-field-path=".navLinks"
         >
           {navLinks.map((link, index) => (
             <Link
               key={index}
               {...link}
-              sx={{ mr: 2 }}
+              color="inherit"
+              underline="hover"
+              sx={{ color: 'text.secondary' }}
               data-sb-field-path={`.${index}`}
             />
           ))}

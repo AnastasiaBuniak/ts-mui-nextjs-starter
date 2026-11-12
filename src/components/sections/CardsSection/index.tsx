@@ -23,7 +23,7 @@ export const CardsSection: React.FC<Props> = (props) => {
   return (
     <MuiBox
       id={CARDS_SECTION_ID}
-      sx={{ py: { xs: 6, sm: 10 } }}
+      sx={{ py: { xs: 8, md: 12 } }}
       data-sb-field-path={fieldPath}
     >
       {title && (
@@ -40,9 +40,9 @@ export const CardsSection: React.FC<Props> = (props) => {
       {subtitle && (
         <MuiTypography
           component="p"
-          variant="h5"
+          variant="subtitle1"
           align="center"
-          color="text.primary"
+          color="text.secondary"
           sx={{ ...(!!title && { mt: 1 }) }}
           data-sb-field-path=".subtitle"
         >
@@ -83,19 +83,25 @@ const CardsSectionItem: React.FC<
   } = props;
   return (
     <MuiGrid item xs={12} sm={6} md={4}>
-      <MuiCard sx={{ height: '100%' }} data-sb-field-path={fieldPath}>
+      <MuiCard
+        sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+        data-sb-field-path={fieldPath}
+      >
         {image?.url && (
-          <Image
-            src={image.url}
-            alt={image.altText as string}
-            width={242}
-            height={144}
-            style={{
-              width: '100%',
-              height: 'auto',
-              maxWidth: '100%'
-            }}
-          />
+          <MuiBox sx={{ px: 2, pt: 2 }}>
+            <Image
+              src={image.url}
+              alt={image.altText as string}
+              width={242}
+              height={144}
+              style={{
+                width: '100%',
+                height: 'auto',
+                maxWidth: '100%',
+                borderRadius: 12
+              }}
+            />
+          </MuiBox>
         )}
         {(title || text) && (
           <MuiCardContent>
